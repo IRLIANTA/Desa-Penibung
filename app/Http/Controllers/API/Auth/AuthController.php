@@ -1,67 +1,27 @@
 <?php
 
 namespace App\Http\Controllers\Api\Auth;
-
-use App\Models\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\LoginStoreRequest;
+use App\Interfaces\AuthRepositoryInterface;
 
 class AuthController extends Controller
 {
-     public function register(Request $request)
+       private AuthRepositoryInterface $authRepository;
+
+    public function __construct(AuthRepositoryInterface $authRepository)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|min:6',
-        ]);
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        $token = $user->createToken('auth_token')->plainTextToken;
-
-        return response()->json([
-            'user' => $user,
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-        ]);
+        $this->authRepository = $authRepository;
     }
 
-    public function login(Request $request)
+    public function login(LoginStoreRequest $request)
     {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+        $request = $request->validated();
 
-        $user = User::where('email', $request->email)->first();
-
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            return response()->json(['message' => 'Invalid credentials'], 401);
-        }
-
-        $token = $user->createToken('auth_token')->plainTextToken;
-
-        return response()->json([
-            'user' => $user,
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-        ]);
+        return $this->authRepository->login($request);
     }
 
-    public function profile(Request $request)
-    {
-        return response()->json($request->user());
-    }
-
-    public function logout(Request $request)
-    {
-        $request->user()->currentAccessToken()->delete();
-        return response()->json(['message' => 'Logged out']);
+    public function logout(){
+        return $this->authRepository->logout();
     }
 }
