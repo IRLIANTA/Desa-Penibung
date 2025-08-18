@@ -40,4 +40,26 @@ class AuthRepository implements AuthRepositoryInterface{
 
         return response($response, 200);
     }
+
+    public function me()
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+
+
+            return response()->json([
+                'message' => 'User data',
+                'data' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'role' => $user->role,
+                ],
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'You are not logged in',
+        ], 401);
+    }
 }
