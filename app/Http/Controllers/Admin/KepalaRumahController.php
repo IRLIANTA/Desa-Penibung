@@ -14,4 +14,9 @@ class KepalaRumahController extends Controller
     public function create(){
         return view('admin.kepala_rumah.create');
     }
+
+    public function manage()
+    {
+        return view('admin.kepala_rumah.manage');
+    }
 }
