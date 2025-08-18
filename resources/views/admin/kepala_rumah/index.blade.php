@@ -168,7 +168,7 @@
                         alt="icon">
                     <span class="font-medium text-desa-blue">9 Anggota Keluarga</span>
                 </p>
-                <a href="kd-kepala-rumah-manage.html"
+                <a href={{ route('kepalaRumah.manage') }}
                     class="flex items-center shrink-0 gap-[10px] rounded-2xl py-4 px-6 bg-desa-black">
                     <span class="font-medium text-white">Manage</span>
                 </a>
