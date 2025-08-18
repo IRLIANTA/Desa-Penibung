@@ -10,4 +10,8 @@ class KepalaRumahController extends Controller
     public function index(){
         return view('admin.kepala_rumah.index');
     }
+
+    public function create(){
+        return view('admin.kepala_rumah.create');
+    }
 }

@@ -1,486 +1,283 @@
 @extends('admin.layouts.app')
 @section('content')
-<section id="Content" class="relative flex flex-col flex-1 gap-6 p-6 pb-[30px] w-full shrink-0">
-                    <div id="Header" class="flex items-center justify-between">
-                        <div class="flex flex-col gap-2">
-                            <div class="flex gap-1 items-center leading-5 text-desa-secondary">
-                                <p class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize ">Kepala Rumah</p>
-                                <span>/</span>
-                                <p class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize ">Manage Kepala Rumah</p>
-                            </div>
-                            <h1 class="font-semibold text-2xl">Manage Kepala Rumah</h1>
+    <div id="Content" class="relative flex flex-col flex-1 gap-6 p-6 pb-[30px] w-full shrink-0">
+        <div id="Header" class="flex items-center justify-between">
+            <h1 class="font-semibold text-2xl">Kepala Rumah </h1>
+            <a href="{{route('kepalaRumah.create')}}" class="flex items-center rounded-2xl py-4 px-6 gap-[10px] bg-desa-dark-green">
+                <img src="assets/images/icons/add-square-white.svg" class="flex size-6 shrink-0" alt="icon">
+                <p class="font-medium text-white">Add New</p>
+            </a>
+        </div>
+        <section id="List-Kepala-Rumah" class="flex flex-col gap-[14px]">
+            <form id="Page-Search" class="flex items-center justify-between">
+                <div class="flex flex-col gap-3 w-[370px] shrink-0">
+                    <label class="relative group peer w-full valid">
+                        <input type="text" placeholder="Cari nama Kepala Rumah atau NIK"
+                            class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 pl-12 pr-6 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
+                        <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
+                            <img src="assets/images/icons/user-search-secondary-green.svg"
+                                class="size-6 hidden group-has-[:placeholder-shown]:flex" alt="icon">
+                            <img src="assets/images/icons/user-search-black.svg"
+                                class="size-6 flex group-has-[:placeholder-shown]:hidden" alt="icon">
                         </div>
-                        <button data-modal="Modal-Delete" class="flex items-center rounded-2xl py-4 px-6 gap-[10px] bg-desa-red">
-                            <p class="font-medium text-white">Hapus Data</p>
-                            <img src="assets/images/icons/trash-white.svg" class="flex size-6 shrink-0" alt="icon">
-                        </button>
-                    </div>
-                    <div class="flex gap-[14px]">
-                        <div class="flex flex-col w-[calc(525/1000*100%)] shrink-0 gap-[14px]">
-                            <section id="Kepala-Rumah" class="flex flex-col rounded-3xl p-6 gap-6 bg-white">
-                                <p class="font-medium leading-5 text-desa-secondary">Kepala Rumah</p>
-                                <div class="flex items-center gap-4">
-                                    <div class="flex size-[76px] shrink-0 rounded-full overflow-hidden bg-desa-foreshadow">
-                                        <img src="assets/images/photos/photo-2.png" class="w-full h-full object-cover" alt="photo">
-                                    </div>
-                                    <div class="flex flex-col gap-[6px] w-full">
-                                        <p class="font-semibold text-xl line-clamp-1">Feri Mahrudin Asep</p>
-                                        <p class="flex items-center gap-1">
-                                            <img src="assets/images/icons/briefcase-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
-                                            <span class="font-medium text-sm text-desa-secondary">Tukang Bangunan</span>
-                                        </p>
-                                    </div>
-                                    <div class="badge rounded-full p-3 gap-2 flex w-[100px] justify-center shrink-0 bg-desa-soft-green">
-                                        <span class="font-semibold text-xs text-white uppercase">Menikah</span>
-                                    </div>
-                                </div>
-                                <hr class="border-desa-foreshadow">
-                                <div class="flex items-center w-full gap-3">
-                                    <div class="flex size-[52px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                                        <img src="assets/images/icons/keyboard-dark-green.svg" class="flex size-6 shrink-0" alt="icon">
-                                    </div>
-                                    <div class="flex flex-col gap-1 w-full">
-                                        <p class="font-semibold text-xl leading-[22.5px]">20051005922001005</p>
-                                        <span class="font-medium text-desa-secondary">
-                                            Nomor Induk Kependudukan
-                                        </span>
-                                    </div>
-                                </div>
-                                <hr class="border-desa-foreshadow">
-                                <div class="flex items-center w-full gap-3">
-                                    <div class="flex size-[52px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                                        <img src="assets/images/icons/user-square-dark-green.svg" class="flex size-6 shrink-0" alt="icon">
-                                    </div>
-                                    <div class="flex flex-col gap-1 w-full">
-                                        <p class="font-semibold text-xl leading-[22.5px]">42 Tahun</p>
-                                        <span class="font-medium text-desa-secondary">
-                                            Umur Kepala Rumah
-                                        </span>
-                                    </div>
-                                </div>
-                                <hr class="border-desa-foreshadow">
-                                <div class="flex items-center w-full gap-3">
-                                    <div class="flex size-[52px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                                        <img src="assets/images/icons/man-dark-green.svg" class="flex size-6 shrink-0" alt="icon">
-                                    </div>
-                                    <div class="flex flex-col gap-1 w-full">
-                                        <p class="font-semibold text-xl leading-[22.5px]">Pria</p>
-                                        <span class="font-medium text-desa-secondary">
-                                            Jenis Kelamin
-                                        </span>
-                                    </div>
-                                </div>
-                                <hr class="border-desa-foreshadow">
-                                <div class="flex items-center w-full gap-3">
-                                    <div class="flex size-[52px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                                        <img src="assets/images/icons/sms-dark-green.svg" class="flex size-6 shrink-0" alt="icon">
-                                    </div>
-                                    <div class="flex flex-col gap-1 w-full">
-                                        <p class="font-semibold text-xl leading-[22.5px]">fransutomo@desadigital.com</p>
-                                        <span class="font-medium text-desa-secondary">
-                                            Email Address
-                                        </span>
-                                    </div>
-                                </div>
-                                <hr class="border-desa-foreshadow">
-                                <div class="flex items-center w-full gap-3">
-                                    <div class="flex size-[52px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                                        <img src="assets/images/icons/call-dark-green.svg" class="flex size-6 shrink-0" alt="icon">
-                                    </div>
-                                    <div class="flex flex-col gap-1 w-full">
-                                        <p class="font-semibold text-xl leading-[22.5px]">083212349000</p>
-                                        <span class="font-medium text-desa-secondary">
-                                            Nomor Hp
-                                        </span>
-                                    </div>
-                                </div>
-                            </section>
-                            <section id="Anggota-Keluarga" class="flex flex-col rounded-3xl p-6 gap-6 bg-white">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex flex-col gap-[6px]">
-                                        <p class="font-semibold text-[32px] leading-10">3</p>
-                                        <p class="font-medium leading-5 text-desa-secondary">Anggota Keluarga</p>
-                                    </div>
-                                    <img src="assets/images/icons/profile-2user-foreshadow-background.svg" class="flex size-12 shrink-0" alt="icon">
-                                </div>
-                                <hr class="border-desa-foreshadow">
-                                <div id="Istri" class="flex flex-col gap-[14px]">
-                                    <p class="font-medium leading-5 text-desa-secondary">Istri (1)</p>
-                                    <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-6">
-                                        <div class="flex items-center gap-4">
-                                            <div class="flex size-[64px] shrink-0 rounded-full overflow-hidden bg-desa-foreshadow">
-                                                <img src="assets/images/photos/kk-photo-2.png" class="w-full h-full object-cover" alt="photo">
-                                            </div>
-                                            <div class="flex flex-col gap-[6px] w-full">
-                                                <p class="font-semibold text-xl line-clamp-1">Puji Siti Aminah</p>
-                                                <p class="flex items-center gap-1">
-                                                    <img src="assets/images/icons/briefcase-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
-                                                    <span class="font-medium text-sm text-desa-secondary">Ibu Rumah Tangga</span>
-                                                </p>
-                                            </div>
-                                            <p class="font-medium leading-5 text-nowrap">32 tahun</p>
-                                        </div>
-                                        <hr class="border-desa-background">
-                                        <div class="flex justify-between items-center">
-                                            <p class="flex items-center gap-1">
-                                                <img src="assets/images/icons/keyboard-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
-                                                <span class="font-medium text-sm text-desa-secondary">Nomor Induk Kependudukan:</span>
-                                            </p>
-                                            <p class="font-medium leading-5">27192018210818291</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="Anak" class="flex flex-col gap-[14px]">
-                                    <p class="font-medium leading-5 text-desa-secondary">Anak (2)</p>
-                                    <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-6">
-                                        <div class="flex items-center gap-4">
-                                            <div class="flex size-[64px] shrink-0 rounded-full overflow-hidden bg-desa-foreshadow">
-                                                <img src="assets/images/photos/kk-photo-3.png" class="w-full h-full object-cover" alt="photo">
-                                            </div>
-                                            <div class="flex flex-col gap-[6px] w-full">
-                                                <p class="font-semibold text-xl line-clamp-1">Karin Icshan</p>
-                                                <p class="flex items-center gap-1">
-                                                    <img src="assets/images/icons/briefcase-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
-                                                    <span class="font-medium text-sm text-desa-secondary">Mahasiswi</span>
-                                                </p>
-                                            </div>
-                                            <p class="font-medium leading-5 text-nowrap">24 Tahun</p>
-                                        </div>
-                                        <hr class="border-desa-background">
-                                        <div class="flex justify-between items-center">
-                                            <p class="flex items-center gap-1">
-                                                <img src="assets/images/icons/keyboard-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
-                                                <span class="font-medium text-sm text-desa-secondary">Nomor Induk Kependudukan:</span>
-                                            </p>
-                                            <p class="font-medium leading-5">24910120192019281</p>
-                                        </div>
-                                    </div>
-                                    <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-6">
-                                        <div class="flex items-center gap-4">
-                                            <div class="flex size-[64px] shrink-0 rounded-full overflow-hidden bg-desa-foreshadow">
-                                                <img src="assets/images/photos/photo-1.png" class="w-full h-full object-cover" alt="photo">
-                                            </div>
-                                            <div class="flex flex-col gap-[6px] w-full">
-                                                <p class="font-semibold text-xl line-clamp-1">Rizky Icshan</p>
-                                                <p class="flex items-center gap-1">
-                                                    <img src="assets/images/icons/briefcase-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
-                                                    <span class="font-medium text-sm text-desa-secondary">Mahasiswa</span>
-                                                </p>
-                                            </div>
-                                            <p class="font-medium leading-5 text-nowrap">17 tahun</p>
-                                        </div>
-                                        <hr class="border-desa-background">
-                                        <div class="flex justify-between items-center">
-                                            <p class="flex items-center gap-1">
-                                                <img src="assets/images/icons/keyboard-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
-                                                <span class="font-medium text-sm text-desa-secondary">Nomor Induk Kependudukan:</span>
-                                            </p>
-                                            <p class="font-medium leading-5">28193018301839101</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-                        <div class="flex flex-col flex-1 shrink-0 gap-[14px]">
-                            <section id="Recent-Activity" class="flex flex-col rounded-3xl p-6 gap-6 bg-white">
-                                <p class="font-medium leading-5 text-desa-secondary">Recent Activity</p>
-                                <div id="Tabs-Button" class="grid grid-cols-3 gap-3">
-                                    <button data-content="Bansos" class="tab-btn group active">
-                                        <div class="flex items-center justify-center rounded-full border border-desa-background py-[14px] px-[18px] group-hover:bg-desa-black group-[.active]:bg-desa-black transition-setup">
-                                            <span class="font-medium leading-5 text-desa-secondary group-hover:text-white group-[.active]:text-white transition-setup">
-                                                Bansos
-                                            </span>
-                                        </div>
-                                    </button>
-                                    <button data-content="Events" class="tab-btn group">
-                                        <div class="flex items-center justify-center rounded-full border border-desa-background py-[14px] px-[18px] group-hover:bg-desa-black group-[.active]:bg-desa-black transition-setup">
-                                            <span class="font-medium leading-5 text-desa-secondary group-hover:text-white group-[.active]:text-white transition-setup">
-                                                Events
-                                            </span>
-                                        </div>
-                                    </button>
-                                    <button data-content="Applicants" class="tab-btn group">
-                                        <div class="flex items-center justify-center rounded-full border border-desa-background py-[14px] px-[18px] group-hover:bg-desa-black group-[.active]:bg-desa-black transition-setup">
-                                            <span class="font-medium leading-5 text-desa-secondary group-hover:text-white group-[.active]:text-white transition-setup">
-                                                Applicants
-                                            </span>
-                                        </div>
-                                    </button>
-                                </div>
-                                <div id="Tabs-Content" class="flex flex-col">
-                                    <div id="Bansos" class="flex flex-col gap-6">
-                                        <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-4">
-                                            <div class="flex items-center justify-between">
-                                                <p class="font-medium text-sm text-desa-secondary">Tue, 31 Dec 2024 </p>
-                                                <img src="assets/images/icons/calendar-2-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
-                                            </div>
-                                            <hr class="border-desa-background">
-                                            <p class="font-semibold text-lg">Bantuan Untuk Rakyat Kurang Mampu</p>
-                                            <div class="flex items-center gap-3">
-                                                <div class="flex size-[52px] shrink-0 items-center justify-center rounded-2xl bg-desa-foreshadow">
-                                                    <img src="assets/images/icons/money-dark-green.svg" alt="icon">
-                                                </div>
-                                                <div class="flex flex-col gap-[6px] w-full">
-                                                    <p class="font-semibold text-lg leading-5">Rp120.000.000</p>
-                                                    <p class="font-medium text-sm text-desa-secondary">Nominal Pengajuan</p>
-                                                </div>
-                                                <div class="badge rounded-full p-3 gap-2 flex w-[100px] justify-center shrink-0 bg-desa-yellow">
-                                                    <span class="font-semibold text-xs text-white uppercase">Menunggu</span>
-                                                </div>
-                                            </div>
-                                            <hr class="border-desa-background">
-                                            <div class="flex items-center justify-between">
-                                                <p class="font-medium text-sm text-desa-secondary">Nominal Pengajuan:</p>
-                                                <p class="font-medium leading-5 text-desa-red">Rp2.500.000</p>
-                                            </div>
-                                        </div>
-                                        <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-4">
-                                            <div class="flex items-center justify-between">
-                                                <p class="font-medium text-sm text-desa-secondary">Tue, 25 Dec 2024 </p>
-                                                <img src="assets/images/icons/calendar-2-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
-                                            </div>
-                                            <hr class="border-desa-background">
-                                            <p class="font-semibold text-lg">Bantuan Pangan Sehari-hari</p>
-                                            <div class="flex items-center gap-3">
-                                                <div class="flex size-[52px] shrink-0 items-center justify-center rounded-2xl bg-desa-foreshadow">
-                                                    <img src="assets/images/icons/bag-2-dark-green.svg" alt="icon">
-                                                </div>
-                                                <div class="flex flex-col gap-[6px] w-full">
-                                                    <p class="font-semibold text-lg leading-5">Beras 200 Ton</p>
-                                                    <p class="font-medium text-sm text-desa-secondary">Bahan Pokok</p>
-                                                </div>
-                                                <div class="badge rounded-full p-3 gap-2 flex w-[100px] justify-center shrink-0 bg-desa-dark-green">
-                                                    <span class="font-semibold text-xs text-white uppercase">Diterima</span>
-                                                </div>
-                                            </div>
-                                            <hr class="border-desa-background">
-                                            <div class="flex items-center justify-between">
-                                                <p class="font-medium text-sm text-desa-secondary">Nominal Pengajuan:</p>
-                                                <p class="font-medium leading-5 text-desa-red">Beras 2kg</p>
-                                            </div>
-                                        </div>
-                                        <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-4">
-                                            <div class="flex items-center justify-between">
-                                                <p class="font-medium text-sm text-desa-secondary">Tue, 12 Dec 2024 </p>
-                                                <img src="assets/images/icons/calendar-2-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
-                                            </div>
-                                            <hr class="border-desa-background">
-                                            <p class="font-semibold text-lg">Bantuan Untuk anak kurang gizi</p>
-                                            <div class="flex items-center gap-3">
-                                                <div class="flex size-[52px] shrink-0 items-center justify-center rounded-2xl bg-desa-foreshadow">
-                                                    <img src="assets/images/icons/bag-2-dark-green.svg" alt="icon">
-                                                </div>
-                                                <div class="flex flex-col gap-[6px] w-full">
-                                                    <p class="font-semibold text-lg leading-5">Susu 200 Liter</p>
-                                                    <p class="font-medium text-sm text-desa-secondary">Bahan Pokok</p>
-                                                </div>
-                                                <div class="badge rounded-full p-3 gap-2 flex w-[100px] justify-center shrink-0 bg-desa-red">
-                                                    <span class="font-semibold text-xs text-white uppercase">Ditolak</span>
-                                                </div>
-                                            </div>
-                                            <hr class="border-desa-background">
-                                            <div class="flex items-center justify-between">
-                                                <p class="font-medium text-sm text-desa-secondary">Nominal Pengajuan:</p>
-                                                <p class="font-medium leading-5 text-desa-red">Susu 200ml</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="Events" class="flex flex-col gap-6 hidden">
-                                        <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-4">
-                                            <div class="flex items-center justify-between">
-                                                <p class="font-medium text-sm text-desa-secondary">Fri, 3 Jan 2025</p>
-                                                <img src="assets/images/icons/calendar-2-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
-                                            </div>
-                                            <hr class="border-desa-background">
-                                            <div class="flex items-center gap-3">
-                                                <div class="flex w-20 h-[60px] shrink-0 items-center justify-center rounded-2xl bg-desa-foreshadow overflow-hidden">
-                                                    <img src="assets/images/thumbnails/event-image-1.png" class="w-full h-full object-cover" alt="thumbnail">
-                                                </div>
-                                                <div class="flex flex-col gap-[6px] w-full">
-                                                    <p class="font-semibold leading-5 line-clamp-1">Belajar HTML Dasar Bersama</p>
-                                                    <div class="flex items-center gap-1">
-                                                        <img src="assets/images/icons/profile-2user-orange.svg" class="flex size-[18px] shrink-0" alt="icon">
-                                                        <p class="font-medium text-sm text-desa-orange">9210 total partisipasi</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr class="border-desa-background">
-                                            <div class="flex items-center justify-between">
-                                                <p class="font-medium text-sm text-desa-secondary">Harga Event:</p>
-                                                <p class="font-medium leading-5 text-desa-red">Rp49.000</p>
-                                            </div>
-                                        </div>
-                                        <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-4">
-                                            <div class="flex items-center justify-between">
-                                                <p class="font-medium text-sm text-desa-secondary">Wed, 1 Jan 2025</p>
-                                                <img src="assets/images/icons/calendar-2-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
-                                            </div>
-                                            <hr class="border-desa-background">
-                                            <div class="flex items-center gap-3">
-                                                <div class="flex w-20 h-[60px] shrink-0 items-center justify-center rounded-2xl bg-desa-foreshadow overflow-hidden">
-                                                    <img src="assets/images/thumbnails/kk-dashboard-2.png" class="w-full h-full object-cover" alt="thumbnail">
-                                                </div>
-                                                <div class="flex flex-col gap-[6px] w-full">
-                                                    <p class="font-semibold leading-5 line-clamp-1">Dari Desa ke dunia digital: workshop</p>
-                                                    <div class="flex items-center gap-1">
-                                                        <img src="assets/images/icons/profile-2user-orange.svg" class="flex size-[18px] shrink-0" alt="icon">
-                                                        <p class="font-medium text-sm text-desa-orange">9210 total partisipasi</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr class="border-desa-background">
-                                            <div class="flex items-center justify-between">
-                                                <p class="font-medium text-sm text-desa-secondary">Harga Event:</p>
-                                                <p class="font-medium leading-5 text-desa-red">Rp49.000</p>
-                                            </div>
-                                        </div>
-                                        <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-4">
-                                            <div class="flex items-center justify-between">
-                                                <p class="font-medium text-sm text-desa-secondary">Sun, 21 Dec 2024</p>
-                                                <img src="assets/images/icons/calendar-2-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
-                                            </div>
-                                            <hr class="border-desa-background">
-                                            <div class="flex items-center gap-3">
-                                                <div class="flex w-20 h-[60px] shrink-0 items-center justify-center rounded-2xl bg-desa-foreshadow overflow-hidden">
-                                                    <img src="assets/images/thumbnails/kk-event-desa-3.png" class="w-full h-full object-cover" alt="thumbnail">
-                                                </div>
-                                                <div class="flex flex-col gap-[6px] w-full">
-                                                    <p class="font-semibold leading-5 line-clamp-1">Mengenal AI: Menjelajah dunia Kecerdasan</p>
-                                                    <div class="flex items-center gap-1">
-                                                        <img src="assets/images/icons/profile-2user-orange.svg" class="flex size-[18px] shrink-0" alt="icon">
-                                                        <p class="font-medium text-sm text-desa-orange">9210 total partisipasi</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr class="border-desa-background">
-                                            <div class="flex items-center justify-between">
-                                                <p class="font-medium text-sm text-desa-secondary">Harga Event:</p>
-                                                <p class="font-medium leading-5 text-desa-red">Rp49.000</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="Applicants" class="flex flex-col gap-6 hidden">
-                                        <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-4">
-                                            <div class="flex items-center justify-between gap-3">
-                                                <div class="flex w-20 h-[60px] shrink-0 items-center justify-center rounded-2xl bg-desa-foreshadow overflow-hidden">
-                                                    <img src="assets/images/thumbnails/event-image-1.png" class="w-full h-full object-cover" alt="thumbnail">
-                                                </div>
-                                                <div class="badge rounded-full p-3 gap-2 flex w-[100px] justify-center shrink-0 bg-desa-yellow">
-                                                    <span class="font-semibold text-xs text-white uppercase">Menunggu</span>
-                                                </div>
-                                            </div>
-                                            <div class="flex flex-col gap-1">
-                                                <p class="font-semibold leading-5">Pembangunan Jalanan Utama</p>
-                                                <p class="font-medium leading-5 text-desa-secondary">
-                                                    Penanggung jawab: 
-                                                    <span class="font-semibold text-desa-dark-green">
-                                                        Uzumaki Asep
-                                                    </span>
-                                                </p>
-                                            </div>
-                                            <hr class="border-desa-background">
-                                            <div class="flex items-center gap-3">
-                                                <div class="flex size-12 shrink-0 rounded-full bg-desa-foreshadow overflow-hidden items-center justify-center">
-                                                    <img src="assets/images/icons/calendar-2-dark-green.svg" class="flex size-6" alt="icon">
-                                                </div>
-                                                <div>
-                                                    <p class="font-semibold leading-5 text-desa-dark-green">3 Jan 2025</p>
-                                                    <p class="font-medium text-sm text-desa-secondary">Tanggal Pelaksanaan</p>
-                                                </div>
-                                            </div>
-                                            <hr class="border-desa-background">
-                                            <div class="flex items-center gap-3">
-                                                <div class="flex size-12 shrink-0 rounded-full bg-desa-foreshadow overflow-hidden items-center justify-center">
-                                                    <img src="assets/images/icons/timer-dark-green.svg" class="flex size-6" alt="icon">
-                                                </div>
-                                                <div>
-                                                    <p class="font-semibold leading-5 text-desa-dark-green">24 Hari</p>
-                                                    <p class="font-medium text-sm text-desa-secondary">Waktu Pelaksanaan</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-4">
-                                            <div class="flex items-center justify-between gap-3">
-                                                <div class="flex w-20 h-[60px] shrink-0 items-center justify-center rounded-2xl bg-desa-foreshadow overflow-hidden">
-                                                    <img src="assets/images/thumbnails/event-image-1.png" class="w-full h-full object-cover" alt="thumbnail">
-                                                </div>
-                                                <div class="badge rounded-full p-3 gap-2 flex w-[100px] justify-center shrink-0 bg-desa-dark-green">
-                                                    <span class="font-semibold text-xs text-white uppercase">Diterima</span>
-                                                </div>
-                                            </div>
-                                            <div class="flex flex-col gap-1">
-                                                <p class="font-semibold leading-5">Pembangunan Jalanan Utama</p>
-                                                <p class="font-medium leading-5 text-desa-secondary">
-                                                    Penanggung jawab: 
-                                                    <span class="font-semibold text-desa-dark-green">
-                                                        Uzumaki Asep
-                                                    </span>
-                                                </p>
-                                            </div>
-                                            <hr class="border-desa-background">
-                                            <div class="flex items-center gap-3">
-                                                <div class="flex size-12 shrink-0 rounded-full bg-desa-foreshadow overflow-hidden items-center justify-center">
-                                                    <img src="assets/images/icons/calendar-2-dark-green.svg" class="flex size-6" alt="icon">
-                                                </div>
-                                                <div>
-                                                    <p class="font-semibold leading-5 text-desa-dark-green">3 Jan 2025</p>
-                                                    <p class="font-medium text-sm text-desa-secondary">Tanggal Pelaksanaan</p>
-                                                </div>
-                                            </div>
-                                            <hr class="border-desa-background">
-                                            <div class="flex items-center gap-3">
-                                                <div class="flex size-12 shrink-0 rounded-full bg-desa-foreshadow overflow-hidden items-center justify-center">
-                                                    <img src="assets/images/icons/timer-dark-green.svg" class="flex size-6" alt="icon">
-                                                </div>
-                                                <div>
-                                                    <p class="font-semibold leading-5 text-desa-dark-green">24 Hari</p>
-                                                    <p class="font-medium text-sm text-desa-secondary">Waktu Pelaksanaan</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-4">
-                                            <div class="flex items-center justify-between gap-3">
-                                                <div class="flex w-20 h-[60px] shrink-0 items-center justify-center rounded-2xl bg-desa-foreshadow overflow-hidden">
-                                                    <img src="assets/images/thumbnails/event-image-1.png" class="w-full h-full object-cover" alt="thumbnail">
-                                                </div>
-                                                <div class="badge rounded-full p-3 gap-2 flex w-[100px] justify-center shrink-0 bg-desa-red">
-                                                    <span class="font-semibold text-xs text-white uppercase">Ditolak</span>
-                                                </div>
-                                            </div>
-                                            <div class="flex flex-col gap-1">
-                                                <p class="font-semibold leading-5">Pembangunan Jalanan Utama</p>
-                                                <p class="font-medium leading-5 text-desa-secondary">
-                                                    Penanggung jawab: 
-                                                    <span class="font-semibold text-desa-dark-green">
-                                                        Uzumaki Asep
-                                                    </span>
-                                                </p>
-                                            </div>
-                                            <hr class="border-desa-background">
-                                            <div class="flex items-center gap-3">
-                                                <div class="flex size-12 shrink-0 rounded-full bg-desa-foreshadow overflow-hidden items-center justify-center">
-                                                    <img src="assets/images/icons/calendar-2-dark-green.svg" class="flex size-6" alt="icon">
-                                                </div>
-                                                <div>
-                                                    <p class="font-semibold leading-5 text-desa-dark-green">3 Jan 2025</p>
-                                                    <p class="font-medium text-sm text-desa-secondary">Tanggal Pelaksanaan</p>
-                                                </div>
-                                            </div>
-                                            <hr class="border-desa-background">
-                                            <div class="flex items-center gap-3">
-                                                <div class="flex size-12 shrink-0 rounded-full bg-desa-foreshadow overflow-hidden items-center justify-center">
-                                                    <img src="assets/images/icons/timer-dark-green.svg" class="flex size-6" alt="icon">
-                                                </div>
-                                                <div>
-                                                    <p class="font-semibold leading-5 text-desa-dark-green">24 Hari</p>
-                                                    <p class="font-medium text-sm text-desa-secondary">Waktu Pelaksanaan</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
+                    </label>
+                </div>
+                <div class="options flex items-center gap-4">
+                    <div class="flex items-center gap-[10px]">
+                        <span class="font-medium leading-5">Show</span>
+                        <div class="relative">
+                            <select name="" id=""
+                                class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-6 pr-[52px] gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
+                                <option value="5" selected>5 Entries</option>
+                                <option value="10">10 Entries</option>
+                                <option value="20">20 Entries</option>
+                                <option value="30">30 Entries</option>
+                                <option value="40">40 Entries</option>
+                                <option value="50">50 Entries</option>
+                            </select>
+                            <img src="assets/images/icons/arrow-down-black.svg"
+                                class="flex size-6 shrink-0 absolute transform -translate-y-1/2 top-1/2 right-6"
+                                alt="icon">
                         </div>
                     </div>
-                </section>
-                @endsection
+                    <button type="button"
+                        class="flex items-center gap-1 h-14 w-fit rounded-2xl border border-desa-background bg-white py-4 px-6">
+                        <img src="assets/images/icons/filter-black.svg" class="flex size-6 shrink-0" alt="icon">
+                        <span class="font-medium leading-5">Filter</span>
+                    </button>
+                </div>
+            </form>
+            <div class="card flex items-center justify-between rounded-3xl p-6 bg-white">
+                <div class="flex items-center gap-3 w-[260px]">
+                    <div class="flex size-16 shrink-0 rounded-full overflow-hidden bg-desa-foreshadow">
+                        <img src="assets/images/photos/kk-photo-1.png" class="w-full h-full object-cover" alt="photo">
+                    </div>
+                    <div class="flex flex-col gap-[6px]">
+                        <p class="font-semibold text-lg leading-[22.5px] w-[184px] truncate">Andi Alif Baro</p>
+                        <p class="flex items-center gap-1">
+                            <img src="assets/images/icons/briefcase-secondary-green.svg" class="flex size-[18px] shrink-0"
+                                alt="icon">
+                            <span class="font-medium text-sm text-desa-secondary">Mekanik Kendaraan</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1 w-[180px] shrink-0">
+                    <p class="flex items-center gap-1">
+                        <img src="assets/images/icons/keyboard-secondary-green.svg" class="flex size-[18px] shrink-0"
+                            alt="icon">
+                        <span class="font-medium text-sm text-desa-secondary">NIK</span>
+                    </p>
+                    <p class="font-semibold leading-5">2005100592201005</p>
+                </div>
+                <p class="flex items-center rounded-full w-[224px] shrink-0 py-[14px] px-4 gap-1 bg-desa-blue/10">
+                    <img src="assets/images/icons/profile-2user-blue.svg" class="flex size-[18px] shrink-0" alt="icon">
+                    <span class="font-medium text-desa-blue">99 Anggota Keluarga</span>
+                </p>
+                <a href="kd-kepala-rumah-manage.html"
+                    class="flex items-center shrink-0 gap-[10px] rounded-2xl py-4 px-6 bg-desa-black">
+                    <span class="font-medium text-white">Manage</span>
+                </a>
+            </div>
+            <div class="card flex items-center justify-between rounded-3xl p-6 bg-white">
+                <div class="flex items-center gap-3 w-[260px]">
+                    <div class="flex size-16 shrink-0 rounded-full overflow-hidden bg-desa-foreshadow">
+                        <img src="assets/images/photos/kk-photo-2.png" class="w-full h-full object-cover" alt="photo">
+                    </div>
+                    <div class="flex flex-col gap-[6px]">
+                        <p class="font-semibold text-lg leading-[22.5px] w-[184px] truncate">Nabila Reyna R </p>
+                        <p class="flex items-center gap-1">
+                            <img src="assets/images/icons/briefcase-secondary-green.svg" class="flex size-[18px] shrink-0"
+                                alt="icon">
+                            <span class="font-medium text-sm text-desa-secondary">Perawat</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1 w-[180px] shrink-0">
+                    <p class="flex items-center gap-1">
+                        <img src="assets/images/icons/keyboard-secondary-green.svg" class="flex size-[18px] shrink-0"
+                            alt="icon">
+                        <span class="font-medium text-sm text-desa-secondary">NIK</span>
+                    </p>
+                    <p class="font-semibold leading-5">80091950281089390</p>
+                </div>
+                <p class="flex items-center rounded-full w-[224px] shrink-0 py-[14px] px-4 gap-1 bg-desa-blue/10">
+                    <img src="assets/images/icons/profile-2user-blue.svg" class="flex size-[18px] shrink-0" alt="icon">
+                    <span class="font-medium text-desa-blue">4 Anggota Keluarga</span>
+                </p>
+                <a href="kd-kepala-rumah-manage.html"
+                    class="flex items-center shrink-0 gap-[10px] rounded-2xl py-4 px-6 bg-desa-black">
+                    <span class="font-medium text-white">Manage</span>
+                </a>
+            </div>
+            <div class="card flex items-center justify-between rounded-3xl p-6 bg-white">
+                <div class="flex items-center gap-3 w-[260px]">
+                    <div class="flex size-16 shrink-0 rounded-full overflow-hidden bg-desa-foreshadow">
+                        <img src="assets/images/photos/kk-photo-3.png" class="w-full h-full object-cover" alt="photo">
+                    </div>
+                    <div class="flex flex-col gap-[6px]">
+                        <p class="font-semibold text-lg leading-[22.5px] w-[184px] truncate">Risky Ichsan</p>
+                        <p class="flex items-center gap-1">
+                            <img src="assets/images/icons/briefcase-secondary-green.svg" class="flex size-[18px] shrink-0"
+                                alt="icon">
+                            <span class="font-medium text-sm text-desa-secondary">Petani</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1 w-[180px] shrink-0">
+                    <p class="flex items-center gap-1">
+                        <img src="assets/images/icons/keyboard-secondary-green.svg" class="flex size-[18px] shrink-0"
+                            alt="icon">
+                        <span class="font-medium text-sm text-desa-secondary">NIK</span>
+                    </p>
+                    <p class="font-semibold leading-5">41001839101390291</p>
+                </div>
+                <p class="flex items-center rounded-full w-[224px] shrink-0 py-[14px] px-4 gap-1 bg-desa-blue/10">
+                    <img src="assets/images/icons/profile-2user-blue.svg" class="flex size-[18px] shrink-0"
+                        alt="icon">
+                    <span class="font-medium text-desa-blue">6 Anggota Keluarga</span>
+                </p>
+                <a href="kd-kepala-rumah-manage.html"
+                    class="flex items-center shrink-0 gap-[10px] rounded-2xl py-4 px-6 bg-desa-black">
+                    <span class="font-medium text-white">Manage</span>
+                </a>
+            </div>
+            <div class="card flex items-center justify-between rounded-3xl p-6 bg-white">
+                <div class="flex items-center gap-3 w-[260px]">
+                    <div class="flex size-16 shrink-0 rounded-full overflow-hidden bg-desa-foreshadow">
+                        <img src="assets/images/photos/photo-1.png" class="w-full h-full object-cover" alt="photo">
+                    </div>
+                    <div class="flex flex-col gap-[6px]">
+                        <p class="font-semibold text-lg leading-[22.5px] w-[184px] truncate">Feri Mahrudin Asep</p>
+                        <p class="flex items-center gap-1">
+                            <img src="assets/images/icons/briefcase-secondary-green.svg" class="flex size-[18px] shrink-0"
+                                alt="icon">
+                            <span class="font-medium text-sm text-desa-secondary">Peternak Ayam</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1 w-[180px] shrink-0">
+                    <p class="flex items-center gap-1">
+                        <img src="assets/images/icons/keyboard-secondary-green.svg" class="flex size-[18px] shrink-0"
+                            alt="icon">
+                        <span class="font-medium text-sm text-desa-secondary">NIK</span>
+                    </p>
+                    <p class="font-semibold leading-5">10029587201940328</p>
+                </div>
+                <p class="flex items-center rounded-full w-[224px] shrink-0 py-[14px] px-4 gap-1 bg-desa-blue/10">
+                    <img src="assets/images/icons/profile-2user-blue.svg" class="flex size-[18px] shrink-0"
+                        alt="icon">
+                    <span class="font-medium text-desa-blue">9 Anggota Keluarga</span>
+                </p>
+                <a href="kd-kepala-rumah-manage.html"
+                    class="flex items-center shrink-0 gap-[10px] rounded-2xl py-4 px-6 bg-desa-black">
+                    <span class="font-medium text-white">Manage</span>
+                </a>
+            </div>
+            <div class="card flex items-center justify-between rounded-3xl p-6 bg-white">
+                <div class="flex items-center gap-3 w-[260px]">
+                    <div class="flex size-16 shrink-0 rounded-full overflow-hidden bg-desa-foreshadow">
+                        <img src="assets/images/photos/photo-2.png" class="w-full h-full object-cover" alt="photo">
+                    </div>
+                    <div class="flex flex-col gap-[6px]">
+                        <p class="font-semibold text-lg leading-[22.5px] w-[184px] truncate">Fiqih Ardiansyah Putra</p>
+                        <p class="flex items-center gap-1">
+                            <img src="assets/images/icons/briefcase-secondary-green.svg" class="flex size-[18px] shrink-0"
+                                alt="icon">
+                            <span class="font-medium text-sm text-desa-secondary">Tukang Bangunan</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1 w-[180px] shrink-0">
+                    <p class="flex items-center gap-1">
+                        <img src="assets/images/icons/keyboard-secondary-green.svg" class="flex size-[18px] shrink-0"
+                            alt="icon">
+                        <span class="font-medium text-sm text-desa-secondary">NIK</span>
+                    </p>
+                    <p class="font-semibold leading-5">30183910948390193</p>
+                </div>
+                <p class="flex items-center rounded-full w-[224px] shrink-0 py-[14px] px-4 gap-1 bg-desa-blue/10">
+                    <img src="assets/images/icons/profile-2user-blue.svg" class="flex size-[18px] shrink-0"
+                        alt="icon">
+                    <span class="font-medium text-desa-blue">3 Anggota Keluarga</span>
+                </p>
+                <a href="kd-kepala-rumah-manage.html"
+                    class="flex items-center shrink-0 gap-[10px] rounded-2xl py-4 px-6 bg-desa-black">
+                    <span class="font-medium text-white">Manage</span>
+                </a>
+            </div>
+        </section>
+        <nav id="Pagination">
+            <ul class="flex items-center gap-3">
+                <li class="group">
+                    <button type="button" disabled
+                        class="group/arrow flex size-11 shrink-0 items-center justify-center rounded-full bg-desa-foreshadow disabled:!bg-desa-foreshadow group-hover:bg-desa-dark-green transition-setup">
+                        <img src="assets/images/icons/arrow-left-dark-green.svg"
+                            class="flex size-6 shrink-0 group-hover:hidden group-disabled/arrow:!hidden" alt="icon">
+                        <img src="assets/images/icons/arrow-left-foreshadow.svg"
+                            class="hidden size-6 shrink-0 group-hover:flex group-disabled/arrow:!hidden" alt="icon">
+                        <img src="assets/images/icons/disabled-arrow-pagination.svg"
+                            class="hidden size-6 shrink-0 group-disabled/arrow:!flex" alt="icon">
+                    </button>
+                </li>
+                <li class="group active">
+                    <a
+                        class="flex size-11 shrink-0 items-center justify-center rounded-full bg-desa-foreshadow group-hover:bg-desa-dark-green group-[.active]:bg-desa-dark-green transition-setup">
+                        <span
+                            class="text-desa-dark-green font-semibold group-[.active]:text-desa-foreshadow group-hover:text-desa-foreshadow transition-setup">
+                            1
+                        </span>
+                    </a>
+                </li>
+                <li class="group">
+                    <a
+                        class="flex size-11 shrink-0 items-center justify-center rounded-full bg-desa-foreshadow group-hover:bg-desa-dark-green group-[.active]:bg-desa-dark-green transition-setup">
+                        <span
+                            class="text-desa-dark-green font-semibold group-[.active]:text-desa-foreshadow group-hover:text-desa-foreshadow transition-setup">
+                            2
+                        </span>
+                    </a>
+                </li>
+                <li class="group">
+                    <a
+                        class="flex size-11 shrink-0 items-center justify-center rounded-full bg-desa-foreshadow group-hover:bg-desa-dark-green group-[.active]:bg-desa-dark-green transition-setup">
+                        <span
+                            class="text-desa-dark-green font-semibold group-[.active]:text-desa-foreshadow group-hover:text-desa-foreshadow transition-setup">
+                            3
+                        </span>
+                    </a>
+                </li>
+                <li class="group">
+                    <a
+                        class="flex size-11 shrink-0 items-center justify-center rounded-full bg-desa-foreshadow group-hover:bg-desa-dark-green group-[.active]:bg-desa-dark-green transition-setup">
+                        <span
+                            class="text-desa-dark-green font-semibold group-[.active]:text-desa-foreshadow group-hover:text-desa-foreshadow transition-setup">
+                            4
+                        </span>
+                    </a>
+                </li>
+                <li class="group">
+                    <a
+                        class="flex size-11 shrink-0 items-center justify-center rounded-full bg-desa-foreshadow group-hover:bg-desa-dark-green group-[.active]:bg-desa-dark-green transition-setup">
+                        <span
+                            class="text-desa-dark-green font-semibold group-[.active]:text-desa-foreshadow group-hover:text-desa-foreshadow transition-setup">
+                            5
+                        </span>
+                    </a>
+                </li>
+                <li class="group">
+                    <button type="button"
+                        class="group/arrow flex size-11 shrink-0 items-center justify-center rounded-full bg-desa-foreshadow disabled:!bg-desa-foreshadow group-hover:bg-desa-dark-green transition-setup">
+                        <img src="assets/images/icons/arrow-left-dark-green.svg"
+                            class="flex size-6 shrink-0 rotate-180 group-hover:hidden group-disabled/arrow:!hidden"
+                            alt="icon">
+                        <img src="assets/images/icons/arrow-left-foreshadow.svg"
+                            class="hidden size-6 shrink-0 rotate-180 group-hover:flex group-disabled/arrow:!hidden"
+                            alt="icon">
+                        <img src="assets/images/icons/disabled-arrow-pagination.svg"
+                            class="hidden size-6 shrink-0 rotate-180 group-disabled/arrow:!flex" alt="icon">
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+@endsection

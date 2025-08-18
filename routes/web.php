@@ -9,4 +9,7 @@ Route::get('/', function () {
 });
 
 Route::get('/',[DashboardController::class,'index']);
-Route::get('/kepala_rumah',[KepalaRumahController::class,'index'])->name('kepalaRumah.index');
+Route::prefix('/kepala_rumah')->group(function () {
+    Route::get('/',[KepalaRumahController::class,'index'])->name('kepalaRumah.index');
+    Route::get('/create',[KepalaRumahController::class,'create'])->name('kepalaRumah.create');
+});
