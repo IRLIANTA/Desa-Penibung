@@ -33,7 +33,8 @@
                             alt="icon">
                     </div>
                     <div class="flex flex-col gap-[6px]">
-                        <p class="font-semibold text-[32px] leading-10">{{ number_format(get_statistik('jml_penduduk'), 0, ',', '.') }}</p>
+                        <p class="font-semibold text-[32px] leading-10">
+                            {{ number_format(get_statistik('jml_penduduk'), 0, ',', '.') }}</p>
                         <div class="flex items-center gap-0.5">
                             <img src="assets/images/icons/trend-up-dark-green-fill.svg" class="flex size-[18px] shrink-0"
                                 alt="icon">
@@ -70,7 +71,8 @@
                             alt="icon">
                     </div>
                     <div class="flex flex-col gap-[6px]">
-                        <p class="font-semibold text-[32px] leading-10">{{ number_format(get_statistik('jml_rumah'), 0, ',', '.') }}</p>
+                        <p class="font-semibold text-[32px] leading-10">
+                            {{ number_format(get_statistik('jml_rumah'), 0, ',', '.') }}</p>
                         <div class="flex items-center gap-0.5">
                             <img src="assets/images/icons/trend-up-dark-green-fill.svg" class="flex size-[18px] shrink-0"
                                 alt="icon">
@@ -118,7 +120,8 @@
                             class="flex size-12 shrink-0" alt="icon">
                     </div>
                     <div class="flex flex-col gap-[6px]">
-                        <p class="font-semibold text-[32px] leading-10">{{ number_format(get_statistik('jml_pria'), 0, ',', '.') }}</p>
+                        <p class="font-semibold text-[32px] leading-10">
+                            {{ number_format(get_statistik('jml_pria'), 0, ',', '.') }}</p>
                         <div class="flex items-center gap-0.5">
                             <img src="assets/images/icons/trend-up-dark-green-fill.svg" class="flex size-[18px] shrink-0"
                                 alt="icon">
@@ -137,7 +140,8 @@
                             class="flex size-12 shrink-0" alt="icon">
                     </div>
                     <div class="flex flex-col gap-[6px]">
-                        <p class="font-semibold text-[32px] leading-10">{{ number_format(get_statistik('jml_pria'), 0, ',', '.') }}</p>
+                        <p class="font-semibold text-[32px] leading-10">
+                            {{ number_format(get_statistik('jml_pria'), 0, ',', '.') }}</p>
                         <div class="flex items-center gap-0.5">
                             <img src="assets/images/icons/trend-up-dark-green-fill.svg" class="flex size-[18px] shrink-0"
                                 alt="icon">
@@ -156,7 +160,8 @@
                             class="flex size-12 shrink-0" alt="icon">
                     </div>
                     <div class="flex flex-col gap-[6px]">
-                        <p class="font-semibold text-[32px] leading-10">{{ number_format(get_statistik('jml_kepala_keluarga'), 0, ',', '.') }}</p>
+                        <p class="font-semibold text-[32px] leading-10">
+                            {{ number_format(get_statistik('jml_kepala_keluarga'), 0, ',', '.') }}</p>
                         <div class="flex items-center gap-0.5">
                             <img src="assets/images/icons/trend-up-dark-green-fill.svg" class="flex size-[18px] shrink-0"
                                 alt="icon">
@@ -175,7 +180,8 @@
                             class="flex size-12 shrink-0" alt="icon">
                     </div>
                     <div class="flex flex-col gap-[6px]">
-                        <p class="font-semibold text-[32px] leading-10">{{ number_format(get_statistik('jml_kk'), 0, ',', '.') }}</p>
+                        <p class="font-semibold text-[32px] leading-10">
+                            {{ number_format(get_statistik('jml_kk'), 0, ',', '.') }}</p>
                         <div class="flex items-center gap-0.5">
                             <img src="assets/images/icons/trend-up-dark-green-fill.svg" class="flex size-[18px] shrink-0"
                                 alt="icon">
@@ -204,8 +210,9 @@
                             <img src="assets/images/icons/money-dark-green.svg" class="flex size-9 shrink-0"
                                 alt="icon">
                         </div>
+                        
                         <div class="flex flex-col gap-[6px] w-full">
-                            <p class="font-semibold text-xl leading-[25px]">3</p>
+                            <p class="font-semibold text-xl leading-[25px]">{{number_format(get_dusun()->count()), 0, ',', '.'}}</p>
                             <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
                                 <img src="assets/images/icons/profile-secondary-green.svg"
                                     class="flex size-[18px] shrink-0" alt="icon">
@@ -223,7 +230,7 @@
                                 alt="icon">
                         </div>
                         <div class="flex flex-col gap-[6px] w-full">
-                            <p class="font-semibold text-xl leading-[25px]">8</p>
+                            <p class="font-semibold text-xl leading-[25px]">{{ number_format(sum_rw(), 0, ',', '.') }}</p>
                             <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
                                 <img src="assets/images/icons/profile-secondary-green.svg"
                                     class="flex size-[18px] shrink-0" alt="icon">
@@ -241,7 +248,7 @@
                                 alt="icon">
                         </div>
                         <div class="flex flex-col gap-[6px] w-full">
-                            <p class="font-semibold text-xl leading-[25px]">16</p>
+                            <p class="font-semibold text-xl leading-[25px]">{{ number_format(sum_rt(), 0, ',', '.') }}</p>
                             <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
                                 <img src="assets/images/icons/profile-secondary-green.svg"
                                     class="flex size-[18px] shrink-0" alt="icon">
@@ -259,56 +266,34 @@
                         <p class="font-semibold text-[20px] leading-[25px]">Informasi Dusun</p>
                         <a href="{{ route('dashboard.editdusun') }}"
                             class="w-[100px] rounded-full p-3 flex items-center justify-center bg-desa-yellow hover:bg-yellow-600 transition">
-                            <span class="font-semibold text-xs text-white uppercase">Edit</span>
+                            <span class="font-semibold text-xs text-black uppercase">Edit</span>
                         </a>
                     </div>
-
-                    <div class="card flex items-center w-full gap-3">
-                        <div class="flex size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                            <img src="assets/images/icons/money-dark-green.svg" class="flex size-9 shrink-0"
-                                alt="icon">
-                        </div>
-                        <div class="flex flex-col gap-[6px] w-full">
-                            <p class="font-semibold text-xl leading-[25px]">Dusun Renjuang</p>
-                            <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
-                                <img src="assets/images/icons/profile-secondary-green.svg"
-                                    class="flex size-[18px] shrink-0" alt="icon">
-                                <span class="line-clamp-1">Kepala Dusun Roni</span>
+                    @forelse ($dusun as $d)
+                        <div class="card flex items-center w-full gap-3">
+                            <div
+                                class="flex size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
+                                <img src="assets/images/icons/money-dark-green.svg" class="flex size-9 shrink-0"
+                                    alt="icon">
+                            </div>
+                            <div class="flex flex-col gap-[6px] w-full">
+                                <p class="font-semibold text-xl leading-[25px]">{{$d->dusun}}</p>
+                                <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
+                                    <img src="assets/images/icons/profile-secondary-green.svg"
+                                        class="flex size-[18px] shrink-0" alt="icon">
+                                    <span class="line-clamp-1">{{$d->nama_kepala_dusun}}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @empty
+                        <div class="card flex items-center text-center w-full gap-3">
+                            <div class="flex flex-col gap-[6px] w-full">
+                                <p class="font-semibold text-desa-secondary text-xl leading-[25px]">Tidak ada dusun
+                                    tersedia</p>
+                            </div>
+                        </div>
+                    @endforelse
                     <hr class="border-desa-foreshadow last-of-type:hidden">
-
-                    <div class="card flex items-center w-full gap-3">
-                        <div class="flex size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                            <img src="assets/images/icons/money-dark-green.svg" class="flex size-9 shrink-0"
-                                alt="icon">
-                        </div>
-                        <div class="flex flex-col gap-[6px] w-full">
-                            <p class="font-semibold text-xl leading-[25px]">Dusun Dewa</p>
-                            <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
-                                <img src="assets/images/icons/profile-secondary-green.svg"
-                                    class="flex size-[18px] shrink-0" alt="icon">
-                                <span class="line-clamp-1">Kepala Dusun Suharmanik</span>
-                            </div>
-                        </div>
-                    </div>
-                    <hr class="border-desa-foreshadow last-of-type:hidden">
-
-                    <div class="card flex items-center w-full gap-3">
-                        <div class="flex size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                            <img src="assets/images/icons/money-dark-green.svg" class="flex size-9 shrink-0"
-                                alt="icon">
-                        </div>
-                        <div class="flex flex-col gap-[6px] w-full">
-                            <p class="font-semibold text-xl leading-[25px]">Dusun Melayu</p>
-                            <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
-                                <img src="assets/images/icons/profile-secondary-green.svg"
-                                    class="flex size-[18px] shrink-0" alt="icon">
-                                <span class="line-clamp-1">Kepala Dusun Siska</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </section>
 
@@ -316,14 +301,14 @@
         <div id="Row-3" class="flex gap-[14px]">
             <section id="statistik-Penduduk" class="flex flex-col flex-1 shrink-0 gap-4 p-6 rounded-2xl bg-white">
                 <div class="flex items-center justify-between">
-                    <p class="font-medium text-desa-secondary">Statistics Penduduk</p>
+                    <p class="font-medium text-desa-secondary">Statistics Desa</p>
                     <img src="assets/images/icons/profile-2user-foreshadow-background.svg" class="flex size-12 shrink-0"
                         alt="icon">
                 </div>
                 <div class="relative">
                     <div class="absolute flex flex-col gap-1 justify-center items-center text-center inset-0">
                         <p class="font-semibold text-[32px] leading-10">243.000</p>
-                        <p class="font-medium text-sm text-desa-secondary">Jumlah Penduduk</p>
+                        <p class="font-medium text-sm text-desa-secondary">Statistics Desa</p>
                     </div>
                     <canvas id="myChart" class="size-[288px] mx-auto"></canvas>
                 </div>
@@ -362,9 +347,9 @@
                         <div class="flex flex-col gap-1">
                             <p class="font-medium leading-5 flex">
                                 <span class="block size-2 rounded-full my-auto bg-desa-orange mr-[6px]"></span>
-                                Anak-anak
+                                Pembangunan
                             </p>
-                            <p class="font-medium text-sm text-desa-secondary">Rentang usia: 6-12 tahun</p>
+                            <p class="font-medium text-sm text-desa-secondary">Data Pembangunan</p>
                         </div>
                         <p class="flex items-center font-medium leading-5">
                             24.300
@@ -377,9 +362,9 @@
                         <div class="flex flex-col gap-1">
                             <p class="font-medium leading-5 flex">
                                 <span class="block size-2 rounded-full my-auto bg-desa-yellow mr-[6px]"></span>
-                                Balita
+                                Dusun
                             </p>
-                            <p class="font-medium text-sm text-desa-secondary">Rentang usia: 0-5 tahun</p>
+                            <p class="font-medium text-sm text-desa-secondary">Data Dusun</p>
                         </div>
                         <p class="flex items-center font-medium leading-5">
                             7.290
@@ -481,19 +466,20 @@
             <!-- Footer -->
         </div>
     </div>
+    {{-- modal edit penduduk --}}
     <div id="Modal-Edit-Penduduk" class="modal fixed inset-0 h-screen z-40 flex bg-[#080C1ACC] hidden">
         <div id="Alert"
             class="flex flex-col w-fit max-w-md max-h-[90vh] shrink-0 rounded-2xl overflow-hidden bg-white m-auto">
 
             <div class="flex items-center justify-between p-4 bg-desa-black">
-                <p class="font-medium leading-5 text-white">Edit Statistik Dashboard</p>
+                <p class="font-medium leading-5 text-white">Edit Penduduk Dashboard</p>
                 <button class="btn-close-modal">
                     <img src="assets/images/icons/close-circle-white.svg" class="flex size-6 shrink-0" alt="icon">
                 </button>
             </div>
 
             <div class="flex flex-col p-6 gap-4 overflow-y-auto">
-                <form class="flex flex-col gap-4" action="{{route('dashboard.updatependuduk')}}" method="POST">
+                <form class="flex flex-col gap-4" action="{{ route('dashboard.updatependuduk') }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="flex flex-col gap-2">
@@ -502,7 +488,8 @@
                                 Pria</p>
                             <div class="flex flex-col gap-3 flex-1 shrink-0">
                                 <label class="relative group peer w-full">
-                                    <input type="text" placeholder="Ketik Jum Pria" name="jml_pria" value="{{ get_statistik('jml_pria') }}"
+                                    <input type="text" placeholder="Ketik Jum Pria" name="jml_pria"
+                                        value="{{ get_statistik('jml_pria') }}"
                                         class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
                                     <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
                                         <img src="assets/images/icons/edit-secondary-green.svg"
@@ -521,7 +508,8 @@
                                 Wanita</p>
                             <div class="flex flex-col gap-3 flex-1 shrink-0">
                                 <label class="relative group peer w-full">
-                                    <input type="text" placeholder="Ketik Jum Wanita" name="jml_wanita" value="{{ get_statistik('jml_wanita') }}"
+                                    <input type="text" placeholder="Ketik Jum Wanita" name="jml_wanita"
+                                        value="{{ get_statistik('jml_wanita') }}"
                                         class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
                                     <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
                                         <img src="assets/images/icons/edit-secondary-green.svg"
@@ -540,7 +528,8 @@
                                 Keluarga</p>
                             <div class="flex flex-col gap-3 flex-1 shrink-0">
                                 <label class="relative group peer w-full">
-                                    <input type="text" placeholder="Ketik Jum Kepala Keluarga" name="jml_kepala_keluarga" value="{{ get_statistik('jml_kepala_keluarga') }}"
+                                    <input type="text" placeholder="Ketik Jum Kepala Keluarga"
+                                        name="jml_kepala_keluarga" value="{{ get_statistik('jml_kepala_keluarga') }}"
                                         class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
                                     <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
                                         <img src="assets/images/icons/edit-secondary-green.svg"
@@ -557,7 +546,8 @@
                             <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Jumlah KK P</p>
                             <div class="flex flex-col gap-3 flex-1 shrink-0">
                                 <label class="relative group peer w-full">
-                                    <input type="text" placeholder="Ketik Jum KK P" name="jml_kk" value="{{ get_statistik('jml_kk') }}"
+                                    <input type="text" placeholder="Ketik Jum KK P" name="jml_kk"
+                                        value="{{ get_statistik('jml_kk') }}"
                                         class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
                                     <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
                                         <img src="assets/images/icons/edit-secondary-green.svg"
@@ -575,7 +565,8 @@
                             class="btn-close-modal flex items-center h-14 rounded-2xl py-3 px-8 gap-[10px] border border-desa-background hover:bg-desa-black hover:text-white transition-setup">
                             <span class="font-semibold text-sm">Batal</span>
                         </button>
-                        <button class="flex items-center h-14 rounded-2xl py-3 px-8 gap-[10px] bg-desa-yellow w-fit" type="submit">
+                        <button class="flex items-center h-14 rounded-2xl py-3 px-8 gap-[10px] bg-desa-yellow w-fit"
+                            type="submit">
                             <img src="assets/images/icons/edit-black.svg" class="flex size-6 shrink-0" alt="">
                             <span class="font-semibold text-sm text-black">Iya Edit</span>
                         </button>

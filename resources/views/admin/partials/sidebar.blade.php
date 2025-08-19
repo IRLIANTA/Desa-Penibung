@@ -13,7 +13,7 @@
                     @auth
                             
                     <ul>
-                        <li class="group {{ request()->is('dashboard') ? 'active' : '' }}"> <a href="/dashboard"
+                        <li class="group {{ request()->is('dashboard','dashboard/*') ? 'active' : '' }}"> <a href="/dashboard"
                                 class=" flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
                                 <div class="relative flex size-6 shrink-0"> <img
                                         src="{{ asset('assets/') }}/images/icons/chart-square-dark-green.svg"
@@ -29,7 +29,7 @@
                     @endauth
 
                     <ul>
-                        <li class="group {{ request()->is('/') ? 'active' : '' }}"> <a href="{{ route('profile.index') }}"
+                        <li class="group {{ request()->is('/') ? 'active' : '' }}"> <a href=""
                                 class=" flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
                                 <div class="relative flex size-6 shrink-0"> <img
                                         src="{{ asset('assets/') }}/images/icons/building-4-dark-green.svg"

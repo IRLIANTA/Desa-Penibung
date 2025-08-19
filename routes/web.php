@@ -15,15 +15,18 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::get('/ubah', [DashboardController::class, 'ubah'])->name('dashboard.ubah');
     // Statistik
     Route::put('/updatestatistik', [StatistikController::class, 'updateStatistik'])->name('dashboard.updatestatistik');
+    // penduduk
     Route::put('/updatependuduk', [StatistikController::class, 'updatePenduduk'])->name('dashboard.updatependuduk');
+    // dusun
+    Route::post('/storedusun', [DashboardController::class, 'storeDusun'])->name('dashboard.storedusun');
 });
 
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 
 Route::prefix('/kepala_rumah')->group(function () {
