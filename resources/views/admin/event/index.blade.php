@@ -49,12 +49,14 @@
                 </div>
             </form>
             <div class="card flex flex-col gap-6 rounded-3xl p-6 bg-white">
-                <div class="grid grid-cols-1 gap-6">
-                    @foreach ($events as $event)
+                <!-- Bagian Header Card -->
+                <div class="grid gap-6">
+                    @forelse($events as $event)
+                        {{-- Card event --}}
                         <div class="card flex flex-col gap-6 rounded-3xl p-6 bg-white">
                             <div class="flex items-center w-full">
                                 <div class="flex w-[100px] h-20 shrink-0 rounded-2xl overflow-hidden bg-desa-foreshadow">
-                                    <img src="{{ asset('storage/' . $event->thumbnail) }}"
+                                    <img src="{{ $event->thumbnail ? asset('storage/' . $event->thumbnail) : asset('assets/images/thumbnails/placeholder.png') }}"
                                         class="w-full h-full object-cover" alt="photo">
                                 </div>
                                 <div class="flex flex-col gap-[6px] w-full ml-4 mr-9">
@@ -65,35 +67,35 @@
                                         <p class="font-medium text-sm text-desa-secondary">
                                             Registration:
                                             <span
-                                                class="font-medium text-base {{ $event->status === 'open' ? 'text-desa-dark-green' : 'text-desa-red' }}">
-                                                {{ $event->status }}
-                                            </span>
+                                                class="font-medium text-base text-desa-dark-green capitalize">{{ $event->status }}</span>
                                         </p>
                                     </div>
                                 </div>
-                                <a href="{{ route('admin.event.manage', $event->id) }}"
+                                <a href="{{ route('event.manage', $event->id) }}"
                                     class="flex items-center shrink-0 gap-[10px] rounded-2xl py-4 px-6 bg-desa-black">
                                     <span class="font-medium text-white">Manage</span>
                                 </a>
                             </div>
+
                             <hr class="border-desa-background">
 
                             <div class="grid grid-cols-3 gap-3">
-                                <!-- Bagian Jam Mulai -->
+                                {{-- Jam Mulai --}}
                                 <div class="flex items-center gap-3">
                                     <div
-                                        class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-orange/10 overflow-hidden">
-                                        <img src="{{ asset('assets/images/icons/timer-orange.svg') }}"
+                                        class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-blue/10 overflow-hidden">
+                                        <img src="{{ asset('assets/images/icons/timer-black.svg') }}"
                                             class="flex size-6 shrink-0" alt="icon">
                                     </div>
                                     <div class="flex flex-col gap-1">
-                                        <p class="font-semibold text-lg leading-5 text-desa-orange">
-                                            {{ \Carbon\Carbon::parse($event->start_time)->format('H:i') }}
+                                        <p class="font-semibold text-lg leading-5 text-desa-blue">
+                                            {{ $event->start_time ? \Carbon\Carbon::createFromFormat('H:i:s', $event->start_time)->format('H:i') : '-' }}
                                         </p>
                                         <p class="font-medium text-sm text-desa-secondary">Jam Mulai</p>
                                     </div>
                                 </div>
 
+                                {{-- Total Partisipasi --}}
                                 <div class="flex items-center gap-3">
                                     <div
                                         class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-blue/10 overflow-hidden">
@@ -102,10 +104,12 @@
                                     </div>
                                     <div class="flex flex-col gap-1">
                                         <p class="font-semibold text-lg leading-5 text-desa-blue">
-                                            {{ $event->participants_count ?? 0 }} Warga</p>
+                                            {{ number_format($event->partisipasi ?? 0, 0, ',', '.') }} Warga</p>
                                         <p class="font-medium text-sm text-desa-secondary">Total Partisipasi</p>
                                     </div>
                                 </div>
+
+                                {{-- Tanggal --}}
                                 <div class="flex items-center gap-3">
                                     <div
                                         class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden">
@@ -114,15 +118,20 @@
                                     </div>
                                     <div class="flex flex-col gap-1">
                                         <p class="font-semibold text-lg leading-5 text-desa-dark-green">
-                                            {{ \Carbon\Carbon::parse($event->date)->isoFormat('ddd, DD MMM YYYY') }}
+                                            {{ $event->date ? $event->date->format('D, d M Y') : '-' }}
                                         </p>
                                         <p class="font-medium text-sm text-desa-secondary">Tanggal Pelaksanaan</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    @empty
+                        <p class="text-desa-secondary">Belum ada event.</p>
+                    @endforelse
                 </div>
+            </div>
+
+            <div class="card flex flex-col gap-6 rounded-3xl p-6 bg-white">
                 <div class="flex items-center w-full">
                     <div class="flex w-[100px] h-20 shrink-0 rounded-2xl overflow-hidden bg-desa-foreshadow">
                         <img src="assets/images/thumbnails/kk-event-desa-1.png" class="w-full h-full object-cover"

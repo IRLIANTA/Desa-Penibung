@@ -27,14 +27,23 @@ class EventController extends Controller
         $request->validate([
             'thumbnail'   => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'name'        => 'required|string|max:255',
-            'status'      => 'required|in:Open,Closed',
+            // samakan dengan enum di migration
+            'status'      => 'required|in:open,closed',
             'date'        => 'required|date',
-            'start_time'  => 'required',
-            'partisipas'  => 'required|number',
+            'start_time'  => 'required|date_format:H:i',
+            // TIDAK ada rule 'number' di Laravel, pakai numeric/integer
+            'partisipasi' => 'required|integer|min:0',
             'description' => 'nullable|string',
         ]);
 
-        $data = $request->only(['name', 'status', 'date', 'start_time', 'description']);
+        $data = $request->only([
+            'name',
+            'status',
+            'date',
+            'start_time',
+            'partisipasi',
+            'description'
+        ]);
 
         if ($request->hasFile('thumbnail')) {
             $data['thumbnail'] = $request->file('thumbnail')->store('thumbnails', 'public');
@@ -42,7 +51,7 @@ class EventController extends Controller
 
         Event::create($data);
 
-        return redirect()->route('admin.event.index')->with('success', 'Event berhasil dibuat!');
+        return redirect()->route('event.index')->with('success', 'Event berhasil dibuat!');
     }
 
     // Detail / kelola 1 event berdasarkan ID
@@ -65,15 +74,23 @@ class EventController extends Controller
         $request->validate([
             'thumbnail'   => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'name'        => 'required|string|max:255',
-            'status'      => 'required|in:Open,Closed',
+            'status'      => 'required|in:open,closed',
             'date'        => 'required|date',
-            'start_time'  => 'required',
+            'start_time'  => 'required|date_format:H:i',
+            'partisipasi' => 'required|integer|min:0',
             'description' => 'nullable|string',
         ]);
 
         $event = Event::findOrFail($id);
 
-        $data = $request->only(['name', 'status', 'date', 'start_time', 'description']);
+        $data = $request->only([
+            'name',
+            'status',
+            'date',
+            'start_time',
+            'partisipasi',
+            'description'
+        ]);
 
         if ($request->hasFile('thumbnail')) {
             $data['thumbnail'] = $request->file('thumbnail')->store('thumbnails', 'public');
@@ -81,7 +98,7 @@ class EventController extends Controller
 
         $event->update($data);
 
-        return redirect()->route('admin.event.index')->with('success', 'Event berhasil diupdate!');
+        return redirect()->route('event.index')->with('success', 'Event berhasil diupdate!');
     }
 
     // Hapus event

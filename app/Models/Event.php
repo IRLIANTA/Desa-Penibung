@@ -14,7 +14,7 @@ class Event extends Model
         'name',
         'status',
         'start_time',
-        'partispasi',
+        'partisipasi',
         'date',
         'description',
     ];
@@ -22,7 +22,7 @@ class Event extends Model
     protected $casts = [
         'date' => 'date',
         'partisipasi' => 'number',
-        'start_time' => 'datetime',
+
     ];
 
 }
