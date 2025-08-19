@@ -93,7 +93,7 @@
             <section class="flex items-center justify-between">
                 <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Jumlah Warga Partisipasi</p>
                 <div class="flex flex-col gap-3 flex-1 shrink-0">
-                    <input name="number" type="number" placeholder="Masukkan jumlah warga"
+                    <input name="partisipasi" type="number" placeholder="Masukkan jumlah warga"
                         class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black px-4 font-medium placeholder:text-desa-secondary"
                         required>
                 </div>

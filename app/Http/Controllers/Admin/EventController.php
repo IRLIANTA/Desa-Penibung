@@ -48,6 +48,7 @@ class EventController extends Controller
         if ($request->hasFile('thumbnail')) {
             $data['thumbnail'] = $request->file('thumbnail')->store('thumbnails', 'public');
         }
+        // dd($data);
 
         Event::create($data);
 

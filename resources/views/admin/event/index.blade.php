@@ -48,7 +48,6 @@
                     </button>
                 </div>
             </form>
-            <div class="card flex flex-col gap-6 rounded-3xl p-6 bg-white">
                 <!-- Bagian Header Card -->
                 <div class="grid gap-6">
                     @forelse($events as $event)
@@ -129,8 +128,7 @@
                         <p class="text-desa-secondary">Belum ada event.</p>
                     @endforelse
                 </div>
-            </div>
-
+{{-- 
             <div class="card flex flex-col gap-6 rounded-3xl p-6 bg-white">
                 <div class="flex items-center w-full">
                     <div class="flex w-[100px] h-20 shrink-0 rounded-2xl overflow-hidden bg-desa-foreshadow">
@@ -434,7 +432,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </section>
         <nav id="Pagination">
             <ul class="flex items-center gap-3">
