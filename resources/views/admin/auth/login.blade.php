@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Desa Digital</title>
         <meta name="description" content="The simple way to manage your citizens" />
-        <link href="./output.css" rel="stylesheet" />
+        <link href="{{asset('assets/')}}/css/output.css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet" />
 
         <!-- Favicon -->
