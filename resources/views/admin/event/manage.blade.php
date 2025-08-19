@@ -11,10 +11,25 @@
                 </div>
                 <h1 class="font-semibold text-2xl">Detail Event Desa</h1>
             </div>
-            <a href="{{ route('event.edit', $event->id) }}" class="flex items-center rounded-2xl py-4 px-6 gap-[10px] bg-desa-black">
-                <p class="font-medium text-white">Ubah Data</p>
-                <img src="{{ asset('/assets/images/icons/edit-white.svg') }}" class="flex size-6 shrink-0" alt="icon">
-            </a>
+            <div class="flex items-center gap-3">
+                <form action="{{ route('event.destroy', $event->id) }}" id="eventDelete" method="POST" class="form-hapus"
+                    onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="flex items-center rounded-2xl py-4 px-6 gap-[10px] bg-desa-red">
+                        <p class="font-medium text-white">Hapus Data</p>
+                        <img src="{{ asset('/assets') }}/images/icons/trash-white.svg" class="flex size-6 shrink-0"
+                            alt="icon">
+                    </button>
+                </form>
+
+                <a href="{{ route('event.edit', $event->id) }}"
+                    class="flex items-center rounded-2xl py-4 px-6 gap-[10px] bg-desa-black">
+                    <p class="font-medium text-white">Ubah Data</p>
+                    <img src="{{ asset('/assets/images/icons/edit-white.svg') }}" class="flex size-6 shrink-0"
+                        alt="icon">
+                </a>
+            </div>
         </div>
 
         <div class="flex gap-[14px]">
@@ -24,16 +39,18 @@
                 {{-- Thumbnail + Nama + Status --}}
                 <div class="flex items-center w-full">
                     <div class="flex w-[100px] h-20 shrink-0 rounded-2xl overflow-hidden bg-desa-foreshadow">
-                        <img src="{{ $event->thumbnail ? asset('storage/'.$event->thumbnail) : asset('/assets/images/thumbnails/default.png') }}"
-                             class="w-full h-full object-cover" alt="photo">
+                        <img src="{{ $event->thumbnail ? asset('storage/' . $event->thumbnail) : asset('/assets/images/thumbnails/default.png') }}"
+                            class="w-full h-full object-cover" alt="photo">
                     </div>
                     <div class="flex flex-col gap-[6px] w-full ml-4 mr-9">
                         <p class="font-semibold text-lg leading-[22.5px] line-clamp-1">{{ $event->name }}</p>
                         <div class="flex items-center gap-1">
-                            <img src="{{ asset('/assets/images/icons/ticket-secondary-green.svg') }}" class="flex size-[18px] shrink-0" alt="icon">
+                            <img src="{{ asset('/assets/images/icons/ticket-secondary-green.svg') }}"
+                                class="flex size-[18px] shrink-0" alt="icon">
                             <p class="font-medium text-sm text-desa-secondary">
                                 Registration:
-                                <span class="font-medium text-base {{ $event->status == 'Open' ? 'text-desa-dark-green' : 'text-desa-red' }}">
+                                <span
+                                    class="font-medium text-base {{ $event->status == 'Open' ? 'text-desa-dark-green' : 'text-desa-red' }}">
                                     {{ $event->status }}
                                 </span>
                             </p>
@@ -46,7 +63,8 @@
                 {{-- Tanggal --}}
                 <div class="flex items-center w-full gap-3">
                     <div class="flex size-[52px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                        <img src="{{ asset('/assets/images/icons/calendar-2-dark-green.svg') }}" class="flex size-6 shrink-0" alt="icon">
+                        <img src="{{ asset('/assets/images/icons/calendar-2-dark-green.svg') }}"
+                            class="flex size-6 shrink-0" alt="icon">
                     </div>
                     <div class="flex flex-col gap-1 w-full">
                         <p class="font-semibold text-lg leading-[22.5px] text-desa-dark-green">
@@ -61,7 +79,8 @@
                 {{-- Jam Mulai --}}
                 <div class="flex items-center w-full gap-3">
                     <div class="flex size-[52px] shrink-0 rounded-2xl bg-desa-yellow/10 items-center justify-center">
-                        <img src="{{ asset('/assets/images/icons/clock-yellow.svg') }}" class="flex size-6 shrink-0" alt="icon">
+                        <img src="{{ asset('/assets/images/icons/clock-yellow.svg') }}" class="flex size-6 shrink-0"
+                            alt="icon">
                     </div>
                     <div class="flex flex-col gap-1 w-full">
                         <p class="font-semibold text-lg leading-[22.5px] text-desa-yellow">
@@ -76,7 +95,8 @@
                 {{-- Durasi --}}
                 <div class="flex items-center w-full gap-3">
                     <div class="flex size-[52px] shrink-0 rounded-2xl bg-desa-blue/10 items-center justify-center">
-                        <img src="{{ asset('/assets/images/icons/profile-2user-blue.svg') }}" class="flex size-6 shrink-0" alt="icon">
+                        <img src="{{ asset('/assets/images/icons/profile-2user-blue.svg') }}" class="flex size-6 shrink-0"
+                            alt="icon">
                     </div>
                     <div class="flex flex-col gap-1 w-full">
                         <p class="font-semibold text-lg leading-[22.5px] text-desa-blue">

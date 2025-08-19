@@ -66,25 +66,27 @@ class EventController extends Controller
     public function edit($id)
     {
         $event = Event::findOrFail($id);
+        // dd($event);
         return view('admin.event.edit', compact('event'));
     }
 
     // Update event
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $request->validate([
             'thumbnail'   => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'name'        => 'required|string|max:255',
-            'status'      => 'required|in:open,closed',
+            'status'      => 'required|in:Open,Closed',
             'date'        => 'required|date',
             'start_time'  => 'required|date_format:H:i',
             'partisipasi' => 'required|integer|min:0',
             'description' => 'nullable|string',
         ]);
 
-        $event = Event::findOrFail($id);
+        $event = Event::findOrFail($request->id);
 
         $data = $request->only([
+            'id',
             'name',
             'status',
             'date',
@@ -108,6 +110,6 @@ class EventController extends Controller
         $event = Event::findOrFail($id);
         $event->delete();
 
-        return redirect()->route('admin.event.index')->with('success', 'Event berhasil dihapus!');
+        return redirect()->route('event.index')->with('success', 'Event berhasil dihapus!');
     }
 }
