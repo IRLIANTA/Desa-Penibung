@@ -96,7 +96,16 @@
             <section id="Bantuan-Sosial" class="flex flex-col w-[calc(497/1000*100%)] shrink-0 rounded-2xl bg-white">
                 <hr class="border-desa-foreshadow">
                 <div class="flex flex-col gap-4 p-6">
-                    <p class="font-semibold text-[20px] leading-[25px] text-left w-full">Infografis Desa</p>
+                    <!-- Header + Tombol Edit -->
+                    <div class="flex items-center justify-between">
+                        <p class="font-semibold text-[20px] leading-[25px]">Infografis Desa</p>
+                        <a href="{{ route('dashboard.editinfo') }}"
+                            class="w-[100px] rounded-full p-3 flex items-center justify-center bg-desa-yellow hover:bg-yellow-600 transition">
+                            <span class="font-semibold text-xs text-white uppercase">Edit</span>
+                        </a>
+                    </div>
+
+                    <!-- Card 1 -->
                     <div class="card flex items-center w-full gap-3">
                         <div class="flex size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
                             <img src="assets/images/icons/money-dark-green.svg" class="flex size-9 shrink-0" alt="icon">
@@ -106,17 +115,14 @@
                             <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
                                 <img src="assets/images/icons/profile-secondary-green.svg" class="flex size-[18px] shrink-0"
                                     alt="icon">
-                                <span class="line-clamp-1">
-                                    jumlah dusun
-                                </span>
+                                <span class="line-clamp-1">Jumlah Dusun</span>
                             </div>
                         </div>
-                        <button type="button"
-                            class="rounded-full p-3 gap-2 flex w-[100px] justify-center shrink-0 bg-desa-yellow hover:bg-yellow-600 transition">
-                            <span class="font-semibold text-xs text-white uppercase">Edit</span>
-                        </button>
                     </div>
+
                     <hr class="border-desa-foreshadow last-of-type:hidden">
+
+                    <!-- Card 2 -->
                     <div class="card flex items-center w-full gap-3">
                         <div class="flex size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
                             <img src="assets/images/icons/money-dark-green.svg" class="flex size-9 shrink-0"
@@ -127,64 +133,58 @@
                             <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
                                 <img src="assets/images/icons/profile-secondary-green.svg"
                                     class="flex size-[18px] shrink-0" alt="icon">
-                                <span class="line-clamp-1">
-                                    Jumlah Rukun Warga
-                                </span>
+                                <span class="line-clamp-1">Jumlah Rukun Warga</span>
                             </div>
                         </div>
-                        <button type="button"
-                            class="rounded-full p-3 gap-2 flex w-[100px] justify-center shrink-0 bg-desa-yellow hover:bg-yellow-600 transition">
-                            <span class="font-semibold text-xs text-white uppercase">Edit</span>
-                        </button>
-
                     </div>
+
                     <hr class="border-desa-foreshadow last-of-type:hidden">
+
+                    <!-- Card 3 -->
                     <div class="card flex items-center w-full gap-3">
                         <div class="flex size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
                             <img src="assets/images/icons/money-dark-green.svg" class="flex size-9 shrink-0"
                                 alt="icon">
                         </div>
                         <div class="flex flex-col gap-[6px] w-full">
-                            <p class="font-semibold text-xl leading-[25px]">16 </p>
+                            <p class="font-semibold text-xl leading-[25px]">16</p>
                             <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
                                 <img src="assets/images/icons/profile-secondary-green.svg"
                                     class="flex size-[18px] shrink-0" alt="icon">
-                                <span class="line-clamp-1">
-                                    Jumlah Rukun Tetangga
-                                </span>
+                                <span class="line-clamp-1">Jumlah Rukun Tetangga</span>
                             </div>
                         </div>
-                        <button type="button"
-                            class="rounded-full p-3 gap-2 flex w-[100px] justify-center shrink-0 bg-desa-yellow hover:bg-yellow-600 transition">
-                            <span class="font-semibold text-xs text-white uppercase">Edit</span>
-                        </button>
                     </div>
                 </div>
             </section>
+
             <section id="Bantuan-Sosial" class="flex flex-col w-[calc(497/1000*100%)] shrink-0 rounded-2xl bg-white">
                 <hr class="border-desa-foreshadow">
                 <div class="flex flex-col gap-4 p-6">
-                    <p class="font-semibold text-[20px] leading-[25px] text-left w-full">Informasi Dusun</p>
+                    <div class="flex items-center justify-between">
+                        <p class="font-semibold text-[20px] leading-[25px]">Informasi Dusun</p>
+                        <a href="{{ route('dashboard.editdusun') }}"
+                            class="w-[100px] rounded-full p-3 flex items-center justify-center bg-desa-yellow hover:bg-yellow-600 transition">
+                            <span class="font-semibold text-xs text-white uppercase">Edit</span>
+                        </a>
+                    </div>
+
                     <div class="card flex items-center w-full gap-3">
                         <div class="flex size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                            <img src="assets/images/icons/money-dark-green.svg" class="flex size-9 shrink-0" alt="icon">
+                            <img src="assets/images/icons/money-dark-green.svg" class="flex size-9 shrink-0"
+                                alt="icon">
                         </div>
                         <div class="flex flex-col gap-[6px] w-full">
                             <p class="font-semibold text-xl leading-[25px]">Dusun Renjuang</p>
                             <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
-                                <img src="assets/images/icons/profile-secondary-green.svg" class="flex size-[18px] shrink-0"
-                                    alt="icon">
-                                <span class="line-clamp-1">
-                                    Kepala Dusun Roni
-                                </span>
+                                <img src="assets/images/icons/profile-secondary-green.svg"
+                                    class="flex size-[18px] shrink-0" alt="icon">
+                                <span class="line-clamp-1">Kepala Dusun Roni</span>
                             </div>
                         </div>
-                        <button type="button"
-                            class="rounded-full p-3 gap-2 flex w-[100px] justify-center shrink-0 bg-desa-yellow hover:bg-yellow-600 transition">
-                            <span class="font-semibold text-xs text-white uppercase">Edit</span>
-                        </button>
                     </div>
                     <hr class="border-desa-foreshadow last-of-type:hidden">
+
                     <div class="card flex items-center w-full gap-3">
                         <div class="flex size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
                             <img src="assets/images/icons/money-dark-green.svg" class="flex size-9 shrink-0"
@@ -195,18 +195,12 @@
                             <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
                                 <img src="assets/images/icons/profile-secondary-green.svg"
                                     class="flex size-[18px] shrink-0" alt="icon">
-                                <span class="line-clamp-1">
-                                    Kepala Dusun Suharmanik
-                                </span>
+                                <span class="line-clamp-1">Kepala Dusun Suharmanik</span>
                             </div>
                         </div>
-                        <button type="button"
-                            class="rounded-full p-3 gap-2 flex w-[100px] justify-center shrink-0 bg-desa-yellow hover:bg-yellow-600 transition">
-                            <span class="font-semibold text-xs text-white uppercase">Edit</span>
-                        </button>
-
                     </div>
                     <hr class="border-desa-foreshadow last-of-type:hidden">
+
                     <div class="card flex items-center w-full gap-3">
                         <div class="flex size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
                             <img src="assets/images/icons/money-dark-green.svg" class="flex size-9 shrink-0"
@@ -217,18 +211,13 @@
                             <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
                                 <img src="assets/images/icons/profile-secondary-green.svg"
                                     class="flex size-[18px] shrink-0" alt="icon">
-                                <span class="line-clamp-1">
-                                    Kepala Dusun Siska
-                                </span>
+                                <span class="line-clamp-1">Kepala Dusun Siska</span>
                             </div>
                         </div>
-                        <button type="button"
-                            class="rounded-full p-3 gap-2 flex w-[100px] justify-center shrink-0 bg-desa-yellow hover:bg-yellow-600 transition">
-                            <span class="font-semibold text-xs text-white uppercase">Edit</span>
-                        </button>
                     </div>
                 </div>
             </section>
+
         </div>
         <div id="Row-3" class="flex gap-[14px]">
             <section id="statistik-Penduduk" class="flex flex-col flex-1 shrink-0 gap-4 p-6 rounded-2xl bg-white">
