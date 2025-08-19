@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->string('name');
             $table->enum('status', ['Open', 'Closed'])->default('Open');
             $table->time('start_time')->nullable();
-            $table->number('partisipasi')->nullable();
+            $table->integer('partisipasi')->nullable();
             $table->date('date')->nullable();
             $table->integer('duration_days')->nullable();
             $table->text('description')->nullable();
