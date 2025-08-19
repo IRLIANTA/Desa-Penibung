@@ -20,4 +20,9 @@ class DashboardController extends Controller
     {
         return view('admin.dashboard.editdusun');
     }
+
+    public function ubah()
+    {
+        return view('admin.dashboard.ubah');
+    }
 }

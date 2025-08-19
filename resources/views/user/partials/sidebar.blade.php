@@ -11,7 +11,7 @@
                 <nav class="flex flex-col gap-2 pb-12">
                     <p class="font-medium text-sm text-desa-secondary">Main Menu</p>
                     <ul>
-                        <li class="group"> <a href="{{ route('profile.index') }}"
+                        <li class="group"> <a href="{{ route('user.profile.index') }}"
                                 class=" flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
                                 <div class="relative flex size-6 shrink-0"> <img
                                         src="{{ asset('assets/') }}/images/icons/building-4-dark-green.svg"
@@ -25,7 +25,7 @@
                             </a> </li>
                     </ul>
                     <ul>
-                        <li class="group active"> <a href="/dashboard"
+                        <li class="group active"> <a href="{{ route('user.dashboard.index') }}"
                                 class=" flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
                                 <div class="relative flex size-6 shrink-0"> <img
                                         src="{{ asset('assets/') }}/images/icons/chart-square-dark-green.svg"
@@ -39,7 +39,7 @@
                             </a> </li>
                     </ul> <!-- Bantuan Sosial -->
                     <ul>
-                        <li class="group"> <a href="{{ route('social-assistance.index') }}"
+                        <li class="group"> <a href="{{ route('user.social-assistance.index') }}"
                                 class="flex items-center h-14 gap-2 rounded-2xl p-4 hover:bg-desa-foreshadow transition-setup">
                                 <div class="relative flex size-6 shrink-0"> <img
                                         src="{{ asset('assets/') }}/images/icons/bag-2-dark-green.svg"
@@ -49,7 +49,7 @@
                             </a> </li>
                     </ul> <!-- Pembangunan -->
                     <ul>
-                        <li class="group"> <a href="{{ route('development.index') }}"
+                        <li class="group"> <a href="{{ route('user.development.index') }}"
                                 class="flex items-center h-14 gap-2 rounded-2xl p-4 hover:bg-desa-foreshadow transition-setup">
                                 <div class="relative flex size-6 shrink-0"> <img
                                         src="{{ asset('assets/') }}/images/icons/bag-2-dark-green.svg"
@@ -59,7 +59,7 @@
                             </a> </li>
                     </ul> <!-- Events Desa -->
                     <ul>
-                        <li class="group"> <a href="{{ route('event.index') }}"
+                        <li class="group"> <a href="{{ route('user.event.index') }}"
                                 class="flex items-center h-14 gap-2 rounded-2xl p-4 hover:bg-desa-foreshadow transition-setup">
                                 <div class="relative flex size-6 shrink-0"> <img
                                         src="{{ asset('assets/') }}/images/icons/bag-2-dark-green.svg"

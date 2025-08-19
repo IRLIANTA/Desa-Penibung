@@ -1,19 +1,12 @@
-@extends('admin.layouts.app')
+@extends('user.layouts.app')
 @section('content')
     <div id="Content" class="relative flex flex-col flex-1 gap-[14px] p-6 pb-[30px] w-full shrink-0">
 
-        <div id="Header" class="flex items-center justify-between">
-            <div class="flex flex-col gap-2">
-                <h1 class="font-semibold text-2xl">Statistik Desa</h1>
-            </div>
-            <a href="{{ route('dashboard.ubah') }}" class="flex items-center rounded-2xl py-4 px-6 gap-[10px] bg-desa-black">
-                <p class="font-medium text-white">Ubah Data</p>
-                <img src="assets/images/icons/edit-white.svg" class="flex size-6 shrink-0" alt="icon">
-            </a>
-        </div>
+        <h1 class="font-semibold text-2xl">Desa Statistics</h1>
         <div id="Row-1" class="flex gap-[14px]">
             <div class="flex flex-col w-[calc(389/1000*100%)] h-[358px] rounded-2xl p-6 gap-6 gradient-vertical">
-                <img src="assets/images/icons/gift-orange-background.svg" class="flex size-[86px] shrink-0" alt="icon">
+                <img src="{{ asset('/assets') }}/images/icons/gift-orange-background.svg" class="flex size-[86px] shrink-0"
+                    alt="icon">
                 <div class="flex flex-col gap-3">
                     <p class="font-medium text-sm text-desa-lime">— Bantuan Sosial</p>
                     <p class="font-semibold text-2xl text-white text-nowrap">Dari Desa untuk Warga ❤️ </p>
@@ -21,21 +14,22 @@
                 </div>
                 <a href="#" class="flex items-center justify-between rounded-2xl p-4 gap-[10px] bg-white">
                     <span class="font-medium text-desa-dark-green leading-5">Bikin Bantuan Sosial</span>
-                    <img src="assets/images/icons/add-square-dark-green.svg" class="flex size-6 shrink-0" alt="icon">
+                    <img src="{{ asset('/assets') }}/images/icons/add-square-dark-green.svg" class="flex size-6 shrink-0"
+                        alt="icon">
                 </a>
             </div>
             <section id="Statistics" class="grid grid-cols-2 flex-1 shrink-0 gap-[14px]">
                 <div class="card flex flex-col w-full rounded-2xl p-6 gap-3 bg-white">
                     <div class="flex items-center justify-between">
                         <p class="font-medium text-desa-secondary">Jumlah Penduduk</p>
-                        <img src="assets/images/icons/profil-2user-foreshadow-background.svg" class="flex size-12 shrink-0"
-                            alt="icon">
+                        <img src="{{ asset('/assets') }}/images/icons/profil-2user-foreshadow-background.svg"
+                            class="flex size-12 shrink-0" alt="icon">
                     </div>
                     <div class="flex flex-col gap-[6px]">
                         <p class="font-semibold text-[32px] leading-10">243.000</p>
                         <div class="flex items-center gap-0.5">
-                            <img src="assets/images/icons/trend-up-dark-green-fill.svg" class="flex size-[18px] shrink-0"
-                                alt="icon">
+                            <img src="{{ asset('/assets') }}/images/icons/trend-up-dark-green-fill.svg"
+                                class="flex size-[18px] shrink-0" alt="icon">
                             <p class="font-medium text-sm text-desa-secondary">
                                 <span class="text-desa-dark-green">+12%</span>
                                 dari bulan sebelumnya
@@ -46,14 +40,14 @@
                 <div class="card flex flex-col w-full rounded-2xl p-6 gap-3 bg-white">
                     <div class="flex items-center justify-between">
                         <p class="font-medium text-desa-secondary">Pembangunan</p>
-                        <img src="assets/images/icons/buildings-foreshadow-background.svg" class="flex size-12 shrink-0"
-                            alt="icon">
+                        <img src="{{ asset('/assets') }}/images/icons/buildings-foreshadow-background.svg"
+                            class="flex size-12 shrink-0" alt="icon">
                     </div>
                     <div class="flex flex-col gap-[6px]">
                         <p class="font-semibold text-[32px] leading-10">42.000</p>
                         <div class="flex items-center gap-0.5">
-                            <img src="assets/images/icons/trend-up-dark-green-fill.svg" class="flex size-[18px] shrink-0"
-                                alt="icon">
+                            <img src="{{ asset('/assets') }}/images/icons/trend-up-dark-green-fill.svg"
+                                class="flex size-[18px] shrink-0" alt="icon">
                             <p class="font-medium text-sm text-desa-secondary">
                                 <span class="text-desa-dark-green">+12%</span>
                                 dari bulan sebelumnya
@@ -63,15 +57,15 @@
                 </div>
                 <div class="card flex flex-col w-full rounded-2xl p-6 gap-3 bg-white">
                     <div class="flex items-center justify-between">
-                        <p class="font-medium text-desa-secondary">Jumlah Rumah</p>
-                        <img src="assets/images/icons/crown-foreshadow-background.svg" class="flex size-12 shrink-0"
-                            alt="icon">
+                        <p class="font-medium text-desa-secondary">Kepala Rumah</p>
+                        <img src="{{ asset('/assets') }}/images/icons/crown-foreshadow-background.svg"
+                            class="flex size-12 shrink-0" alt="icon">
                     </div>
                     <div class="flex flex-col gap-[6px]">
-                        <p class="font-semibold text-[32px] leading-10">460</p>
+                        <p class="font-semibold text-[32px] leading-10">9.250</p>
                         <div class="flex items-center gap-0.5">
-                            <img src="assets/images/icons/trend-up-dark-green-fill.svg" class="flex size-[18px] shrink-0"
-                                alt="icon">
+                            <img src="{{ asset('/assets') }}/images/icons/trend-up-dark-green-fill.svg"
+                                class="flex size-[18px] shrink-0" alt="icon">
                             <p class="font-medium text-sm text-desa-secondary">
                                 <span class="text-desa-dark-green">+12%</span>
                                 dari bulan sebelumnya
@@ -82,14 +76,14 @@
                 <div class="card flex flex-col w-full rounded-2xl p-6 gap-3 bg-white">
                     <div class="flex items-center justify-between">
                         <p class="font-medium text-desa-secondary">Total Events</p>
-                        <img src="assets/images/icons/calendar-2-foreshadow-background.svg" class="flex size-12 shrink-0"
-                            alt="icon">
+                        <img src="{{ asset('/assets') }}/images/icons/calendar-2-foreshadow-background.svg"
+                            class="flex size-12 shrink-0" alt="icon">
                     </div>
                     <div class="flex flex-col gap-[6px]">
                         <p class="font-semibold text-[32px] leading-10">12</p>
                         <div class="flex items-center gap-0.5">
-                            <img src="assets/images/icons/trend-up-dark-green-fill.svg" class="flex size-[18px] shrink-0"
-                                alt="icon">
+                            <img src="{{ asset('/assets') }}/images/icons/trend-up-dark-green-fill.svg"
+                                class="flex size-[18px] shrink-0" alt="icon">
                             <p class="font-medium text-sm text-desa-secondary">
                                 <span class="text-desa-dark-green">+12%</span>
                                 dari bulan sebelumnya
@@ -105,13 +99,13 @@
                 <div class="card flex flex-col rounded-2xl p-6 gap-3 bg-white">
                     <div class="flex items-center justify-between">
                         <p class="font-medium text-desa-secondary">Jumlah Penduduk Pria</p>
-                        <img src="assets/images/icons/profil-2user-foreshadow-background.svg" class="flex size-12 shrink-0"
+                        <img src="{{ asset('/assets') }}/images/icons/profil-2user-foreshadow-background.svg" class="flex size-12 shrink-0"
                             alt="icon">
                     </div>
                     <div class="flex flex-col gap-[6px]">
                         <p class="font-semibold text-[32px] leading-10">1291</p>
                         <div class="flex items-center gap-0.5">
-                            <img src="assets/images/icons/trend-up-dark-green-fill.svg" class="flex size-[18px] shrink-0"
+                            <img src="{{ asset('/assets') }}/images/icons/trend-up-dark-green-fill.svg" class="flex size-[18px] shrink-0"
                                 alt="icon">
                             <p class="font-medium text-sm text-desa-secondary">
                                 <span class="text-desa-dark-green">+12%</span> dari bulan sebelumnya
@@ -124,13 +118,13 @@
                 <div class="card flex flex-col rounded-2xl p-6 gap-3 bg-white">
                     <div class="flex items-center justify-between">
                         <p class="font-medium text-desa-secondary">Jumlah Penduduk Perempuan</p>
-                        <img src="assets/images/icons/profil-2user-foreshadow-background.svg" class="flex size-12 shrink-0"
+                        <img src="{{ asset('/assets') }}/images/icons/profil-2user-foreshadow-background.svg" class="flex size-12 shrink-0"
                             alt="icon">
                     </div>
                     <div class="flex flex-col gap-[6px]">
                         <p class="font-semibold text-[32px] leading-10">1216</p>
                         <div class="flex items-center gap-0.5">
-                            <img src="assets/images/icons/trend-up-dark-green-fill.svg" class="flex size-[18px] shrink-0"
+                            <img src="{{ asset('/assets') }}/images/icons/trend-up-dark-green-fill.svg" class="flex size-[18px] shrink-0"
                                 alt="icon">
                             <p class="font-medium text-sm text-desa-secondary">
                                 <span class="text-desa-dark-green">+12%</span> dari bulan sebelumnya
@@ -143,13 +137,13 @@
                 <div class="card flex flex-col rounded-2xl p-6 gap-3 bg-white">
                     <div class="flex items-center justify-between">
                         <p class="font-medium text-desa-secondary">Jumlah Kepala Keluarga</p>
-                        <img src="assets/images/icons/profil-2user-foreshadow-background.svg" class="flex size-12 shrink-0"
-                            alt="icon">
+                        <img src="{{ asset('/assets') }}/images/icons/profil-2user-foreshadow-background.svg"
+                            class="flex size-12 shrink-0" alt="icon">
                     </div>
                     <div class="flex flex-col gap-[6px]">
                         <p class="font-semibold text-[32px] leading-10">773</p>
                         <div class="flex items-center gap-0.5">
-                            <img src="assets/images/icons/trend-up-dark-green-fill.svg" class="flex size-[18px] shrink-0"
+                            <img src="{{ asset('/assets') }}/images/icons/trend-up-dark-green-fill.svg" class="flex size-[18px] shrink-0"
                                 alt="icon">
                             <p class="font-medium text-sm text-desa-secondary">
                                 <span class="text-desa-dark-green">+12%</span> dari bulan sebelumnya
@@ -162,13 +156,13 @@
                 <div class="card flex flex-col rounded-2xl p-6 gap-3 bg-white">
                     <div class="flex items-center justify-between">
                         <p class="font-medium text-desa-secondary">Jumlah KK P</p>
-                        <img src="assets/images/icons/profil-2user-foreshadow-background.svg" class="flex size-12 shrink-0"
-                            alt="icon">
+                        <img src="{{ asset('/assets') }}/images/icons/profil-2user-foreshadow-background.svg"
+                            class="flex size-12 shrink-0" alt="icon">
                     </div>
                     <div class="flex flex-col gap-[6px]">
                         <p class="font-semibold text-[32px] leading-10">118</p>
                         <div class="flex items-center gap-0.5">
-                            <img src="assets/images/icons/trend-up-dark-green-fill.svg" class="flex size-[18px] shrink-0"
+                            <img src="{{ asset('/assets') }}/images/icons/trend-up-dark-green-fill.svg" class="flex size-[18px] shrink-0"
                                 alt="icon">
                             <p class="font-medium text-sm text-desa-secondary">
                                 <span class="text-desa-dark-green">+12%</span> dari bulan sebelumnya
@@ -178,30 +172,26 @@
                 </div>
             </section>
         </div>
+        <div id="Row-2" class="flex gap-[14px]">
 
-        <div id="Row-4" class="flex gap-[14px]">
             <section id="Bantuan-Sosial" class="flex flex-col w-[calc(497/1000*100%)] shrink-0 rounded-2xl bg-white">
                 <hr class="border-desa-foreshadow">
                 <div class="flex flex-col gap-4 p-6">
                     <!-- Header + Tombol Edit -->
                     <div class="flex items-center justify-between">
                         <p class="font-semibold text-[20px] leading-[25px]">Infografis Desa</p>
-                        <a href="{{ route('dashboard.editinfo') }}"
-                            class="w-[100px] rounded-full p-3 flex items-center justify-center bg-desa-yellow hover:bg-yellow-600 transition">
-                            <span class="font-semibold text-xs text-white uppercase">Edit</span>
-                        </a>
                     </div>
 
                     <!-- Card 1 -->
                     <div class="card flex items-center w-full gap-3">
                         <div class="flex size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                            <img src="assets/images/icons/money-dark-green.svg" class="flex size-9 shrink-0"
-                                alt="icon">
+                            <img src="{{ asset('/assets') }}/images/icons/money-dark-green.svg"
+                                class="flex size-9 shrink-0" alt="icon">
                         </div>
                         <div class="flex flex-col gap-[6px] w-full">
                             <p class="font-semibold text-xl leading-[25px]">3</p>
                             <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
-                                <img src="assets/images/icons/profile-secondary-green.svg"
+                                <img src="{{ asset('/assets') }}/images/icons/profile-secondary-green.svg"
                                     class="flex size-[18px] shrink-0" alt="icon">
                                 <span class="line-clamp-1">Jumlah Dusun</span>
                             </div>
@@ -213,13 +203,13 @@
                     <!-- Card 2 -->
                     <div class="card flex items-center w-full gap-3">
                         <div class="flex size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                            <img src="assets/images/icons/money-dark-green.svg" class="flex size-9 shrink-0"
-                                alt="icon">
+                            <img src="{{ asset('/assets') }}/images/icons/money-dark-green.svg"
+                                class="flex size-9 shrink-0" alt="icon">
                         </div>
                         <div class="flex flex-col gap-[6px] w-full">
                             <p class="font-semibold text-xl leading-[25px]">8</p>
                             <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
-                                <img src="assets/images/icons/profile-secondary-green.svg"
+                                <img src="{{ asset('/assets') }}/images/icons/profile-secondary-green.svg"
                                     class="flex size-[18px] shrink-0" alt="icon">
                                 <span class="line-clamp-1">Jumlah Rukun Warga</span>
                             </div>
@@ -231,13 +221,13 @@
                     <!-- Card 3 -->
                     <div class="card flex items-center w-full gap-3">
                         <div class="flex size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                            <img src="assets/images/icons/money-dark-green.svg" class="flex size-9 shrink-0"
-                                alt="icon">
+                            <img src="{{ asset('/assets') }}/images/icons/money-dark-green.svg"
+                                class="flex size-9 shrink-0" alt="icon">
                         </div>
                         <div class="flex flex-col gap-[6px] w-full">
                             <p class="font-semibold text-xl leading-[25px]">16</p>
                             <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
-                                <img src="assets/images/icons/profile-secondary-green.svg"
+                                <img src="{{ asset('/assets') }}/images/icons/profile-secondary-green.svg"
                                     class="flex size-[18px] shrink-0" alt="icon">
                                 <span class="line-clamp-1">Jumlah Rukun Tetangga</span>
                             </div>
@@ -251,21 +241,17 @@
                 <div class="flex flex-col gap-4 p-6">
                     <div class="flex items-center justify-between">
                         <p class="font-semibold text-[20px] leading-[25px]">Informasi Dusun</p>
-                        <a href="{{ route('dashboard.editdusun') }}"
-                            class="w-[100px] rounded-full p-3 flex items-center justify-center bg-desa-yellow hover:bg-yellow-600 transition">
-                            <span class="font-semibold text-xs text-white uppercase">Edit</span>
-                        </a>
                     </div>
 
                     <div class="card flex items-center w-full gap-3">
                         <div class="flex size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                            <img src="assets/images/icons/money-dark-green.svg" class="flex size-9 shrink-0"
-                                alt="icon">
+                            <img src="{{ asset('/assets') }}/images/icons/money-dark-green.svg"
+                                class="flex size-9 shrink-0" alt="icon">
                         </div>
                         <div class="flex flex-col gap-[6px] w-full">
                             <p class="font-semibold text-xl leading-[25px]">Dusun Renjuang</p>
                             <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
-                                <img src="assets/images/icons/profile-secondary-green.svg"
+                                <img src="{{ asset('/assets') }}/images/icons/profile-secondary-green.svg"
                                     class="flex size-[18px] shrink-0" alt="icon">
                                 <span class="line-clamp-1">Kepala Dusun Roni</span>
                             </div>
@@ -275,13 +261,13 @@
 
                     <div class="card flex items-center w-full gap-3">
                         <div class="flex size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                            <img src="assets/images/icons/money-dark-green.svg" class="flex size-9 shrink-0"
-                                alt="icon">
+                            <img src="{{ asset('/assets') }}/images/icons/money-dark-green.svg"
+                                class="flex size-9 shrink-0" alt="icon">
                         </div>
                         <div class="flex flex-col gap-[6px] w-full">
                             <p class="font-semibold text-xl leading-[25px]">Dusun Dewa</p>
                             <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
-                                <img src="assets/images/icons/profile-secondary-green.svg"
+                                <img src="{{ asset('/assets') }}/images/icons/profile-secondary-green.svg"
                                     class="flex size-[18px] shrink-0" alt="icon">
                                 <span class="line-clamp-1">Kepala Dusun Suharmanik</span>
                             </div>
@@ -291,13 +277,13 @@
 
                     <div class="card flex items-center w-full gap-3">
                         <div class="flex size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                            <img src="assets/images/icons/money-dark-green.svg" class="flex size-9 shrink-0"
-                                alt="icon">
+                            <img src="{{ asset('/assets') }}/images/icons/money-dark-green.svg"
+                                class="flex size-9 shrink-0" alt="icon">
                         </div>
                         <div class="flex flex-col gap-[6px] w-full">
                             <p class="font-semibold text-xl leading-[25px]">Dusun Melayu</p>
                             <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
-                                <img src="assets/images/icons/profile-secondary-green.svg"
+                                <img src="{{ asset('/assets') }}/images/icons/profile-secondary-green.svg"
                                     class="flex size-[18px] shrink-0" alt="icon">
                                 <span class="line-clamp-1">Kepala Dusun Siska</span>
                             </div>
@@ -311,8 +297,8 @@
             <section id="statistik-Penduduk" class="flex flex-col flex-1 shrink-0 gap-4 p-6 rounded-2xl bg-white">
                 <div class="flex items-center justify-between">
                     <p class="font-medium text-desa-secondary">Statistics Penduduk</p>
-                    <img src="assets/images/icons/profile-2user-foreshadow-background.svg" class="flex size-12 shrink-0"
-                        alt="icon">
+                    <img src="{{ asset('/assets') }}/images/icons/profile-2user-foreshadow-background.svg"
+                        class="flex size-12 shrink-0" alt="icon">
                 </div>
                 <div class="relative">
                     <div class="absolute flex flex-col gap-1 justify-center items-center text-center inset-0">
@@ -332,8 +318,8 @@
                         </div>
                         <p class="flex items-center font-medium leading-5">
                             114.210
-                            <img src="assets/images/icons/user-black.svg" class="flex size-[18px] shrink-0 ml-0.5"
-                                alt="icon">
+                            <img src="{{ asset('/assets') }}/images/icons/user-black.svg"
+                                class="flex size-[18px] shrink-0 ml-0.5" alt="icon">
                         </p>
                     </div>
                     <hr class="border-desa-foreshadow">
@@ -347,8 +333,8 @@
                         </div>
                         <p class="flex items-center font-medium leading-5">
                             97.200
-                            <img src="assets/images/icons/user-black.svg" class="flex size-[18px] shrink-0 ml-0.5"
-                                alt="icon">
+                            <img src="{{ asset('/assets') }}/images/icons/user-black.svg"
+                                class="flex size-[18px] shrink-0 ml-0.5" alt="icon">
                         </p>
                     </div>
                     <hr class="border-desa-foreshadow">
@@ -362,8 +348,8 @@
                         </div>
                         <p class="flex items-center font-medium leading-5">
                             24.300
-                            <img src="assets/images/icons/user-black.svg" class="flex size-[18px] shrink-0 ml-0.5"
-                                alt="icon">
+                            <img src="{{ asset('/assets') }}/images/icons/user-black.svg"
+                                class="flex size-[18px] shrink-0 ml-0.5" alt="icon">
                         </p>
                     </div>
                     <hr class="border-desa-foreshadow">
@@ -377,8 +363,8 @@
                         </div>
                         <p class="flex items-center font-medium leading-5">
                             7.290
-                            <img src="assets/images/icons/user-black.svg" class="flex size-[18px] shrink-0 ml-0.5"
-                                alt="icon">
+                            <img src="{{ asset('/assets') }}/images/icons/user-black.svg"
+                                class="flex size-[18px] shrink-0 ml-0.5" alt="icon">
                         </p>
                     </div>
                 </div>
