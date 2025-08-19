@@ -11,7 +11,7 @@ class EventController extends Controller
     // Menampilkan semua event
     public function index()
     {
-        $events = Event::all();
+        $events = Event::orderBy('created_at','desc')->get();
         return view('admin.event.index', compact('events'));
     }
 
