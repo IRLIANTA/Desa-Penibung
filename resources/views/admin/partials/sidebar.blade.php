@@ -11,7 +11,7 @@
                 <nav class="flex flex-col gap-2 pb-12">
                     <p class="font-medium text-sm text-desa-secondary">Main Menu</p>
                     <ul>
-                        <li class="group"> <a href="{{ route('profile.index') }}"
+                        <li class="group {{ request()->is('/') ? 'active' : '' }}"> <a href="{{ route('profile.index') }}"
                                 class=" flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
                                 <div class="relative flex size-6 shrink-0"> <img
                                         src="{{ asset('assets/') }}/images/icons/building-4-dark-green.svg"
@@ -24,8 +24,9 @@
                                     Profile Desa </span>
                             </a> </li>
                     </ul>
+                     @if (auth()->check())
                     <ul>
-                        <li class="group active"> <a href="/dashboard"
+                        <li class="group {{ request()->is('dashboard') ? 'active' : '' }}"> <a href="/dashboard"
                                 class=" flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
                                 <div class="relative flex size-6 shrink-0"> <img
                                         src="{{ asset('assets/') }}/images/icons/chart-square-dark-green.svg"
@@ -68,6 +69,17 @@
                                     Events Desa </span>
                             </a> </li>
                     </ul>
+                    <ul>
+                        <li class="group"> <a href="{{ route('event.index') }}"
+                                class="flex items-center h-14 gap-2 rounded-2xl p-4">
+                                <div class="relative flex size-6 shrink-0"> <img
+                                        src="{{ asset('assets/') }}/images/icons/logout-red.svg"
+                                        class="flex size-6 shrink-0" alt="icon"> </div> <span
+                                    class="text-left leading-5 text-desa-red flex flex-1 hover:text-desa-dark-red transition-setup">
+                                    Logout </span>
+                            </a> </li>
+                    </ul>
+                    @endif
                 </nav>
             </div>
         </div>

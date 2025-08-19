@@ -6,8 +6,8 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DevelopmentController;
 use App\Http\Controllers\Admin\KepalaRumahController;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\Admin\SocialAssistanceController;
+
 
 use App\Http\Controllers\User\ProfileController as UserProfileController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
@@ -15,12 +15,22 @@ use App\Http\Controllers\User\SocialAssistanceController as UserSocialAssistance
 use App\Http\Controllers\User\DevelopmentController as UserDevelopmentController;
 use App\Http\Controllers\User\EventController as UserEventController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
+Route::prefix('dashboard')->middleware(['auth'])->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/editinfo', [DashboardController::class, 'edit'])->name('dashboard.editinfo');
+    Route::get('/editdusun', [DashboardController::class, 'update'])->name('dashboard.editdusun');
+    Route::get('/ubah', [DashboardController::class, 'ubah'])->name('dashboard.ubah');
+});
 
 
-// ===== ADMIN =====
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+
 Route::prefix('/kepala_rumah')->group(function () {
     Route::get('/', [KepalaRumahController::class, 'index'])->name('kepalaRumah.index');
     Route::get('/create', [KepalaRumahController::class, 'create'])->name('kepalaRumah.create');
@@ -36,12 +46,7 @@ Route::prefix('/user')->group(function () {
     Route::get('/', [ProfileController::class, 'index'])->name('user.profile.index');
 });
 
-Route::prefix('/dashboard')->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
-    Route::get('/editinfo', [DashboardController::class, 'edit'])->name('dashboard.editinfo');
-    Route::get('/editdusun', [DashboardController::class, 'update'])->name('dashboard.editdusun');
-    Route::get('/ubah', [DashboardController::class, 'ubah'])->name('dashboard.ubah');
-});
+
 
 Route::prefix('/social-assistance')->group(function () {
     Route::get('/', [SocialAssistanceController::class, 'index'])->name('social-assistance.index');
@@ -74,3 +79,5 @@ Route::prefix('/user')->group(function () {
     Route::get('/development', [UserDevelopmentController::class, 'index'])->name('user.development.index');
     Route::get('/event', [UserEventController::class, 'index'])->name('user.event.index');
 });
+
+require __DIR__.'/auth.php';
