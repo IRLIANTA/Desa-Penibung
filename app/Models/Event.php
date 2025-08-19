@@ -1,19 +1,28 @@
 <?php
 
-// app/Models/Event.php
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'thumbnail',
         'name',
         'status',
         'start_time',
+        'partispasi',
         'date',
-        'duration_days',
-        'description'
+        'description',
     ];
+
+    protected $casts = [
+        'date' => 'date',
+        'partisipasi' => 'number',
+        'start_time' => 'datetime',
+    ];
+
 }

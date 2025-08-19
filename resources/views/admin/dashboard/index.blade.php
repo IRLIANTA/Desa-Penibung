@@ -32,7 +32,7 @@
                             alt="icon">
                     </div>
                     <div class="flex flex-col gap-[6px]">
-                        <p class="font-semibold text-[32px] leading-10">243.000</p>
+                        <p class="font-semibold text-[32px] leading-10">2.507</p>
                         <div class="flex items-center gap-0.5">
                             <img src="assets/images/icons/trend-up-dark-green-fill.svg" class="flex size-[18px] shrink-0"
                                 alt="icon">
@@ -109,7 +109,7 @@
                             alt="icon">
                     </div>
                     <div class="flex flex-col gap-[6px]">
-                        <p class="font-semibold text-[32px] leading-10">1291</p>
+                        <p class="font-semibold text-[32px] leading-10">1.291</p>
                         <div class="flex items-center gap-0.5">
                             <img src="assets/images/icons/trend-up-dark-green-fill.svg" class="flex size-[18px] shrink-0"
                                 alt="icon">
@@ -128,7 +128,7 @@
                             alt="icon">
                     </div>
                     <div class="flex flex-col gap-[6px]">
-                        <p class="font-semibold text-[32px] leading-10">1216</p>
+                        <p class="font-semibold text-[32px] leading-10">1.216</p>
                         <div class="flex items-center gap-0.5">
                             <img src="assets/images/icons/trend-up-dark-green-fill.svg" class="flex size-[18px] shrink-0"
                                 alt="icon">

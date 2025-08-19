@@ -25,12 +25,13 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'thumbnail'   => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'name'        => 'required|string|max:255',
             'status'      => 'required|in:Open,Closed',
             'date'        => 'required|date',
             'start_time'  => 'required',
+            'partisipas'  => 'required|number',
             'description' => 'nullable|string',
-            'thumbnail'   => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         $data = $request->only(['name', 'status', 'date', 'start_time', 'description']);
@@ -62,12 +63,12 @@ class EventController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'thumbnail'   => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'name'        => 'required|string|max:255',
             'status'      => 'required|in:Open,Closed',
             'date'        => 'required|date',
             'start_time'  => 'required',
             'description' => 'nullable|string',
-            'thumbnail'   => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         $event = Event::findOrFail($id);
