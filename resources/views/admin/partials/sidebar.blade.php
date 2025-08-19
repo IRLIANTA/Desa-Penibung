@@ -24,7 +24,6 @@
                                     Profile Desa </span>
                             </a> </li>
                     </ul>
-                     @if (auth()->check())
                     <ul>
                         <li class="group {{ request()->is('dashboard') ? 'active' : '' }}"> <a href="/dashboard"
                                 class=" flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
@@ -69,6 +68,8 @@
                                     Events Desa </span>
                             </a> </li>
                     </ul>
+                     @if (auth()->check())
+
                     <ul>
                         <li class="group "> <a href="{{ route('event.index') }}"
                                 class="flex items-center h-14 gap-2 rounded-2xl p-4">

@@ -11,6 +11,7 @@
                 </div>
                 <h1 class="font-semibold text-2xl">Detail Event Desa</h1>
             </div>
+            @if(auth()->check())
             <div class="flex items-center gap-3">
                 <form action="{{ route('event.destroy', $event->id) }}" id="eventDelete" method="POST" class="form-hapus"
                     onsubmit="return confirm('Yakin ingin menghapus data ini?')">
@@ -30,6 +31,7 @@
                         alt="icon">
                 </a>
             </div>
+            @endif
         </div>
 
         <div class="flex gap-[14px]">

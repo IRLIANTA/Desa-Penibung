@@ -43,310 +43,85 @@
                     </button>
                 </div>
             </form>
-            <div class="card flex flex-col gap-6 rounded-3xl p-6 bg-white">
-                <div class="flex items-center w-full">
-                    <div class="flex w-[100px] h-20 shrink-0 rounded-2xl overflow-hidden bg-desa-foreshadow">
-                        <img src="{{ asset('/assets') }}/images/thumbnails/kk-event-desa-1.png" class="w-full h-full object-cover"
-                            alt="photo">
-                    </div>
-                    <div class="flex flex-col gap-[6px] w-full ml-4 mr-9">
-                        <p class="font-semibold text-lg leading-[22.5px] line-clamp-1">Belajar HTML Dasar Bersama</p>
-                        <div class="flex items-center gap-1">
-                            <img src="{{ asset('/assets') }}/images/icons/ticket-secondary-green.svg" class="flex size-[18px] shrink-0"
-                                alt="icon">
-                            <p class="font-medium text-sm text-desa-secondary">
-                                Registration:
-                                <span class="font-medium text-base text-desa-dark-green">
-                                    Open
-                                </span>
-                            </p>
+    <div class="grid gap-6">
+                    @forelse($events as $event)
+                        {{-- Card event --}}
+                        <div class="card flex flex-col gap-6 rounded-3xl p-6 bg-white">
+                            <div class="flex items-center w-full">
+                                <div class="flex w-[100px] h-20 shrink-0 rounded-2xl overflow-hidden bg-desa-foreshadow">
+                                    <img src="{{ $event->thumbnail ? asset('storage/' . $event->thumbnail) : asset('assets/images/thumbnails/placeholder.png') }}"
+                                        class="w-full h-full object-cover" alt="photo">
+                                </div>
+                                <div class="flex flex-col gap-[6px] w-full ml-4 mr-9">
+                                    <p class="font-semibold text-lg leading-[22.5px] line-clamp-1">{{ $event->name }}</p>
+                                    <div class="flex items-center gap-1">
+                                        <img src="{{ asset('assets/images/icons/ticket-secondary-green.svg') }}"
+                                            class="flex size-[18px] shrink-0" alt="icon">
+                                        <p class="font-medium text-sm text-desa-secondary">
+                                            Registration:
+                                            <span
+                                                class="font-medium text-base text-desa-dark-green capitalize">{{ $event->status }}</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <a href="{{ route('event.manage', $event->id) }}"
+                                    class="flex items-center shrink-0 gap-[10px] rounded-2xl py-4 px-6 bg-desa-black">
+                                    <span class="font-medium text-white">Manage</span>
+                                </a>
+                            </div>
+
+                            <hr class="border-desa-background">
+
+                            <div class="grid grid-cols-3 gap-3">
+                                {{-- Jam Mulai --}}
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-blue/10 overflow-hidden">
+                                        <img src="{{ asset('assets/images/icons/timer-black.svg') }}"
+                                            class="flex size-6 shrink-0" alt="icon">
+                                    </div>
+                                    <div class="flex flex-col gap-1">
+                                        <p class="font-semibold text-lg leading-5 text-desa-blue">
+                                            {{ $event->start_time ? \Carbon\Carbon::createFromFormat('H:i:s', $event->start_time)->format('H:i') : '-' }}
+                                        </p>
+                                        <p class="font-medium text-sm text-desa-secondary">Jam Mulai</p>
+                                    </div>
+                                </div>
+
+                                {{-- Total Partisipasi --}}
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-blue/10 overflow-hidden">
+                                        <img src="{{ asset('assets/images/icons/profile-2user-blue.svg') }}"
+                                            class="flex size-6 shrink-0" alt="icon">
+                                    </div>
+                                    <div class="flex flex-col gap-1">
+                                        <p class="font-semibold text-lg leading-5 text-desa-blue">
+                                            {{ number_format($event->partisipasi ?? 0, 0, ',', '.') }} Warga</p>
+                                        <p class="font-medium text-sm text-desa-secondary">Total Partisipasi</p>
+                                    </div>
+                                </div>
+
+                                {{-- Tanggal --}}
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden">
+                                        <img src="{{ asset('assets/images/icons/calendar-2-dark-green.svg') }}"
+                                            class="flex size-6 shrink-0" alt="icon">
+                                    </div>
+                                    <div class="flex flex-col gap-1">
+                                        <p class="font-semibold text-lg leading-5 text-desa-dark-green">
+                                            {{ $event->date ? $event->date->format('D, d M Y') : '-' }}
+                                        </p>
+                                        <p class="font-medium text-sm text-desa-secondary">Tanggal Pelaksanaan</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <a href="{{ route('event.manage') }}"
-                        class="flex items-center shrink-0 gap-[10px] rounded-2xl py-4 px-6 bg-desa-black">
-                        <span class="font-medium text-white">Manage</span>
-                    </a>
+                    @empty
+                        <p class="text-desa-secondary">Belum ada event.</p>
+                    @endforelse
                 </div>
-                <hr class="border-desa-background">
-                <div class="grid grid-cols-3 gap-3">
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-red/10 overflow-hidden">
-                            <img src="{{ asset('/assets') }}/images/icons/wallet-3-red.svg" class="flex size-6 shrink-0" alt="icon">
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5 text-desa-red">Rp499.000</p>
-                            <p class="font-medium text-sm text-desa-secondary">Harga Event</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-blue/10 overflow-hidden">
-                            <img src="{{ asset('/assets') }}/images/icons/profile-2user-blue.svg" class="flex size-6 shrink-0"
-                                alt="icon">
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5 text-desa-blue">15.600 Warga</p>
-                            <p class="font-medium text-sm text-desa-secondary">Total Partisipasi</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden">
-                            <img src="{{ asset('/assets') }}/images/icons/calendar-2-dark-green.svg" class="flex size-6 shrink-0"
-                                alt="icon">
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5 text-desa-dark-green">Mon, 24 Feb 2025</p>
-                            <p class="font-medium text-sm text-desa-secondary">Tanggal Pelaksanaan</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card flex flex-col gap-6 rounded-3xl p-6 bg-white">
-                <div class="flex items-center w-full">
-                    <div class="flex w-[100px] h-20 shrink-0 rounded-2xl overflow-hidden bg-desa-foreshadow">
-                        <img src="{{ asset('/assets') }}/images/thumbnails/kk-event-desa-2.png" class="w-full h-full object-cover"
-                            alt="photo">
-                    </div>
-                    <div class="flex flex-col gap-[6px] w-full ml-4 mr-9">
-                        <p class="font-semibold text-lg leading-[22.5px] line-clamp-1">Dari Desa ke Dunia Digital: Workshop
-                            HTML dan AI untuk Pemula</p>
-                        <div class="flex items-center gap-1">
-                            <img src="{{ asset('/assets') }}/images/icons/ticket-secondary-green.svg" class="flex size-[18px] shrink-0"
-                                alt="icon">
-                            <p class="font-medium text-sm text-desa-secondary">
-                                Registration:
-                                <span class="font-medium text-base text-desa-dark-green">
-                                    Open
-                                </span>
-                            </p>
-                        </div>
-                    </div>
-                    <a href="{{ route('event.manage') }}"
-                        class="flex items-center shrink-0 gap-[10px] rounded-2xl py-4 px-6 bg-desa-black">
-                        <span class="font-medium text-white">Manage</span>
-                    </a>
-                </div>
-                <hr class="border-desa-background">
-                <div class="grid grid-cols-3 gap-3">
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-red/10 overflow-hidden">
-                            <img src="{{ asset('/assets') }}/images/icons/wallet-3-red.svg" class="flex size-6 shrink-0" alt="icon">
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5 text-desa-red">Rp499.000</p>
-                            <p class="font-medium text-sm text-desa-secondary">Harga Event</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-blue/10 overflow-hidden">
-                            <img src="{{ asset('/assets') }}/images/icons/profile-2user-blue.svg" class="flex size-6 shrink-0"
-                                alt="icon">
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5 text-desa-blue">15.600 Warga</p>
-                            <p class="font-medium text-sm text-desa-secondary">Total Partisipasi</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden">
-                            <img src="{{ asset('/assets') }}/images/icons/calendar-2-dark-green.svg" class="flex size-6 shrink-0"
-                                alt="icon">
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5 text-desa-dark-green">Mon, 24 Feb 2025</p>
-                            <p class="font-medium text-sm text-desa-secondary">Tanggal Pelaksanaan</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card flex flex-col gap-6 rounded-3xl p-6 bg-white">
-                <div class="flex items-center w-full">
-                    <div class="flex w-[100px] h-20 shrink-0 rounded-2xl overflow-hidden bg-desa-foreshadow">
-                        <img src="{{ asset('/assets') }}/images/thumbnails/kk-event-desa-3.png" class="w-full h-full object-cover"
-                            alt="photo">
-                    </div>
-                    <div class="flex flex-col gap-[6px] w-full ml-4 mr-9">
-                        <p class="font-semibold text-lg leading-[22.5px] line-clamp-1">Mengenal AI: Menjelajahi Dunia
-                            Kecerdasan Buatan dengan Santai</p>
-                        <div class="flex items-center gap-1">
-                            <img src="{{ asset('/assets') }}/images/icons/ticket-secondary-green.svg" class="flex size-[18px] shrink-0"
-                                alt="icon">
-                            <p class="font-medium text-sm text-desa-secondary">
-                                Registration:
-                                <span class="font-medium text-base text-desa-dark-green">
-                                    Open
-                                </span>
-                            </p>
-                        </div>
-                    </div>
-                    <a href="{{ route('event.manage') }}"
-                        class="flex items-center shrink-0 gap-[10px] rounded-2xl py-4 px-6 bg-desa-black">
-                        <span class="font-medium text-white">Manage</span>
-                    </a>
-                </div>
-                <hr class="border-desa-background">
-                <div class="grid grid-cols-3 gap-3">
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-red/10 overflow-hidden">
-                            <img src="{{ asset('/assets') }}/images/icons/wallet-3-red.svg" class="flex size-6 shrink-0" alt="icon">
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5 text-desa-red">Rp499.000</p>
-                            <p class="font-medium text-sm text-desa-secondary">Harga Event</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-blue/10 overflow-hidden">
-                            <img src="{{ asset('/assets') }}/images/icons/profile-2user-blue.svg" class="flex size-6 shrink-0"
-                                alt="icon">
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5 text-desa-blue">15.600 Warga</p>
-                            <p class="font-medium text-sm text-desa-secondary">Total Partisipasi</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden">
-                            <img src="{{ asset('/assets') }}/images/icons/calendar-2-dark-green.svg" class="flex size-6 shrink-0"
-                                alt="icon">
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5 text-desa-dark-green">Mon, 24 Feb 2025</p>
-                            <p class="font-medium text-sm text-desa-secondary">Tanggal Pelaksanaan</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card flex flex-col gap-6 rounded-3xl p-6 bg-white">
-                <div class="flex items-center w-full">
-                    <div class="flex w-[100px] h-20 shrink-0 rounded-2xl overflow-hidden bg-desa-foreshadow">
-                        <img src="{{ asset('/assets') }}/images/thumbnails/kk-event-desa-4.png" class="w-full h-full object-cover"
-                            alt="photo">
-                    </div>
-                    <div class="flex flex-col gap-[6px] w-full ml-4 mr-9">
-                        <p class="font-semibold text-lg leading-[22.5px] line-clamp-1">Kegiatan Sehat untuk menyambut tahun
-                            baru</p>
-                        <div class="flex items-center gap-1">
-                            <img src="{{ asset('/assets') }}/images/icons/ticket-secondary-green.svg" class="flex size-[18px] shrink-0"
-                                alt="icon">
-                            <p class="font-medium text-sm text-desa-secondary">
-                                Registration:
-                                <span class="font-medium text-base text-desa-dark-green">
-                                    Open
-                                </span>
-                            </p>
-                        </div>
-                    </div>
-                    <a href="{{ route('event.manage') }}"
-                        class="flex items-center shrink-0 gap-[10px] rounded-2xl py-4 px-6 bg-desa-black">
-                        <span class="font-medium text-white">Manage</span>
-                    </a>
-                </div>
-                <hr class="border-desa-background">
-                <div class="grid grid-cols-3 gap-3">
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-red/10 overflow-hidden">
-                            <img src="{{ asset('/assets') }}/images/icons/wallet-3-red.svg" class="flex size-6 shrink-0" alt="icon">
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5 text-desa-red">Rp499.000</p>
-                            <p class="font-medium text-sm text-desa-secondary">Harga Event</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-blue/10 overflow-hidden">
-                            <img src="{{ asset('/assets') }}/images/icons/profile-2user-blue.svg" class="flex size-6 shrink-0"
-                                alt="icon">
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5 text-desa-blue">15.600 Warga</p>
-                            <p class="font-medium text-sm text-desa-secondary">Total Partisipasi</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden">
-                            <img src="{{ asset('/assets') }}/images/icons/calendar-2-dark-green.svg" class="flex size-6 shrink-0"
-                                alt="icon">
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5 text-desa-dark-green">Mon, 24 Feb 2025</p>
-                            <p class="font-medium text-sm text-desa-secondary">Tanggal Pelaksanaan</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card flex flex-col gap-6 rounded-3xl p-6 bg-white">
-                <div class="flex items-center w-full">
-                    <div class="flex w-[100px] h-20 shrink-0 rounded-2xl overflow-hidden bg-desa-foreshadow">
-                        <img src="{{ asset('/assets') }}/images/thumbnails/kk-event-desa-5.png" class="w-full h-full object-cover"
-                            alt="photo">
-                    </div>
-                    <div class="flex flex-col gap-[6px] w-full ml-4 mr-9">
-                        <p class="font-semibold text-lg leading-[22.5px] line-clamp-1">Mengenal Dunia Digital: Pengenalan
-                            HTML untuk Pemula</p>
-                        <div class="flex items-center gap-1">
-                            <img src="{{ asset('/assets') }}/images/icons/ticket-secondary-green.svg" class="flex size-[18px] shrink-0"
-                                alt="icon">
-                            <p class="font-medium text-sm text-desa-secondary">
-                                Registration:
-                                <span class="font-medium text-base text-desa-dark-green">
-                                    Open
-                                </span>
-                            </p>
-                        </div>
-                    </div>
-                    <a href="{{ route('event.manage') }}"
-                        class="flex items-center shrink-0 gap-[10px] rounded-2xl py-4 px-6 bg-desa-black">
-                        <span class="font-medium text-white">Manage</span>
-                    </a>
-                </div>
-                <hr class="border-desa-background">
-                <div class="grid grid-cols-3 gap-3">
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-red/10 overflow-hidden">
-                            <img src="{{ asset('/assets') }}/images/icons/wallet-3-red.svg" class="flex size-6 shrink-0" alt="icon">
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5 text-desa-red">Rp499.000</p>
-                            <p class="font-medium text-sm text-desa-secondary">Harga Event</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-blue/10 overflow-hidden">
-                            <img src="{{ asset('/assets') }}/images/icons/profile-2user-blue.svg" class="flex size-6 shrink-0"
-                                alt="icon">
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5 text-desa-blue">15.600 Warga</p>
-                            <p class="font-medium text-sm text-desa-secondary">Total Partisipasi</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden">
-                            <img src="{{ asset('/assets') }}/images/icons/calendar-2-dark-green.svg" class="flex size-6 shrink-0"
-                                alt="icon">
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5 text-desa-dark-green">Mon, 24 Feb 2025</p>
-                            <p class="font-medium text-sm text-desa-secondary">Tanggal Pelaksanaan</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
         <nav id="Pagination">
             <ul class="flex items-center gap-3">

@@ -11,7 +11,7 @@ class EventController extends Controller
     // Menampilkan semua event
     public function index()
     {
-        $events = Event::all();
+        $events = Event::paginate(10);
         return view('admin.event.index', compact('events'));
     }
 
