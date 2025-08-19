@@ -24,7 +24,6 @@
                                     Profile Desa </span>
                             </a> </li>
                     </ul>
-                     @if (auth()->check())
                     <ul>
                         <li class="group {{ request()->is('dashboard') ? 'active' : '' }}"> <a href="/dashboard"
                                 class=" flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
@@ -60,7 +59,7 @@
                             </a> </li>
                     </ul> <!-- Events Desa -->
                     <ul>
-                        <li class="group"> <a href="{{ route('event.index') }}"
+                        <li class="group {{ request()->is('event') ? 'active' : '' }}"> <a href="{{ route('event.index') }}"
                                 class="flex items-center h-14 gap-2 rounded-2xl p-4 hover:bg-desa-foreshadow transition-setup">
                                 <div class="relative flex size-6 shrink-0"> <img
                                         src="{{ asset('assets/') }}/images/icons/bag-2-dark-green.svg"
@@ -69,8 +68,10 @@
                                     Events Desa </span>
                             </a> </li>
                     </ul>
+                     @if (auth()->check())
+
                     <ul>
-                        <li class="group"> <a href="{{ route('event.index') }}"
+                        <li class="group "> <a href="{{ route('event.index') }}"
                                 class="flex items-center h-14 gap-2 rounded-2xl p-4">
                                 <div class="relative flex size-6 shrink-0"> <img
                                         src="{{ asset('assets/') }}/images/icons/logout-red.svg"

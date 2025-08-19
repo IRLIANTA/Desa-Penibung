@@ -67,6 +67,7 @@ Route::prefix('/event')->group(function () {
     Route::get('/create', [EventController::class, 'create'])->name('event.create');
     Route::get('/edit/{id}', [EventController::class, 'edit'])->name('event.edit');
     Route::put('/update/', [EventController::class, 'update'])->name('event.update');
+    Route::delete('/delete/{id}', [EventController::class, 'destroy'])->name('event.destroy');
     Route::get('/manage/{id}', [EventController::class, 'manage'])->name('event.manage');
     Route::post('/store', [EventController::class, 'store'])->name('event.store');
 });
