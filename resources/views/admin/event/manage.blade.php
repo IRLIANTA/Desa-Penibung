@@ -5,7 +5,9 @@
         <div id="Header" class="flex items-center justify-between">
             <div class="flex flex-col gap-2">
                 <div class="flex gap-1 items-center leading-5 text-desa-secondary">
-                    <p class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize ">Events Desa</p>
+                    <a href="{{route('event.index')}}" class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize">
+                        <p>Events Desa</p>
+                    </a>
                     <span>/</span>
                     <p class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize ">Detail Event Desa</p>
                 </div>

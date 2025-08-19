@@ -7,20 +7,15 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DevelopmentController;
 use App\Http\Controllers\Admin\KepalaRumahController;
 use App\Http\Controllers\Admin\SocialAssistanceController;
-
-
-use App\Http\Controllers\User\ProfileController as UserProfileController;
-use App\Http\Controllers\User\DashboardController as UserDashboardController;
-use App\Http\Controllers\User\SocialAssistanceController as UserSocialAssistanceController;
-use App\Http\Controllers\User\DevelopmentController as UserDevelopmentController;
-use App\Http\Controllers\User\EventController as UserEventController;
-
+use App\Http\Controllers\Admin\StatistikController;
 
 Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/editinfo', [DashboardController::class, 'edit'])->name('dashboard.editinfo');
     Route::get('/editdusun', [DashboardController::class, 'update'])->name('dashboard.editdusun');
     Route::get('/ubah', [DashboardController::class, 'ubah'])->name('dashboard.ubah');
+    // Statistik
+    Route::put('/updatestatistik', [StatistikController::class, 'updateStatistik'])->name('dashboard.updatestatistik');
+    Route::put('/updatependuduk', [StatistikController::class, 'updatePenduduk'])->name('dashboard.updatependuduk');
 });
 
 
@@ -74,13 +69,5 @@ Route::prefix('/event')->group(function () {
 
 
 // ===== USER =====
-Route::prefix('/user')->group(function () {
-    Route::get('/profile', [UserProfileController::class, 'index'])->name('user.profile.index');
-    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard.index');
-    Route::get('/social-assistance', [UserSocialAssistanceController::class, 'index'])->name('user.social-assistance.index');
-    Route::get('/development', [UserDevelopmentController::class, 'index'])->name('user.development.index');
-    Route::get('/event', [UserEventController::class, 'index'])->name('user.event.index');
-    Route::get('/manage/{id}', [EventController::class, 'manage'])->name('user.event.manage');
-});
 
 require __DIR__.'/auth.php';

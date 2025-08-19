@@ -125,7 +125,7 @@
 
         {{-- Buttons --}}
         <section id="Buttons" class="flex items-center justify-end gap-4">
-            <a href="{{ route('dashboard.index') }}">
+            <a href="{{ route('dashboard') }}">
                 <div
                     class="py-[18px] rounded-2xl bg-desa-red w-[180px] text-center flex justify-center font-medium text-white">
                     Batal, Tidak jadi</div>

@@ -3,11 +3,13 @@
     <div id="Content" class="relative flex flex-col flex-1 gap-6 p-6 pb-[30px] w-full shrink-0">
         <div id="Header" class="flex items-center justify-between">
             <h1 class="font-semibold text-2xl">Pembangunan Desa</h1>
+            @if (auth()->check())
             <a href="{{ route('development.create') }}"
-                class="flex items-center rounded-2xl py-4 px-6 gap-[10px] bg-desa-dark-green">
-                <img src="assets/images/icons/add-square-white.svg" class="flex size-6 shrink-0" alt="icon">
-                <p class="font-medium text-white">Add New</p>
-            </a>
+            class="flex items-center rounded-2xl py-4 px-6 gap-[10px] bg-desa-dark-green">
+            <img src="assets/images/icons/add-square-white.svg" class="flex size-6 shrink-0" alt="icon">
+            <p class="font-medium text-white">Add New</p>
+        </a>
+        @endif
         </div>
         <section id="List-Pembangunan-Desa" class="flex flex-col gap-[14px]">
             <form id="Page-Search" class="flex items-center justify-between">
@@ -55,7 +57,10 @@
                             alt="photo">
                     </div>
                     <div class="flex flex-col gap-[6px] w-full ml-4 mr-9">
-                        <p class="font-semibold text-lg leading-[22.5px] line-clamp-1">Pembangunan Jalanan Utama</p>
+                        <a href="{{ route('development.manage') }}">
+
+                            <p class="font-semibold text-lg leading-[22.5px] line-clamp-1">Pembangunan Jalanan Utama</p>
+                        </a>
                         <div class="flex items-center gap-1">
                             <img src="assets/images/icons/user-square-secondary-green.svg" class="flex size-[18px] shrink-0"
                                 alt="icon">

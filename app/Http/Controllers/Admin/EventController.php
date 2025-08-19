@@ -11,11 +11,7 @@ class EventController extends Controller
     // Menampilkan semua event
     public function index()
     {
-<<<<<<< HEAD
         $events = Event::orderBy('created_at','desc')->get();
-=======
-        $events = Event::paginate(10);
->>>>>>> 7bf28b0d43d061e58fd0537adc19837dd20b5573
         return view('admin.event.index', compact('events'));
     }
 

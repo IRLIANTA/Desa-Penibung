@@ -164,4 +164,62 @@
             </section>
         </div>
     </div>
+
+
+    
+    <div id="Modal-Gallery" class="modal fixed inset-0 flex flex-col h-screen z-40 hidden bg-[#080C1ACC]">
+        <div class="flex flex-col items-center justify-center m-auto">
+            <div id="Main-Image-Container" class="flex aspect-[805/492] w-full max-w-[805px] overflow-hidden mx-auto">
+                <img id="Selected-Image" src="assets/images/thumbnails/desa-gallery-1.png"
+                    class="size-full object-contain object-center" alt="thumbnail">
+            </div>
+            <button
+                class="btn-close-modal flex items-center rounded-full border border-white/10 py-3 px-4 mx-auto mt-[30px]">
+                <img src="assets/images/icons/close-circle-white.svg" class="flex size-6 shrink-0" alt="icon">
+                <p class="font-medium leading-5 text-white">Tutup</p>
+            </button>
+        </div>
+        <div class="flex flex-wrap items-center w-full border border-white/10 gap-4 p-4">
+            <button data-image="assets/images/thumbnails/desa-gallery-1.png"
+                class="group relative flex w-[140px] h-[120px] shrink-0 rounded-3xl bg-desa-background overflow-hidden active">
+                <img src="assets/images/thumbnails/desa-gallery-1.png"
+                    class="size-full object-cover group-[.active]:blur" alt="thumbnail">
+                <img src="assets/images/icons/eye-white-fill.svg"
+                    class="absolute hidden size-9 shrink-0 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 group-[.active]:flex"
+                    alt="icon">
+            </button>
+            <button data-image="assets/images/thumbnails/desa-gallery-2.png"
+                class="group relative flex w-[140px] h-[120px] shrink-0 rounded-3xl bg-desa-background overflow-hidden">
+                <img src="assets/images/thumbnails/desa-gallery-2.png"
+                    class="size-full object-cover group-[.active]:blur" alt="thumbnail">
+                <img src="assets/images/icons/eye-white-fill.svg"
+                    class="absolute hidden size-9 shrink-0 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 group-[.active]:flex"
+                    alt="icon">
+            </button>
+            <button data-image="assets/images/thumbnails/desa-gallery-3.png"
+                class="group relative flex w-[140px] h-[120px] shrink-0 rounded-3xl bg-desa-background overflow-hidden">
+                <img src="assets/images/thumbnails/desa-gallery-3.png"
+                    class="size-full object-cover group-[.active]:blur" alt="thumbnail">
+                <img src="assets/images/icons/eye-white-fill.svg"
+                    class="absolute hidden size-9 shrink-0 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 group-[.active]:flex"
+                    alt="icon">
+            </button>
+            <button data-image="assets/images/thumbnails/desa-gallery-4.png"
+                class="group relative flex w-[140px] h-[120px] shrink-0 rounded-3xl bg-desa-background overflow-hidden">
+                <img src="assets/images/thumbnails/desa-gallery-4.png"
+                    class="size-full object-cover group-[.active]:blur" alt="thumbnail">
+                <img src="assets/images/icons/eye-white-fill.svg"
+                    class="absolute hidden size-9 shrink-0 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 group-[.active]:flex"
+                    alt="icon">
+            </button>
+            <button data-image="assets/images/thumbnails/desa-gallery-5.png"
+                class="group relative flex w-[140px] h-[120px] shrink-0 rounded-3xl bg-desa-background overflow-hidden">
+                <img src="assets/images/thumbnails/desa-gallery-5.png"
+                    class="size-full object-cover group-[.active]:blur" alt="thumbnail">
+                <img src="assets/images/icons/eye-white-fill.svg"
+                    class="absolute hidden size-9 shrink-0 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 group-[.active]:flex"
+                    alt="icon">
+            </button>
+        </div>
+    </div>
 @endsection

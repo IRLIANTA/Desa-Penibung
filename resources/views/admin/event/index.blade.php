@@ -61,7 +61,9 @@
                                         class="w-full h-full object-cover" alt="photo">
                                 </div>
                                 <div class="flex flex-col gap-[6px] w-full ml-4 mr-9">
-                                    <p class="font-semibold text-lg leading-[22.5px] line-clamp-1">{{ $event->name }}</p>
+                                    <a href="{{ route('event.manage', $event->id) }}">
+                                        <p class="font-semibold text-lg leading-[22.5px] line-clamp-1">{{ $event->name }}</p>
+                                    </a>
                                     <div class="flex items-center gap-1">
                                         <img src="{{ asset('assets/images/icons/ticket-secondary-green.svg') }}"
                                             class="flex size-[18px] shrink-0" alt="icon">

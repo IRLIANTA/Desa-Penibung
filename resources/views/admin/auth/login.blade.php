@@ -9,19 +9,7 @@
     <link href="{{ asset('assets/') }}/css/output.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet" />
 
-<<<<<<< HEAD
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logos/logo-icon.png" />
-    <link rel="apple-touch-icon" href="assets/images/logos/logo-icon.png" />
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="The simple way to manage your citizens" />
-    <meta property="og:description" content="The simple way to manage your citizens">
-    <meta property="og:image" content="https://desa-digital.netlify.app/assets/images/logos/logo-icon.png" />
-    <meta property="og:url" content="https://desa-digital.netlify.app" />
-    <meta property="og:type" content="website" />
-</head>
-=======
         <!-- Open Graph Meta Tags -->
         <meta property="og:title" content="The simple way to manage your citizens" />
         <meta property="og:description" content="The simple way to manage your citizens">
@@ -41,24 +29,6 @@
                             <p class="font-medium leading-5 text-desa-secondary text-center">Silahkan masuk untuk melanjutkan</p>
                         </div>
                     </header>
-                    {{-- <section id="Select" class="grid grid-cols-2 gap-6">
-                        <div class="group relative flex items-center justify-between p-5 rounded-2xl bg-white ring-[1px] ring-desa-background hover:bg-desa-foreshadow has-[:checked]:bg-desa-foreshadow has-[:checked]:ring-desa-dark-green transition-all duration-300">
-                            <input id="Kepala-Desa" required type="radio" name="role" class="peer absolute left-0 right-0 top-0 bottom-0 z-50 opacity-0" />
-                            <p class="font-medium leading-5 text-desa-secondary group-hover:text-desa-dark-green group-has-[:checked]:text-desa-dark-green transition-all duration-300">Kepala Desa</p>
-                            <div class="relative">
-                                <img src="assets/images/icons/crown-secondary-green.svg" alt="icon" class="shrink-0 h-[24px] w-[24px] group-hover:opacity-0 group-has-[:checked]:opacity-0 absolute transition-all duration-300" />
-                                <img src="assets/images/icons/crown-dark-green.svg" alt="icon" class="shrink-0 h-[24px] w-[24px] group-hover:opacity-100 group-has-[:checked]:opacity-100 opacity-0 transition-all duration-300" />
-                            </div>
-                        </div>
-                        <div class="group relative flex items-center justify-between p-5 rounded-2xl bg-white ring-[1px] ring-desa-background hover:bg-desa-foreshadow has-[:checked]:bg-desa-foreshadow has-[:checked]:ring-desa-dark-green transition-all duration-300">
-                            <input id="Kepala-Rumah" required type="radio" name="role" class="peer absolute left-0 right-0 top-0 bottom-0 z-50 opacity-0" />
-                            <p class="font-medium leading-5 text-desa-secondary group-hover:text-desa-dark-green group-has-[:checked]:text-desa-dark-green transition-all duration-300">Kepala Rumah</p>
-                            <div class="relative">
-                                <img src="assets/images/icons/profile-circle-secondary-green.svg" alt="icon" class="shrink-0 h-[24px] w-[24px] group-hover:opacity-0 group-has-[:checked]:opacity-0 absolute transition-all duration-300" />
-                                <img src="assets/images/icons/profile-circle-dark-green.svg" alt="icon" class="shrink-0 h-[24px] w-[24px] group-hover:opacity-100 group-has-[:checked]:opacity-100 opacity-0 transition-all duration-300" />
-                            </div>
-                        </div>
-                    </section> --}}
                     <section id="Inputs" class="flex flex-col gap-[32px]">
                         <div id="Email-Address" class="flex flex-col gap-4">
                             <h2 class="font-medium leading-5 text-desa-secondary">Email Address</h2>
@@ -88,49 +58,5 @@
                 </div>
             </section>
         </main>
-
-        {{-- <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const form = document.querySelector("form");
-                const radioButtons = document.querySelectorAll("input[name='role']");
->>>>>>> 7bf28b0d43d061e58fd0537adc19837dd20b5573
-
-<body>
-    <form method="POST" action="{{ route('login') }}" class="flex items-center">
-        @csrf
-        <div class="flex flex-col w-[486px] rounded-3xl p-8 bg-white gap-8">
-            <header class="flex flex-col gap-8 items-center">
-                <img src="{{ asset('assets/images/logos/logo-text.svg') }}" alt="icon" class="h-20">
-                <h1 class="font-semibold text-2xl text-center">Halo🙌🏻 , Selamat Datang!</h1>
-                <p class="text-gray-500 text-center">Silahkan masuk untuk melanjutkan</p>
-            </header>
-
-            <div>
-                <label>Email Address</label>
-                <input type="email" name="email" class="border rounded p-2 w-full" placeholder="Ketik Email Kamu"
-                    required>
-            </div>
-
-            <div>
-                <label>Password</label>
-                <input type="password" name="password" class="border rounded p-2 w-full"
-                    placeholder="Ketik Password Kamu" required>
-            </div>
-
-            <button type="submit" class="bg-green-500 text-white rounded p-3">Masuk</button>
-        </div>
-    </form>
-
-    <section class="relative w-full max-w-[634px] h-screen overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-green-400 to-transparent"></div>
-        <img src="{{ asset('assets/images/backgrounds/bg-signin.png') }}" alt="banner"
-            class="h-full w-full object-cover rounded-3xl">
-    </section>
-</body>
-
-<<<<<<< HEAD
-=======
-        </script> --}}
     </body>
->>>>>>> 7bf28b0d43d061e58fd0537adc19837dd20b5573
 </html>
