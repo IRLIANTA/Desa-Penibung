@@ -19,14 +19,19 @@ Route::prefix('dashboard')->group(function () {
     Route::put('/updatependuduk', [StatistikController::class, 'updatePenduduk'])->name('dashboard.updatependuduk');
     // dusun
     Route::post('/storedusun', [DashboardController::class, 'storeDusun'])->name('dashboard.storedusun');
+    Route::put('/updatedusun/{id}', [DashboardController::class, 'updateDusun'])->name('dashboard.updatedusun');
+    Route::delete('/deletedusun/{id}', [DashboardController::class, 'deleteDusun'])->name('dashboard.deletedusun');
 });
 
 
 // Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
+    //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // });
+    
+    Route::middleware('auth')->group(function () {
+        });
 
 
 Route::prefix('/kepala_rumah')->group(function () {
@@ -36,7 +41,7 @@ Route::prefix('/kepala_rumah')->group(function () {
 });
 
 Route::prefix('/')->group(function () {
-    Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 });
 
@@ -61,7 +66,7 @@ Route::prefix('/development')->group(function () {
     Route::get('/manage/{id}', [DevelopmentController::class, 'manage'])->name('development.manage');
     Route::get('/edit/{id}', [DevelopmentController::class, 'edit'])->name('development.edit');
     Route::put('/update', [DevelopmentController::class, 'update'])->name('development.update');
-    Route::delete('/destroy{id}', [DevelopmentController::class, 'destroy'])->name('development.destroy');
+    Route::delete('/destroy{}', [DevelopmentController::class, 'destroy'])->name('development.destroy');
 });
 
 Route::prefix('/event')->group(function () {
@@ -73,5 +78,6 @@ Route::prefix('/event')->group(function () {
     Route::get('/manage/{id}', [EventController::class, 'manage'])->name('event.manage');
     Route::post('/store', [EventController::class, 'store'])->name('event.store');
 });
+
 
 require __DIR__ . '/auth.php';

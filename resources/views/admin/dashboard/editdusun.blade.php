@@ -19,32 +19,45 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($dusun as $item)
-                        <tr>
-                            <td class="border px-4 py-2">{{ $item->dusun }}</td>
-                            <td class="border px-4 py-2">{{ $item->nama_kepala_dusun }}</td>
-                            <td class="border px-4 py-2 ">{{ number_format($item->jml_rt, 0, ',', '.') }}</td>
-                            <td class="border px-4 py-2 ">{{ number_format($item->jml_rw, 0, ',', '.') }}</td>
+                    @forelse($dusun as $index => $item)
+                        <tr id="row-{{ $index }}">
+                            <td class="border px-4 py-2">
+                                <span class="text">{{ $item->dusun }}</span>
+                                <input type="text" class="hidden w-full border rounded p-1" value="{{ $item->dusun }}">
+                            </td>
+                            <td class="border px-4 py-2">
+                                <span class="text">{{ $item->nama_kepala_dusun }}</span>
+                                <input type="text" class="hidden w-full border rounded p-1"
+                                    value="{{ $item->nama_kepala_dusun }}">
+                            </td>
+                            <td class="border px-4 py-2">
+                                <span class="text">{{ $item->jml_rt }}</span>
+                                <input type="number" class="hidden w-full border rounded p-1" value="{{ $item->jml_rt }}">
+                            </td>
+                            <td class="border px-4 py-2">
+                                <span class="text">{{ $item->jml_rw }}</span>
+                                <input type="number" class="hidden w-full border rounded p-1" value="{{ $item->jml_rw }}">
+                            </td>
                             <td class="border px-4 py-2 text-center flex items-center justify-center gap-3">
-                                <a href="{{ route('dashboard.editdusun', $item->id) }}"
+                                <button type="button" onclick="editRow({{ $index }})"
                                     class="text-blue-600 hover:text-blue-800">
                                     <img src="{{ asset('assets/images/icons/edit-secondary-green.svg') }}" alt="Edit"
                                         class="w-5 h-5">
-                                </a>
-                                <form action="" method="POST"
-                                    onsubmit="return confirm('Yakin ingin menghapus data ini?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="text-red-600 hover:text-red-800">
-                                        <img src="{{ asset('assets/images/icons/trash-red.svg') }}" alt="Hapus"
-                                            class="w-5 h-5">
-                                    </button>
-                                </form>
+                                </button>
+                                <button type="button" onclick="saveRow({{ $index }}, {{ $item->id }})"
+                                    class="hidden text-green-600 hover:text-green-800 save-btn">
+                                    <img src="{{ asset('assets/images/icons/check.svg') }}" alt="Edit" class="w-5 h-5">
+                                </button>
+                                <button data-modal="Modal-DeleteDusun" data-id="{{ $item->id }}"
+                                    class="text-red-600 hover:text-red-800">
+                                    <img src="{{ asset('assets/images/icons/trash-red.svg') }}" alt="Hapus"
+                                        class="w-5 h-5">
+                                </button>
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="text-center py-4 text-gray-500">Belum ada data dusun</td>
+                            <td colspan="5" class="text-center py-4 text-gray-500">Belum ada data dusun</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -93,7 +106,8 @@
                         <div class="flex flex-col gap-2 flex-1 ">
                             <p class="font-medium leading-5 text-desa-secondary">Nama Kepala Dusun</p>
                             <label class="relative group peer w-full">
-                                <input type="text" placeholder="Masukan nama kepala dusun" name="nama_kepala_dusun[]" required
+                                <input type="text" placeholder="Masukan nama kepala dusun" name="nama_kepala_dusun[]"
+                                    required
                                     class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background 
                             focus:ring-desa-black py-4 px-12 font-medium placeholder:text-desa-secondary transition-all duration-300">
                                 <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
@@ -156,12 +170,12 @@
             <hr class="border-desa-background my-6" />
 
             <section id="Buttons" class="flex items-center justify-end gap-4">
-                <a href="kd-event-desa.html">
+                <button type="reset">
                     <div
                         class="py-[18px] rounded-2xl bg-desa-red w-[180px] text-center flex justify-center font-medium text-white">
                         Batal, Tidak jadi
                     </div>
-                </a>
+                </button>
                 <button disabled id="submitButton" type="submit"
                     class="py-[18px] rounded-2xl disabled:bg-desa-grey w-[180px] text-center flex justify-center font-medium text-white bg-desa-dark-green transition-all duration-300">
                     Simpan
@@ -169,8 +183,73 @@
             </section>
         </form>
     </div>
-
+    <div id="Modal-DeleteDusun" class="modal fixed inset-0 h-screen z-40 flex bg-[#080C1ACC] hidden">
+        <div id="Alert" class="flex flex-col w-[335px] shrink-0 rounded-2xl overflow-hidden bg-white m-auto">
+            <div class="flex items-center justify-between p-4 gap-3 bg-desa-black">
+                <p class="font-medium leading-5 text-white">Hapus Data Dusun?</p>
+                <button class="btn-close-modal">
+                    <img src="{{ asset('/assets') }}/images/icons/close-circle-white.svg" class="flex size-6 shrink-0"
+                        alt="icon">
+                </button>
+            </div>
+            <div class="flex flex-col p-4 gap-3">
+                <p class="font-medium text-sm leading-[22.5px] text-desa-secondary">
+                    Tindakan ini permanen dan tidak bisa dibatalkan!
+                </p>
+                <hr class="border-desa-background">
+                <div class="flex items-center gap-3">
+                    <button type="button"
+                        class="btn-close-modal flex items-center h-14 rounded-2xl py-3 px-8 gap-[10px] border border-desa-background hover:bg-desa-black hover:text-white transition-setup">
+                        <span class="font-semibold text-sm">Batal</span>
+                    </button>
+                    <form action="" id="eventDelete" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"
+                            class="flex items-center h-14 rounded-2xl py-3 px-8 gap-[10px] bg-desa-red w-full">
+                            <img src="{{ asset('/assets/images/icons/trash-white.svg') }}" class="flex size-6 shrink-0"
+                                alt="">
+                            <span class="font-semibold text-sm text-white">Iya Hapus</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     @push('scripts')
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const modal = document.getElementById("Modal-DeleteDusun");
+                const formDelete = document.getElementById("eventDelete");
+
+                document.querySelectorAll("[data-modal='Modal-DeleteDusun']").forEach(btn => {
+                    btn.addEventListener("click", function() {
+                        const id = this.getAttribute("data-id");
+                        const url = "{{ route('dashboard.deletedusun', ':id') }}".replace(":id", id);
+
+                        formDelete.setAttribute("action", url);
+
+                        modal.classList.remove("hidden");
+                        document.body.classList.add("overflow-hidden");
+                    });
+                });
+
+                document.querySelectorAll(".btn-close-modal").forEach(btn => {
+                    btn.addEventListener("click", function() {
+                        modal.classList.add("hidden");
+                        document.body.classList.remove("overflow-hidden");
+                    });
+                });
+
+                modal.addEventListener("click", function(event) {
+                    if (event.target === modal) {
+                        modal.classList.add("hidden");
+                        document.body.classList.remove("overflow-hidden");
+                    }
+                });
+            });
+        </script>
+
         {{-- fungsi repeater --}}
         <script>
             function addDusun() {
@@ -204,6 +283,49 @@
             }
 
             updateRemoveButtons();
+        </script>
+
+
+        <script>
+            function editRow(index) {
+                const row = document.getElementById(`row-${index}`);
+                row.querySelectorAll("span.text").forEach(el => el.classList.add("hidden"));
+                row.querySelectorAll("input").forEach(el => el.classList.remove("hidden"));
+                row.querySelector(".save-btn").classList.remove("hidden");
+            }
+
+            function saveRow(index, id) {
+                const row = document.getElementById(`row-${index}`);
+                const inputs = row.querySelectorAll("input");
+
+                const data = {
+                    dusun: inputs[0].value,
+                    nama_kepala_dusun: inputs[1].value,
+                    jml_rt: inputs[2].value,
+                    jml_rw: inputs[3].value,
+                    _token: "{{ csrf_token() }}"
+                };
+
+                fetch(`/dashboard/updatedusun/${id}`, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(data)
+                    }).then(res => res.json())
+                    .then(response => {
+                        row.querySelectorAll("span.text")[0].innerText = data.dusun;
+                        row.querySelectorAll("span.text")[1].innerText = data.nama_kepala_dusun;
+                        row.querySelectorAll("span.text")[2].innerText = data.jml_rt;
+                        row.querySelectorAll("span.text")[3].innerText = data.jml_rw;
+
+                        row.querySelectorAll("span.text").forEach(el => el.classList.remove("hidden"));
+                        row.querySelectorAll("input").forEach(el => el.classList.add("hidden"));
+                        row.querySelector(".save-btn").classList.add("hidden");
+
+                        Toast.success('Berhasil Update Dusun')
+                    });
+            }
         </script>
     @endpush
 @endsection

@@ -29,7 +29,7 @@
            
 
                     <ul>
-                        <li class="group {{ request()->is('/') ? 'active' : '' }}"> <a href=""
+                        <li class="group {{ request()->is('profile','profile/*') ? 'active' : '' }}"> <a href="/profile"
                                 class=" flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
                                 <div class="relative flex size-6 shrink-0"> <img
                                         src="{{ asset('assets/') }}/images/icons/building-4-dark-green.svg"
@@ -74,17 +74,10 @@
                             </a> </li>
                     </ul>
                     <ul>
-<<<<<<< HEAD
                         <li class="group {{ request()->is('event','event/*') ? 'active' : '' }}"> <a href="{{ route('event.index') }}"
                                 class=" flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
                                 <div class="relative flex size-6 shrink-0"> <img
                                         src="{{ asset('assets/') }}/images/icons/bag-2-dark-green.svg"
-=======
-                        <li class="group {{ request()->is('report','report/*') ? 'active' : '' }}"> <a href="{{ route('report.index') }}"
-                                class=" flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
-                                <div class="relative flex size-6 shrink-0"> <img
-                                        src="{{ asset('assets/') }}/images/icons/document-copy-dark-green.svg"
->>>>>>> 50b0a1d16da2ba6f56513a6d418ae7c35c23ed7a
                                         class="flex size-6 shrink-0" alt="icon"> </div> <span
                                     class="text-left leading-5 text-desa-secondary flex flex-1 group-hover:text-desa-dark-green group-[.active]:text-desa-dark-green group-[.active]:font-medium transition-setup">
                                     Report </span>

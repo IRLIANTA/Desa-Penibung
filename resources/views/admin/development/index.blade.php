@@ -50,7 +50,6 @@
                     </button>
                 </div>
             </form>
-<<<<<<< HEAD
             @forelse ($developments as $d)
                 <div class="card flex flex-col gap-6 rounded-3xl p-6 bg-white">
                     <div class="flex items-center w-full">
@@ -60,17 +59,6 @@
                         </div>
                         <div class="flex flex-col gap-[6px] w-full ml-4 mr-9">
                             <a href="{{ route('development.manage', $d->id) }}">
-=======
-            
-            <div
-            <div class="card flex flex-col gap-6 rounded-3xl p-6 bg-white">
-                <div class="flex items-center w-full">
-                    <div class="flex w-[100px] h-20 shrink-0 rounded-2xl overflow-hidden bg-desa-foreshadow">
-                        <img src="{{ $development->thumbnail ? asset('storage/' . $development->thumbnail) : asset('assets/images/thumbnails/placeholder.png') }}"
-                    </div>
-                    <div class="flex flex-col gap-[6px] w-full ml-4 mr-9">
-                        <a href="{{ route('development.manage') }}">
->>>>>>> 50b0a1d16da2ba6f56513a6d418ae7c35c23ed7a
 
                                 <p class="font-semibold text-lg leading-[22.5px] line-clamp-1">{{ $d->nama_projek }}</p>
                             </a>

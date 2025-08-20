@@ -12,7 +12,7 @@ class DashboardController extends Controller
     public function index()
     {
         $dusun = Dusun::all();
-        return view('admin.dashboard.index',compact('dusun'));
+        return view('admin.dashboard.index', compact('dusun'));
     }
 
     public function edit()
@@ -23,7 +23,7 @@ class DashboardController extends Controller
     public function update()
     {
         $dusun = Dusun::all();
-        return view('admin.dashboard.editdusun',compact('dusun'));
+        return view('admin.dashboard.editdusun', compact('dusun'));
     }
 
     public function ubah()
@@ -61,6 +61,40 @@ class DashboardController extends Controller
 
         DB::table('dusun')->insert($data);
 
-        return redirect()->route('dashboard')->with('success', 'Data dusun berhasil disimpan.');
+        return redirect()->route('dashboard.editdusun')->with('success', 'Data dusun berhasil disimpan.');
+    }
+
+    public function updateDusun(Request $request, $id)
+    {
+        $request->validate([
+            'dusun' => 'required|string|max:100',
+            'nama_kepala_dusun' => 'nullable|string|max:100',
+            'jml_rt' => 'required|integer|min:0',
+            'jml_rw' => 'required|integer|min:0',
+        ]);
+
+        $dusun = Dusun::findOrFail($id);
+
+        $dusun->update([
+            'dusun' => $request->dusun,
+            'nama_kepala_dusun' => $request->nama_kepala_dusun,
+            'jml_rt' => $request->jml_rt,
+            'jml_rw' => $request->jml_rw,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Dusun berhasil diperbarui!',
+            'data' => $dusun
+        ]);
+    }
+
+    public function deleteDusun($id)
+    {
+        $dusun = Dusun::findOrFail($id);
+        $dusun->delete();
+
+       return redirect()->route('dashboard.editdusun')
+        ->with('success', 'Dusun berhasil dihapus.');
     }
 }
