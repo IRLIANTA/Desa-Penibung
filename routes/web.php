@@ -2,14 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\FeedbackController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\StatistikController;
 use App\Http\Controllers\Admin\DevelopmentController;
 use App\Http\Controllers\Admin\KepalaRumahController;
-use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\SocialAssistanceController;
 
+Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
 Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/editdusun', [DashboardController::class, 'update'])->name('dashboard.editdusun');
@@ -26,13 +28,12 @@ Route::prefix('dashboard')->group(function () {
 
 
 // Route::middleware('auth')->group(function () {
-    //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    // });
-    
-    Route::middleware('auth')->group(function () {
-        });
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
+
+Route::middleware('auth')->group(function () {});
 
 
 Route::prefix('/kepala_rumah')->group(function () {
@@ -81,6 +82,16 @@ Route::prefix('/event')->group(function () {
     Route::delete('/delete/{id}', [EventController::class, 'destroy'])->name('event.destroy');
     Route::get('/manage/{id}', [EventController::class, 'manage'])->name('event.manage');
     Route::post('/store', [EventController::class, 'store'])->name('event.store');
+});
+
+Route::prefix('/feedback')->group(function () {
+    Route::get('/', [FeedbackController::class, 'index'])->name('feedback.index');
+    Route::post('/store', [FeedbackController::class, 'store'])->name('feedback.store');
+    Route::get('/create', [FeedbackController::class, 'create'])->name('feedback.create');
+    Route::get('/edit/{id}', [FeedbackController::class, 'edit'])->name('feedback.edit');
+    Route::put('/update/', [FeedbackController::class, 'update'])->name('feedback.update');
+    Route::delete('/delete/{id}', [FeedbackController::class, 'destroy'])->name('feedback.destroy');
+    Route::get('/manage/{id}', [FeedbackController::class, 'manage'])->name('feedback.manage');
 });
 
 
