@@ -8,12 +8,6 @@ use App\Http\Controllers\Admin\StatistikController;
 use App\Http\Controllers\Admin\DevelopmentController;
 use App\Http\Controllers\Admin\KepalaRumahController;
 use App\Http\Controllers\Admin\SocialAssistanceController;
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-
-Route::middleware('auth')->group(function () {
-    Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
-    Route::post('/login', [AuthenticatedSessionController::class, 'store']);
-});
 
 Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
