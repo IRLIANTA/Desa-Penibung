@@ -73,14 +73,4 @@ Route::prefix('/event')->group(function () {
 });
 
 
-// ===== USER =====
-Route::prefix('/user')->group(function () {
-    Route::get('/profile', [UserProfileController::class, 'index'])->name('user.profile.index');
-    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard.index');
-    Route::get('/social-assistance', [UserSocialAssistanceController::class, 'index'])->name('user.social-assistance.index');
-    Route::get('/development', [UserDevelopmentController::class, 'index'])->name('user.development.index');
-    Route::get('/event', [UserEventController::class, 'index'])->name('user.event.index');
-    Route::get('/manage/{id}', [EventController::class, 'manage'])->name('user.event.manage');
-});
-
 require __DIR__.'/auth.php';
