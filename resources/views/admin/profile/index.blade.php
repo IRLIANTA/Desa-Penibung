@@ -5,11 +5,13 @@
             <div class="flex flex-col gap-2">
                 <h1 class="font-semibold text-2xl">Profile Desa</h1>
             </div>
-            @if(auth()->check())
-            <a href="{{ route('profile.edit') }}" class="flex items-center rounded-2xl py-4 px-6 gap-[10px] bg-desa-black">
-                <p class="font-medium text-white">Ubah Data</p>
-                <img src="assets/images/icons/edit-white.svg" class="flex size-6 shrink-0" alt="icon">
-            </a>
+            @if (auth()->check())
+                <a href="{{ route('profile.edit') }}"
+                    class="flex items-center rounded-2xl py-4 px-6 gap-[10px] bg-desa-black">
+                    <p class="font-medium text-white">Ubah Data</p>
+                    <img src="{{ asset('assets/') }}/images/icons/edit-white.svg" class="flex size-6 shrink-0"
+                        alt="icon">
+                </a>
             @endif
         </div>
         <div class="flex gap-[14px]">
@@ -17,34 +19,67 @@
                 class="flex flex-col shrink-0 w-[calc(565/1000*100%)] h-fit rounded-3xl p-6 gap-6 bg-white">
                 <div class="flex items-center justify-between">
                     <p class="font-medium leading-5 text-desa-secondary">Profile Desa</p>
-                    <img src="assets/images/icons/building-foreshadow-background.svg" class="flex size-12 shrink-0"
-                        alt="icon">
+                    <img src="{{ asset('assets/') }}/images/icons/building-foreshadow-background.svg"
+                        class="flex size-12 shrink-0" alt="icon">
                 </div>
                 <div id="Nama-Desa" class="flex flex-col gap-[6px]">
-                    <h1 class="font-bold text-[32px] leading-10">Desa Penibung</h1>
+                    <h1 class="font-bold text-[32px] leading-10">{{ get_profile('desa_name') }}</h1>
                     <div class="flex items-center gap-0.5">
-                        <img src="assets/images/icons/location-secondary-green.svg" class="flex size-6 shrink-0"
-                            alt="icon">
+                        <img src="{{ asset('assets/') }}/images/icons/location-secondary-green.svg"
+                            class="flex size-6 shrink-0" alt="icon">
                         <span class="font-medium text-sm text-desa-secondary">Kec. Mempawah Hilir, Kab. Mempawah, Prov.
                             Kalimantan Barat, Indonesia</span>
                     </div>
                 </div>
                 <div id="Gallery" class="flex flex-col gap-[14px]">
-                    <div data-modal="Modal-Gallery" data-gallery="assets/images/thumbnails/desa-gallery-1.png"
+                    <div data-modal="Modal-Gallery" data-gallery="{{ asset('assets/') }}/images/thumbnails/thumbnail.png"
                         id="Thumbnail-Desa"
                         class="flex w-full h-[350px] shrink-0 rounded-3xl bg-desa-background overflow-hidden">
                         <img src="{{ asset('assets/') }}/images/thumbnails/thumbnail.png" class="w-full h-full object-cover"
                             alt="thumbnail">
                     </div>
+                    <div class="grid grid-cols-3 gap-[14px] w-[492px]">
+                        @if ($media)
+                            @foreach ($media as $index => $m)
+                                @if ($index < 2)
+                                    <button data-modal="Modal-Gallery" data-description="{{ $m->description }}"
+                                        data-gallery="{{ asset('storage/' . $m->file_path) }}" class="relative">
+                                        <div
+                                            class="thumbnail-selection flex w-full h-[120px] shrink-0 rounded-3xl bg-desa-background overflow-hidden">
+                                            <img src="{{ asset('storage/' . $m->file_path) }}"
+                                                class="w-full h-full object-cover" alt="thumbnail">
+                                        </div>
+                                    </button>
+                                @elseif ($index == 2)
+                                    <button data-modal="Modal-Gallery" data-description="{{ $m->description }}"
+                                        data-gallery="{{ asset('storage/' . $m->file_path) }}" class="relative">
+                                        <div
+                                            class="thumbnail-selection flex w-full h-[120px] shrink-0 rounded-3xl bg-desa-background overflow-hidden">
+                                            <img src="{{ asset('storage/' . $m->file_path) }}"
+                                                class="w-full h-full object-cover" alt="thumbnail">
+                                        </div>
+                                        @if ($media->count() > 3)
+                                            <div
+                                                class="absolute inset-0 rounded-3xl overflow-hidden flex flex-col items-center justify-center bg-[#001B1ACC] text-white">
+                                                <p class="font-semibold text-xl leading-6">
+                                                    +{{ $media->count() - 2 }}
+                                                </p>
+                                                <p class="font-semibold text-sm text-white">Photo</p>
+                                            </div>
+                                        @endif
+                                    </button>
+                                @endif
+                            @endforeach
+                        @endif
+                    </div>
+
                 </div>
+
                 <div class="flex flex-col gap-3">
                     <p class="font-medium text-sm text-desa-secondary">Tentang Desa</p>
-                    <p class="font-medium leading-8">Desa Angga Countryside terletak di kaki gunung 🏔️ dengan
-                        udara sejuk dan pemandangan sawah yang hijau 🌿. Warganya ramah dan masih menjaga
-                        tradisi gotong-royong. Penghasilan utama desa ini adalah padi 🍚, kopi ☕, dan kerajinan
-                        anyaman bambu 🎋. Desa ini juga memiliki wisata alam seperti air terjun kecil 💧 dan
-                        jalur tracking.</p>
+                    <p class="font-medium leading-8">{{ get_profile('description') }}</p>
                 </div>
+
                 <div class="flex flex-col gap-3">
                     <p class="font-medium text-sm text-desa-secondary">Peta Desa</p>
                     <div class="rounded-2xl overflow-hidden max-w-full w-full !h-[350px]">
@@ -56,9 +91,7 @@
                         </div>
 
                     </div>
-                    <p class="font-medium text-sm leading-[28px] text-desa-secondary"> Jl. Raya Penibung, Desa Penibung,
-                        Kecamatan Mempawah Hilir, Kabupaten Mempawah, Provinsi Kalimantan Barat, Indonesia —
-                        Kode Pos 78919</p>
+                    <p class="font-medium text-sm leading-[28px] text-desa-secondary">{{ get_profile('location') }} </p>
                 </div>
             </section>
             <section id="Detail-Desa" class="flex flex-col flex-1 h-fit shrink-0 rounded-3xl p-6 gap-6 bg-white">
@@ -66,11 +99,15 @@
                 <div class="flex flex-col gap-[14px]">
                     <div class="flex items-center gap-3 w-[302px] shrink-0">
                         <div class="flex size-[54px] rounded-full bg-desa-foreshadow overflow-hidden">
-                            <img src="{{ asset('assets/') }}/images/photos/kepalaDesa.jpg"
-                                class="w-full h-full object-cover" alt="icon">
+                            <img src="{{ get_profile('kepala_desa_profil')
+                                ? asset('storage/' . get_profile('kepala_desa_profil'))
+                                : asset('assets/images/photos/kepalaDesa.jpg') }}"
+                                class="w-full h-full object-cover" alt="Foto Kepala Desa">
+
                         </div>
                         <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5 text-desa-black">Evi Junita S.Pd.I</p>
+                            <p class="font-semibold text-lg leading-5 text-desa-black">
+                                {{ get_profile('kepala_desa_name') }}</p>
                             <p class="flex items-center gap-1">
                                 <span class="font-medium text-sm text-desa-secondary">Kepala Desa</span>
                             </p>
@@ -80,11 +117,12 @@
                     <div class="flex items-center gap-3 w-[302px] shrink-0">
                         <div
                             class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden">
-                            <img src="assets/images/icons/profile-2user-dark-green.svg" class="flex size-6 shrink-0"
-                                alt="icon">
+                            <img src="{{ asset('assets/') }}/images/icons/profile-2user-dark-green.svg"
+                                class="flex size-6 shrink-0" alt="icon">
                         </div>
                         <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5">243.000</p>
+                            <p class="font-semibold text-lg leading-5">
+                                {{ number_format(get_statistik('jml_penduduk'), 0, ',', '.') }}</p>
                             <p class="font-medium text-sm text-desa-secondary">Jumlah Penduduk</p>
                         </div>
                     </div>
@@ -92,11 +130,12 @@
                     <div class="flex items-center gap-3 w-[302px] shrink-0">
                         <div
                             class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden">
-                            <img src="assets/images/icons/profile-2user-dark-green.svg" class="flex size-6 shrink-0"
-                                alt="icon">
+                            <img src="{{ asset('assets/') }}/images/icons/profile-2user-dark-green.svg"
+                                class="flex size-6 shrink-0" alt="icon">
                         </div>
                         <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5">3</p>
+                            <p class="font-semibold text-lg leading-5">
+                                {{ number_format(get_dusun()->count()), 0, ',', '.' }}</p>
                             <p class="font-medium text-sm text-desa-secondary">Jumlah Dusun</p>
                         </div>
                     </div>
@@ -104,11 +143,11 @@
                     <div class="flex items-center gap-3 w-[302px] shrink-0">
                         <div
                             class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden">
-                            <img src="assets/images/icons/profile-2user-dark-green.svg" class="flex size-6 shrink-0"
-                                alt="icon">
+                            <img src="{{ asset('assets/') }}/images/icons/profile-2user-dark-green.svg"
+                                class="flex size-6 shrink-0" alt="icon">
                         </div>
                         <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5">8</p>
+                            <p class="font-semibold text-lg leading-5">{{ number_format(sum_rw(), 0, ',', '.') }}</p>
                             <p class="font-medium text-sm text-desa-secondary">Jumlah RW</p>
                         </div>
                     </div>
@@ -116,11 +155,11 @@
                     <div class="flex items-center gap-3 w-[302px] shrink-0">
                         <div
                             class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden">
-                            <img src="assets/images/icons/profile-2user-dark-green.svg" class="flex size-6 shrink-0"
-                                alt="icon">
+                            <img src="{{ asset('assets/') }}/images/icons/profile-2user-dark-green.svg"
+                                class="flex size-6 shrink-0" alt="icon">
                         </div>
                         <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5">16</p>
+                            <p class="font-semibold text-lg leading-5">{{ number_format(sum_rt(), 0, ',', '.') }}</p>
                             <p class="font-medium text-sm text-desa-secondary">Jumlah RT</p>
                         </div>
                     </div>
@@ -128,11 +167,11 @@
                     <div class="flex items-center gap-3 w-[302px] shrink-0">
                         <div
                             class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden">
-                            <img src="assets/images/icons/tree-dark-green.svg" class="flex size-6 shrink-0"
-                                alt="icon">
+                            <img src="{{ asset('assets/') }}/images/icons/tree-dark-green.svg"
+                                class="flex size-6 shrink-0" alt="icon">
                         </div>
                         <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5">25.200m<sup>2</sup></p>
+                            <p class="font-semibold text-lg leading-5">{{ get_profile('luas_petanian') }}m<sup>2</sup></p>
                             <p class="font-medium text-sm text-desa-secondary">Luas Pertanian</p>
                         </div>
                     </div>
@@ -140,11 +179,11 @@
                     <div class="flex items-center gap-3 w-[302px] shrink-0">
                         <div
                             class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden">
-                            <img src="assets/images/icons/grid-5-dark-green.svg" class="flex size-6 shrink-0"
-                                alt="icon">
+                            <img src="{{ asset('assets/') }}/images/icons/grid-5-dark-green.svg"
+                                class="flex size-6 shrink-0" alt="icon">
                         </div>
                         <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5">9.222.500m<sup>2</sup></p>
+                            <p class="font-semibold text-lg leading-5">{{ get_profile('luas_area') }}m<sup>2</sup></p>
                             <p class="font-medium text-sm text-desa-secondary">Luas Area</p>
                         </div>
                     </div>
@@ -152,8 +191,8 @@
                     <div class="flex items-center gap-3 w-[302px] shrink-0">
                         <div
                             class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden">
-                            <img src="assets/images/icons/calendar-2-dark-green.svg" class="flex size-6 shrink-0"
-                                alt="icon">
+                            <img src="{{ asset('assets/') }}/images/icons/calendar-2-dark-green.svg"
+                                class="flex size-6 shrink-0" alt="icon">
                         </div>
                         <div class="flex flex-col gap-1">
                             <p class="font-semibold text-lg leading-5">Mon, 24 Feb 2012</p>
@@ -165,12 +204,10 @@
         </div>
     </div>
 
-
-    
     <div id="Modal-Gallery" class="modal fixed inset-0 flex flex-col h-screen z-40 hidden bg-[#080C1ACC]">
         <div class="flex flex-col items-center justify-center m-auto">
             <div id="Main-Image-Container" class="flex aspect-[805/492] w-full max-w-[805px] overflow-hidden mx-auto">
-                <img id="Selected-Image" src="assets/images/thumbnails/desa-gallery-1.png"
+                <img id="Selected-Image" src="{{ asset('assets/') }}/images/thumbnails/thumbnail.png"
                     class="size-full object-contain object-center" alt="thumbnail">
             </div>
             <button
@@ -178,48 +215,22 @@
                 <img src="assets/images/icons/close-circle-white.svg" class="flex size-6 shrink-0" alt="icon">
                 <p class="font-medium leading-5 text-white">Tutup</p>
             </button>
+            <p id="description" class="font-semibold text-lg mt-4 leading-5 text-white">Deskripsi</p>
         </div>
         <div class="flex flex-wrap items-center w-full border border-white/10 gap-4 p-4">
-            <button data-image="assets/images/thumbnails/desa-gallery-1.png"
-                class="group relative flex w-[140px] h-[120px] shrink-0 rounded-3xl bg-desa-background overflow-hidden active">
-                <img src="assets/images/thumbnails/desa-gallery-1.png"
-                    class="size-full object-cover group-[.active]:blur" alt="thumbnail">
-                <img src="assets/images/icons/eye-white-fill.svg"
-                    class="absolute hidden size-9 shrink-0 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 group-[.active]:flex"
-                    alt="icon">
-            </button>
-            <button data-image="assets/images/thumbnails/desa-gallery-2.png"
-                class="group relative flex w-[140px] h-[120px] shrink-0 rounded-3xl bg-desa-background overflow-hidden">
-                <img src="assets/images/thumbnails/desa-gallery-2.png"
-                    class="size-full object-cover group-[.active]:blur" alt="thumbnail">
-                <img src="assets/images/icons/eye-white-fill.svg"
-                    class="absolute hidden size-9 shrink-0 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 group-[.active]:flex"
-                    alt="icon">
-            </button>
-            <button data-image="assets/images/thumbnails/desa-gallery-3.png"
-                class="group relative flex w-[140px] h-[120px] shrink-0 rounded-3xl bg-desa-background overflow-hidden">
-                <img src="assets/images/thumbnails/desa-gallery-3.png"
-                    class="size-full object-cover group-[.active]:blur" alt="thumbnail">
-                <img src="assets/images/icons/eye-white-fill.svg"
-                    class="absolute hidden size-9 shrink-0 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 group-[.active]:flex"
-                    alt="icon">
-            </button>
-            <button data-image="assets/images/thumbnails/desa-gallery-4.png"
-                class="group relative flex w-[140px] h-[120px] shrink-0 rounded-3xl bg-desa-background overflow-hidden">
-                <img src="assets/images/thumbnails/desa-gallery-4.png"
-                    class="size-full object-cover group-[.active]:blur" alt="thumbnail">
-                <img src="assets/images/icons/eye-white-fill.svg"
-                    class="absolute hidden size-9 shrink-0 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 group-[.active]:flex"
-                    alt="icon">
-            </button>
-            <button data-image="assets/images/thumbnails/desa-gallery-5.png"
-                class="group relative flex w-[140px] h-[120px] shrink-0 rounded-3xl bg-desa-background overflow-hidden">
-                <img src="assets/images/thumbnails/desa-gallery-5.png"
-                    class="size-full object-cover group-[.active]:blur" alt="thumbnail">
-                <img src="assets/images/icons/eye-white-fill.svg"
-                    class="absolute hidden size-9 shrink-0 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 group-[.active]:flex"
-                    alt="icon">
-            </button>
+            @if ($media)
+                @foreach ($media as $m)
+                    <button data-image="{{ asset('storage/' . $m->file_path) }}"
+                        class="group relative flex w-[140px] h-[120px] shrink-0 rounded-3xl bg-desa-background overflow-hidden active">
+                        <img src="{{ asset('storage/' . $m->file_path) }}"
+                            class="size-full object-cover group-[.active]:blur" alt="thumbnail">
+                        <img src="assets/images/icons/eye-white-fill.svg"
+                            class="absolute hidden size-9 shrink-0 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 group-[.active]:flex"
+                            alt="icon">
+
+                    </button>
+                @endforeach
+            @endif
         </div>
     </div>
 @endsection

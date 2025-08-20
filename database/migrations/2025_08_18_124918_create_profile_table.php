@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('profile', function (Blueprint $table) {
             $table->id();
-            $table->string('kepala_desa_name');
-            $table->string('kepala_desa_profil');
-            $table->string('jml_penduduk');
-            $table->string('luas_petanian');
-            $table->string('luas_area');
-            $table->string('tgl_desa_dibangun');
+            $table->string('desa_name')->nullable();
+            $table->text('location')->nullable();
+            $table->string('kepala_desa_name')->nullable();
+            $table->string('kepala_desa_profil')->nullable();
+            $table->string('luas_petanian')->nullable();
+            $table->string('luas_area')->nullable();
+            $table->string('tgl_desa_dibangun')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

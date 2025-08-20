@@ -1,40 +1,37 @@
 document.addEventListener("DOMContentLoaded", function () {
-
     const mainImage = document.getElementById("Selected-Image");
-    const galleryButtons = document.querySelectorAll("[data-gallery]");
-    const modalGalleryButtons = document.querySelectorAll("[data-image]");
+    const description = document.getElementById("description");
 
-    // When clicking a thumbnail outside the modal
+    const galleryButtons = document.querySelectorAll("[data-gallery]"); 
+    const modalGalleryButtons = document.querySelectorAll("[data-image]"); 
+
     galleryButtons.forEach(button => {
         button.addEventListener("click", function () {
             const imageSrc = this.getAttribute("data-gallery");
+            const imageDesc = this.getAttribute("data-description");
 
-            // Set the modal's main image to the clicked thumbnail
             mainImage.src = imageSrc;
+            description.textContent = imageDesc || "Tidak ada deskripsi";
 
-            // Remove .active from all modal thumbnails
             modalGalleryButtons.forEach(btn => btn.classList.remove("active"));
 
-            // Find the matching button inside the modal and set it active
             const matchingButton = Array.from(modalGalleryButtons).find(btn => btn.getAttribute("data-image") === imageSrc);
             if (matchingButton) {
                 matchingButton.classList.add("active");
+                description.textContent = matchingButton.getAttribute("data-description") || imageDesc || "Tidak ada deskripsi";
             }
         });
     });
 
-    // When clicking a thumbnail inside the modal
     modalGalleryButtons.forEach(button => {
         button.addEventListener("click", function () {
             const imageSrc = this.getAttribute("data-image");
+            const imageDesc = this.getAttribute("data-description");
 
-            // Update the main image in the modal
             mainImage.src = imageSrc;
+            description.textContent = imageDesc || "Tidak ada deskripsi";
 
-            // Remove .active from all buttons inside the modal
             modalGalleryButtons.forEach(btn => btn.classList.remove("active"));
-
-            // Add .active to the clicked button
             this.classList.add("active");
         });
     });

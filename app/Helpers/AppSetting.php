@@ -1,4 +1,5 @@
 <?php
+// Statistik
 if (!function_exists('get_statistik')) {
     function get_statistik($key)
     {
@@ -28,5 +29,14 @@ if (!function_exists('sum_rw')) {
         return \App\Models\Dusun::pluck('jml_rw')
             ->map(fn($rw) => (int) $rw)
             ->sum();
+    }
+}
+
+// Profile
+if (!function_exists('get_profile')) {
+    function get_profile($key)
+    {
+        $profile = \App\Models\Profile::first();
+        return $profile ? $profile->$key : null;
     }
 }

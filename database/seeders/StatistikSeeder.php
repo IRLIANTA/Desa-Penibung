@@ -13,10 +13,19 @@ class StatistikSeeder extends Seeder
      */
     public function run(): void
     {
-          Statistik::create ([
-            'jml_penduduk' => 0,
-            'pembangunan' => 0,
-            'jml_rumah' => 0,
-        ]);
+
+        Statistik::updateOrInsert(
+            ['id' => 1],
+            [
+                'jml_penduduk' => 0,
+                'pembangunan' => 0,
+                'jml_rumah' => 0,
+                'jml_pria' => 0,
+                'jml_wanita' => 0,
+                'jml_kepala_keluarga' => 0,
+                'jml_kk' => 0,
+                'pembangunan' => 0,
+            ]
+        );
     }
 }

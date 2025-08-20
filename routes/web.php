@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\StatistikController;
 use App\Http\Controllers\Admin\DevelopmentController;
 use App\Http\Controllers\Admin\KepalaRumahController;
+use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\SocialAssistanceController;
 
 Route::prefix('dashboard')->group(function () {
@@ -40,9 +41,12 @@ Route::prefix('/kepala_rumah')->group(function () {
     Route::get('/manage', [KepalaRumahController::class, 'manage'])->name('kepalaRumah.manage');
 });
 
-Route::prefix('/')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+Route::prefix('/profile')->group(function () {
+    Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
     Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/update', [ProfileController::class, 'update'])->name('profile.update');
+    // Media
+    Route::post('/storefoto', [MediaController::class, 'store'])->name('profile.media.store');
 });
 
 Route::prefix('/user')->group(function () {
