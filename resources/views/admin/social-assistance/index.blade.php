@@ -3,11 +3,14 @@
     <div id="Content" class="relative flex flex-col flex-1 gap-6 p-6 pb-[30px] w-full shrink-0">
         <div id="Header" class="flex items-center justify-between">
             <h1 class="font-semibold text-2xl">List Bantuan Sosial</h1>
-            <a href="{{ route('social-assistance.create') }}"
-                class="flex items-center rounded-2xl py-4 px-6 gap-[10px] bg-desa-dark-green">
-                <img src="{{ asset('/assets') }}/images/icons/add-square-white.svg" class="flex size-6 shrink-0" alt="icon">
-                <p class="font-medium text-white">Add New</p>
-            </a>
+                    @auth
+                        
+                    <a href="{{ route('social-assistance.create') }}"
+                    class="flex items-center rounded-2xl py-4 px-6 gap-[10px] bg-desa-dark-green">
+                    <img src="{{ asset('/assets') }}/images/icons/add-square-white.svg" class="flex size-6 shrink-0" alt="icon">
+                    <p class="font-medium text-white">Add New</p>
+                </a>
+                @endauth
         </div>
         <section id="List-Bantuan-Sosial" class="flex flex-col gap-[14px]">
             <form id="Page-Search" class="flex items-center justify-between">
@@ -55,7 +58,10 @@
                             alt="photo">
                     </div>
                     <div class="flex flex-col gap-[6px] w-full ml-4 mr-9">
-                        <p class="font-semibold text-lg leading-[22.5px] line-clamp-1">Bantuan Untuk Rakyat Kurang Mampu</p>
+                        <a href="{{ route('social-assistance.manage') }}">
+
+                            <p class="font-semibold text-lg leading-[22.5px] line-clamp-1">Bantuan Untuk Rakyat Kurang Mampu</p>
+                        </a>
                         <p class="flex items-center gap-1">
                             <img src="{{ asset('/assets') }}/images/icons/profile-secondary-green.svg" class="flex size-[18px] shrink-0"
                                 alt="icon">

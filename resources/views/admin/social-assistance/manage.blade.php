@@ -4,24 +4,30 @@
         <div id="Header" class="flex items-center justify-between">
             <div class="flex flex-col gap-2">
                 <div class="flex gap-1 items-center leading-5 text-desa-secondary">
-                    <p class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize ">Bantuan sosial</p>
+                    <a href="{{route('social-assistance.index')}}" class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize ">
+
+                        <p>Bantuan sosial</p>
+                    </a>
                     <span>/</span>
                     <p class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize ">Manage bantuan sosial
                     </p>
                 </div>
                 <h1 class="font-semibold text-2xl">Manage Bantuan Sosial</h1>
             </div>
+            @auth
+                
             <div class="flex items-center gap-3">
                 <button data-modal="Modal-Delete" class="flex items-center rounded-2xl py-4 px-6 gap-[10px] bg-desa-red">
                     <p class="font-medium text-white">Hapus Data</p>
                     <img src="{{ asset('/assets') }}/images/icons/trash-white.svg" class="flex size-6 shrink-0" alt="icon">
                 </button>
                 <a href="{{ route('social-assistance.edit') }}"
-                    class="flex items-center rounded-2xl py-4 px-6 gap-[10px] bg-desa-black">
-                    <p class="font-medium text-white">Ubah Data</p>
-                    <img src="{{ asset('/assets') }}/images/icons/edit-white.svg" class="flex size-6 shrink-0" alt="icon">
-                </a>
-            </div>
+                class="flex items-center rounded-2xl py-4 px-6 gap-[10px] bg-desa-black">
+                <p class="font-medium text-white">Ubah Data</p>
+                <img src="{{ asset('/assets') }}/images/icons/edit-white.svg" class="flex size-6 shrink-0" alt="icon">
+            </a>
+        </div>
+        @endauth
         </div>
 
         {{-- Full Width Section --}}

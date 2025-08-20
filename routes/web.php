@@ -4,31 +4,35 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\StatistikController;
 use App\Http\Controllers\Admin\DevelopmentController;
 use App\Http\Controllers\Admin\KepalaRumahController;
 use App\Http\Controllers\Admin\SocialAssistanceController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
-
-use App\Http\Controllers\User\ProfileController as UserProfileController;
-use App\Http\Controllers\User\DashboardController as UserDashboardController;
-use App\Http\Controllers\User\SocialAssistanceController as UserSocialAssistanceController;
-use App\Http\Controllers\User\DevelopmentController as UserDevelopmentController;
-use App\Http\Controllers\User\EventController as UserEventController;
-
+Route::middleware('auth')->group(function () {
+    Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+    Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+});
 
 Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/editinfo', [DashboardController::class, 'edit'])->name('dashboard.editinfo');
     Route::get('/editdusun', [DashboardController::class, 'update'])->name('dashboard.editdusun');
     Route::get('/ubah', [DashboardController::class, 'ubah'])->name('dashboard.ubah');
+    // Statistik
+    Route::put('/updatestatistik', [StatistikController::class, 'updateStatistik'])->name('dashboard.updatestatistik');
+    // penduduk
+    Route::put('/updatependuduk', [StatistikController::class, 'updatePenduduk'])->name('dashboard.updatependuduk');
+    // dusun
+    Route::post('/storedusun', [DashboardController::class, 'storeDusun'])->name('dashboard.storedusun');
 });
 
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 
 Route::prefix('/kepala_rumah')->group(function () {
@@ -71,6 +75,3 @@ Route::prefix('/event')->group(function () {
     Route::get('/manage/{id}', [EventController::class, 'manage'])->name('event.manage');
     Route::post('/store', [EventController::class, 'store'])->name('event.store');
 });
-
-
-require __DIR__.'/auth.php';

@@ -37,8 +37,10 @@
     <script src="{{ asset('assets/') }}/js/accordion.js"></script>
     <script src="{{ asset('assets/') }}/js/tab-content.js"></script>
     <script src="{{ asset('assets/') }}/js/modal.js"></script>
+    <script src="{{ asset('assets/') }}/js/modal-gallery.js"></script>
     <script src="{{ asset('assets/') }}/js/submit-form.js"></script>
     <script src="{{ asset('assets/') }}/js/multiple-image-input.js"></script>
+    @stack('scripts')
 </body>
 
 </html>
