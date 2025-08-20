@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Laporan</title>
+   <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        .table-container {
+            background: white;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .btn-primary {
+            background: #3b82f6;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+        
+        .btn-success {
+            background: #10b981;
+        }
+        
+        .btn-success:hover {
+            background: #059669;
+        }
+        
+        .btn-warning {
+            background: #f59e0b;
+        }
+        
+        .btn-warning:hover {
+            background: #d97706;
+        }
+        
+        .btn-danger {
+            background: #ef4444;
+        }
+        
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+        
+        .status-badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+        }
+        
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .status-proses {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        
+        .status-selesai {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .modal {
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .table-responsive {
+                overflow-x: auto;
+            }
+            
+            .table-responsive table {
+                min-width: 800px;
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">Data Laporan</h1>
+            <p class="text-gray-600">Kelola semua laporan yang masuk dari masyarakat</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-600">Total Laporan</p>
+                        <p class="text-2xl font-bold text-gray-800" id="totalLaporan">0</p>
+                    </div>
+                    <div class="bg-blue-100 p-3 rounded-full">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-600">Belum Dibaca</p>
+                        <p class="text-2xl font-bold text-red-600" id="belumDibacaCount">0</p>
+                    </div>
+                    <div class="bg-red-100 p-3 rounded-full">
+                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-600">Sudah Dibaca</p>
+                        <p class="text-2xl font-bold text-blue-600" id="sudahDibacaCount">0</p>
+                    </div>
+                    <div class="bg-blue-100 p-3 rounded-full">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-600">Sudah Diselesaikan</p>
+                        <p class="text-2xl font-bold text-green-600" id="sudahDiselesaikanCount">0</p>
+                    </div>
+                    <div class="bg-green-100 p-3 rounded-full">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter & Search -->
+        <div class="bg-white rounded-lg shadow p-6 mb-8">
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="flex-1">
+                    <input type="text" id="searchInput" placeholder="Cari nama atau isi laporan..."
+                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:border-blue-500 outline-none">
+                </div>
+                <div>
+                    <select id="statusFilter" class="border border-gray-300 rounded-lg px-4 py-2 focus:border-blue-500 outline-none">
+                        <option value="">Semua Status</option>
+                        <option value="pending">Pending</option>
+                        <option value="proses">Diproses</option>
+                        <option value="selesai">Selesai</option>
+                    </select>
+                </div>
+                <div>
+                    <button onclick="exportData()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                        Export Excel
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-container rounded-lg shadow">
+            <div class="table-responsive">
+                <table class="min-w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Alamat</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">WhatsApp</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Isi Laporan</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody" class="bg-white divide-y divide-gray-200">
+                        <!-- Data akan dimuat di sini -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex items-center justify-between mt-6">
+            <div class="text-sm text-gray-700">
+                Menampilkan <span id="showingStart">0</span> sampai <span id="showingEnd">0</span> dari <span id="totalRows">0</span> data
+            </div>
+            <div class="flex space-x-2" id="pagination">
+                <!-- Pagination buttons akan dimuat di sini -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Detail -->
+    <div id="detailModal" class="fixed inset-0 modal flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-8 m-4 max-w-2xl w-full max-h-screen overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-semibold text-gray-800">Detail Laporan</h3>
+                <button onclick="closeModal('detailModal')" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="detailContent">
+                <!-- Detail content akan dimuat di sini -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Edit Status -->
+    <div id="statusModal" class="fixed inset-0 modal flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-8 m-4 max-w-md w-full">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-semibold text-gray-800">Ubah Status</h3>
+                <button onclick="closeModal('statusModal')" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Status Baru</label>
+                <select id="newStatus" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:border-blue-500 outline-none">
+                    <option value="pending">Pending</option>
+                    <option value="proses">Diproses</option>
+                    <option value="selesai">Selesai</option>
+                </select>
+            </div>
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Catatan (Opsional)</label>
+                <textarea id="statusNote" rows="3" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:border-blue-500 outline-none" placeholder="Tambahkan catatan..."></textarea>
+            </div>
+            <div class="flex space-x-4">
+                <button onclick="closeModal('statusModal')" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
+                    Batal
+                </button>
+                <button onclick="updateStatus()" class="flex-1 btn-primary px-4 py-2 rounded-lg text-white">
+                    Simpan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Konfirmasi Hapus -->
+    <div id="deleteModal" class="fixed inset-0 modal flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-8 m-4 max-w-md w-full">
+            <div class="mb-6">
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 mb-4">
+                    <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900 text-center mb-2">Hapus Laporan</h3>
+                <p class="text-sm text-gray-500 text-center">Apakah Anda yakin ingin menghapus laporan ini? Tindakan ini tidak dapat dibatalkan.</p>
+            </div>
+            <div class="flex space-x-4">
+                <button onclick="closeModal('deleteModal')" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
+                    Batal
+                </button>
+                <button onclick="confirmDelete()" class="flex-1 btn-danger px-4 py-2 rounded-lg text-white">
+                    Hapus
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data dummy untuk demo
+        let laporanData = [
+            {
+                id: 1,
+                nama: "Ahmad Susanto",
+                alamat: "Jl. Merdeka No. 123, Jakarta",
+                whatsapp: "081234567890",
+                isi_laporan: "Lampu jalan di depan rumah sudah mati sejak 3 hari yang lalu. Mohon segera diperbaiki karena mengganggu aktivitas malam hari.",
+                tanggal: "2024-01-15",
+                status: "pending"
+            },
+            {
+                id: 2,
+                nama: "Siti Rahayu",
+                alamat: "Jl. Sudirman No. 456, Bandung",
+                whatsapp: "082345678901",
+                isi_laporan: "Jalan berlubang besar di depan sekolah sangat berbahaya untuk anak-anak. Sudah ada yang terjatuh kemarin.",
+                tanggal: "2024-01-14",
+                status: "proses"
+            },
+            {
+                id: 3,
+                nama: "Budi Santoso",
+                alamat: "Jl. Gatot Subroto No. 789, Surabaya",
+                whatsapp: "083456789012",
+                isi_laporan: "Pelayanan di kantor desa sangat lambat. Mengurus surat keterangan saja sampai 3 jam.",
+                tanggal: "2024-01-13",
+                status: "selesai"
+            },
+            {
+                id: 4,
+                nama: "Maya Sari",
+                alamat: "Jl. Diponegoro No. 321, Yogyakarta",
+                whatsapp: "084567890123",
+                isi_laporan: "Tempat sampah di taman kota penuh dan tidak pernah diangkut. Bau tidak sedap dan mengganggu.",
+                tanggal: "2024-01-12",
+                status: "pending"
+            },
+            {
+                id: 5,
+                nama: "Eko Prasetyo",
+                alamat: "Jl. Ahmad Yani No. 654, Malang",
+                whatsapp: "085678901234",
+                isi_laporan: "Website desa sering error dan tidak bisa diakses. Mohon diperbaiki agar informasi bisa diakses masyarakat.",
+                tanggal: "2024-01-11",
+                status: "proses"
+            }
+        ];
+
+        let currentPage = 1;
+        let rowsPerPage = 10;
+        let filteredData = [...laporanData];
+        let selectedId = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderTable();
+            updateStats();
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            // Search
+            document.getElementById('searchInput').addEventListener('input', function() {
+                currentPage = 1;
+                filterData();
+            });
+
+            // Status filter
+            document.getElementById('statusFilter').addEventListener('change', function() {
+                currentPage = 1;
+                filterData();
+            });
+        }
+
+        function filterData() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const statusFilter = document.getElementById('statusFilter').value;
+
+            filteredData = laporanData.filter(item => {
+                const matchSearch = item.nama.toLowerCase().includes(searchTerm) || 
+                                  item.isi_laporan.toLowerCase().includes(searchTerm);
+                const matchStatus = !statusFilter || item.status === statusFilter;
+                
+                return matchSearch && matchStatus;
+            });
+
+            renderTable();
+            updateStats();
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('tableBody');
+            const start = (currentPage - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            const pageData = filteredData.slice(start, end);
+
+            tbody.innerHTML = pageData.map((item, index) => `
+                <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${start + index + 1}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${item.nama}</div>
+                    </td>
+                    <td class="px-6 py-4">
+                        <div class="text-sm text-gray-900 max-w-xs truncate">${item.alamat}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <a href="https://wa.me/${item.whatsapp}" target="_blank" class="text-sm text-blue-600 hover:text-blue-800">
+                            ${item.whatsapp}
+                        </a>
+                    </td>
+                    <td class="px-6 py-4">
+                        <div class="text-sm text-gray-900 max-w-xs truncate">${item.isi_laporan}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        ${formatDate(item.tanggal)}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        ${getStatusBadge(item.status)}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm space-x-2">
+                        <button onclick="showDetail(${item.id})" class="text-blue-600 hover:text-blue-800 font-medium">
+                            Lihat
+                        </button>
+                        <button onclick="editStatus(${item.id})" class="text-yellow-600 hover:text-yellow-800 font-medium">
+                            Edit
+                        </button>
+                        <button onclick="deleteItem(${item.id})" class="text-red-600 hover:text-red-800 font-medium">
+                            Hapus
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+
+            renderPagination();
+        }
+
+        function getStatusBadge(status) {
+            const badges = {
+                pending: '<span class="status-badge status-pending">Pending</span>',
+                proses: '<span class="status-badge status-proses">Diproses</span>',
+                selesai: '<span class="status-badge status-selesai">Selesai</span>'
+            };
+            return badges[status] || badges.pending;
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('id-ID', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+        }
+
+        function renderPagination() {
+            const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+            const pagination = document.getElementById('pagination');
+            
+            let paginationHTML = '';
+            
+            // Previous button
+            if (currentPage > 1) {
+                paginationHTML += `<button onclick="changePage(${currentPage - 1})" class="px-3 py-2 text-sm bg-white border border-gray-300 rounded-lg hover:bg-gray-50">Prev</button>`;
+            }
+            
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === currentPage) {
+                    paginationHTML += `<button class="px-3 py-2 text-sm bg-blue-600 text-white border border-blue-600 rounded-lg">${i}</button>`;
+                } else {
+                    paginationHTML += `<button onclick="changePage(${i})" class="px-3 py-2 text-sm bg-white border border-gray-300 rounded-lg hover:bg-gray-50">${i}</button>`;
+                }
+            }
+            
+            // Next button
+            if (currentPage < totalPages) {
+                paginationHTML += `<button onclick="changePage(${currentPage + 1})" class="px-3 py-2 text-sm bg-white border border-gray-300 rounded-lg hover:bg-gray-50">Next</button>`;
+            }
+            
+            pagination.innerHTML = paginationHTML;
+            
+            // Update showing info
+            const start = (currentPage - 1) * rowsPerPage + 1;
+            const end = Math.min(currentPage * rowsPerPage, filteredData.length);
+            document.getElementById('showingStart').textContent = start;
+            document.getElementById('showingEnd').textContent = end;
+            document.getElementById('totalRows').textContent = filteredData.length;
+        }
+
+        function changePage(page) {
+            currentPage = page;
+            renderTable();
+        }
+
+        function updateStats() {
+            const total = laporanData.length;
+            const pending = laporanData.filter(item => item.status === 'pending').length;
+            const proses = laporanData.filter(item => item.status === 'proses').length;
+            const selesai = laporanData.filter(item => item.status === 'selesai').length;
+
+            document.getElementById('totalLaporan').textContent = total;
+            document.getElementById('pendingCount').textContent = pending;
+            document.getElementById('prosesCount').textContent = proses;
+            document.getElementById('selesaiCount').textContent = selesai;
+        }
+
+        function showDetail(id) {
+            const item = laporanData.find(item => item.id === id);
+            if (item) {
+                const content = `
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+                            <p class="mt-1 text-sm text-gray-900">${item.nama}</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Alamat</label>
+                            <p class="mt-1 text-sm text-gray-900">${item.alamat}</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">WhatsApp</label>
+                            <p class="mt-1 text-sm text-gray-900">
+                                <a href="https://wa.me/${item.whatsapp}" target="_blank" class="text-blue-600 hover:text-blue-800">
+                                    ${item.whatsapp}
+                                </a>
+                            </p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Isi Laporan</label>
+                            <p class="mt-1 text-sm text-gray-900 leading-relaxed">${item.isi_laporan}</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Tanggal</label>
+                            <p class="mt-1 text-sm text-gray-900">${formatDate(item.tanggal)}</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Status</label>
+                            <div class="mt-1">${getStatusBadge(item.status)}</div>
+                        </div>
+                    </div>
+                `;
+                document.getElementById('detailContent').innerHTML = content;
+                document.getElementById('detailModal').classList.remove('hidden');
+            }
+        }
+
+        function editStatus(id) {
+            selectedId = id;
+            const item = laporanData.find(item => item.id === id);
+            if (item) {
+                document.getElementById('newStatus').value = item.status;
+                document.getElementById('statusNote').value = '';
+                document.getElementById('statusModal').classList.remove('hidden');
+            }
+        }
+
+        function updateStatus() {
+            if (selectedId) {
+                const newStatus = document.getElementById('newStatus').value;
+                const item = laporanData.find(item => item.id === selectedId);
+                if (item) {
+                    item.status = newStatus;
+                    renderTable();
+                    updateStats();
+                    closeModal('statusModal');
+                    alert('Status berhasil diubah!');
+                }
+            }
+        }
+
+        function deleteItem(id) {
+            selectedId = id;
+            document.getElementById('deleteModal').classList.remove('hidden');
+        }
+
+        function confirmDelete() {
+            if (selectedId) {
+                const index = laporanData.findIndex(item => item.id === selectedId);
+                if (index > -1) {
+                    laporanData.splice(index, 1);
+                    filterData();
+                    closeModal('deleteModal');
+                    alert('Laporan berhasil dihapus!');
+                }
+            }
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+            selectedId = null;
+        }
+
+        function exportData() {
+            // Simple CSV export
+            const headers = ['No', 'Nama', 'Alamat', 'WhatsApp', 'Isi Laporan', 'Tanggal', 'Status'];
+            const csvContent = [
+                headers.join(','),
+                ...filteredData.map((item, index) => [
+                    index + 1,
+                    `"${item.nama}"`,
+                    `"${item.alamat}"`,
+                    item.whatsapp,
+                    `"${item.isi_laporan}"`,
+                    item.tanggal,
+                    item.status
+                ].join(','))
+            ].join('\n');
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `data-laporan-${new Date().toISOString().split('T')[0]}.csv`;
+            link.click();
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const modals = ['detailModal', 'statusModal', 'deleteModal'];
+            modals.forEach(modalId => {
+                const modal = document.getElementById(modalId);
+                if (event.target === modal) {
+                    closeModal(modalId);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

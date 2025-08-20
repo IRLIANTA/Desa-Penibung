@@ -73,7 +73,21 @@
                                     Events Desa </span>
                             </a> </li>
                     </ul>
+                   
+                      @if (auth()->check())
+
                     <ul>
+                        <li class="group {{ request()->is('feedback','feedback/*') ? 'active' : '' }}"> <a href="{{ route('feedback.user') }}"
+                                class=" flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
+                                <div class="relative flex size-6 shrink-0"> <img
+                                        src="{{ asset('assets/') }}/images/icons/chat-bubble.svg"
+                                        class="flex size-6 shrink-0" alt="icon"> </div> <span
+                                    class="text-left leading-5 text-desa-secondary flex flex-1 group-hover:text-desa-dark-green group-[.active]:text-desa-dark-green group-[.active]:font-medium transition-setup">
+                                    Feedback User</span>
+                            </a> </li>
+                    </ul>
+                    @else
+                     <ul>
                         <li class="group {{ request()->is('feedback','feedback/*') ? 'active' : '' }}"> <a href="{{ route('feedback.index') }}"
                                 class=" flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
                                 <div class="relative flex size-6 shrink-0"> <img
@@ -83,6 +97,7 @@
                                     Feedback </span>
                             </a> </li>
                     </ul>
+                     @endif
                      @if (auth()->check())
 
                     <ul>

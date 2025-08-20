@@ -87,7 +87,12 @@ Route::prefix('/event')->group(function () {
 Route::prefix('/feedback')->group(function () {
     Route::get('/', [FeedbackController::class, 'index'])->name('feedback.index');
     Route::post('/store', [FeedbackController::class, 'store'])->name('feedback.store');
-    Route::get('/create', [FeedbackController::class, 'create'])->name('feedback.create');
+    Route::get('/user', [FeedbackController::class, 'feedbackUser'])->name('feedback.user');
+    Route::get('/getdata', [FeedbackController::class, 'getData'])->name('feedback.data');
+    Route::post('/updatestatus/{id}', [FeedbackController::class, 'updateStatus']);
+    Route::get('/widget-data', [FeedbackController::class, 'widgetData']);
+    Route::post('/{id}/mark-as-read', [FeedbackController::class, 'dibaca'])->name('feedback.markAsRead');
+
     Route::get('/edit/{id}', [FeedbackController::class, 'edit'])->name('feedback.edit');
     Route::put('/update/', [FeedbackController::class, 'update'])->name('feedback.update');
     Route::delete('/delete/{id}', [FeedbackController::class, 'destroy'])->name('feedback.destroy');
