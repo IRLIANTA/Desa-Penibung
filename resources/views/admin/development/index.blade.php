@@ -50,6 +50,7 @@
                     </button>
                 </div>
             </form>
+            
             <div
             <div class="card flex flex-col gap-6 rounded-3xl p-6 bg-white">
                 <div class="flex items-center w-full">
