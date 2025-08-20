@@ -6,11 +6,15 @@
             <div class="flex flex-col gap-2">
                 <h1 class="font-semibold text-2xl">Statistik Desa</h1>
             </div>
+
+            @if (auth()->check())
             <button data-modal="Modal-Edit-Statistik"
                 class="flex items-center rounded-2xl py-3 px-4 gap-[10px] bg-desa-yellow">
                 <p class="font-medium text-black">Ubah Statistik</p>
                 <img src="assets/images/icons/edit-black.svg" class="flex size-6 shrink-0" alt="icon">
             </button>
+            @endif
+
         </div>
         <div id="Row-1" class="flex gap-[14px]">
             <div class="flex flex-col w-[calc(389/1000*100%)] h-[358px] rounded-2xl p-6 gap-6 gradient-vertical">
@@ -103,6 +107,8 @@
                 </div>
             </section>
         </div>
+
+        @if (auth()->check())
         <div id="Header" class="flex">
             <button data-modal="Modal-Edit-Penduduk"
                 class="flex items-center  rounded-2xl py-3 px-4 gap-[10px] bg-desa-yellow">
@@ -110,6 +116,8 @@
                 <img src="assets/images/icons/edit-black.svg" class="flex size-6 shrink-0" alt="icon">
             </button>
         </div>
+        @endif
+
         <div id="Row-2" class="flex gap-[14px]">
             <section id="Statistics" class="grid grid-cols-4 gap-[14px] w-full">
                 <!-- Card 1 -->
@@ -264,10 +272,14 @@
                 <div class="flex flex-col gap-4 p-6">
                     <div class="flex items-center justify-between">
                         <p class="font-semibold text-[20px] leading-[25px]">Informasi Dusun</p>
+
+                        @if (auth()->check())
                         <a href="{{ route('dashboard.editdusun') }}"
                             class="w-[100px] rounded-full p-3 flex items-center justify-center bg-desa-yellow hover:bg-yellow-600 transition">
                             <span class="font-semibold text-xs text-black uppercase">Edit</span>
                         </a>
+                        @endif
+
                     </div>
                     @forelse ($dusun as $d)
                         <div class="card flex items-center w-full gap-3">

@@ -10,7 +10,7 @@
             <div class="flex flex-col flex-1 gap-6 overflow-y-scroll hide-scrollbar">
                 <nav class="flex flex-col gap-2 pb-12">
                     <p class="font-medium text-sm text-desa-secondary">Main Menu</p>
-                    @auth
+
                             
                     <ul>
                         <li class="group {{ request()->is('dashboard','dashboard/*') ? 'active' : '' }}"> <a href="/dashboard"
@@ -26,7 +26,7 @@
                                     Dashboard </span>
                             </a> </li>
                     </ul> <!-- Bantuan Sosial -->
-                    @endauth
+           
 
                     <ul>
                         <li class="group {{ request()->is('/') ? 'active' : '' }}"> <a href=""

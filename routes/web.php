@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\DevelopmentController;
 use App\Http\Controllers\Admin\KepalaRumahController;
 use App\Http\Controllers\Admin\SocialAssistanceController;
 
-Route::prefix('dashboard')->middleware(['auth'])->group(function () {
+Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/editdusun', [DashboardController::class, 'update'])->name('dashboard.editdusun');
     Route::get('/ubah', [DashboardController::class, 'ubah'])->name('dashboard.ubah');
@@ -44,13 +44,14 @@ Route::prefix('/user')->group(function () {
     Route::get('/', [ProfileController::class, 'index'])->name('user.profile.index');
 });
 
-
-
 Route::prefix('/social-assistance')->group(function () {
     Route::get('/', [SocialAssistanceController::class, 'index'])->name('social-assistance.index');
     Route::get('/create', [SocialAssistanceController::class, 'create'])->name('social-assistance.create');
-    Route::get('/manage', [SocialAssistanceController::class, 'manage'])->name('social-assistance.manage');
-    Route::get('/edit', [SocialAssistanceController::class, 'edit'])->name('social-assistance.edit');
+    Route::get('/edit/{id}', [SocialAssistanceController::class, 'edit'])->name('social-assistance.edit');
+    Route::put('/update/', [SocialAssistanceController::class, 'update'])->name('social-assistance.update');
+    Route::delete('/delete/{id}', [SocialAssistanceController::class, 'destroy'])->name('social-assistance.destroy');
+    Route::get('/manage/{id}', [SocialAssistanceController::class, 'manage'])->name('social-assistance.manage');
+    Route::post('/store', [SocialAssistanceController::class, 'store'])->name('social-assistance.store');
 });
 
 Route::prefix('/development')->group(function () {
@@ -69,3 +70,5 @@ Route::prefix('/event')->group(function () {
     Route::get('/manage/{id}', [EventController::class, 'manage'])->name('event.manage');
     Route::post('/store', [EventController::class, 'store'])->name('event.store');
 });
+
+require __DIR__ . '/auth.php';
