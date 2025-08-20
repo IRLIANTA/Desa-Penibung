@@ -73,6 +73,16 @@
                                     Events Desa </span>
                             </a> </li>
                     </ul>
+                    <ul>
+                        <li class="group {{ request()->is('event','event/*') ? 'active' : '' }}"> <a href="{{ route('event.index') }}"
+                                class=" flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
+                                <div class="relative flex size-6 shrink-0"> <img
+                                        src="{{ asset('assets/') }}/images/icons/bag-2-dark-green.svg"
+                                        class="flex size-6 shrink-0" alt="icon"> </div> <span
+                                    class="text-left leading-5 text-desa-secondary flex flex-1 group-hover:text-desa-dark-green group-[.active]:text-desa-dark-green group-[.active]:font-medium transition-setup">
+                                    Report </span>
+                            </a> </li>
+                    </ul>
                      @if (auth()->check())
 
                     <ul>

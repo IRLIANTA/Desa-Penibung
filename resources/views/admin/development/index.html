@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Toast Notification System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+    
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen p-4">
+    <!-- Toast Container -->
+    <div id="toast-container" class="fixed top-4 right-4 z-50 space-y-2 max-w-sm w-full toast-container">
+        <!-- Toasts akan ditambahkan di sini -->
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">
+                🍞 Modern Toast System
+            </h1>
+            <p class="text-gray-600">Simple, Modern, dan Professional Toast Notifications</p>
+        </header>
+
+        <!-- Demo Section -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-6 text-gray-800">Demo Toast</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                <button onclick="Toast.success('Operasi berhasil dilakukan!')" 
+                        class="group relative px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transform hover:scale-105 transition-all duration-200 font-medium shadow-lg hover:shadow-xl">
+                    <span class="flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Success
+                    </span>
+                </button>
+                
+                <button onclick="Toast.warning('Perhatian! Data perlu diverifikasi.')" 
+                        class="group relative px-6 py-3 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transform hover:scale-105 transition-all duration-200 font-medium shadow-lg hover:shadow-xl">
+                    <span class="flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                        </svg>
+                        Warning
+                    </span>
+                </button>
+                
+                <button onclick="Toast.danger('Error! Operasi gagal dilakukan.')" 
+                        class="group relative px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transform hover:scale-105 transition-all duration-200 font-medium shadow-lg hover:shadow-xl">
+                    <span class="flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                        Danger
+                    </span>
+                </button>
+                
+                <button onclick="Toast.info('Informasi penting untuk Anda.')" 
+                        class="group relative px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transform hover:scale-105 transition-all duration-200 font-medium shadow-lg hover:shadow-xl">
+                    <span class="flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        Info
+                    </span>
+                </button>
+            </div>
+            
+            <div class="border-t pt-6">
+                <h3 class="text-lg font-medium mb-4 text-gray-700">Advanced Examples</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <button onclick="Toast.show('Toast dengan durasi 8 detik', 'info', 8000)" 
+                            class="px-4 py-2 text-left bg-gray-50 hover:bg-gray-100 rounded-lg border transition-all duration-200 hover:shadow-md">
+                        <div class="font-medium text-gray-800">Durasi Custom</div>
+                        <div class="text-sm text-gray-600">8 detik auto-close</div>
+                    </button>
+                    
+                    <button onclick="Toast.show('Toast permanen - close manual', 'warning', 0)" 
+                            class="px-4 py-2 text-left bg-gray-50 hover:bg-gray-100 rounded-lg border transition-all duration-200 hover:shadow-md">
+                        <div class="font-medium text-gray-800">Manual Close</div>
+                        <div class="text-sm text-gray-600">Tidak hilang otomatis</div>
+                    </button>
+                    
+                    <button onclick="showMultipleToasts()" 
+                            class="px-4 py-2 text-left bg-gray-50 hover:bg-gray-100 rounded-lg border transition-all duration-200 hover:shadow-md">
+                        <div class="font-medium text-gray-800">Multiple Toast</div>
+                        <div class="text-sm text-gray-600">Tampilkan beberapa sekaligus</div>
+                    </button>
+                    
+                    <button onclick="showRandomToast()" 
+                            class="px-4 py-2 text-left bg-gray-50 hover:bg-gray-100 rounded-lg border transition-all duration-200 hover:shadow-md">
+                        <div class="font-medium text-gray-800">Random Toast</div>
+                        <div class="text-sm text-gray-600">Tipe dan pesan random</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Documentation -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-6 text-gray-800">📖 Dokumentasi</h2>
+            
+            <div class="space-y-6">
+                <!-- Basic Usage -->
+                <div>
+                    <h3 class="text-lg font-medium mb-3 text-gray-700">Basic Usage</h3>
+                    <div class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+                        <pre><code>// Metode 1: Menggunakan shorthand methods
+Toast.success('Data berhasil disimpan!');
+Toast.warning('Periksa kembali data Anda.');
+Toast.danger('Terjadi kesalahan sistem!');
+Toast.info('Update tersedia untuk aplikasi.');
+
+// Metode 2: Menggunakan method utama
+Toast.show('Pesan custom', 'success', 5000);
+
+// Parameters:
+// message: string - Pesan yang akan ditampilkan
+// type: 'success'|'warning'|'danger'|'info' - Tipe toast
+// duration: number - Durasi dalam milisekon (0 = manual close)</code></pre>
+                    </div>
+                </div>
+
+                <!-- HTML Integration -->
+                <div>
+                    <h3 class="text-lg font-medium mb-3 text-gray-700">HTML Integration</h3>
+                    <div class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+                        <pre><code>&lt;!-- 1. Tambahkan container toast --&gt;
+&lt;div id="toast-container" class="fixed top-4 right-4 z-50 space-y-2 max-w-sm w-full"&gt;&lt;/div&gt;
+
+&lt;!-- 2. Panggil dari button atau event --&gt;
+&lt;button onclick="Toast.success('Berhasil!')"&gt;Success&lt;/button&gt;
+&lt;button onclick="Toast.warning('Peringatan!')"&gt;Warning&lt;/button&gt;
+
+&lt;!-- 3. Gunakan dalam form --&gt;
+&lt;form onsubmit="handleSubmit(event)"&gt;
+  &lt;!-- form fields --&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+function handleSubmit(e) {
+  e.preventDefault();
+  // Process form...
+  Toast.success('Form berhasil dikirim!');
+}
+&lt;/script&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- Features -->
+                <div>
+                    <h3 class="text-lg font-medium mb-3 text-gray-700">✨ Features</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <div class="flex items-center text-green-600">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                4 Tipe Toast (Success, Warning, Danger, Info)
+                            </div>
+                            <div class="flex items-center text-green-600">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Animasi Modern & Smooth
+                            </div>
+                            <div class="flex items-center text-green-600">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Auto-dismiss dengan Timer Custom
+                            </div>
+                            <div class="flex items-center text-green-600">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Progress Bar Indicator
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center text-green-600">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Fully Responsive Design
+                            </div>
+                            <div class="flex items-center text-green-600">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Dark Mode Support
+                            </div>
+                            <div class="flex items-center text-green-600">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7-293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Zero Dependencies (Pure Vanilla JS)
+                            </div>
+                            <div class="flex items-center text-green-600">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Easy Integration & Customization
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-600 py-6">
+            <p>🚀 Modern Toast System - Ready to use in any project!</p>
+        </footer>
+    </div>
+
+    <script>
+        // Modern Toast Notification System
+      
+    </script>
+</body>
+</html>

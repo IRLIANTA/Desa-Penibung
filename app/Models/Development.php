@@ -9,14 +9,9 @@ class Development extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'total_dana',
-        'thumbnail',
-        'nama_projek',
-        'giver',
-        'status',
-        'tanggal_pembangunan',
-        'hari',
-        'deskripsi',
+    protected $table='developments';
+    protected $guarded = [
+
+''
     ];
 }

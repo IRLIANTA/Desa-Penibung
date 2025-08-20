@@ -158,14 +158,16 @@
             </div>
         </form>
     </div>
+    @push('scripts')
+        
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const fileInput = document.getElementById("File");
             const uploadBtn = document.getElementById("Upload");
             const photo = document.getElementById("Photo");
-
+            
             uploadBtn.addEventListener("click", () => fileInput.click());
-
+            
             fileInput.addEventListener("change", function() {
                 if (this.files && this.files[0]) {
                     const reader = new FileReader();
@@ -176,5 +178,6 @@
                 }
             });
         });
-    </script>
+        </script>
+        @endpush
 @endsection

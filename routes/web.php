@@ -57,8 +57,11 @@ Route::prefix('/social-assistance')->group(function () {
 Route::prefix('/development')->group(function () {
     Route::get('/', [DevelopmentController::class, 'index'])->name('development.index');
     Route::get('/create', [DevelopmentController::class, 'create'])->name('development.create');
-    Route::get('/manage', [DevelopmentController::class, 'manage'])->name('development.manage');
-    Route::get('/edit', [DevelopmentController::class, 'edit'])->name('development.edit');
+    Route::post('/store', [DevelopmentController::class, 'store'])->name('development.store');
+    Route::get('/manage/{id}', [DevelopmentController::class, 'manage'])->name('development.manage');
+    Route::get('/edit/{id}', [DevelopmentController::class, 'edit'])->name('development.edit');
+    Route::put('/update', [DevelopmentController::class, 'update'])->name('development.update');
+    Route::delete('/destroy{id}', [DevelopmentController::class, 'destroy'])->name('development.destroy');
 });
 
 Route::prefix('/event')->group(function () {

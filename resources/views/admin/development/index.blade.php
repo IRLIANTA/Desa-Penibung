@@ -4,12 +4,12 @@
         <div id="Header" class="flex items-center justify-between">
             <h1 class="font-semibold text-2xl">Pembangunan Desa</h1>
             @if (auth()->check())
-            <a href="{{ route('development.create') }}"
-            class="flex items-center rounded-2xl py-4 px-6 gap-[10px] bg-desa-dark-green">
-            <img src="assets/images/icons/add-square-white.svg" class="flex size-6 shrink-0" alt="icon">
-            <p class="font-medium text-white">Add New</p>
-        </a>
-        @endif
+                <a href="{{ route('development.create') }}"
+                    class="flex items-center rounded-2xl py-4 px-6 gap-[10px] bg-desa-dark-green">
+                    <img src="assets/images/icons/add-square-white.svg" class="flex size-6 shrink-0" alt="icon">
+                    <p class="font-medium text-white">Add New</p>
+                </a>
+            @endif
         </div>
         <section id="List-Pembangunan-Desa" class="flex flex-col gap-[14px]">
             <form id="Page-Search" class="flex items-center justify-between">
@@ -50,72 +50,84 @@
                     </button>
                 </div>
             </form>
-            <div
-            <div class="card flex flex-col gap-6 rounded-3xl p-6 bg-white">
-                <div class="flex items-center w-full">
-                    <div class="flex w-[100px] h-20 shrink-0 rounded-2xl overflow-hidden bg-desa-foreshadow">
-                        <img src="{{ $development->thumbnail ? asset('storage/' . $development->thumbnail) : asset('assets/images/thumbnails/placeholder.png') }}"
-                    </div>
-                    <div class="flex flex-col gap-[6px] w-full ml-4 mr-9">
-                        <a href="{{ route('development.manage') }}">
+            @forelse ($developments as $d)
+                <div class="card flex flex-col gap-6 rounded-3xl p-6 bg-white">
+                    <div class="flex items-center w-full">
+                        <div class="flex w-[100px] h-20 shrink-0 rounded-2xl overflow-hidden bg-desa-foreshadow">
+                            <img
+                                src="{{ $d->thumbnail ? asset('storage/' . $d->thumbnail) : asset('assets/images/thumbnails/placeholder.png') }}">
+                        </div>
+                        <div class="flex flex-col gap-[6px] w-full ml-4 mr-9">
+                            <a href="{{ route('development.manage', $d->id) }}">
 
-                            <p class="font-semibold text-lg leading-[22.5px] line-clamp-1">Pembangunan Jalanan Utama</p>
+                                <p class="font-semibold text-lg leading-[22.5px] line-clamp-1">{{ $d->nama_projek }}</p>
+                            </a>
+                            <div class="flex items-center gap-1">
+                                <img src="assets/images/icons/user-square-secondary-green.svg"
+                                    class="flex size-[18px] shrink-0" alt="icon">
+                                <p class="font-medium text-sm text-desa-secondary">
+
+                                    <span class="font-medium text-base text-desa-dark-green">
+                                        {{ $d->giver }}
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                                    
+
+                   <a href="{{ route('development.manage', $d->id) }}"
+                            class="flex items-center shrink-0 gap-[10px] rounded-2xl py-4 px-6 bg-desa-black">
+                            <span class="font-medium text-white">Manage</span>
                         </a>
-                        <div class="flex items-center gap-1">
-                            <img src="assets/images/icons/user-square-secondary-green.svg" class="flex size-[18px] shrink-0"
-                                alt="icon">
-                            <p class="font-medium text-sm text-desa-secondary">
-                                Penanggung Jawab:
-                                <span class="font-medium text-base text-desa-dark-green">
-                                    Uciha Asep
-                                </span>
-                            </p>
-                        </div>
                     </div>
-                    <a href="{{ route('development.manage') }}"
-                        class="flex items-center shrink-0 gap-[10px] rounded-2xl py-4 px-6 bg-desa-black">
-                        <span class="font-medium text-white">Manage</span>
-                    </a>
-                </div>
-                <hr class="border-desa-background">
-                <div class="grid grid-cols-3 gap-3">
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-red/10 overflow-hidden">
-                            <img src="assets/images/icons/wallet-3-red.svg" class="flex size-6 shrink-0" alt="icon">
+                    <hr class="border-desa-background">
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="flex size-[52px] rounded-2xl items-center justify-center  bg-desa-red/10 overflow-hidden">
+                                <img src="assets/images/icons/wallet-3-red.svg" class="flex size-6 shrink-0" alt="icon">
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <p class="font-semibold text-lg leading-5 text-desa-red">{{ $d->total_dana }}</p>
+                                <p class="font-medium text-sm text-desa-secondary">Dana Pembangunan</p>
+                            </div>
                         </div>
-                        <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5 text-desa-red">Rp499.000</p>
-                            <p class="font-medium text-sm text-desa-secondary">Dana Pembangunan</p>
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="flex size-[52px] rounded-2xl items-center justify-center {{ $d->status === 'Completed' ? 'bg-desa-foreshadow' : 'bg-desa-blue/10' }}  overflow-hidden">
+                                <img src="assets/images/icons/{{ $d->status === 'Completed' ? 'process-success.svg' : 'process-ongoing.svg' }}"
+                                    class="flex size-6 shrink-0" alt="icon">
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <p
+                                    class="font-semibold text-lg leading-5 {{ $d->status === 'Completed' ? 'text-desa-dark-green' : ' text-desa-blue' }} ">
+                                    {{ $d->status }}</p>
+                                <p class="font-medium text-sm text-desa-secondary">Status</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-blue/10 overflow-hidden">
-                            <img src="assets/images/icons/profile-2user-blue.svg" class="flex size-6 shrink-0"
-                                alt="icon">
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5 text-desa-blue">15.600 Warga</p>
-                            <p class="font-medium text-sm text-desa-secondary">Total Pelamar</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="flex size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden">
-                            <img src="assets/images/icons/calendar-2-dark-green.svg" class="flex size-6 shrink-0"
-                                alt="icon">
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5 text-desa-dark-green">Mon, 24 Feb 2025</p>
-                            <p class="font-medium text-sm text-desa-secondary">Tanggal Pelaksanaan</p>
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="flex size-[52px] rounded-2xl items-center justify-center  overflow-hidden" style="background-color: #f3f3f3;">
+                                <img src="assets/images/icons/calendar-2-black.svg" class="flex size-6 shrink-0"
+                                    alt="icon">
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <p class="font-semibold text-lg leading-5 text-desa-black">
+                                    {{ $d->tanggal_pembangunan ? \Carbon\Carbon::parse($d->tanggal_pembangunan)->format('D, d M Y') : '-' }}
+
+                                </p>
+                                <p class="font-medium text-sm text-desa-secondary">Tanggal Pelaksanaan</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @empty
+            @endforelse
         </section>
         <nav id="Pagination">
             <ul class="flex items-center gap-3">
+                {{ $developments->links() }}
+
                 <li class="group">
                     <button type="button" disabled
                         class="group/arrow flex size-11 shrink-0 items-center justify-center rounded-full bg-desa-foreshadow disabled:!bg-desa-foreshadow group-hover:bg-desa-dark-green transition-setup">

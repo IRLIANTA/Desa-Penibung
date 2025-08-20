@@ -12,7 +12,19 @@
                 <h1 class="font-semibold text-2xl">Ubah Pembangunan Desa</h1>
             </div>
         </div>
-        <form action="kd-bantuan-sosial.html" id="myForm" class="capitalize">
+        @if ($errors->any())
+            <div class="mb-4 p-4 rounded-xl bg-red-50 border border-red-200">
+                <ul class="list-disc pl-5 text-sm text-red-600 space-y-1">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <form action="{{ route('development.update') }}" enctype="multipart/form-data" method="POST" class="capitalize">
+            @csrf
+            @method('PUT')
+            <input type="hidden" name="id" value="{{ $dev->id }}">
             <div class="shrink-0 rounded-3xl p-6 bg-white flex flex-col gap-6 h-fit">
                 <section id="Dana" class="flex items-center justify-between">
                     <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Dana Tersedia</p>
@@ -20,6 +32,7 @@
                         <label
                             class="group flex w-full items-center h-14 rounded-2xl p-4 ring-[1.5px] ring-desa-background gap-2 has-[:checked]:ring-none has-[:checked]:bg-desa-foreshadow transition-setup">
                             <input type="radio" checked name="dana" id=""
+                                {{ $dev->total_dana >= 0 ? 'checked' : '' }} disabled
                                 class="flex size-[18px] shrink-0 accent-desa-secondary checked:accent-desa-dark-green transition-setup">
                             <span
                                 class="font-medium leading-5 text-desa-secondary w-full group-has-[:checked]:text-desa-dark-green transition-setup">
@@ -34,7 +47,8 @@
                         </label>
                         <label
                             class="group flex w-full items-center h-14 rounded-2xl p-4 ring-[1.5px] ring-desa-background gap-2 has-[:checked]:ring-none has-[:checked]:bg-desa-foreshadow transition-setup">
-                            <input type="radio" name="dana" id=""
+                            <input type="radio" name="dana" id="" value=""
+                                {{ $dev->total_dana <= 0 ? 'checked' : '' }} disabled
                                 class="flex size-[18px] shrink-0 accent-desa-secondary checked:accent-desa-dark-green transition-setup">
                             <span
                                 class="font-medium leading-5 text-desa-secondary w-full group-has-[:checked]:text-desa-dark-green transition-setup">
@@ -50,21 +64,38 @@
                     </div>
                 </section>
                 <hr class="border-desa-background" />
+                <section id="Nama-Projek" class="flex items-center justify-between">
+                    <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Total Dana</p>
+                    <div class="flex flex-col gap-3 flex-1 shrink-0">
+                        <label class="relative group peer w-full">
+                            <input type="number" value="{{ $dev->total_dana }}" name="total_dana"
+                                placeholder="Ketik nama project pembangunan"
+                                class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
+                            <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
+                                <img src="{{ asset('assets') }}/images/icons/edit-secondary-green.svg"
+                                    class="size-6 hidden group-has-[:placeholder-shown]:flex" alt="icon">
+                                <img src="{{ asset('assets') }}/images/icons/edit-black.svg"
+                                    class="size-6 flex group-has-[:placeholder-shown]:hidden" alt="icon">
+                            </div>
+                        </label>
+                    </div>
+                </section>
+                <hr class="border-desa-background" />
                 <section id="Thumbnail" class="flex items-center justify-between">
                     <h2 class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Thumbnail Event Terkait
                     </h2>
                     <div class="flex-1 flex items-center justify-between">
                         <div id="Photo-Preview"
                             class="flex itce justify-center w-[120px] h-[100px] rounded-2xl overflow-hidden bg-desa-foreshadow">
-                            <img id="Photo" src="{{ asset('assets') }}/images/thumbnails/thumbnail-bansos-preview.svg" alt="image"
-                                class="size-full object-cover" />
+                            <img id="Photo" src="{{ asset('assets') }}/images/thumbnails/thumbnail-bansos-preview.svg"
+                                alt="image" class="size-full object-cover" />
                         </div>
                         <div class="relative">
-                            <input required id="File" type="file" name="file"
-                                class="absolute opacity-0 left-0 w-full top-0 h-full" />
+                            <input id="File" type="file" name="thumbnail" accept="image/*"
+                                class="absolute opacity-0 left-0 w-full top-0 h-full cursor-pointer" />
                             <button id="Upload" type="button"
                                 class="relative flex items-center py-4 px-6 rounded-2xl bg-desa-black gap-[10px]">
-                                <img src="{{ asset('assets') }}/images/icons/send-square-white.svg" alt="icon"
+                                <img src="{{ asset('/assets/images/icons/send-square-white.svg') }}" alt="icon"
                                     class="size-6 shrink-0" />
                                 <p class="font-medium leading-5 text-white">Upload</p>
                             </button>
@@ -76,7 +107,7 @@
                     <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Nama Projek Pembangunan</p>
                     <div class="flex flex-col gap-3 flex-1 shrink-0">
                         <label class="relative group peer w-full">
-                            <input type="text" value="Pembangunan Puskesmas Desa"
+                            <input type="text" value="{{ $dev->nama_projek }}" name="nama_projek"
                                 placeholder="Ketik nama project pembangunan"
                                 class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
                             <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
@@ -93,7 +124,8 @@
                     <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Penanggung Jawab</p>
                     <div class="flex flex-col gap-3 flex-1 shrink-0">
                         <label class="relative group peer w-full">
-                            <input type="text" value="Asep Van Meijr" placeholder="Ketik penanggung jawab"
+                            <input type="text" value="{{ $dev->giver }}"
+                                name="giver"placeholder="Ketik penanggung jawab"
                                 class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
                             <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
                                 <img src="{{ asset('assets') }}/images/icons/profile-circle-secondary-green.svg"
@@ -110,7 +142,8 @@
                     <div class="flex flex-1 gap-6 shrink-0">
                         <label
                             class="group flex w-full items-center h-14 rounded-2xl p-4 ring-[1.5px] ring-desa-background gap-2 has-[:checked]:ring-none has-[:checked]:bg-desa-foreshadow transition-setup">
-                            <input type="radio" checked name="status" id=""
+                            <input type="radio" checked name="status" id="" value="{{ $dev->status }}"
+                                {{ $dev->status === 'On Going' ? 'checked' : '' }}
                                 class="flex size-[18px] shrink-0 accent-desa-secondary checked:accent-desa-dark-green transition-setup">
                             <span
                                 class="font-medium leading-5 text-desa-secondary w-full group-has-[:checked]:text-desa-dark-green transition-setup">
@@ -125,7 +158,8 @@
                         </label>
                         <label
                             class="group flex w-full items-center h-14 rounded-2xl p-4 ring-[1.5px] ring-desa-background gap-2 has-[:checked]:ring-none has-[:checked]:bg-desa-foreshadow transition-setup">
-                            <input type="radio" name="status" id=""
+                            <input type="radio" name="status" id="" value="{{ $dev->status }}"
+                                {{ $dev->status === 'On Going' ? 'checked' : '' }}
                                 class="flex size-[18px] shrink-0 accent-desa-secondary checked:accent-desa-dark-green transition-setup">
                             <span
                                 class="font-medium leading-5 text-desa-secondary w-full group-has-[:checked]:text-desa-dark-green transition-setup">
@@ -145,7 +179,9 @@
                     <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Tanggal Pembangunan</p>
                     <div class="flex items-center gap-6 flex-1 shrink-0">
                         <label class="relative group peer w-full">
-                            <input required type="date" value="2017-06-01" id="birthdate"
+                            <input required type="date" name="tanggal_pembangunan"
+                                value="{{ \Carbon\Carbon::parse($dev->tanggal_pembangunan)->format('Y-m-d') }}"
+                                id="birthdate"
                                 class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black p-4 pl-12 gap-2 font-medium invalid:text-desa-secondary transition-all duration-300 [&::-webkit-calendar-picker-indicator]:hidden"
                                 onclick="this.showPicker();">
                             <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
@@ -162,7 +198,8 @@
                     <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Hari yang dibutuhkan</p>
                     <div class="flex flex-col gap-3 flex-1 shrink-0">
                         <label class="relative group peer w-full">
-                            <input type="number" value="12" placeholder="Ketik hari yang dibutuhkan"
+                            <input type="number" value="{{ $dev->hari }}" name="hari"
+                                placeholder="Ketik hari yang dibutuhkan"
                                 class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 pr-[98px] gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
                             <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
                                 <img src="{{ asset('assets') }}/images/icons/timer-secondary-green.svg"
@@ -182,9 +219,9 @@
                 <section id="Deskripsi" class="flex items-center justify-between">
                     <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Deskripsi Pembangunan</p>
                     <div class="flex flex-col gap-3 flex-1 shrink-0">
-                        <textarea name="" id="" placeholder="Jelaskan lebih detail tentang pembangunan" rows="6"
-                            class="appearance-none outline-none w-full rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-4 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, cupiditate.
-                                    </textarea>
+                        <textarea name="deskripsi" id="" placeholder="Jelaskan lebih detail tentang pembangunan" rows="6"
+                            class="appearance-none outline-none w-full rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-4 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
+                                   {{ $dev->deskripsi }}  </textarea>
                     </div>
                 </section>
                 <hr class="border-desa-background w-[calc(100%+48px)] -mx-6" />
@@ -194,11 +231,32 @@
                             class="py-[18px] rounded-2xl bg-desa-red w-[180px] text-center flex justify-center font-medium text-white">
                             Batal, Tidak jadi</div>
                     </a>
-                    <button disabled id="submitButton" type="submit"
+                    <button id="submitButton" type="submit"
                         class="py-[18px] rounded-2xl disabled:bg-desa-grey w-[180px] text-center flex justify-center font-medium text-white bg-desa-dark-green transition-all duration-300">Save
                         Changes</button>
                 </section>
             </div>
         </form>
     </div>
+    @push('scripts')
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const fileInput = document.getElementById("File");
+                const uploadBtn = document.getElementById("Upload");
+                const photo = document.getElementById("Photo");
+
+                uploadBtn.addEventListener("click", () => fileInput.click());
+
+                fileInput.addEventListener("change", function() {
+                    if (this.files && this.files[0]) {
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                            photo.src = e.target.result;
+                        };
+                        reader.readAsDataURL(this.files[0]);
+                    }
+                });
+            });
+        </script>
+    @endpush
 @endsection

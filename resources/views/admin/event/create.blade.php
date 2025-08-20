@@ -140,6 +140,8 @@
 </div>
 
 {{-- JS untuk preview foto --}}
+@push('scripts')
+    
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const fileInput = document.getElementById("File");
@@ -159,4 +161,6 @@
         });
     });
 </script>
+@endpush
+
 @endsection

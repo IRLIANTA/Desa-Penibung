@@ -7,6 +7,7 @@
     <title>Desa Digital</title>
     <meta name="description" content="The simple way to manage your citizens">
     <link href="{{ asset('assets/css/output.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/customtoast.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet" />
 
     <!-- Favicon -->
@@ -19,9 +20,15 @@
     <meta property="og:image" content="https://desa-digital.netlify.app/assets/images/logos/logo-icon.png">
     <meta property="og:url" content="https://desa-digital.netlify.app">
     <meta property="og:type" content="website">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    @stack('styles')
 </head>
 
 <body>
+      <div id="toast-container" class="fixed top-4 right-4 z-50 space-y-2 max-w-sm w-full toast-container">
+        <!-- Toasts akan ditambahkan di sini -->
+    </div>
     <div class="flex flex-1">
         @include('admin.partials.sidebar')
         <div id="Main-Container" class="flex flex-col flex-1">
@@ -40,7 +47,17 @@
     <script src="{{ asset('assets/') }}/js/modal-gallery.js"></script>
     <script src="{{ asset('assets/') }}/js/submit-form.js"></script>
     <script src="{{ asset('assets/') }}/js/multiple-image-input.js"></script>
+    <script src="{{ asset('assets/') }}/js/customtoast.js"></script>
     @stack('scripts')
+@if (session()->has('success'))
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+                          Toast.success("{{ session('success') }}")
+
+        });
+    </script>
+    @endif
 </body>
+
 
 </html>
