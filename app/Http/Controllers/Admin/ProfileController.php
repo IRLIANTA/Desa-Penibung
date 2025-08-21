@@ -24,7 +24,12 @@ class ProfileController extends Controller
 
     public function edit()
     {
-        return view('admin.profile.edit');
+    return view('admin.profile.edit');
+    }
+    public function media()
+    {
+        $media = Media::paginate(5);
+        return view('admin.profile.media-foto',compact('media'));
     }
 
     public function update(Request $request)

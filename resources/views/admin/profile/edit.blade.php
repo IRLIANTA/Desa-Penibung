@@ -10,8 +10,18 @@
                 </div>
                 <h1 class="font-semibold text-2xl">Edit Profile Desa</h1>
             </div>
+            <div class="flex items-center gap-3">
+ 
+
+                <a href="{{ route('profile.media.index') }}"
+                    class="flex items-center rounded-2xl py-3 px-4 gap-[10px] bg-desa-green">
+                    <p class="font-medium text-white">Lihat Media</p>
+                    <img src="{{ asset('/assets/images/icons/eye-white-fill.svg') }}" class="flex size-6 shrink-0"
+                        alt="icon">
+                </a>
+            </div>
         </div>
-         @if ($errors->any())
+        @if ($errors->any())
             <div class="mb-4 p-4 rounded-xl bg-red-50 border border-red-200">
                 <ul class="list-disc pl-5 text-sm text-red-600 space-y-1">
                     @foreach ($errors->all() as $error)
@@ -19,7 +29,7 @@
                     @endforeach
                 </ul>
             </div>
-        @endif  
+        @endif
         <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data" id="myForm"
             class="capitalize">
             @csrf
@@ -255,7 +265,7 @@
                 </button>
             </section>
         </form>
-
+ 
     </div>
 
     @push('scripts')

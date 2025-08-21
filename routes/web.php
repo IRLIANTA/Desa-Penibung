@@ -47,6 +47,7 @@ Route::prefix('/profile')->group(function () {
     Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/update', [ProfileController::class, 'update'])->name('profile.update');
     // Media
+    Route::get('/media-foto', [ProfileController::class, 'media'])->name('profile.media.index');
     Route::post('/storefoto', [MediaController::class, 'store'])->name('profile.media.store');
 });
 
