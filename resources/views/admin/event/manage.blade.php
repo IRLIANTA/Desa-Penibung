@@ -49,10 +49,7 @@
                     <div class="flex flex-col gap-[6px] w-full ml-4 mr-9">
                         <p class="font-semibold text-lg leading-[22.5px] line-clamp-1">{{ $event->name }}</p>
                         <div class="flex items-center gap-1">
-                            <img src="{{ asset('/assets/images/icons/ticket-secondary-green.svg') }}"
-                                class="flex size-[18px] shrink-0" alt="icon">
                             <p class="font-medium text-sm text-desa-secondary">
-                                Registration:
                                 <span
                                     class="font-medium text-base {{ $event->status == 'Open' ? 'text-desa-dark-green' : 'text-desa-red' }}">
                                     {{ $event->status }}

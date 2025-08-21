@@ -110,6 +110,7 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         $request->validate([
             'nama_lengkap'    => 'required|string|max:255',
             'no_telp'      => 'required|string|max:20',

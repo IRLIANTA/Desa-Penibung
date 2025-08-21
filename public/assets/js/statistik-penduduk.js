@@ -4,20 +4,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const totalPria = parseInt(chartEl.dataset.totalPria);
     const totalWanita = parseInt(chartEl.dataset.totalWanita);
-    const totalPembangunan = parseInt(chartEl.dataset.totalPembangunan);
-    const totalDusun = parseInt(chartEl.dataset.totalDusun);
+    const totalKepalaKeluarga = parseInt(chartEl.dataset.totalKepalaKeluarga);
+    const totalKKP = parseInt(chartEl.dataset.totalKkp);
 
     new Chart(chartEl, {
         type: 'doughnut',
         data: {
-            labels: ['Pria', 'Wanita', 'Pembangunan', 'Dusun'],
+            labels: ['Pria', 'Wanita', 'KepalaKeluarga', 'KKP'],
             datasets: [{
-                data: [totalPria, totalWanita, totalPembangunan, totalDusun],
+                data: [totalPria, totalWanita, totalKepalaKeluarga, totalKKP],
                 backgroundColor: [
                     '#34613A', 
                     '#8EBD55',
                     '#FA7139', 
-                    '#FBAD48'  
+                    '#FBAD48'
                 ],
             }]
         },

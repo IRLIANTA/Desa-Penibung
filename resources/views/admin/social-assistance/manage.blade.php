@@ -3,14 +3,14 @@
     <div id="Content" class="relative flex flex-col flex-1 gap-6 p-6 pb-[30px] w-full shrink-0">
         <div id="Header" class="flex items-center justify-between">
             <div class="flex flex-col gap-2">
-                <div class="flex gap-1 items-center leading-5 text-desa-secondary">
+                <div class="flex flex-wrap gap-1 items-center leading-5 text-desa-secondary text-xs sm:text-sm md:text-base">
                     <a href="{{ route('social-assistance.index') }}"
-                        class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize ">
+                        class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize hover:underline">
 
                         <p>Bantuan sosial</p>
                     </a>
                     <span>/</span>
-                    <p class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize ">Manage bantuan sosial
+                    <p class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize">Manage bantuan sosial
                     </p>
                 </div>
                 <h1 class="font-semibold text-2xl">Manage Bantuan Sosial</h1>
@@ -47,15 +47,20 @@
                     <img src="{{ $socialAssistance->thumbnail ? asset('storage/' . $socialAssistance->thumbnail) : asset('/assets/images/thumbnails/default.png') }}"
                         class="w-full h-full object-cover" alt="photo">
                 </div>
-                <div class="badge rounded-full p-3 gap-2 flex w-[100px] justify-center shrink-0 bg-desa-soft-green">
-                    <span class="font-semibold text-xs text-white uppercase">{{ $socialAssistance->availability }}</span>
+                @php
+                    $isAvailable = strtolower($socialAssistance->availability) === 'tersedia';
+                    $badgeColor = $isAvailable ? 'bg-green-500' : 'bg-red-500';
+                    $badgeText = strtoupper($socialAssistance->availability);
+                @endphp
+
+                <div
+                    class="flex items-center justify-center px-4 py-2 rounded-full text-white font-semibold text-xs shadow-md {{ $badgeColor }}">
+                    {{ $badgeText }}
                 </div>
             </div>
             <div class="flex flex-col gap-[6px] w-full">
                 <p class="font-semibold text-xl">{{ $socialAssistance->name }}</p>
                 <p class="flex items-center gap-1">
-                    <img src="{{ asset('/assets/images/icons/ticket-secondary-green.svg') }}"
-                        class="flex size-[18px] shrink-0" alt="icon">
                     <span class="font-medium text-sm text-desa-secondary">{{ $socialAssistance->giver_name }}</span>
                 </p>
             </div>

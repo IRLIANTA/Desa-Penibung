@@ -14,9 +14,9 @@
                 </a>
             @endif
         </div>
-        <div class="flex gap-[14px]">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <section id="Nama-Desa"
-                class="flex flex-col shrink-0 w-[calc(565/1000*100%)] h-fit rounded-3xl p-6 gap-6 bg-white">
+                class="flex flex-col rounded-3xl p-6 gap-6 bg-white w-full max-w-full sm:max-w-md md:max-w-lg lg:max-w-none">
                 <div class="flex items-center justify-between">
                     <p class="font-medium leading-5 text-desa-secondary">Profile Desa</p>
                     <img src="{{ asset('assets/') }}/images/icons/building-foreshadow-background.svg"
@@ -34,8 +34,8 @@
                 <div id="Gallery" class="flex flex-col gap-[14px]">
                     <div data-modal="Modal-Gallery" data-gallery="{{ asset('assets/') }}/images/thumbnails/thumbnail.png"
                         id="Thumbnail-Desa"
-                        class="flex w-full h-[350px] shrink-0 rounded-3xl bg-desa-background overflow-hidden">
-                        <img src="{{ asset('assets/') }}/images/thumbnails/thumbnail.png" class="w-full h-full object-cover"
+                        class="flex w-full h-auto shrink-0 rounded-3xl bg-desa-background overflow-hidden">
+                        <img src="{{ asset('assets/') }}/images/thumbnails/thumbnail.png" class="w-full h-auto object-contain"
                             alt="thumbnail">
                     </div>
                     <div class="grid grid-cols-3 gap-[14px] w-[492px]">
@@ -94,7 +94,7 @@
                     <p class="font-medium text-sm leading-[28px] text-desa-secondary">{{ get_profile('location') }} </p>
                 </div>
             </section>
-            <section id="Detail-Desa" class="flex flex-col flex-1 h-fit shrink-0 rounded-3xl p-6 gap-6 bg-white">
+            <section id="Detail-Desa" class="flex flex-col rounded-3xl p-6 gap-6 bg-white w-full max-w-full sm:max-w-md md:max-w-lg lg:max-w-none">
                 <p class="font-medium leading-5 text-desa-secondary">Detail Desa</p>
                 <div class="flex flex-col gap-[14px]">
                     <div class="flex items-center gap-3 w-[302px] shrink-0">
