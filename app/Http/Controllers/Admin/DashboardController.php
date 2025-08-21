@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Dusun;
+use App\Models\Statistik;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -12,7 +13,16 @@ class DashboardController extends Controller
     public function index()
     {
         $dusun = Dusun::all();
-        return view('admin.dashboard.index', compact('dusun'));
+        $penduduk = Statistik::all();
+
+        $totalDusun = $dusun->count();
+
+        $totalPria = $penduduk->sum('jml_pria');
+        $totalWanita = $penduduk->sum('jml_wanita');
+
+        $totalPembangunan = $penduduk->sum('pembangunan');
+
+        return view('admin.dashboard.index', compact('totalDusun', 'totalPria', 'totalWanita', 'totalPembangunan','dusun','penduduk'));
     }
 
     public function edit()
@@ -94,7 +104,7 @@ class DashboardController extends Controller
         $dusun = Dusun::findOrFail($id);
         $dusun->delete();
 
-       return redirect()->route('dashboard.editdusun')
-        ->with('success', 'Dusun berhasil dihapus.');
+        return redirect()->route('dashboard.editdusun')
+            ->with('success', 'Dusun berhasil dihapus.');
     }
 }

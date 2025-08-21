@@ -8,11 +8,11 @@
             </div>
 
             @if (auth()->check())
-            <button data-modal="Modal-Edit-Statistik"
-                class="flex items-center rounded-2xl py-3 px-4 gap-[10px] bg-desa-yellow">
-                <p class="font-medium text-black">Ubah Statistik</p>
-                <img src="assets/images/icons/edit-black.svg" class="flex size-6 shrink-0" alt="icon">
-            </button>
+                <button data-modal="Modal-Edit-Statistik"
+                    class="flex items-center rounded-2xl py-3 px-4 gap-[10px] bg-desa-yellow">
+                    <p class="font-medium text-black">Ubah Statistik</p>
+                    <img src="assets/images/icons/edit-black.svg" class="flex size-6 shrink-0" alt="icon">
+                </button>
             @endif
 
         </div>
@@ -109,13 +109,13 @@
         </div>
 
         @if (auth()->check())
-        <div id="Header" class="flex">
-            <button data-modal="Modal-Edit-Penduduk"
-                class="flex items-center  rounded-2xl py-3 px-4 gap-[10px] bg-desa-yellow">
-                <p class="font-medium text-black">Ubah Penduduk</p>
-                <img src="assets/images/icons/edit-black.svg" class="flex size-6 shrink-0" alt="icon">
-            </button>
-        </div>
+            <div id="Header" class="flex">
+                <button data-modal="Modal-Edit-Penduduk"
+                    class="flex items-center  rounded-2xl py-3 px-4 gap-[10px] bg-desa-yellow">
+                    <p class="font-medium text-black">Ubah Penduduk</p>
+                    <img src="assets/images/icons/edit-black.svg" class="flex size-6 shrink-0" alt="icon">
+                </button>
+            </div>
         @endif
 
         <div id="Row-2" class="flex gap-[14px]">
@@ -218,9 +218,10 @@
                             <img src="assets/images/icons/money-dark-green.svg" class="flex size-9 shrink-0"
                                 alt="icon">
                         </div>
-                        
+
                         <div class="flex flex-col gap-[6px] w-full">
-                            <p class="font-semibold text-xl leading-[25px]">{{number_format(get_dusun()->count()), 0, ',', '.'}}</p>
+                            <p class="font-semibold text-xl leading-[25px]">
+                                {{ number_format(get_dusun()->count()), 0, ',', '.' }}</p>
                             <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
                                 <img src="assets/images/icons/profile-secondary-green.svg"
                                     class="flex size-[18px] shrink-0" alt="icon">
@@ -274,29 +275,37 @@
                         <p class="font-semibold text-[20px] leading-[25px]">Informasi Dusun</p>
 
                         @if (auth()->check())
-                        <a href="{{ route('dashboard.editdusun') }}"
-                            class="w-[100px] rounded-full p-3 flex items-center justify-center bg-desa-yellow hover:bg-yellow-600 transition">
-                            <span class="font-semibold text-xs text-black uppercase">Edit</span>
-                        </a>
+                            <a href="{{ route('dashboard.editdusun') }}"
+                                class="w-[100px] rounded-full p-3 flex items-center justify-center bg-desa-yellow hover:bg-yellow-600 transition">
+                                <span class="font-semibold text-xs text-black uppercase">Edit</span>
+                            </a>
                         @endif
 
                     </div>
-                    @forelse ($dusun as $d)
-                        <div class="card flex items-center w-full gap-3">
-                            <div
-                                class="flex size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                                <img src="assets/images/icons/money-dark-green.svg" class="flex size-9 shrink-0"
-                                    alt="icon">
-                            </div>
-                            <div class="flex flex-col gap-[6px] w-full">
-                                <p class="font-semibold text-xl leading-[25px]">{{$d->dusun}}</p>
-                                <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
-                                    <img src="assets/images/icons/profile-secondary-green.svg"
-                                        class="flex size-[18px] shrink-0" alt="icon">
-                                    <span class="line-clamp-1">{{$d->nama_kepala_dusun}}</span>
+                    @forelse ($dusun as $index => $d)
+                        @if ($index < 3)
+                            <div class="card flex items-center w-full gap-3">
+                                <div
+                                    class="flex size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
+                                    <img src="assets/images/icons/money-dark-green.svg" class="flex size-9 shrink-0"
+                                        alt="icon">
+                                </div>
+                                <div class="flex flex-col gap-[6px] w-full">
+                                    <p class="font-semibold text-xl leading-[25px]">{{ $d->dusun }}</p>
+                                    <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
+                                        <img src="assets/images/icons/profile-secondary-green.svg"
+                                            class="flex size-[18px] shrink-0" alt="icon">
+                                        <span class="line-clamp-1">{{ $d->nama_kepala_dusun }}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @elseif ($index >= 3)
+                            <a href="{{ route('dashboard.editdusun') }}"
+                                class="inline-block px-4 py-2  text-blue-600 font-semibold rounded-lg hover:text-blue-700 transition">
+                                Lihat Lainnya
+                            </a>
+                        @else
+                        @endif
                     @empty
                         <div class="card flex items-center text-center w-full gap-3">
                             <div class="flex flex-col gap-[6px] w-full">
@@ -318,11 +327,22 @@
                         alt="icon">
                 </div>
                 <div class="relative">
-                    <div class="absolute flex flex-col gap-1 justify-center items-center text-center inset-0">
-                        <p class="font-semibold text-[32px] leading-10">243.000</p>
+                    <div class="absolute flex flex-col gap-1 justify-center items-center text-center inset-0"
+                        style="top: -2.5rem">
+                        @php
+                            $totalPria = $penduduk->sum('jml_pria');
+                            $totalWanita = $penduduk->sum('jml_wanita');
+                            $totalPembangunan = $penduduk->sum('pembangunan');
+                            $totalDusun = $dusun->count();
+
+                            $totalAll = $totalPria + $totalWanita + $totalPembangunan + $totalDusun;
+                        @endphp
+                        <p class="font-semibold text-[32px] leading-10">{{ number_format($totalAll, 0, ',', '.') }}</p>
                         <p class="font-medium text-sm text-desa-secondary">Statistics Desa</p>
                     </div>
-                    <canvas id="myChart" class="size-[288px] mx-auto"></canvas>
+                    <canvas id="myChart" class="size-[288px] mx-auto" data-total-pria="{{ $totalPria }}"
+                        data-total-wanita="{{ $totalWanita }}" data-total-pembangunan="{{ $totalPembangunan }}"
+                        data-total-dusun="{{ $totalDusun }}"></canvas>
                 </div>
                 <div class="flex flex-col gap-4">
                     <div class="flex items-center justify-between">
@@ -334,9 +354,9 @@
                             <p class="font-medium text-sm text-desa-secondary">Rentang usia: 32-36 tahun</p>
                         </div>
                         <p class="flex items-center font-medium leading-5">
-                            114.210
-                            <img src="assets/images/icons/user-black.svg" class="flex size-[18px] shrink-0 ml-0.5"
-                                alt="icon">
+                            {{ number_format(get_statistik('jml_pria'), 0, ',', '.') }}
+                            <img src="assets/images/icons/user-square-dark-green.svg"
+                                class="flex size-[18px] shrink-0 ml-0.5" alt="icon">
                         </p>
                     </div>
                     <hr class="border-desa-foreshadow">
@@ -349,9 +369,9 @@
                             <p class="font-medium text-sm text-desa-secondary">Rentang usia: 26-31 tahun</p>
                         </div>
                         <p class="flex items-center font-medium leading-5">
-                            97.200
-                            <img src="assets/images/icons/user-black.svg" class="flex size-[18px] shrink-0 ml-0.5"
-                                alt="icon">
+                            {{ number_format(get_statistik('jml_wanita'), 0, ',', '.') }}
+                            <img src="assets/images/icons/user-square-dark-green.svg"
+                                class="flex size-[18px] shrink-0 ml-0.5" alt="icon">
                         </p>
                     </div>
                     <hr class="border-desa-foreshadow">
@@ -364,8 +384,8 @@
                             <p class="font-medium text-sm text-desa-secondary">Data Pembangunan</p>
                         </div>
                         <p class="flex items-center font-medium leading-5">
-                            24.300
-                            <img src="assets/images/icons/user-black.svg" class="flex size-[18px] shrink-0 ml-0.5"
+                            {{ number_format(get_statistik('pembangunan'), 0, ',', '.') }}
+                            <img src="assets/images/icons/building.svg" class="flex size-[18px] shrink-0 ml-0.5"
                                 alt="icon">
                         </p>
                     </div>
@@ -379,8 +399,8 @@
                             <p class="font-medium text-sm text-desa-secondary">Data Dusun</p>
                         </div>
                         <p class="flex items-center font-medium leading-5">
-                            7.290
-                            <img src="assets/images/icons/user-black.svg" class="flex size-[18px] shrink-0 ml-0.5"
+                            {{ number_format(get_dusun()->count()), 0, ',', '.' }}
+                            <img src="assets/images/icons/building.svg" class="flex size-[18px] shrink-0 ml-0.5"
                                 alt="icon">
                         </p>
                     </div>

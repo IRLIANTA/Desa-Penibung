@@ -1,28 +1,33 @@
-const chart = document.getElementById('myChart');
+document.addEventListener('DOMContentLoaded', function() {
+    const chartEl = document.getElementById('myChart');
 
-new Chart(chart, {
-    type: 'doughnut',
-    data: {
-        datasets: [{
-            data: [114210, 97200, 24300, 7290],
-            backgroundColor: [
-                '#34613A',
-                '#8EBD55',
-                '#FA7139',
-                '#FBAD48',
-            ],
-        }]
-    },
-    options: {
-        scales: {
-            display: false
+
+    const totalPria = parseInt(chartEl.dataset.totalPria);
+    const totalWanita = parseInt(chartEl.dataset.totalWanita);
+    const totalPembangunan = parseInt(chartEl.dataset.totalPembangunan);
+    const totalDusun = parseInt(chartEl.dataset.totalDusun);
+
+    new Chart(chartEl, {
+        type: 'doughnut',
+        data: {
+            labels: ['Pria', 'Wanita', 'Pembangunan', 'Dusun'],
+            datasets: [{
+                data: [totalPria, totalWanita, totalPembangunan, totalDusun],
+                backgroundColor: [
+                    '#34613A', 
+                    '#8EBD55',
+                    '#FA7139', 
+                    '#FBAD48'  
+                ],
+            }]
         },
-        datasets: {
-            doughnut: {
-                spacing: 2,
-                borderRadius: 6,
-                cutout: '69%',
-            }
-        },
-    }
+        options: {
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            },
+            cutout: '69%',
+        }
+    });
 });
