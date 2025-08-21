@@ -110,7 +110,6 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
         $request->validate([
             'nama_lengkap'    => 'required|string|max:255',
             'no_telp'      => 'required|string|max:20',
@@ -121,10 +120,7 @@ class FeedbackController extends Controller
 
         Feedback::create($request->all());
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Feedback berhasil dikirim'
-        ]);
+        return redirect()->back()->with('success', true);
     }
 
     /**
