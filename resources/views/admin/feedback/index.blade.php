@@ -116,7 +116,7 @@
                             class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition-all duration-200 flex-1 sm:flex-none">
                             Reset Form
                         </button>
-                        <button type="submit"
+                        <button type="submit" id="submitButton"
                             class="btn-primary px-8 py-3 rounded-lg text-white font-semibold flex-1 sm:flex-none flex items-center justify-center">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -147,43 +147,61 @@
         </div>
     </div>
 
-    <script>
-        const waInput = document.getElementById('wa');
-        const waError = document.getElementById('waError');
-        const charCount = document.getElementById('charCount');
-        const laporanTextarea = document.getElementById('laporan');
+<script>
+    const waInput = document.getElementById('wa');
+    const waError = document.getElementById('waError');
+    const charCount = document.getElementById('charCount');
+    const laporanTextarea = document.getElementById('laporan');
+    const feedbackForm = document.getElementById('feedbackForm'); // ganti unik
+    const feedbackSubmitBtn = feedbackForm.querySelector("button[type='submit']");
 
-        // Counter karakter laporan
-        laporanTextarea.addEventListener('input', function() {
-            const count = this.value.length;
-            charCount.textContent = count;
+    // Counter karakter laporan
+    laporanTextarea.addEventListener('input', function() {
+        const count = this.value.length;
+        charCount.textContent = count;
 
-            if (count > 450) {
-                charCount.classList.add('text-red-500');
-            } else {
-                charCount.classList.remove('text-red-500');
-            }
-        });
+        if (count > 450) {
+            charCount.classList.add('text-red-500');
+        } else {
+            charCount.classList.remove('text-red-500');
+        }
+    });
 
-        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+    // Enable/disable tombol submit
+    const checkInputs = () => {
+        const inputs = feedbackForm.querySelectorAll("input[required], textarea[required]");
+        const allFilled = Array.from(inputs).every(
+            (input) => input.value.trim() !== ""
+        );
+        feedbackSubmitBtn.disabled = !allFilled;
+    };
 
-            const wa = waInput.value.trim();
-            const regex = /^08[0-9]{8,13}$/; // mulai 08, panjang 10-15 digit
+    feedbackForm.querySelectorAll("input[required], textarea[required]").forEach((input) => {
+        input.addEventListener("input", checkInputs);
+    });
 
-            if (!regex.test(wa)) {
-                waError.textContent = "Nomor WhatsApp tidak valid. Format: 081234567890 (10-15 digit).";
-                waError.classList.remove('hidden');
-                waInput.classList.add("border-red-500");
-                return;
-            } else {
-                waError.textContent = "";
-                waError.classList.add('hidden');
-                waInput.classList.remove("border-red-500");
-            }
+    checkInputs(); // cek awal
 
-            // Jika lolos validasi -> submit atau tampilkan modal sukses
-            alert("Form berhasil dikirim!");
-        });
-    </script>
+    // Validasi WA saat submit
+    feedbackForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const wa = waInput.value.trim();
+        const regex = /^08[0-9]{8,13}$/; // mulai 08, panjang 10-15 digit
+
+        if (!regex.test(wa)) {
+            waError.textContent = "Nomor WhatsApp tidak valid. Format: 081234567890 (10-15 digit).";
+            waError.classList.remove('hidden');
+            waInput.classList.add("border-red-500");
+            return;
+        } else {
+            waError.textContent = "";
+            waError.classList.add('hidden');
+            waInput.classList.remove("border-red-500");
+        }
+
+        // Jika lolos validasi -> submit atau tampilkan modal sukses
+        alert("Form berhasil dikirim!");
+    });
+</script>
 @endsection

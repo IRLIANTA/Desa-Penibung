@@ -16,20 +16,20 @@
             @endif
 
         </div>
-        <div id="Row-1" class="flex gap-[14px]">
-            <div class="flex flex-col w-[calc(389/1000*100%)] h-[358px] rounded-2xl p-6 gap-6 gradient-vertical">
+        <div id="Row-1" class="flex flex-col lg:flex-row gap-[14px]">
+            <div class="flex flex-col w-full lg:w-[38%] h-auto rounded-2xl p-6 gap-6 gradient-vertical">
                 <img src="assets/images/icons/gift-orange-background.svg" class="flex size-[86px] shrink-0" alt="icon">
                 <div class="flex flex-col gap-3">
-                    <p class="font-medium text-sm text-desa-lime">— Bantuan Sosial</p>
-                    <p class="font-semibold text-2xl text-white text-nowrap">Dari Desa untuk Warga ❤️ </p>
-                    <p class="text-white">Wujudkan kesejahteraan desa dengan bantuan sosial yang tepat sasaran.</p>
+                    <p class="font-medium text-sm text-desa-lime">— Informasi Statistik Desa Penibung</p>
+                    <p class="font-semibold text-2xl text-white text-nowrap">Status Desa = Pesisir</p>
+                    <p class="text-white">Kunjungi Halaman Utama untuk mengetahui Tentang Seputar dan Geografis Desa Penibung.</p>
                 </div>
-                <a href="#" class="flex items-center justify-between rounded-2xl p-4 gap-[10px] bg-white">
-                    <span class="font-medium text-desa-dark-green leading-5">Bikin Bantuan Sosial</span>
+                <a href="{{ route('profile.index') }}" class="flex items-center justify-between rounded-2xl p-4 gap-[10px] bg-white">
+                    <span class="font-medium text-desa-dark-green leading-5">Kunjungi Halaman Profile</span>
                     <img src="assets/images/icons/add-square-dark-green.svg" class="flex size-6 shrink-0" alt="icon">
                 </a>
             </div>
-            <section id="Statistics" class="grid grid-cols-2 flex-1 shrink-0 gap-[14px]">
+            <section id="Statistics" class="grid grid-cols-1 sm:grid-cols-2 gap-[14px] flex-1"">
                 <div class="card flex flex-col w-full rounded-2xl p-6 gap-3 bg-white">
                     <div class="flex items-center justify-between">
                         <p class="font-medium text-desa-secondary">Jumlah Penduduk</p>
@@ -119,7 +119,7 @@
         @endif
 
         <div id="Row-2" class="flex gap-[14px]">
-            <section id="Statistics" class="grid grid-cols-4 gap-[14px] w-full">
+            <section id="Statistics" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[14px] w-full"">
                 <!-- Card 1 -->
                 <div class="card flex flex-col rounded-2xl p-6 gap-3 bg-white">
                     <div class="flex items-center justify-between">
@@ -202,8 +202,8 @@
             </section>
         </div>
 
-        <div id="Row-4" class="flex gap-[14px]">
-            <section id="Bantuan-Sosial" class="flex flex-col w-[calc(497/1000*100%)] shrink-0 rounded-2xl bg-white">
+        <div id="Row-4" class="grid grid-cols-1 lg:grid-cols-2 gap-[14px]">
+            <section id="Bantuan-Sosial" class="flex flex-col rounded-2xl bg-white">
                 <hr class="border-desa-foreshadow">
                 <div class="flex flex-col gap-4 p-6">
                     <!-- Header + Tombol Edit -->
@@ -268,7 +268,7 @@
                 </div>
             </section>
 
-            <section id="Bantuan-Sosial" class="flex flex-col w-[calc(497/1000*100%)] shrink-0 rounded-2xl bg-white">
+            <section id="Bantuan-Sosial" class="flex flex-col rounded-2xl bg-white">
                 <hr class="border-desa-foreshadow">
                 <div class="flex flex-col gap-4 p-6">
                     <div class="flex items-center justify-between">
@@ -319,8 +319,8 @@
             </section>
 
         </div>
-        <div id="Row-3" class="flex gap-[14px]">
-            <section id="statistik-Penduduk" class="flex flex-col flex-1 shrink-0 gap-4 p-6 rounded-2xl bg-white">
+        <div id="Row-3" class="flex flex-col gap-[14px]">
+            <section id="statistik-Penduduk" class="flex flex-col gap-4 p-6 rounded-2xl bg-white">
                 <div class="flex items-center justify-between">
                     <p class="font-medium text-desa-secondary">Statistics Desa</p>
                     <img src="assets/images/icons/profile-2user-foreshadow-background.svg" class="flex size-12 shrink-0"
@@ -332,17 +332,17 @@
                         @php
                             $totalPria = $penduduk->sum('jml_pria');
                             $totalWanita = $penduduk->sum('jml_wanita');
-                            $totalPembangunan = $penduduk->sum('pembangunan');
-                            $totalDusun = $dusun->count();
+                            $totalKepalaKeluarga = $penduduk->sum('jml_kepala_keluarga');
+                            $totalKKP = $penduduk->sum('jml_kk');
 
-                            $totalAll = $totalPria + $totalWanita + $totalPembangunan + $totalDusun;
+                            $totalAll = $totalPria + $totalWanita + $totalKepalaKeluarga + $totalKKP;
                         @endphp
                         <p class="font-semibold text-[32px] leading-10">{{ number_format($totalAll, 0, ',', '.') }}</p>
                         <p class="font-medium text-sm text-desa-secondary">Statistics Desa</p>
                     </div>
                     <canvas id="myChart" class="size-[288px] mx-auto" data-total-pria="{{ $totalPria }}"
-                        data-total-wanita="{{ $totalWanita }}" data-total-pembangunan="{{ $totalPembangunan }}"
-                        data-total-dusun="{{ $totalDusun }}"></canvas>
+                        data-total-wanita="{{ $totalWanita }}" data-total-kepala-keluarga="{{ $totalKepalaKeluarga }}"
+                        data-total-kkp="{{ $totalKKP }}"></canvas>
                 </div>
                 <div class="flex flex-col gap-4">
                     <div class="flex items-center justify-between">
@@ -379,13 +379,13 @@
                         <div class="flex flex-col gap-1">
                             <p class="font-medium leading-5 flex">
                                 <span class="block size-2 rounded-full my-auto bg-desa-orange mr-[6px]"></span>
-                                Pembangunan
+                                Kepala Keluarga
                             </p>
-                            <p class="font-medium text-sm text-desa-secondary">Data Pembangunan</p>
+                            <p class="font-medium text-sm text-desa-secondary">Data Kepala Keluarga</p>
                         </div>
                         <p class="flex items-center font-medium leading-5">
-                            {{ number_format(get_statistik('pembangunan'), 0, ',', '.') }}
-                            <img src="assets/images/icons/building.svg" class="flex size-[18px] shrink-0 ml-0.5"
+                            {{ number_format(get_statistik('jml_kepala_keluarga'), 0, ',', '.') }}
+                            <img src="assets/images/icons/user-square-dark-green.svg" class="flex size-[18px] shrink-0 ml-0.5"
                                 alt="icon">
                         </p>
                     </div>
@@ -394,13 +394,13 @@
                         <div class="flex flex-col gap-1">
                             <p class="font-medium leading-5 flex">
                                 <span class="block size-2 rounded-full my-auto bg-desa-yellow mr-[6px]"></span>
-                                Dusun
+                                Kepala Keluarga Perempuan
                             </p>
-                            <p class="font-medium text-sm text-desa-secondary">Data Dusun</p>
+                            <p class="font-medium text-sm text-desa-secondary">Data Kepala Keluarga Perempuan</p>
                         </div>
                         <p class="flex items-center font-medium leading-5">
-                            {{ number_format(get_dusun()->count()), 0, ',', '.' }}
-                            <img src="assets/images/icons/building.svg" class="flex size-[18px] shrink-0 ml-0.5"
+                            {{ number_format(get_statistik('jml_kk'), 0, ',', '.') }}
+                            <img src="assets/images/icons/user-square-dark-green.svg" class="flex size-[18px] shrink-0 ml-0.5"
                                 alt="icon">
                         </p>
                     </div>

@@ -228,7 +228,7 @@
                         class="py-[18px] rounded-2xl bg-desa-red w-[180px] text-center flex justify-center font-medium text-white">
                         Batal, Tidak jadi</div>
                 </a>
-                <button disabled id="submitButton" type="submit"
+                <button id="submitButton" type="submit"
                     class="py-[18px] rounded-2xl disabled:bg-desa-grey w-[180px] text-center flex justify-center font-medium text-white bg-desa-dark-green transition-all duration-300">Create
                     Now</button>
             </section>

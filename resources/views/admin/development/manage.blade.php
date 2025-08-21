@@ -3,14 +3,14 @@
     <div id="Content" class="relative flex flex-col flex-1 gap-6 p-6 pb-[30px] w-full shrink-0">
         <div id="Header" class="flex items-center justify-between">
             <div class="flex flex-col gap-2">
-                <div class="flex gap-1 items-center leading-5 text-desa-secondary">
+                <div class="flex flex-wrap gap-1 items-center leading-5 text-desa-secondary text-xs sm:text-sm md:text-base">
                     <a href="{{ route('development.index') }}"
-                        class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize ">
+                        class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize hover:underline">
 
                         <p>Pembangunan Desa</p>
                     </a>
                     <span>/</span>
-                    <p class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize ">detail Pembangunan
+                    <p class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize">detail Pembangunan
                         desa</p>
                 </div>
                 <h1 class="font-semibold text-2xl">Detail Pembangunan Desa</h1>
@@ -73,39 +73,45 @@
                     </div> --}}
                 </div>
                 <hr class="border-desa-foreshadow">
-                <div class="grid grid-cols-2 gap-3">
-                    <div class="flex items-center w-full gap-3">
-                        <div class="flex size-[52px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Tanggal Pelaksanaan -->
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="flex size-10 md:size-[52px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
                             <img src="{{ asset('/assets') }}/images/icons/calendar-2-dark-green.svg"
-                                class="flex size-6 shrink-0" alt="icon">
+                                class="size-5 md:size-6" alt="icon">
                         </div>
-                        <div class="flex flex-col gap-1 w-full">
-                            <p class="font-semibold text-xl leading-[22.5px] text-desa-dark-green">
-                                {{ $dev->tanggal_pembangunan ? \Carbon\Carbon::parse($dev->tanggal_pembangunan)->format('D, d M Y') : '-' }}
+                        <div class="flex flex-col gap-1">
+                            <p class="font-semibold text-base md:text-lg leading-snug text-desa-dark-green">
+                                {{ $dev->tanggal_pembangunan ? \Carbon\Carbon::parse($dev->tanggal_pembangunan)->translatedFormat('l, d F Y') : '-' }}
                             </p>
-                            <span class="font-medium text-desa-secondary">
+                            <span class="font-medium text-sm text-desa-secondary">
                                 Tanggal Pelaksanaan
                             </span>
                         </div>
                     </div>
-                    <div class="flex items-center w-full gap-3 justify-end">
-                        <div class="flex flex-col gap-1 w-full text-right">
-                            <p class="font-semibold text-xl leading-[22.5px] text-desa-dark-green">
+
+                    <!-- Perkiraan Selesai -->
+                    <div class="flex items-center gap-3 flex-row md:flex-row-reverse">
+                        <div
+                            class="flex size-10 md:size-[52px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
+                            <img src="{{ asset('/assets') }}/images/icons/calendar-2-dark-green.svg"
+                                class="size-5 md:size-6" alt="icon">
+                        </div>
+                        <div class="flex flex-col gap-1 text-left md:text-right">
+                            <p class="font-semibold text-base md:text-lg leading-snug text-desa-dark-green">
                                 {{ $dev->tanggal_pembangunan
                                     ? \Carbon\Carbon::parse($dev->tanggal_pembangunan)->addDays($dev->hari)->translatedFormat('l, d F Y')
                                     : '-' }}
-
                             </p>
-                            <span class="font-medium text-desa-secondary">
+                            <span class="font-medium text-sm text-desa-secondary">
                                 Perkiraan Selesai
                             </span>
                         </div>
-                        <div class="flex size-[52px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                            <img src="{{ asset('/assets') }}/images/icons/calendar-2-dark-green.svg"
-                                class="flex size-6 shrink-0" alt="icon">
-                        </div>
                     </div>
+
                 </div>
+
                 <hr class="border-desa-foreshadow">
                 <div class="grid grid-cols-2 gap-3">
                     <div class="flex items-center w-full gap-3">
