@@ -54,6 +54,29 @@ class MediaController extends Controller
         return redirect()->back()->with('success', 'Foto desa berhasil disimpan.');
     }
 
+   public function update(Request $request, $id)
+{
+    $media = Media::findOrFail($id); 
+
+    $validatedData = $request->validate([
+        'description' => 'nullable|string|max:255',
+        'file_path' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048'
+    ]);
+
+    $media->description = $validatedData['description'] ?? $media->description;
+
+    if ($request->hasFile('file_path')) {
+        if ($media->file_path) {
+            Storage::disk('public')->delete($media->file_path);
+        }
+        $media->file_path = $request->file('file_path')->store('media_files', 'public');
+    }
+
+    $media->save();
+
+    return redirect()->route('profile.media.index')->with('success', 'Data media berhasil diperbarui!');
+}
+
     public function destroy($id)
     {
         $media = Media::findOrFail($id);
@@ -72,29 +95,6 @@ class MediaController extends Controller
         return redirect()->back()->with('success', 'Foto desa berhasil dihapus.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Media $media)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Media $media)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Media $media)
-    {
-        //
-    }
 
 
 }

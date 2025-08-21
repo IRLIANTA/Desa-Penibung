@@ -46,9 +46,11 @@ Route::prefix('/profile')->group(function () {
     Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
     Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/update', [ProfileController::class, 'update'])->name('profile.update');
-    // Media
     Route::get('/media-foto', [ProfileController::class, 'media'])->name('profile.media.index');
+    // Media
     Route::post('/storefoto', [MediaController::class, 'store'])->name('profile.media.store');
+    Route::put('/updatefoto/{id}', [MediaController::class, 'update'])->name('profile.media.update');
+    Route::delete('/destroyfoto/{id}', [MediaController::class, 'destroy'])->name('profile.media.destroy');
 });
 
 Route::prefix('/user')->group(function () {
