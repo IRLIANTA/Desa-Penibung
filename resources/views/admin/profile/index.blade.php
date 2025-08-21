@@ -195,7 +195,9 @@
                                 class="flex size-6 shrink-0" alt="icon">
                         </div>
                         <div class="flex flex-col gap-1">
-                            <p class="font-semibold text-lg leading-5">Mon, 24 Feb 2012</p>
+                            <p class="font-semibold text-lg leading-5">
+                                    {{ get_profile('tgl_desa_dibangun') ? \Carbon\Carbon::parse(get_profile('tgl_desa_dibangun'))->format('D, d M Y') : '-' }}
+                            </p>
                             <p class="font-medium text-sm text-desa-secondary">Desa Dibangun</p>
                         </div>
                     </div>
@@ -221,6 +223,7 @@
             @if ($media)
                 @foreach ($media as $m)
                     <button data-image="{{ asset('storage/' . $m->file_path) }}"
+                        data-description="{{ $m->description }}"
                         class="group relative flex w-[140px] h-[120px] shrink-0 rounded-3xl bg-desa-background overflow-hidden active">
                         <img src="{{ asset('storage/' . $m->file_path) }}"
                             class="size-full object-cover group-[.active]:blur" alt="thumbnail">

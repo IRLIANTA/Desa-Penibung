@@ -87,7 +87,7 @@
                                 alt="image" class="size-full object-cover" />
                         </div>
                         <div class="relative">
-                            <input required id="File" type="file" name="kepala_desa_profil" accept="image/*"
+                            <input  id="File" type="file" name="kepala_desa_profil" accept="image/*"
                                 class="absolute opacity-0 left-0 w-full top-0 h-full cursor-pointer" />
                             <button id="Upload" type="button"
                                 class="relative flex items-center py-4 px-6 rounded-2xl bg-desa-black gap-[10px]">
@@ -143,25 +143,13 @@
                     </div>
                 </section>
                 <hr class="border-desa-background" />
-                <section id="Luas-Area" class="flex items-center justify-between">
-                    <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Tanggal Desa di Bangun</p>
-                    <div class="flex flex-col gap-3 flex-1 shrink-0">
-                        <label class="relative group peer w-full">
-                            <input type="date" placeholder="Masukan tanggal desa di bangun" name="tgl_desa_dibangun"
-                                value=" {{ get_profile('tgl_desa_dibangun') }}"
-                                class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 pr-[98px] gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
-                            <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
-                                <img src="{{ asset('assets/') }}/images/icons/grid-5-secondary-green.svg"
-                                    class="size-6 hidden group-has-[:placeholder-shown]:flex" alt="icon">
-                                <img src="{{ asset('assets/') }}/images/icons/grid-5-black.svg"
-                                    class="size-6 flex group-has-[:placeholder-shown]:hidden" alt="icon">
-                            </div>
-                            <div class="absolute transform -translate-y-1/2 top-1/2 right-4 flex shrink-0 gap-6">
-                                <div class="w-px h-6 border border-desa-background"></div>
-                                <span
-                                    class="font-medium leading-5 text-desa-black group-has-[:placeholder-shown]:text-desa-secondary normal-case">m<sup>2</sup></span>
-                            </div>
-                        </label>
+                 <section class="flex items-center justify-between">
+                    <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Tanggal Event</p>
+                    <div class="flex items-center gap-6 flex-1 shrink-0">
+                        <input type="date" id="date" name="tgl_desa_dibangun"
+                            value="{{ \Carbon\Carbon::parse(get_profile('tgl_desa_dibangun'))->format('Y-m-d') }}" required
+                            class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black px-4 font-medium" />
+
                     </div>
                 </section>
                 <hr class="border-desa-background" />
@@ -179,7 +167,7 @@
                             class="py-[18px] rounded-2xl bg-desa-red w-[180px] text-center flex justify-center font-medium text-white">
                             Batal, Tidak jadi</div>
                     </button>
-                    <button disabled id="submitButton" type="submit"
+                    <button  type="submit"
                         class="py-[18px] rounded-2xl disabled:bg-desa-grey w-[180px] text-center flex justify-center font-medium text-white bg-desa-dark-green transition-all duration-300">Save
                         Changes</button>
                 </section>
