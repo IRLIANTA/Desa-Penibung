@@ -1,6 +1,6 @@
 <div id="Top-Bar" class="relative flex h-[116px] shrink-0">
   <div
-    class="fixed top-0 flex items-center w-[-webkit-fill-available] h-[116px] py-[30px] px-6 gap-4 bg-white z-30 border-l border-desa-background">
+    class=" left-0 top-0 flex items-center w-[-webkit-fill-available] h-[116px] py-[30px] px-6 gap-4 bg-white z-30 border-l border-desa-background">
     <!-- Tombol toggle sidebar di kiri search -->
     <button id="SidebarToggle"
       class="lg:hidden flex size-14 shrink-0 items-center justify-center rounded-2xl border border-desa-background hover:border-desa-secondary transition-setup">

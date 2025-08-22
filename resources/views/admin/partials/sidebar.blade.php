@@ -2,8 +2,8 @@
 <div id="SidebarOverlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden"></div>
 
 <aside id="Sidebar"
-  class="fixed top-0 h-full  left-0 z-50 w-[280px] h-screen bg-white border-r border-desa-foreshadow transform -translate-x-full transition-transform duration-300 lg:relative lg:translate-x-0" style="height: -webkit-fill-available">
-  <div class="fixed top-0  w-[280px] flex shrink-0 flex-1 z-20 bg-white">
+  class=" fixed top-0 h-full  left-0 z-50 w-[280px] h-screen bg-white border-r border-desa-foreshadow transform -translate-x-full transition-transform duration-300 lg:relative lg:translate-x-0" style="height: -webkit-fill-available">
+  <div class="fixed top-0  w-[260px] flex shrink-0 flex-1 z-20 bg-white">
     <div class="flex flex-col h-full w-full gap-6 pt-[30px] px-6">
       <div class="flex items-center justify-between">
         <img src="{{ asset('assets/') }}/images/logos/logo-text.svg" class="flex h-[60px] shrink-0" alt="logo">
