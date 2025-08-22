@@ -147,61 +147,42 @@
         </div>
     </div>
 
-<script>
-    const waInput = document.getElementById('wa');
-    const waError = document.getElementById('waError');
-    const charCount = document.getElementById('charCount');
-    const laporanTextarea = document.getElementById('laporan');
-    const feedbackForm = document.getElementById('feedbackForm'); // ganti unik
-    const feedbackSubmitBtn = feedbackForm.querySelector("button[type='submit']");
+    @push('scripts')
+        <script>
+            const waInput = document.getElementById('wa');
+            const waError = document.getElementById('waError');
+            const charCount = document.getElementById('charCount');
+            const laporanTextarea = document.getElementById('laporan');
+            const successModal = document.getElementById('successModal');
 
-    // Counter karakter laporan
-    laporanTextarea.addEventListener('input', function() {
-        const count = this.value.length;
-        charCount.textContent = count;
+            // Counter karakter laporan
+            laporanTextarea.addEventListener('input', function() {
+                const count = this.value.length;
+                charCount.textContent = count;
 
-        if (count > 450) {
-            charCount.classList.add('text-red-500');
-        } else {
-            charCount.classList.remove('text-red-500');
-        }
-    });
+                if (count > 450) {
+                    charCount.classList.add('text-red-500');
+                } else {
+                    charCount.classList.remove('text-red-500');
+                }
+            });
 
-    // Enable/disable tombol submit
-    const checkInputs = () => {
-        const inputs = feedbackForm.querySelectorAll("input[required], textarea[required]");
-        const allFilled = Array.from(inputs).every(
-            (input) => input.value.trim() !== ""
-        );
-        feedbackSubmitBtn.disabled = !allFilled;
-    };
+            // Fungsi tutup modal
+            function closeModal() {
+                successModal.classList.add('hidden');
+                document.getElementById('feedbackForm').reset();
+                charCount.textContent = "0";
+            }
 
-    feedbackForm.querySelectorAll("input[required], textarea[required]").forEach((input) => {
-        input.addEventListener("input", checkInputs);
-    });
+            window.closeModal = closeModal;
+        </script>
 
-    checkInputs(); // cek awal
-
-    // Validasi WA saat submit
-    feedbackForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const wa = waInput.value.trim();
-        const regex = /^08[0-9]{8,13}$/; // mulai 08, panjang 10-15 digit
-
-        if (!regex.test(wa)) {
-            waError.textContent = "Nomor WhatsApp tidak valid. Format: 081234567890 (10-15 digit).";
-            waError.classList.remove('hidden');
-            waInput.classList.add("border-red-500");
-            return;
-        } else {
-            waError.textContent = "";
-            waError.classList.add('hidden');
-            waInput.classList.remove("border-red-500");
-        }
-
-        // Jika lolos validasi -> submit atau tampilkan modal sukses
-        alert("Form berhasil dikirim!");
-    });
-</script>
+        @if (session('success'))
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('successModal').classList.remove('hidden');
+                });
+            </script>
+        @endif
+    @endpush
 @endsection
