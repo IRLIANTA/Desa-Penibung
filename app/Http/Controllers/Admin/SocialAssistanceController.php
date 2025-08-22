@@ -11,7 +11,7 @@ class SocialAssistanceController extends Controller
     // Menampilkan semua bantuan sosial
     public function index()
     {
-        $socialAssistances = SocialAssistance::orderBy('created_at', 'desc')->get();
+        $socialAssistances = SocialAssistance::orderBy('created_at', 'desc')->paginate(10);
         return view('admin.social-assistance.index', compact('socialAssistances'));
     }
 

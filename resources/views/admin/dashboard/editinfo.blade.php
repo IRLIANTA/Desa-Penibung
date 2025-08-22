@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('content')
-    <div id="Content" class="relative flex flex-col flex-1 gap-6 p-6 pb-[30px] w-full shrink-0">
+    <div class="flex flex-col gap-3 px-2 sm:gap-3.5 sm:px-4">
 
         <hr class="border-desa-background" />
         <section id="Jumlah Dusun" class="flex items-center justify-between">

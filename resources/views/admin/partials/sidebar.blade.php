@@ -1,4 +1,4 @@
-<!-- Overlay (di luar sidebar) -->
+{{-- <!-- Overlay (di luar sidebar) -->
 <div id="SidebarOverlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden"></div>
 
 <aside id="Sidebar"
@@ -181,4 +181,165 @@
     if (overlay)   overlay.addEventListener('click', closeSidebar);
   });
 </script>
-@endpush
+@endpush --}}
+<div class="-translate-x-full lg:translate-x-0 bg-black/15 transition-all fixed z-20 h-dvh w-screen lg:w-[300px]">
+    <div
+        class="bg-white z-10 p-6 lg:py-[30px] h-full ml-auto w-[100vw] lg:w-[300px] gap-6 flex flex-col">
+        <div class="top">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <img src="/icons/logo.svg" alt="" />
+                    <h1 class="text-2xl font-bold leading-normal text-black">
+                        DesaKita.
+                    </h1>
+                </div>
+                <button id="toggle-sidebar" class="w-11 rounded-2xl border border-bg-color p-1.5">
+                    <img src="/icons/menu.svg" alt="" />
+                </button>
+            </div>
+        </div>
+
+        <div class="main-menu flex flex-col gap-2">
+            <h2 class="text-sm font-medium leading-normal text-secondary-text-color">
+                Main Menu
+            </h2>
+
+            <ul>
+                <li class="group {{ request()->is('dashboard', 'dashboard/*') ? 'active' : '' }}">
+                    <a href="/dashboard"
+                        class=" flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
+                        <div class="relative flex size-6 shrink-0">
+                            <img src="{{ asset('assets/') }}/images/icons/chart-square-dark-green.svg"
+                                class="absolute flex size-6 shrink-0 opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-setup"
+                                alt="icon">
+                            <img src="{{ asset('assets/') }}/images/icons/chart-square-secondary-green.svg"
+                                class="absolute flex size-6 shrink-0 opacity-100 group-hover:opacity-0 group-[.active]:opacity-0 transition-setup"
+                                alt="icon">
+                        </div>
+                        <span
+                            class="text-left leading-5 text-desa-secondary flex flex-1 group-hover:text-desa-dark-green group-[.active]:text-desa-dark-green group-[.active]:font-medium transition-setup">
+                            Dashboard
+                        </span>
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li class="group {{ request()->is('/', 'profile', 'profile/*') ? 'active' : '' }}">
+                    <a href="/profile"
+                        class=" flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
+                        <div class="relative flex size-6 shrink-0">
+                            <img src="{{ asset('assets/') }}/images/icons/building-4-dark-green.svg"
+                                class="absolute flex size-6 shrink-0 opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-setup"
+                                alt="icon">
+                            <img src="{{ asset('assets/') }}/images/icons/building-4-secondary-green.svg"
+                                class="absolute flex size-6 shrink-0 opacity-100 group-hover:opacity-0 group-[.active]:opacity-0 transition-setup"
+                                alt="icon">
+                        </div>
+                        <span
+                            class="text-left leading-5 text-desa-secondary flex flex-1 group-hover:text-desa-dark-green group-[.active]:text-desa-dark-green group-[.active]:font-medium transition-setup">
+                            Profile Desa
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul>
+                <li class="group {{ request()->is('social-assistance', 'social-assistance/*') ? 'active' : '' }}">
+                    <a href="{{ route('social-assistance.index') }}"
+                        class="flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
+                        <div class="relative flex size-6 shrink-0">
+                            <img src="{{ asset('assets/') }}/images/icons/heart.svg" class="flex size-6 shrink-0"
+                                alt="icon">
+                        </div>
+                        <span
+                            class="text-left leading-5 text-desa-secondary flex flex-1 group-hover:text-desa-dark-green group-[.active]:text-desa-dark-green group-[.active]:font-medium transition-setup">
+                            Bantuan Sosial
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul>
+                <li class="group {{ request()->is('development', 'development/*') ? 'active' : '' }}">
+                    <a href="{{ route('development.index') }}"
+                        class="flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
+                        <div class="relative flex size-6 shrink-0">
+                            <img src="{{ asset('assets/') }}/images/icons/building.svg" class="flex size-6 shrink-0"
+                                alt="icon">
+                        </div>
+                        <span
+                            class="text-left leading-5 text-desa-secondary flex flex-1 group-hover:text-desa-dark-green group-[.active]:text-desa-dark-green group-[.active]:font-medium transition-setup">
+                            Pembangunan
+                        </span>
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li class="group {{ request()->is('event', 'event/*') ? 'active' : '' }}">
+                    <a href="{{ route('event.index') }}"
+                        class=" flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
+                        <div class="relative flex size-6 shrink-0">
+                            <img src="{{ asset('assets/') }}/images/icons/calendar-2-dark-green.svg"
+                                class="flex size-6 shrink-0" alt="icon">
+                        </div>
+                        <span
+                            class="text-left leading-5 text-desa-secondary flex flex-1 group-hover:text-desa-dark-green group-[.active]:text-desa-dark-green group-[.active]:font-medium transition-setup">
+                            Events Desa
+                        </span>
+                    </a>
+                </li>
+            </ul>
+            @if (auth()->check())
+                <ul>
+                    <li class="group {{ request()->is('feedback', 'feedback/*') ? 'active' : '' }}">
+                        <a href="{{ route('feedback.user') }}"
+                            class=" flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
+                            <div class="relative flex size-6 shrink-0">
+                                <img src="{{ asset('assets/') }}/images/icons/chat-bubble.svg"
+                                    class="flex size-6 shrink-0" alt="icon">
+                            </div>
+                            <span
+                                class="text-left leading-5 text-desa-secondary flex flex-1 group-hover:text-desa-dark-green group-[.active]:text-desa-dark-green group-[.active]:font-medium transition-setup">
+                                Feedback User
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            @else
+                <ul>
+                    <li class="group {{ request()->is('feedback', 'feedback/*') ? 'active' : '' }}">
+                        <a href="{{ route('feedback.index') }}"
+                            class=" flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
+                            <div class="relative flex size-6 shrink-0">
+                                <img src="{{ asset('assets/') }}/images/icons/chat.svg" class="flex size-6 shrink-0"
+                                    alt="icon">
+                            </div>
+                            <span
+                                class="text-left leading-5 text-desa-secondary flex flex-1 group-hover:text-desa-dark-green group-[.active]:text-desa-dark-green group-[.active]:font-medium transition-setup">
+                                Feedback
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            @endif
+
+            @if (auth()->check())
+                <ul>
+                    <li class="group ">
+                        <a href="{{ route('event.index') }}" class="flex items-center h-14 gap-2 rounded-2xl p-4">
+                            <div class="relative flex size-6 shrink-0">
+                                <img src="{{ asset('assets/') }}/images/icons/logout-red.svg"
+                                    class="flex size-6 shrink-0" alt="icon">
+                            </div>
+                            <span
+                                class="text-left leading-5 text-desa-red flex flex-1 hover:text-desa-dark-red transition-setup">
+                                Logout
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            @endif
+        </div>
+    </div>
+    
+</div>

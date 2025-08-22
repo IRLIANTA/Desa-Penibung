@@ -1,4 +1,4 @@
-<div id="Top-Bar" class="relative flex h-[116px] shrink-0">
+{{-- <div id="Top-Bar" class="relative flex h-[116px] shrink-0">
   <div
     class=" left-0 top-0 flex items-center w-[-webkit-fill-available] h-[116px] py-[30px] px-6 gap-4 bg-white z-30 border-l border-desa-background">
     <!-- Tombol toggle sidebar di kiri search -->
@@ -22,7 +22,7 @@
       </label>
     </form>
 
-    @if(auth()->check())
+    @if (auth()->check())
       <a href="#"
         class="flex size-14 shrink-0 items-center justify-center rounded-2xl border border-desa-background hover:border-desa-secondary transition-setup">
         <img src="{{ asset('assets/') }}/images/icons/notification-secondary-green.svg" class="size-6" alt="icon">
@@ -48,4 +48,70 @@
       </div>
     @endif
   </div>
+</div> --}}
+<div class="bg-white fixed z-20 w-full right-0 p-4 lg:p-6 flex items-center gap-4 lg:w-[calc(100%-300px)] lg:ml-auto">
+    <div class="flex-grow">
+        <div class="relative w-full">
+            <div class="absolute left-4 top-1/2 -translate-y-1/2 w-5 lg:w-6">
+                <img src="{{ asset('assets/images/') }}/icons/search-normal.svg" alt="icons" />
+            </div>
+            <input type="text"
+                class="pl-11 lg:pl-12 w-full text-black appearance-none font-medium focus:border-1.5 focus:border-dark-green outline-none transition-all rounded-2xl border border-bg-color p-3 lg:p-4 text-sm lg:text-base placeholder:text-secondary-text-color placeholder:font-medium placeholder:text-sm lg:placeholder:text-base placeholder:leading-normal rounded-full"
+                placeholder="Cari nama penduduk, pengajuan, events, dll" />
+        </div>
+    </div>
+    @if (auth()->check())
+
+    <img src="{{ asset('assets/images/') }}/icons/notification.svg" alt=""
+        class="w-14 lg:w-15 rounded-2xl border border-bg-color p-1.5 lg:p-4 hidden lg:block" />
+
+    <img src="{{ asset('assets/images/') }}/icons/setting-2.svg" alt=""
+        class="w-14 lg:w-15 rounded-2xl border border-bg-color p-1.5 lg:p-4 hidden lg:block" />
+
+    <div class="hidden lg:flex gap-4 items-center">
+        <a href="/login" class="image bg-[#F1FAE6] rounded-full overflow-hidden w-[56px] h-[56px]">
+            <img src="{{ asset('assets/') }}/images/photos/kk-preview.png" alt="" class="w-full h-full" />
+        </a>
+        <div class="gap-[6px] flex flex-col w-[120px]">
+            <h5 class="w-full text-base text-black font-semibold leading-normal">
+                Admin
+            </h5>
+            <h6 class="w-full whitespace-nowrap text-sm font-medium leading-normal text-secondary-text-color">
+                Desa Penibung
+            </h6>
+        </div>
+      <form method="POST" action="{{ route('logout') }}" class="inline">
+          @csrf
+          <button type="submit" class="flex size-6 shrink-0 p-0 border-0 bg-transparent">
+            <img src="{{ asset('assets/images/icons/logout-red.svg') }}" class="size-6" alt="logout">
+          </button>
+        </form>
+    </div>
+    <div>
+       
+            <div class="image bg-[#F1FAE6] rounded-full overflow-hidden lg:hidden">
+                <img src="{{ asset('assets/') }}/images/photos/kk-preview.png" width="50" height="50" alt="" />
+            </div>
+
+    </div>
+    @endif
+
+
+    <img id="sidebar-toggle" src="{{ asset('assets/images/') }}/icons/menu.svg" alt=""
+        class="w-14 lg:w-16 rounded-2xl border border-bg-color p-1.5 lg:p-2.5 lg:hidden cursor-pointer" />
 </div>
+
+<script type="module">
+    document.addEventListener("DOMContentLoaded", function() {
+        const e = document.getElementById("sidebar-toggle");
+        e &&
+            e.addEventListener("click", function() {
+                const t = new CustomEvent("toggleSidebar", {
+                    detail: {
+                        action: "toggle"
+                    },
+                });
+                document.dispatchEvent(t);
+            });
+    });
+</script>

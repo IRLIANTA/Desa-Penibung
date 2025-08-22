@@ -273,12 +273,9 @@
             }
         </style>
     @endpush
-    <div id="Content" class="relative flex flex-col flex-1 gap-6 p-6 pb-[30px] w-full shrink-0">
-
-        <div class="grid ">
-
+    <div class="flex flex-col gap-3 px-2 sm:gap-3.5 sm:px-4">
             <div class="mb-6 lg:mb-8">
-                <h1 class="text-2xl lg:text-3xl font-bold text-gray-800 mb-2">Data Feedback</h1>
+                <h1 class="text-2xl font-semibold">Data Feedback</h1>
                 <p class="text-sm lg:text-base text-gray-600">Kelola semua laporan yang masuk dari masyarakat</p>
             </div>
 
@@ -402,7 +399,7 @@
                 <div class="flex flex-wrap justify-center gap-2" id="pagination">
                     </div>
             </div>
-        </div>
+
     </div>
 
     <div id="detailModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden px-4"
