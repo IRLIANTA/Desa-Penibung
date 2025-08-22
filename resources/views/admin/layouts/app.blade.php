@@ -126,6 +126,30 @@
             });
         </script>
     @endif
+    @if (session()->has('error'))
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                Toast.danger("{{ session('error') }}")
+
+            });
+        </script>
+    @endif
+    @if (session()->has('info'))
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                Toast.info("{{ session('info') }}")
+
+            });
+        </script>
+    @endif
+    @if (session()->has('warning'))
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                Toast.warning("{{ session('warning') }}")
+
+            });
+        </script>
+    @endif
 </body>
 
 

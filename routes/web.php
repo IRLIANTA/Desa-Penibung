@@ -106,9 +106,13 @@ Route::prefix('/event')->group(function () {
 });
 
 Route::prefix('/feedback')->group(function () {
-    Route::get('/', [FeedbackController::class, 'index'])->name('feedback.index');
-    Route::get('/manage/{id}', [FeedbackController::class, 'manage'])->name('feedback.manage');
-    Route::post('/store', [FeedbackController::class, 'store'])->name('feedback.store');
+    // middleware selain admin
+    Route::middleware(['cekAdmin'])->group(function () {
+        Route::get('/', [FeedbackController::class, 'index'])->name('feedback.index');
+        Route::get('/manage/{id}', [FeedbackController::class, 'manage'])->name('feedback.manage');
+        Route::post('/store', [FeedbackController::class, 'store'])->name('feedback.store');
+    });
+
     // middleware
     Route::middleware('auth')->group(function () {
         Route::get('/user', [FeedbackController::class, 'feedbackUser'])->name('feedback.user');
