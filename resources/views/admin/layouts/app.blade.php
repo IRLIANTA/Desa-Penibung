@@ -31,7 +31,7 @@
     </div>
     <div class="flex flex-1">
         @include('admin.partials.sidebar')
-        <div id="Main-Container" class="flex flex-col flex-1" style="margin-top: 7rem">
+        <div id="Main-Container" class="flex flex-col flex-1" >
             @include('admin.partials.navbar')
             @yield('content')
         </div>
