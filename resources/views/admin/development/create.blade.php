@@ -1,187 +1,159 @@
 @extends('admin.layouts.app')
 @section('content')
-    <div id="Content" class="relative flex flex-col flex-1 gap-6 p-6 pb-[30px] w-full shrink-0">
-        <div id="Header" class="flex items-center justify-between">
-            <div class="flex flex-col gap-2">
-                <div class="flex gap-1 items-center leading-5 text-desa-secondary">
-                    <p class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize ">Pembangunan Desa</p>
-                    <span>/</span>
-                    <p class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize ">Tambah Pembangunan
-                        Desa</p>
-                </div>
-                <h1 class="font-semibold text-2xl">Tambah Pembangunan Desa</h1>
+    <div class="flex flex-col gap-3 p-4 sm:gap-3.5 md:p-6">
+        <div id="Header" class="flex flex-col gap-2">
+            <div class="flex items-center gap-1 text-sm leading-5 text-desa-secondary">
+                <p class="capitalize last-of-type:font-semibold last-of-type:text-desa-dark-green">Pembangunan Desa</p>
+                <span>/</span>
+                <p class="capitalize last-of-type:font-semibold last-of-type:text-desa-dark-green">Tambah </p>
             </div>
+            <h1 class="text-2xl font-semibold">Tambah Pembangunan Desa</h1>
         </div>
-        <form action="{{ route('development.store') }}" method="POST" enctype="multipart/form-data" id="myForm"
-            class="capitalize">
-            @csrf
-            <div class="shrink-0 rounded-3xl p-6 bg-white flex flex-col gap-6 h-fit">
-                <section id="Total-Dana" class="flex items-center justify-between">
-                    <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Total Dana Pembangunan</p>
-                    <div class="flex flex-col gap-3 flex-1 shrink-0">
-                        <label class="relative group peer w-full">
-                            <input type="number" placeholder="Ketik dana yang dibutuhkan" name="total_dana"
-                                class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 pr-12 [&:placeholder-shown]:pl-12 pl-[70px] gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
-                            <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
-                                <img src="{{ asset('/assets') }}/images/icons/wallet-3-secondary-green.svg"
-                                    class="size-6 hidden group-has-[:placeholder-shown]:flex" alt="icon">
-                                <img src="{{ asset('/assets') }}/images/icons/wallet-3-black.svg"
-                                    class="size-6 flex group-has-[:placeholder-shown]:hidden" alt="icon">
-                                <span
-                                    class="text-desa-black ml-2 opacity-100 group-has-[:placeholder-shown]:opacity-0 transition-setup">Rp</span>
-                            </div>
-                        </label>
-                    </div>
-                </section>
-                <hr class="border-desa-background" />
-                <section id="Thumbnail" class="flex items-center justify-between">
-                    <h2 class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Thumbnail Event Terkait
-                    </h2>
-                    <div class="flex-1 flex items-center justify-between">
-                        <div id="Photo-Preview"
-                            class="flex itce justify-center w-[120px] h-[100px] rounded-2xl overflow-hidden bg-desa-foreshadow">
-                            <img id="Photo" src="{{ asset('/assets') }}/images/thumbnails/thumbnail-bansos-preview.svg"
-                                alt="image" class="size-full object-cover" />
-                        </div>
-                        <div class="relative">
-                            <input required id="File" type="file" name="thumbnail" accept="image/*"
-                                class="absolute opacity-0 left-0 w-full top-0 h-full cursor-pointer" />
-                            <button id="Upload" type="button"
-                                class="relative flex items-center py-4 px-6 rounded-2xl bg-desa-black gap-[10px]">
-                                <img src="{{ asset('/assets/images/icons/send-square-white.svg') }}" alt="icon"
-                                    class="size-6 shrink-0" />
-                                <p class="font-medium leading-5 text-white">Upload</p>
-                            </button>
-                        </div>
-                    </div>
-                </section>
-                <hr class="border-desa-background" />
-                <section id="Nama-Projek" class="flex items-center justify-between">
-                    <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Nama Projek Pembangunan</p>
-                    <div class="flex flex-col gap-3 flex-1 shrink-0">
-                        <label class="relative group peer w-full">
-                            <input type="text" placeholder="Ketik nama project pembangunan" name="nama_projek"
-                                class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
-                            <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
-                                <img src="{{ asset('/assets') }}/images/icons/edit-secondary-green.svg"
-                                    class="size-6 hidden group-has-[:placeholder-shown]:flex" alt="icon">
-                                <img src="{{ asset('/assets') }}/images/icons/edit-black.svg"
-                                    class="size-6 flex group-has-[:placeholder-shown]:hidden" alt="icon">
-                            </div>
-                        </label>
-                    </div>
-                </section>
-                <hr class="border-desa-background" />
-                <section id="Penanggung-Jawab" class="flex items-center justify-between">
-                    <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Pemberi Bantuan</p>
-                    <div class="flex flex-col gap-3 flex-1 shrink-0">
-                        <label class="relative group peer w-full">
-                            <input type="text" placeholder="Ketik Pemberi Bantuan" name="giver"
-                                class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
-                            <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
-                                <img src="{{ asset('/assets') }}/images/icons/profile-circle-secondary-green.svg"
-                                    class="size-6 hidden group-has-[:placeholder-shown]:flex" alt="icon">
-                                <img src="{{ asset('/assets') }}/images/icons/profile-circle-black.svg"
-                                    class="size-6 flex group-has-[:placeholder-shown]:hidden" alt="icon">
-                            </div>
-                        </label>
-                    </div>
-                </section>
-                <hr class="border-desa-background" />
-                <section id="Status" class="flex items-center justify-between">
-                    <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Status Pembangunan</p>
-                    <div class="flex flex-1 gap-6 shrink-0">
-                        <label
-                            class="group flex w-full items-center h-14 rounded-2xl p-4 ring-[1.5px] ring-desa-background gap-2 has-[:checked]:ring-none has-[:checked]:bg-desa-foreshadow transition-setup">
-                            <input type="radio" name="status" id="" value="On Going"
-                                class="flex size-[18px] shrink-0 accent-desa-secondary checked:accent-desa-dark-green transition-setup">
-                            <span
-                                class="font-medium leading-5 text-desa-secondary w-full group-has-[:checked]:text-desa-dark-green transition-setup">
-                                On Going
-                            </span>
-                            <div class="flex size-6 shrink-0">
-                                <img src="{{ asset('/assets') }}/images/icons/tick-circle-secondary-green.svg"
-                                    class="size-6 flex group-has-[:checked]:hidden" alt="icon">
-                                <img src="{{ asset('/assets') }}/images/icons/tick-circle-dark-green.svg"
-                                    class="size-6 hidden group-has-[:checked]:flex" alt="icon">
-                            </div>
-                        </label>
-                        <label
-                            class="group flex w-full items-center h-14 rounded-2xl p-4 ring-[1.5px] ring-desa-background gap-2 has-[:checked]:ring-none has-[:checked]:bg-desa-foreshadow transition-setup">
-                            <input type="radio" name="status" id="" value="Completed"
-                                class="flex size-[18px] shrink-0 accent-desa-secondary checked:accent-desa-dark-green transition-setup">
-                            <span
-                                class="font-medium leading-5 text-desa-secondary w-full group-has-[:checked]:text-desa-dark-green transition-setup">
-                                Completed
-                            </span>
-                            <div class="flex size-6 shrink-0">
-                                <img src="{{ asset('/assets') }}/images/icons/close-circle-secondary-green.svg"
-                                    class="size-6 flex group-has-[:checked]:hidden" alt="icon">
-                                <img src="{{ asset('/assets') }}/images/icons/close-circle-secondary-green.svg"
-                                    class="size-6 hidden group-has-[:checked]:flex" alt="icon">
-                            </div>
-                        </label>
-                    </div>
-                </section>
-                <hr class="border-desa-background" />
-                <section id="Tanggal-Pembangunan" class="flex items-center justify-between">
-                    <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Tanggal Pembangunan</p>
-                    <div class="flex items-center gap-6 flex-1 shrink-0">
-                        <label class="relative group peer w-full">
-                            <input required type="date" id="birthdate" name="tanggal_pembangunan"
-                                class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black p-4 pl-12 gap-2 font-medium invalid:text-desa-secondary transition-all duration-300 [&::-webkit-calendar-picker-indicator]:hidden"
-                                onclick="this.showPicker();">
-                            <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
-                                <img src="{{ asset('/assets') }}/images/icons/calendar-2-secondary-green.svg"
-                                    class="size-6 hidden group-has-[:invalid]:flex" alt="icon">
-                                <img src="{{ asset('/assets') }}/images/icons/calendar-2-black.svg"
-                                    class="size-6 flex group-has-[:invalid]:hidden" alt="icon">
-                            </div>
-                        </label>
-                    </div>
-                </section>
-                <hr class="border-desa-background" />
-                <section id="Hari" class="flex items-center justify-between">
-                    <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Hari yang dibutuhkan</p>
-                    <div class="flex flex-col gap-3 flex-1 shrink-0">
-                        <label class="relative group peer w-full">
-                            <input type="number" placeholder="Ketik hari yang dibutuhkan" name="hari"
-                                class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 pr-[98px] gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
-                            <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
-                                <img src="{{ asset('/assets') }}/images/icons/timer-secondary-green.svg"
-                                    class="size-6 hidden group-has-[:placeholder-shown]:flex" alt="icon">
-                                <img src="{{ asset('/assets') }}/images/icons/timer-black.svg"
-                                    class="size-6 flex group-has-[:placeholder-shown]:hidden" alt="icon">
-                            </div>
-                            <div class="absolute transform -translate-y-1/2 top-1/2 right-4 flex shrink-0 gap-6">
-                                <div class="w-px h-6 border border-desa-background"></div>
-                                <span
-                                    class="font-medium leading-5 text-desa-dark-green group-has-[:placeholder-shown]:text-desa-secondary">Hari</span>
-                            </div>
-                        </label>
-                    </div>
-                </section>
-                <hr class="border-desa-background" />
-                <section id="Deskripsi" class="flex items-center justify-between">
-                    <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Deskripsi Pembangunan</p>
-                    <div class="flex flex-col gap-3 flex-1 shrink-0">
-                        <textarea name="deskripsi" id="" placeholder="Jelaskan lebih detail tentang pembangunan" rows="6"
-                            class="appearance-none outline-none w-full rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-4 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300"></textarea>
-                    </div>
-                </section>
-                <hr class="border-desa-background w-[calc(100%+48px)] -mx-6" />
-                <section id="Buttons" class="flex items-center justify-end gap-4">
-                    <a href="{{ route('development.index') }}">
-                        <div
-                            class="py-[18px] rounded-2xl bg-desa-red w-[180px] text-center flex justify-center font-medium text-white">
-                            Batal, Tidak jadi</div>
-                    </a>
-                    <button disabled id="submitButton" type="submit"
-                        class="py-[18px] rounded-2xl disabled:bg-desa-grey w-[180px] text-center flex justify-center font-medium text-white bg-desa-dark-green transition-all duration-300">Create
-                        Now</button>
-                </section>
+        @if ($errors->any())
+            <div class="mb-4 rounded-xl border border-red-200 bg-red-50 p-4">
+                <ul class="list-disc space-y-1 pl-5 text-sm text-red-600">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
-        </form>
+        @endif
+    </div>
+    <form action="{{ route('development.store') }}" method="POST" enctype="multipart/form-data" id="myForm" class="capitalize">
+        @csrf
+        <div class="flex h-fit flex-col gap-6 rounded-3xl bg-white p-4 md:p-6">
+            <section id="Total-Dana" class="flex flex-col justify-between gap-2 md:flex-row md:items-center">
+                <p class="w-full font-medium leading-5 text-desa-secondary md:w-1/3">Total Dana Pembangunan</p>
+                <div class="flex flex-1 shrink-0 flex-col gap-3">
+                    <label class="group peer relative w-full">
+                        <input type="number" placeholder="Dana dibutuhkan (Rp.)" name="total_dana" required class="h-14 w-full appearance-none rounded-2xl py-4 pr-12 font-medium placeholder:text-desa-secondary ring-[1.5px] ring-desa-background transition-all duration-300 focus:outline-none focus:ring-desa-black [&:placeholder-shown]:pl-12 pl-[70px]">
+                        <div class="absolute left-4 top-1/2 flex size-6 shrink-0 -translate-y-1/2 items-center">
+                            <img src="{{ asset('/assets') }}/images/icons/wallet-3-secondary-green.svg" class="flex size-6 group-has-[:placeholder-shown]:flex" alt="icon">
+                            <img src="{{ asset('/assets') }}/images/icons/wallet-3-black.svg" class="hidden size-6 group-has-[:placeholder-shown]:hidden" alt="icon">
+                            {{-- <span class="ml-2 text-desa-black opacity-0 transition-all duration-300 group-has-[:placeholder-shown]:opacity-100">Rp</span> --}}
+                        </div>
+                    </label>
+                </div>
+            </section>
+            <hr class="border-desa-background" />
+
+            <section id="Thumbnail" class="flex flex-col justify-between gap-4 md:flex-row">
+                <h2 class="w-full font-medium leading-5 text-desa-secondary md:w-1/3">Thumbnail Event Terkait</h2>
+                <div class="flex flex-1 flex-col items-center justify-between gap-4 sm:flex-row">
+                    <div id="Photo-Preview" class="flex h-[100px] w-[120px] shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-desa-foreshadow">
+                        <img id="Photo" src="{{ asset('/assets') }}/images/thumbnails/thumbnail-bansos-preview.svg" alt="image" class="size-full object-cover" />
+                    </div>
+                    <div class="relative w-full sm:w-auto">
+                        <input required id="File" type="file" name="thumbnail" accept="image/*" class="absolute left-0 top-0 h-full w-full cursor-pointer opacity-0" />
+                        <button id="Upload" type="button" class="relative flex w-full items-center justify-center gap-[10px] rounded-2xl bg-desa-black px-6 py-4 sm:w-auto">
+                            <img src="{{ asset('/assets/images/icons/send-square-white.svg') }}" alt="icon" class="size-6 shrink-0" />
+                            <p class="font-medium leading-5 text-white">Upload</p>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <hr class="border-desa-background" />
+
+            <section id="Nama-Projek" class="flex flex-col justify-between gap-2 md:flex-row md:items-center">
+                <p class="w-full font-medium leading-5 text-desa-secondary md:w-1/3">Nama Projek Pembangunan</p>
+                <div class="flex flex-1 shrink-0 flex-col gap-3">
+                    <label class="group peer relative w-full">
+                        <input type="text" placeholder="Ketik nama project pembangunan" name="nama_projek" required class="h-14 w-full appearance-none rounded-2xl py-4 pl-12 pr-4 font-medium placeholder:text-desa-secondary ring-[1.5px] ring-desa-background transition-all duration-300 focus:outline-none focus:ring-desa-black">
+                        <div class="absolute left-4 top-1/2 flex size-6 shrink-0 -translate-y-1/2">
+                            <img src="{{ asset('/assets') }}/images/icons/edit-secondary-green.svg" class="flex size-6 group-has-[:placeholder-shown]:flex" alt="icon">
+                            <img src="{{ asset('/assets') }}/images/icons/edit-black.svg" class="hidden size-6 group-has-[:placeholder-shown]:hidden" alt="icon">
+                        </div>
+                    </label>
+                </div>
+            </section>
+            <hr class="border-desa-background" />
+
+            <section id="Penanggung-Jawab" class="flex flex-col justify-between gap-2 md:flex-row md:items-center">
+                <p class="w-full font-medium leading-5 text-desa-secondary md:w-1/3">Pemberi Bantuan</p>
+                <div class="flex flex-1 shrink-0 flex-col gap-3">
+                    <label class="group peer relative w-full">
+                        <input type="text" placeholder="Ketik Pemberi Bantuan" name="giver" required class="h-14 w-full appearance-none rounded-2xl py-4 pl-12 pr-4 font-medium placeholder:text-desa-secondary ring-[1.5px] ring-desa-background transition-all duration-300 focus:outline-none focus:ring-desa-black">
+                        <div class="absolute left-4 top-1/2 flex size-6 shrink-0 -translate-y-1/2">
+                            <img src="{{ asset('/assets') }}/images/icons/profile-circle-secondary-green.svg" class="flex size-6 group-has-[:placeholder-shown]:flex" alt="icon">
+                            <img src="{{ asset('/assets') }}/images/icons/profile-circle-black.svg" class="hidden size-6 group-has-[:placeholder-shown]:hidden" alt="icon">
+                        </div>
+                    </label>
+                </div>
+            </section>
+            <hr class="border-desa-background" />
+
+            <section id="Status" class="flex flex-col justify-between gap-4 md:flex-row md:items-center">
+                <p class="w-full font-medium leading-5 text-desa-secondary md:w-1/3">Status Pembangunan</p>
+                <div class="grid flex-1 grid-cols-1 gap-4 sm:grid-cols-2">
+                    <label class="group flex h-14 w-full cursor-pointer items-center gap-2 rounded-2xl p-4 ring-[1.5px] ring-desa-background transition-all duration-300 has-[:checked]:bg-desa-foreshadow has-[:checked]:ring-0">
+                        <input type="radio" name="status" value="On Going" class="size-[18px] shrink-0 accent-desa-secondary transition-all duration-300 checked:accent-desa-dark-green">
+                        <span class="w-full font-medium leading-5 text-desa-secondary transition-all duration-300 group-has-[:checked]:text-desa-dark-green">On Going</span>
+                        <div class="flex size-6 shrink-0">
+                            <img src="{{ asset('/assets') }}/images/icons/tick-circle-secondary-green.svg" class="flex size-6 group-has-[:checked]:hidden" alt="icon">
+                            <img src="{{ asset('/assets') }}/images/icons/tick-circle-dark-green.svg" class="hidden size-6 group-has-[:checked]:flex" alt="icon">
+                        </div>
+                    </label>
+                    <label class="group flex h-14 w-full cursor-pointer items-center gap-2 rounded-2xl p-4 ring-[1.5px] ring-desa-background transition-all duration-300 has-[:checked]:bg-desa-foreshadow has-[:checked]:ring-0">
+                        <input type="radio" name="status" value="Completed" class="size-[18px] shrink-0 accent-desa-secondary transition-all duration-300 checked:accent-desa-dark-green">
+                        <span class="w-full font-medium leading-5 text-desa-secondary transition-all duration-300 group-has-[:checked]:text-desa-dark-green">Completed</span>
+                        <div class="flex size-6 shrink-0">
+                            <img src="{{ asset('/assets') }}/images/icons/close-circle-secondary-green.svg" class="flex size-6" alt="icon">
+                        </div>
+                    </label>
+                </div>
+            </section>
+            <hr class="border-desa-background" />
+
+            <section id="Tanggal-Pembangunan" class="flex flex-col justify-between gap-2 md:flex-row md:items-center">
+                <p class="w-full font-medium leading-5 text-desa-secondary md:w-1/3">Tanggal Pembangunan</p>
+                <div class="flex flex-1 shrink-0 items-center gap-6">
+                    <label class="group peer relative w-full">
+                        <input required type="date" name="tanggal_pembangunan" class="h-14 w-full appearance-none rounded-2xl p-4 pl-12 font-medium ring-[1.5px] ring-desa-background transition-all duration-300 focus:outline-none focus:ring-desa-black invalid:text-desa-secondary [&::-webkit-calendar-picker-indicator]:hidden" onclick="this.showPicker();">
+                        <div class="absolute left-4 top-1/2 flex size-6 shrink-0 -translate-y-1/2">
+                            <img src="{{ asset('/assets') }}/images/icons/calendar-2-secondary-green.svg" class="hidden size-6 group-has-[:invalid]:flex" alt="icon">
+                            <img src="{{ asset('/assets') }}/images/icons/calendar-2-black.svg" class="flex size-6 group-has-[:invalid]:hidden" alt="icon">
+                        </div>
+                    </label>
+                </div>
+            </section>
+            <hr class="border-desa-background" />
+
+            <section id="Hari" class="flex flex-col justify-between gap-2 md:flex-row md:items-center">
+                <p class="w-full font-medium leading-5 text-desa-secondary md:w-1/3">Hari yang dibutuhkan</p>
+                <div class="flex flex-1 shrink-0 flex-col gap-3">
+                    <label class="group peer relative w-full">
+                        <input type="number" placeholder="Ketik hari yang dibutuhkan" name="hari" required class="h-14 w-full appearance-none rounded-2xl py-4 pl-12 pr-[98px] font-medium placeholder:text-desa-secondary ring-[1.5px] ring-desa-background transition-all duration-300 focus:outline-none focus:ring-desa-black">
+                        <div class="absolute left-4 top-1/2 flex size-6 shrink-0 -translate-y-1/2">
+                            <img src="{{ asset('/assets') }}/images/icons/timer-secondary-green.svg" class="flex size-6 group-has-[:placeholder-shown]:flex" alt="icon">
+                            <img src="{{ asset('/assets') }}/images/icons/timer-black.svg" class="hidden size-6 group-has-[:placeholder-shown]:hidden" alt="icon">
+                        </div>
+                        <div class="absolute right-4 top-1/2 flex shrink-0 -translate-y-1/2 gap-6">
+                            <div class="h-6 w-px border border-desa-background"></div>
+                            <span class="font-medium leading-5 text-desa-dark-green group-has-[:placeholder-shown]:text-desa-secondary">Hari</span>
+                        </div>
+                    </label>
+                </div>
+            </section>
+            <hr class="border-desa-background" />
+
+            <section id="Deskripsi" class="flex flex-col justify-between gap-4 md:flex-row">
+                <p class="w-full pt-4 font-medium leading-5 text-desa-secondary md:w-1/3">Deskripsi Pembangunan</p>
+                <div class="flex flex-1 shrink-0 flex-col gap-3">
+                    <textarea name="deskripsi" placeholder="Jelaskan lebih detail tentang pembangunan" rows="6" class="w-full appearance-none rounded-2xl p-4 font-medium placeholder:text-desa-secondary ring-[1.5px] ring-desa-background transition-all duration-300 focus:outline-none focus:ring-desa-black"></textarea>
+                </div>
+            </section>
+            <hr class="w-full border-desa-background" />
+
+            <section id="Buttons" class="flex flex-col-reverse items-center justify-end gap-4 sm:flex-row">
+                <a href="{{ route('development.index') }}" class="flex w-full items-center justify-center rounded-2xl bg-desa-red py-4 font-medium text-white sm:w-[180px]">
+                    Batal, Tidak jadi
+                </a>
+                <button disabled id="submitButton" type="submit" class="flex w-full items-center justify-center rounded-2xl bg-desa-dark-green py-4 font-medium text-white transition-all duration-300 disabled:bg-desa-grey sm:w-[180px]">
+                    Simpan
+                </button>
+            </section>
+        </div>
+    </form>
     </div>
     @push('scripts')
         <script>
@@ -201,6 +173,44 @@
                         reader.readAsDataURL(this.files[0]);
                     }
                 });
+
+                const form = document.getElementById('myForm');
+                const submitButton = document.getElementById('submitButton');
+                const requiredInputs = form.querySelectorAll('[required]');
+
+                function checkFormValidity() {
+                    let allFilled = true;
+                    requiredInputs.forEach(input => {
+                        if (!input.value.trim()) {
+                            allFilled = false;
+                        }
+                    });
+
+                    const radioGroups = {};
+                    form.querySelectorAll('input[type="radio"][name]').forEach(radio => {
+                        if (radio.required) {
+                            if (!radioGroups[radio.name]) {
+                                radioGroups[radio.name] = false;
+                            }
+                            if (radio.checked) {
+                                radioGroups[radio.name] = true;
+                            }
+                        }
+                    });
+
+                    for (const groupName in radioGroups) {
+                        if (!radioGroups[groupName]) {
+                            allFilled = false;
+                            break;
+                        }
+                    }
+
+                    submitButton.disabled = !allFilled;
+                }
+
+                form.addEventListener('input', checkFormValidity);
+                form.addEventListener('change', checkFormValidity);
+                checkFormValidity();
             });
         </script>
     @endpush

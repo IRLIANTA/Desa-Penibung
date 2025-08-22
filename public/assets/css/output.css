@@ -727,7 +727,9 @@ video {
 .mt-4 {
   margin-top: 1rem;
 }
-
+.mte-6 {
+   margin-top: 6rem;
+  }
 .mt-\[30px\] {
   margin-top: 30px;
 }

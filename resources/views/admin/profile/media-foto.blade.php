@@ -1,83 +1,88 @@
 @extends('admin.layouts.app')
 @section('content')
-    <div id="Content" class="relative flex flex-col flex-1 gap-6 p-6 pb-[30px] w-full shrink-0">
+    <div class="flex flex-col gap-3 px-2 sm:gap-3.5 sm:px-4">
 
-        <div class="container mx-auto px-4 py-8">
-            <!-- Header -->
-            <div class="mb-8">
-                <h1 class="text-3xl font-bold text-gray-800 mb-2">Data Foto Desa</h1>
-                <p class="text-gray-600">Kelola semua foto desa</p>
-            </div>
-
-
-            <!-- Table -->
-            <div class="table-container rounded-lg shadow">
-                <div class="table-responsive">
-                    <table class="min-w-full">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    No</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Deskripsi</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Foto</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tableBody" class="bg-white divide-y divide-gray-200">
-                            @foreach ($media as $m)
-                                <tr class="hover:bg-gray-50">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $loop->iteration }}
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm font-medium text-gray-900">{{ $m->description ?? '-' }}</div>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <div
-                                            class="thumbnail-selection flex w-[100px] h-[100px] shrink-0 rounded-3xl bg-desa-background overflow-hidden">
-                                            <img src="{{ asset('storage/' . $m->file_path) }}"
-                                                class="w-full h-full object-cover" alt="thumbnail">
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm  space-x-2">
-                                        <button class="edit-button text-yellow-600 hover:text-yellow-800 font-medium"
-                                            data-id="{{ $m->id }}" data-description="{{ $m->description }}"
-                                            data-image="{{ Storage::url($m->file_path) }}"
-                                            data-update-url="{{ route('profile.media.update', $m->id) }}">
-                                            Edit
-                                        </button>
-                                        <button class="delete-button text-red-600 hover:text-red-800 font-medium"
-                                            data-id="{{ $m->id }}"
-                                            data-delete-url="{{ route('profile.media.destroy', $m->id) }}">
-                                            Hapus
-                                        </button>
-                                    </td>
-
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+        <div  class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div class="flex flex-col gap-2">
+                <div class="flex gap-1 items-center leading-5 text-desa-secondary text-sm">
+                    <p class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize">Profile Desa</p>
+                    <span>/</span>
+                    <p class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize">Edit Profile Desa</p>
+                    <span>/</span>
+                    <p class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize">Media</p>
                 </div>
-            </div>
-
-            <!-- Pagination -->
-            <div class="flex items-center justify-between mt-6">
-                <div class="text-sm text-gray-700">
-                    Menampilkan <span id="showingStart">{{ $media->firstItem() }}</span> sampai <span
-                        id="showingEnd">{{ $media->lastItem() }}</span> dari <span
-                        id="totalRows">{{ $media->total() }}</span> data
-                </div>
-                <div class="flex space-x-2" id="pagination">
-                    {{ $media->links() }}
-                </div>
+                <h1 class="font-semibold text-2xl">Edit Media</h1>
             </div>
         </div>
+
+        <div class="overflow-x-auto rounded-lg shadow">
+            <table class="min-w-full">
+                <thead class="bg-gray-50 hidden md:table-header-group">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Deskripsi
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Foto</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody" class="bg-white">
+                    @foreach ($media as $m)
+                        <tr class="block border-b md:table-row md:border-none mb-4 md:mb-0">
+                            <td
+                                class="p-4 flex items-center justify-between md:table-cell md:px-6 md:py-4 md:whitespace-nowrap text-sm text-gray-900">
+                                <span class="font-bold md:hidden">No:</span>
+                                {{ $loop->iteration }}
+                            </td>
+                            <td
+                                class="p-4 flex items-center justify-between md:table-cell md:px-6 md:py-4 md:whitespace-nowrap">
+                                <span class="font-bold md:hidden">Deskripsi:</span>
+                                <div class="text-sm font-medium text-gray-900 text-right md:text-left">
+                                    {{ $m->description ?? '-' }}</div>
+                            </td>
+                            <td class="p-4 flex items-center justify-between md:table-cell md:px-6 md:py-4">
+                                <span class="font-bold md:hidden">Foto:</span>
+                                <div
+                                    class="thumbnail-selection flex w-24 h-24 shrink-0 rounded-xl bg-desa-background overflow-hidden">
+                                    <img src="{{ asset('storage/' . $m->file_path) }}" class="w-full h-full object-cover"
+                                        alt="thumbnail">
+                                </div>
+                            </td>
+                            <td
+                                class="p-4 flex items-center justify-end md:justify-start md:table-cell md:px-6 md:py-4 md:whitespace-nowrap text-sm space-x-2">
+                                <button class="edit-button text-yellow-600 hover:text-yellow-800 font-medium"
+                                    data-id="{{ $m->id }}" data-description="{{ $m->description }}"
+                                    data-image="{{ Storage::url($m->file_path) }}"
+                                    data-update-url="{{ route('profile.media.update', $m->id) }}">
+                                    Edit
+                                </button>
+                                <button class="delete-button text-red-600 hover:text-red-800 font-medium"
+                                    data-id="{{ $m->id }}"
+                                    data-delete-url="{{ route('profile.media.destroy', $m->id) }}">
+                                    Hapus
+                                </button>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-between mt-6 gap-4">
+            <div class="text-sm text-gray-700">
+                Menampilkan <span id="showingStart">{{ $media->firstItem() }}</span> sampai <span
+                    id="showingEnd">{{ $media->lastItem() }}</span> dari <span id="totalRows">{{ $media->total() }}</span>
+                data
+            </div>
+            <div id="pagination">
+                {{ $media->links() }}
+            </div>
+        </div>
+
     </div>
 
     <div id="editModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50">
-        <div class="relative top-20 mx-auto p-5 border w-full max-w-lg shadow-lg rounded-md bg-white">
+        <div class="relative top-10 sm:top-20 mx-auto p-5 border w-full max-w-lg shadow-lg rounded-md bg-white">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-xl font-medium text-gray-900">Edit Media</h3>
                 <button id="closeModalBtn" type="button"
@@ -89,24 +94,20 @@
                     </svg>
                 </button>
             </div>
-
             <form id="editForm" method="POST" action="" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-
                 <div class="space-y-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Gambar Saat Ini</label>
                         <img id="currentImage" src="" alt="Current Image"
                             class="w-32 h-32 object-cover rounded-lg border">
                     </div>
-
                     <div>
                         <label for="description" class="block text-sm font-medium text-gray-700">Deskripsi</label>
                         <textarea id="description" name="description" rows="3"
                             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"></textarea>
                     </div>
-
                     <div>
                         <label for="file_path" class="block text-sm font-medium text-gray-700">Ganti Gambar
                             (Opsional)</label>
@@ -114,7 +115,6 @@
                             class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100">
                     </div>
                 </div>
-
                 <div class="mt-6 flex items-center justify-end gap-x-4">
                     <button id="cancelModalBtn" type="button"
                         class="text-sm font-semibold leading-6 text-gray-900">Batal</button>
@@ -154,7 +154,6 @@
                             <span class="font-semibold text-sm text-white">Iya Hapus</span>
                         </button>
                     </form>
-
                 </div>
             </div>
         </div>

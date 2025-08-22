@@ -1,182 +1,144 @@
 @extends('admin.layouts.app')
 @section('content')
-    <div id="Content" class="relative flex flex-col flex-1 gap-6 p-6 pb-[30px] w-full shrink-0">
-        <div id="Header" class="flex items-center justify-between">
-            <div class="flex flex-col gap-2">
-                <div class="flex gap-1 items-center leading-5 text-desa-secondary">
-                    <p class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize ">Events Desa</p>
-                    <span>/</span>
-                    <p class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize ">Ubah Event Desa</p>
-                </div>
-                <h1 class="font-semibold text-2xl">Ubah Event Desa</h1>
-            </div>
+<div class="flex flex-col gap-3 p-4 sm:gap-3.5 md:p-6">
+    <div id="Header" class="flex flex-col gap-2">
+        <div class="flex items-center gap-1 text-sm leading-5 text-desa-secondary">
+            <p class="capitalize last-of-type:font-semibold last-of-type:text-desa-dark-green">Events Desa</p>
+            <span>/</span>
+            <p class="capitalize last-of-type:font-semibold last-of-type:text-desa-dark-green ">Ubah Event Desa</p>
         </div>
-        @if ($errors->any())
-    <div class="mb-4 p-4 rounded-xl bg-red-50 border border-red-200">
-        <ul class="list-disc pl-5 text-sm text-red-600 space-y-1">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+        <h1 class="text-2xl font-semibold">Ubah Event Desa</h1>
     </div>
-@endif
+    @if ($errors->any())
+        <div class="mb-4 rounded-xl border border-red-200 bg-red-50 p-4">
+            <ul class="list-disc space-y-1 pl-5 text-sm text-red-600">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-        <form action="{{ route('event.update') }}" method="POST" enctype="multipart/form-data" id="myForm"
-            class="capitalize">
-            @csrf
-            @method('PUT')
-            <input type="hidden" name="id" value="{{ $event->id }}">
-            <div class="shrink-0 rounded-3xl p-6 bg-white flex flex-col gap-6 h-fit">
+    <form action="{{ route('event.update', $event->id) }}" method="POST" enctype="multipart/form-data" id="myForm" class="capitalize">
+        @csrf
+        @method('PUT')
+        <input type="hidden" name="id" value="{{ $event->id }}">
+        <div class="flex h-fit flex-col gap-6 rounded-3xl bg-white p-4 md:p-6">
 
-                {{-- Thumbnail Upload --}}
-                <section class="flex items-center justify-between">
-                    <h2 class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Thumbnail Event</h2>
-                    <div class="flex-1 flex items-center justify-between">
-                        <div id="Photo-Preview"
-                            class="flex justify-center w-[120px] h-[100px] rounded-2xl overflow-hidden bg-desa-foreshadow">
-                            <img id="Photo" src="{{ asset('/assets/images/thumbnails/thumbnail-bansos-preview.svg') }}"
-                                alt="image" class="size-full object-cover" />
+            <section class="flex flex-col justify-between gap-4 md:flex-row">
+                <h2 class="w-full font-medium leading-5 text-desa-secondary md:w-1/3">Thumbnail Event</h2>
+                <div class="flex flex-1 flex-col items-center justify-between gap-4 sm:flex-row">
+                    <div id="Photo-Preview" class="flex h-[100px] w-[120px] shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-desa-foreshadow">
+                        <img id="Photo" src="{{ $event->thumbnail ? asset('storage/' . $event->thumbnail) : asset('/assets/images/thumbnails/thumbnail-bansos-preview.svg') }}" alt="image" class="size-full object-cover" />
+                    </div>
+                    <div class="relative w-full sm:w-auto">
+                        <input id="File" type="file" name="thumbnail" accept="image/*" class="absolute left-0 top-0 h-full w-full cursor-pointer opacity-0" />
+                        <button id="Upload" type="button" class="relative flex w-full items-center justify-center gap-[10px] rounded-2xl bg-desa-black px-6 py-4 sm:w-auto">
+                            <img src="{{ asset('/assets/images/icons/send-square-white.svg') }}" alt="icon" class="size-6 shrink-0" />
+                            <p class="font-medium leading-5 text-white">Ubah Gambar</p>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="border-desa-background" />
+
+            <section class="flex flex-col justify-between gap-2 md:flex-row md:items-center">
+                <p class="w-full font-medium leading-5 text-desa-secondary md:w-1/3">Nama Event</p>
+                <div class="flex flex-1 shrink-0 flex-col gap-3">
+                    <label class="group peer relative w-full">
+                        <input name="name" type="text" value="{{ $event->name }}" placeholder="Ketik nama event terkait" class="h-14 w-full appearance-none rounded-2xl py-4 pl-12 pr-4 font-medium placeholder:text-desa-secondary ring-[1.5px] ring-desa-background transition-all duration-300 focus:outline-none focus:ring-desa-black" required>
+                        <div class="absolute left-4 top-1/2 flex size-6 shrink-0 -translate-y-1/2">
+                            <img src="{{ asset('/assets/images/icons/edit-black.svg') }}" class="size-6" alt="icon">
                         </div>
-                        <div class="relative">
-                            <input id="File" type="file" name="thumbnail" accept="image/*"
-                                class="absolute opacity-0 left-0 w-full top-0 h-full cursor-pointer" />
-                            <button id="Upload" type="button"
-                                class="relative flex items-center py-4 px-6 rounded-2xl bg-desa-black gap-[10px]">
-                                <img src="{{ asset('/assets/images/icons/send-square-white.svg') }}" alt="icon"
-                                    class="size-6 shrink-0" />
-                                <p class="font-medium leading-5 text-white">Upload</p>
-                            </button>
-                        </div>
-                    </div>
-                </section>
+                    </label>
+                </div>
+            </section>
 
-                <hr class="border-desa-background" />
+            <hr class="border-desa-background" />
 
-                {{-- Nama Event --}}
-                <section class="flex items-center justify-between">
-                    <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Nama Event</p>
-                    <div class="flex flex-col gap-3 flex-1 shrink-0">
-                        <label class="relative group peer w-full">
-                            <input name="name" type="text" value="{{ $event->name }}"
-                                placeholder="Ketik nama event terkait"
-                                class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 font-medium placeholder:text-desa-secondary transition-all duration-300"
-                                required>
-                            <div class="absolute top-1/2 left-4 -translate-y-1/2 flex size-6 shrink-0">
-                                <img src="{{ asset('/assets/images/icons/edit-black.svg') }}" class="size-6" alt="icon">
-                            </div>
-                        </label>
-                    </div>
-                </section>
+            <section class="flex flex-col justify-between gap-4 md:flex-row md:items-center">
+                <p class="w-full font-medium leading-5 text-desa-secondary md:w-1/3">Status Event</p>
+                <div class="grid flex-1 grid-cols-1 gap-4 sm:grid-cols-2">
+                    <label class="group flex h-14 w-full cursor-pointer items-center gap-2 rounded-2xl p-4 ring-[1.5px] ring-desa-background transition has-[:checked]:bg-desa-foreshadow">
+                        <input type="radio" name="status" value="open" {{ strtolower($event->status) === 'open' ? 'checked' : '' }} required class="accent-desa-dark-green" />
+                        <span class="font-medium leading-5 text-desa-secondary group-has-[:checked]:text-desa-dark-green">Open</span>
+                    </label>
+                    <label class="group flex h-14 w-full cursor-pointer items-center gap-2 rounded-2xl p-4 ring-[1.5px] ring-desa-background transition has-[:checked]:bg-desa-foreshadow">
+                        <input type="radio" name="status" value="closed" {{ strtolower($event->status) === 'closed' ? 'checked' : '' }} class="accent-desa-dark-green" />
+                        <span class="font-medium leading-5 text-desa-secondary group-has-[:checked]:text-desa-dark-green">Closed</span>
+                    </label>
+                </div>
+            </section>
 
-                <hr class="border-desa-background" />
+            <hr class="border-desa-background" />
 
-                {{-- Status Event --}}
-                <section class="flex items-center justify-between">
-                    <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Status Event</p>
-                    <div class="flex flex-1 gap-6 shrink-0">
-                        <label
-                            class="group flex w-full items-center h-14 rounded-2xl p-4 ring-[1.5px] ring-desa-background gap-2 has-[:checked]:bg-desa-foreshadow transition">
-                            <input type="radio" name="status" value="Open"
-                                {{ $event->status === 'Open' ? 'checked' : '' }} required class="accent-desa-dark-green" />
-                            <span
-                                class="font-medium leading-5 text-desa-secondary group-has-[:checked]:text-desa-dark-green">Open</span>
-                        </label>
+            <section class="flex flex-col justify-between gap-2 md:flex-row md:items-center">
+                <p class="w-full font-medium leading-5 text-desa-secondary md:w-1/3">Waktu Mulai Event</p>
+                <div class="flex flex-1 shrink-0 flex-col gap-3">
+                    <input type="time" value="{{ \Carbon\Carbon::parse($event->start_time)->format('H:i') }}" name="start_time" required class="h-14 w-full appearance-none rounded-2xl px-4 font-medium ring-[1.5px] ring-desa-background transition-all duration-300 focus:outline-none focus:ring-desa-black" />
+                </div>
+            </section>
 
-                        <label
-                            class="group flex w-full items-center h-14 rounded-2xl p-4 ring-[1.5px] ring-desa-background gap-2 has-[:checked]:bg-desa-foreshadow transition">
-                            <input type="radio" name="status" value="Closed"
-                                {{ $event->status === 'Closed' ? 'checked' : '' }} class="accent-desa-dark-green" />
-                            <span
-                                class="font-medium leading-5 text-desa-secondary group-has-[:checked]:text-desa-dark-green">Closed</span>
-                        </label>
-                    </div>
+            <hr class="border-desa-background" />
 
-                </section>
+            <section class="flex flex-col justify-between gap-2 md:flex-row md:items-center">
+                <p class="w-full font-medium leading-5 text-desa-secondary md:w-1/3">Jumlah Warga Partisipasi</p>
+                <div class="flex flex-1 shrink-0 flex-col gap-3">
+                    <input name="partisipasi" value="{{ $event->partisipasi }}" type="number" placeholder="Masukkan jumlah warga" class="h-14 w-full appearance-none rounded-2xl px-4 font-medium placeholder:text-desa-secondary ring-[1.5px] ring-desa-background transition-all duration-300 focus:outline-none focus:ring-desa-black" required>
+                </div>
+            </section>
 
-                <hr class="border-desa-background" />
+            <hr class="border-desa-background" />
 
-                {{-- Waktu Mulai --}}
-                <section class="flex items-center justify-between">
-                    <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Waktu Mulai Event</p>
-                    <div class="flex flex-col gap-3 flex-1 shrink-0">
-                        <input type="time" value="{{ substr($event->start_time, 0, 5) }}" name="start_time" required
-                            class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black px-4 font-medium" />
-                </section>
+            <section class="flex flex-col justify-between gap-2 md:flex-row md:items-center">
+                <p class="w-full font-medium leading-5 text-desa-secondary md:w-1/3">Tanggal Event</p>
+                <div class="flex flex-1 shrink-0 items-center gap-6">
+                    <input type="date" name="date" id="date" value="{{ \Carbon\Carbon::parse($event->date)->format('Y-m-d') }}" required class="h-14 w-full appearance-none rounded-2xl px-4 font-medium ring-[1.5px] ring-desa-background transition-all duration-300 focus:outline-none focus:ring-desa-black" />
+                </div>
+            </section>
 
-                <hr class="border-desa-background" />
+            <hr class="border-desa-background" />
 
-                {{-- Jumlah Partisipasi --}}
-                <section class="flex items-center justify-between">
-                    <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Jumlah Warga Partisipasi</p>
-                    <div class="flex flex-col gap-3 flex-1 shrink-0">
-                        <input name="partisipasi" value="{{ $event->partisipasi }}" type="number"
-                            placeholder="Masukkan jumlah warga"
-                            class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black px-4 font-medium placeholder:text-desa-secondary"
-                            required>
-                    </div>
-                </section>
+            <section class="flex flex-col justify-between gap-4 md:flex-row">
+                <p class="w-full pt-4 font-medium leading-5 text-desa-secondary md:w-1/3">Deskripsi Event</p>
+                <div class="flex flex-1 shrink-0 flex-col gap-3">
+                    <textarea name="description" placeholder="Jelaskan lebih detail tentang event" rows="6" class="w-full appearance-none rounded-2xl p-4 font-medium placeholder:text-desa-secondary ring-[1.5px] ring-desa-background transition-all duration-300 focus:outline-none focus:ring-desa-black">{{ $event->description }}</textarea>
+                </div>
+            </section>
 
-                <hr class="border-desa-background" />
+            <hr class="w-full border-desa-background" />
 
-                {{-- Tanggal --}}
-                <section class="flex items-center justify-between">
-                    <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Tanggal Event</p>
-                    <div class="flex items-center gap-6 flex-1 shrink-0">
-                        <input type="date" name="date" id="date"
-                            value="{{ \Carbon\Carbon::parse($event->date)->format('Y-m-d') }}" required
-                            class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black px-4 font-medium" />
-
-                    </div>
-                </section>
-
-                <hr class="border-desa-background" />
-
-                {{-- Deskripsi --}}
-                <section class="flex items-center justify-between">
-                    <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Deskripsi Event</p>
-                    <div class="flex flex-col gap-3 flex-1 shrink-0">
-                        <textarea name="description" placeholder="Jelaskan lebih detail tentang event" rows="6"
-                            class="appearance-none outline-none w-full rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-4 font-medium placeholder:text-desa-secondary">{{ $event->description }}"</textarea>
-                    </div>
-                </section>
-
-                <hr class="border-desa-background w-[calc(100%+48px)] -mx-6" />
-
-                {{-- Buttons --}}
-                <section class="flex items-center justify-end gap-4">
-                    <a href="{{ route('event.index') }}">
-                        <div
-                            class="py-[18px] rounded-2xl bg-desa-red w-[180px] text-center flex justify-center font-medium text-white">
-                            Batal</div>
-                    </a>
-                    <button type="submit"
-                        class="py-[18px] rounded-2xl w-[180px] text-center flex justify-center font-medium text-white bg-desa-dark-green transition">
-                        Simpan
-                    </button>
-                </section>
-            </div>
-        </form>
-    </div>
-    @push('scripts')
+            <section class="flex flex-col-reverse items-center justify-end gap-4 sm:flex-row">
+                <a href="{{ route('event.index') }}" class="flex w-full items-center justify-center rounded-2xl bg-desa-red py-4 font-medium text-white sm:w-[180px]">
+                    Batal
+                </a>
+                <button type="submit" class="flex w-full items-center justify-center rounded-2xl bg-desa-dark-green py-4 font-medium text-white transition sm:w-[180px]">
+                    Simpan Perubahan
+                </button>
+            </section>
+        </div>
+    </form>
+</div>
+@push('scripts')
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const fileInput = document.getElementById("File");
+        const uploadBtn = document.getElementById("Upload");
+        const photo = document.getElementById("Photo");
         
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const fileInput = document.getElementById("File");
-            const uploadBtn = document.getElementById("Upload");
-            const photo = document.getElementById("Photo");
-            
-            uploadBtn.addEventListener("click", () => fileInput.click());
-            
-            fileInput.addEventListener("change", function() {
-                if (this.files && this.files[0]) {
-                    const reader = new FileReader();
-                    reader.onload = (e) => {
-                        photo.src = e.target.result;
-                    };
-                    reader.readAsDataURL(this.files[0]);
-                }
-            });
+        uploadBtn.addEventListener("click", () => fileInput.click());
+        
+        fileInput.addEventListener("change", function() {
+            if (this.files && this.files[0]) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    photo.src = e.target.result;
+                };
+                reader.readAsDataURL(this.files[0]);
+            }
         });
-        </script>
-        @endpush
+    });
+</script>
+@endpush
 @endsection

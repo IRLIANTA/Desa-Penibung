@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('content')
-    <div id="Content" class="relative flex flex-col flex-1 gap-4 sm:gap-6 p-4 sm:p-6 pb-[30px] w-full shrink-0">
+    <div class="flex flex-col gap-3 px-2 sm:gap-3.5 sm:px-4">
         <!-- Header - Responsive -->
         <div id="Header" class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
             <h1 class="font-semibold text-xl sm:text-2xl">List Bantuan Sosial</h1>
@@ -9,7 +9,7 @@
                     class="flex items-center justify-center w-full sm:w-auto rounded-2xl py-3 sm:py-4 px-4 sm:px-6 gap-[10px] bg-desa-dark-green">
                     <img src="{{ asset('/assets') }}/images/icons/add-square-white.svg" class="flex size-5 sm:size-6 shrink-0"
                         alt="icon">
-                    <p class="font-medium text-sm sm:text-base text-white">Add New</p>
+                    <p class="font-medium text-sm sm:text-base text-white">Tambah</p>
                 </a>
             @endauth
         </div>
@@ -178,51 +178,15 @@
         </section>
 
         <!-- Pagination - Mobile Optimized -->
-        <nav id="Pagination" class="flex justify-center">
-            <ul class="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-2">
-                <!-- Previous Button -->
-                <li class="group shrink-0">
-                    <button type="button" disabled
-                        class="group/arrow flex size-9 sm:size-11 shrink-0 items-center justify-center rounded-full bg-desa-foreshadow disabled:!bg-desa-foreshadow group-hover:bg-desa-dark-green transition-setup">
-                        <img src="{{ asset('/assets') }}/images/icons/arrow-left-dark-green.svg"
-                            class="flex size-4 sm:size-6 shrink-0 group-hover:hidden group-disabled/arrow:!hidden"
-                            alt="icon">
-                        <img src="{{ asset('/assets') }}/images/icons/arrow-left-foreshadow.svg"
-                            class="hidden size-4 sm:size-6 shrink-0 group-hover:flex group-disabled/arrow:!hidden"
-                            alt="icon">
-                        <img src="{{ asset('/assets') }}/images/icons/disabled-arrow-pagination.svg"
-                            class="hidden size-4 sm:size-6 shrink-0 group-disabled/arrow:!flex" alt="icon">
-                    </button>
-                </li>
-
-                <!-- Page Numbers -->
-                @for ($i = 1; $i <= 5; $i++)
-                    <li class="group shrink-0 {{ $i === 1 ? 'active' : '' }}">
-                        <a
-                            class="flex size-9 sm:size-11 shrink-0 items-center justify-center rounded-full bg-desa-foreshadow group-hover:bg-desa-dark-green group-[.active]:bg-desa-dark-green transition-setup">
-                            <span
-                                class="text-sm sm:text-base text-desa-dark-green font-semibold group-[.active]:text-desa-foreshadow group-hover:text-desa-foreshadow transition-setup">
-                                {{ $i }}
-                            </span>
-                        </a>
-                    </li>
-                @endfor
-
-                <!-- Next Button -->
-                <li class="group shrink-0">
-                    <button type="button"
-                        class="group/arrow flex size-9 sm:size-11 shrink-0 items-center justify-center rounded-full bg-desa-foreshadow disabled:!bg-desa-foreshadow group-hover:bg-desa-dark-green transition-setup">
-                        <img src="{{ asset('/assets') }}/images/icons/arrow-left-dark-green.svg"
-                            class="flex size-4 sm:size-6 shrink-0 rotate-180 group-hover:hidden group-disabled/arrow:!hidden"
-                            alt="icon">
-                        <img src="{{ asset('/assets') }}/images/icons/arrow-left-foreshadow.svg"
-                            class="hidden size-4 sm:size-6 shrink-0 rotate-180 group-hover:flex group-disabled/arrow:!hidden"
-                            alt="icon">
-                        <img src="{{ asset('/assets') }}/images/icons/disabled-arrow-pagination.svg"
-                            class="hidden size-4 sm:size-6 shrink-0 rotate-180 group-disabled/arrow:!flex" alt="icon">
-                    </button>
-                </li>
-            </ul>
-        </nav>
+        <div class="flex flex-col sm:flex-row items-center justify-between mt-6 gap-4">
+            <div class="text-sm text-gray-700">
+                Menampilkan <span id="showingStart">{{ $socialAssistances->firstItem() }}</span> sampai <span
+                    id="showingEnd">{{ $socialAssistances->lastItem() }}</span> dari <span id="totalRows">{{ $socialAssistances->total() }}</span>
+                data
+            </div>
+            <div id="pagination">
+                {{ $socialAssistances->links() }}
+            </div>
+        </div>
     </div>
 @endsection

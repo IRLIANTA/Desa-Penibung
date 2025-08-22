@@ -1,11 +1,11 @@
 @extends('admin.layouts.app')
 @section('content')
-    <div id="Content" class="relative flex flex-col flex-1 gap-6 p-6 pb-[30px] w-full shrink-0">
+    <div class="flex flex-col gap-3 px-2 sm:gap-3.5 sm:px-4">
         <div id="Header" class="flex items-center justify-between">
             <h1 class="font-semibold text-2xl">Kepala Rumah </h1>
             <a href="{{route('kepalaRumah.create')}}" class="flex items-center rounded-2xl py-4 px-6 gap-[10px] bg-desa-dark-green">
                 <img src="assets/images/icons/add-square-white.svg" class="flex size-6 shrink-0" alt="icon">
-                <p class="font-medium text-white">Add New</p>
+                <p class="font-medium text-white">Tambah</p>
             </a>
         </div>
         <section id="List-Kepala-Rumah" class="flex flex-col gap-[14px]">

@@ -11,7 +11,7 @@ class DevelopmentController extends Controller
 {
     public function index()
     {
-        $developments = Development::orderBy('created_at', 'DESC')->paginate(10);
+        $developments = Development::orderBy('created_at', 'desc')->paginate(10);
         // dd($developments);
         return view('admin.development.index', compact('developments'));
     }
