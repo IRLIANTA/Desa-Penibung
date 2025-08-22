@@ -120,7 +120,7 @@ class FeedbackController extends Controller
 
         Feedback::create($request->all());
 
-        return redirect()->back()->with('success', true);
+        return redirect()->back()->with('success', 'Laporan Berhasil Dikirim');
     }
 
     /**
