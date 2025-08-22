@@ -57,7 +57,7 @@
                     <div class="flex flex-col md:flex-row md:items-center w-full gap-4 md:gap-0">
                         
                         {{-- Thumbnail --}}
-                        <div class="flex w-full aspect-square md:w-[100px] md:h-20 shrink-0 rounded-2xl overflow-hidden bg-desa-foreshadow">
+                        <div class="flex w-full aspect-[3/2] md:w-[100px] md:h-20 shrink-0 rounded-2xl overflow-hidden bg-desa-foreshadow">
                             <img src="{{ $event->thumbnail ? asset('storage/' . $event->thumbnail) : asset('assets/images/thumbnails/placeholder.png') }}"
                                 class="w-full h-full object-cover" alt="photo">
                         </div>

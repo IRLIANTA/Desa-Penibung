@@ -101,7 +101,6 @@
                     <div class="flex flex-col gap-3 flex-1 shrink-0">
                         <input type="time" value="{{ substr($event->start_time, 0, 5) }}" name="start_time" required
                             class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black px-4 font-medium" />
-
                 </section>
 
                 <hr class="border-desa-background" />

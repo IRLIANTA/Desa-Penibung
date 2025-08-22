@@ -90,7 +90,7 @@ Route::prefix('/event')->group(function () {
 Route::prefix('/feedback')->group(function () {
     Route::get('/', [FeedbackController::class, 'index'])->name('feedback.index');
     Route::post('/store', [FeedbackController::class, 'store'])->name('feedback.store');
-    Route::get('/user', [FeedbackController::class, 'feedbackUser'])->name('feedback.user');
+    Route::get('/user', [FeedbackController::class, 'feedbackUser'])->name('feedback.user')->middleware('auth');
     Route::get('/getdata', [FeedbackController::class, 'getData'])->name('feedback.data');
     Route::post('/updatestatus/{id}', [FeedbackController::class, 'updateStatus']);
     Route::get('/widget-data', [FeedbackController::class, 'widgetData']);

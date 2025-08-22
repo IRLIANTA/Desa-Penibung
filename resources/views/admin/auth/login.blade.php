@@ -4,17 +4,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Desa Digital</title>
+    <title>Penibung Digital</title>
     <meta name="description" content="The simple way to manage your citizens" />
     <link href="{{ asset('assets/') }}/css/output.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet" />
-
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/logos/logo-icon.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('assets/images/logos/logo-icon.png') }}">
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="The simple way to manage your citizens" />
     <meta property="og:description" content="The simple way to manage your citizens">
-    <meta property="og:image" content="https://desa-digital.netlify.app/assets/images/logos/logo-icon.png" />
-    <meta property="og:url" content="https://desa-digital.netlify.app" />
+    <meta property="og:image" content="{{ asset('assets/') }}/images/logos/icon.png" />
     <meta property="og:type" content="website" />
 </head>
 
@@ -34,7 +33,7 @@
             @csrf
             <div class="flex flex-col h-fit w-[486px] shrink-0 rounded-3xl p-[32px] gap-[32px] bg-white">
                 <header class="flex flex-col gap-[32px] items-center">
-                    <img src="assets/images/logos/logo-text.svg" alt="icon" class="shrink-0 h-[38px] w-[197px]" />
+                    <img src="assets/images/logos/logo-text.svg" alt="icon" class="shrink-0 h-[60px] w-[197px]" />
                     <div class="flex flex-col gap-2">
                         <h1 class="font-semibold text-[24px] leading-[30px] text-center">Halo🙌🏻 , Selamat Datang!</h1>
                         <p class="font-medium leading-5 text-desa-secondary text-center">Silahkan masuk untuk
@@ -71,12 +70,16 @@
         </form>
         <section id="Banner" class="relative flex w-full max-w-[634px]">
             <div class="fixed top-0 h-screen w-full max-w-[634px] overflow-hidden pr-3 py-3">
-                <div class="h-full w-[622px] rounded-3xl gradient-vertical pt-[59px] pb-[60px]">
-                    <img src="assets/images/backgrounds/bg-signin.png" class="h-full w-[542px] object-contain mx-auto"
+                <div
+                    class="h-full w-full rounded-3xl overflow-hidden 
+                bg-[url('assets/images/backgrounds/bg-signin.png')] 
+                bg-cover bg-center">
+                    <img src="assets/images/backgrounds/bg-signin.png" class="h-full w-full object-cover mx-auto"
                         alt="banner" />
                 </div>
             </div>
         </section>
+
     </main>
 </body>
 
