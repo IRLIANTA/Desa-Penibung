@@ -184,7 +184,7 @@
 @endpush --}}
 <div class="-translate-x-full lg:translate-x-0 bg-black/15 transition-all fixed z-20 h-dvh w-screen lg:w-[300px]">
     <div
-        class="bg-white z-10 p-6 lg:py-[30px] h-full overflow-y-auto no-scrollbar scroll ml-auto w-[100vw] lg:w-[300px] gap-6 flex flex-col">
+        class="bg-white z-10 p-6 lg:py-[30px] h-full  overflow-y-auto no-scrollbar scroll ml-auto w-[100vw] lg:w-[300px] gap-6 flex flex-col">
         <div class="top">
             <div class="flex justify-between items-center">
                 <div class="flex items-center gap-3">
