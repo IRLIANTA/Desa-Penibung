@@ -81,11 +81,6 @@ class MediaController extends Controller
     {
         $media = Media::findOrFail($id);
 
-        $total = Media::count();
-        if ($total <= 1) {
-            return redirect()->back()->with('error', 'Minimal harus ada 1 foto desa, tidak bisa dihapus semua.');
-        }
-
         if ($media->file_path && Storage::disk('public')->exists($media->file_path)) {
             Storage::disk('public')->delete($media->file_path);
         }
