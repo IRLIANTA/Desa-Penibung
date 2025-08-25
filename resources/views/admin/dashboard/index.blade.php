@@ -29,7 +29,7 @@
                         Geografis Desa
                         Penibung.</p>
                 </div>
-                <a href="{{ route('profile.index') }}"
+                <a href="{{ url('profile') }}"
                     class="flex items-center justify-between rounded-2xl p-3 sm:p-4 gap-2 sm:gap-[10px] bg-white">
                     <span class="font-medium text-desa-dark-green leading-5 text-sm sm:text-base">Kunjungi Halaman
                         Profile</span>
