@@ -275,7 +275,7 @@
                     <div class="card flex items-center w-full gap-3">
                         <div
                             class="flex size-16 sm:size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                            <img src="{{asset('assets/')}}/images/icons/money-dark-green.svg" class="flex size-7 sm:size-9 shrink-0"
+                            <img src="{{asset('assets/images/icons/money-dark-green.svg')}}" class="flex size-7 sm:size-9 shrink-0"
                                 alt="icon">
                         </div>
                         <div class="flex flex-col gap-1 sm:gap-[6px] w-full">
