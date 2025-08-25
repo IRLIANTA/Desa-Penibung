@@ -1,67 +1,25 @@
 <IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
     RewriteEngine On
 
-    # Cegah MultiViews dan Directory Listing
-    <IfModule mod_negotiation.c>
-        Options -MultiViews
-    </IfModule>
-    Options -Indexes
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-    # ===================================================================
-    # 🔐 KEAMANAN: Blokir akses ke file sensitif
-    # ===================================================================
-    <FilesMatch "^(\.env|\.git|composer\.json|composer\.lock|artisan|phpunit\.xml|\.htaccess|\.gitignore|\.editorconfig|\.ftpquota)$">
-        Require all denied
-    </FilesMatch>
+    # Handle X-XSRF-Token Header
+    RewriteCond %{HTTP:x-xsrf-token} .
+    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
 
-    # Blokir akses ke folder yang tidak boleh diakses via web
-    RedirectMatch 403 ^/(vendor|node_modules|tests|\.git)(/.*)?$
-
-    # ===================================================================
-    # 🔄 SEO & CLEAN URL: Hapus trailing slash jika bukan folder
-    # ===================================================================
+    # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
 
-    # ===================================================================
-    # 📁 Front Controller (opsional): Jika kamu pakai routing sederhana
-    # Hapus bagian ini jika kamu tidak butuh URL tanpa .php
-    # ===================================================================
-    # Contoh: /about → /about.php (jika file ada)
-    # RewriteCond %{REQUEST_FILENAME} !-d
-    # RewriteCond %{REQUEST_FILENAME}.php -f
-    # RewriteRule ^(.*)$ $1.php [L]
-
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
 </IfModule>
-
-
-# <IfModule mod_rewrite.c>
-#     <IfModule mod_negotiation.c>
-#         Options -MultiViews -Indexes
-#     </IfModule>
-
-#     RewriteEngine On
-
-#     # Blokir file sensitif
-#     <FilesMatch "^(\.env|\.git|composer\.json|composer\.lock|artisan|server\.php|phpunit\.xml|\.htaccess)$">
-#         Require all denied
-#     </FilesMatch>
-
-#     # Blok folder internal
-#     RedirectMatch 403 ^/(storage|vendor|bootstrap|tests)(.*)$
-
-#     # Handle Authorization Header
-#     RewriteCond %{HTTP:Authorization} .
-#     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
-#     # Redirect Trailing Slashes If Not A Folder
-#     RewriteCond %{REQUEST_FILENAME} !-d
-#     RewriteCond %{REQUEST_URI} (.+)/$
-#     RewriteRule ^ %1 [L,R=301]
-
-#     # Redirect all to index.php
-#     RewriteCond %{REQUEST_FILENAME} !-d
-#     RewriteCond %{REQUEST_FILENAME} !-f
-#     RewriteRule ^ index.php [L]
-# </IfModule>
