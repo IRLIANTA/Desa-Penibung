@@ -13,7 +13,7 @@
             <a href="{{ route('profile.media.index') }}"
                 class="flex items-center rounded-2xl py-3 px-4 gap-[10px] bg-desa-green w-full sm:w-auto justify-center">
                 <p class="font-medium text-white">Lihat Media</p>
-                <img src="/{{asset('assets/')}}/images/icons/eye-white-fill.svg" class="flex size-6 shrink-0"
+                <img src="{{asset('assets/')}}/images/icons/eye-white-fill.svg" class="flex size-6 shrink-0"
                     alt="icon">
             </a>
         </div>
