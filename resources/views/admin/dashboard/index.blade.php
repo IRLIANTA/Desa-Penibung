@@ -11,7 +11,7 @@
                 <button data-modal="Modal-Edit-Statistik"
                     class="flex items-center rounded-2xl py-2 px-3 gap-2 sm:gap-[10px] bg-desa-yellow w-full sm:w-auto justify-center">
                     <p class="font-medium text-black text-sm sm:text-base">Ubah Statistik</p>
-                    <img src="assets/images/icons/edit-black.svg" class="flex size-5 sm:size-6 shrink-0" alt="icon">
+                    <img src="{{asset('assets/')}}/images/icons/edit-black.svg" class="flex size-5 sm:size-6 shrink-0" alt="icon">
                 </button>
             @endif
         </div>
@@ -20,7 +20,7 @@
         <div id="Row-1" class="flex flex-col lg:flex-row gap-3 sm:gap-[14px]">
             <!-- Info Card -->
             <div class="flex flex-col w-full lg:w-[38%] h-auto rounded-2xl p-4 sm:p-6 gap-4 sm:gap-6 gradient-vertical">
-                <img src="assets/images/icons/gift-orange-background.svg" class="flex size-16 sm:size-[86px] shrink-0"
+                <img src="{{asset('assets/')}}/images/icons/gift-orange-background.svg" class="flex size-16 sm:size-[86px] shrink-0"
                     alt="icon">
                 <div class="flex flex-col gap-3">
                     <p class="font-medium text-sm text-desa-lime">— Informasi Statistik Desa Penibung</p>
@@ -33,7 +33,7 @@
                     class="flex items-center justify-between rounded-2xl p-3 sm:p-4 gap-2 sm:gap-[10px] bg-white">
                     <span class="font-medium text-desa-dark-green leading-5 text-sm sm:text-base">Kunjungi Halaman
                         Profile</span>
-                    <img src="assets/images/icons/add-square-dark-green.svg" class="flex size-5 sm:size-6 shrink-0"
+                    <img src="{{asset('assets/')}}/images/icons/add-square-dark-green.svg" class="flex size-5 sm:size-6 shrink-0"
                         alt="icon">
                 </a>
             </div>
@@ -44,14 +44,14 @@
                 <div class="card flex flex-col w-full rounded-2xl p-4 sm:p-6 gap-3 bg-white">
                     <div class="flex items-center justify-between">
                         <p class="font-medium text-desa-secondary text-sm sm:text-base">Jumlah Penduduk</p>
-                        <img src="assets/images/icons/profil-2user-foreshadow-background.svg"
+                        <img src="{{asset('assets/')}}/images/icons/profil-2user-foreshadow-background.svg"
                             class="flex size-10 sm:size-12 shrink-0" alt="icon">
                     </div>
                     <div class="flex flex-col gap-1 sm:gap-[6px]">
                         <p class="font-semibold text-2xl sm:text-[32px] leading-8 sm:leading-10">
                             {{ number_format(get_statistik('jml_penduduk'), 0, ',', '.') }}</p>
                         <div class="flex items-center gap-0.5">
-                            <img src="assets/images/icons/trend-up-dark-green-fill.svg"
+                            <img src="{{asset('assets/')}}/images/icons/trend-up-dark-green-fill.svg"
                                 class="flex size-4 sm:size-[18px] shrink-0" alt="icon">
                             <p class="font-medium text-xs sm:text-sm text-desa-secondary">
                                 <span class="text-desa-dark-green">+12%</span>
@@ -65,14 +65,14 @@
                 <div class="card flex flex-col w-full rounded-2xl p-4 sm:p-6 gap-3 bg-white">
                     <div class="flex items-center justify-between">
                         <p class="font-medium text-desa-secondary text-sm sm:text-base">Pembangunan</p>
-                        <img src="assets/images/icons/buildings-foreshadow-background.svg"
+                        <img src="{{asset('assets/')}}/images/icons/buildings-foreshadow-background.svg"
                             class="flex size-10 sm:size-12 shrink-0" alt="icon">
                     </div>
                     <div class="flex flex-col gap-1 sm:gap-[6px]">
                         <p class="font-semibold text-2xl sm:text-[32px] leading-8 sm:leading-10">
                             {{ number_format(get_statistik('pembangunan'), 0, ',', '.') }}</p>
                         <div class="flex items-center gap-0.5">
-                            <img src="assets/images/icons/trend-up-dark-green-fill.svg"
+                            <img src="{{asset('assets/')}}/images/icons/trend-up-dark-green-fill.svg"
                                 class="flex size-4 sm:size-[18px] shrink-0" alt="icon">
                             <p class="font-medium text-xs sm:text-sm text-desa-secondary">
                                 <span class="text-desa-dark-green">+12%</span>
@@ -86,14 +86,14 @@
                 <div class="card flex flex-col w-full rounded-2xl p-4 sm:p-6 gap-3 bg-white">
                     <div class="flex items-center justify-between">
                         <p class="font-medium text-desa-secondary text-sm sm:text-base">Jumlah Rumah</p>
-                        <img src="assets/images/icons/crown-foreshadow-background.svg"
+                        <img src="{{asset('assets/')}}/images/icons/crown-foreshadow-background.svg"
                             class="flex size-10 sm:size-12 shrink-0" alt="icon">
                     </div>
                     <div class="flex flex-col gap-1 sm:gap-[6px]">
                         <p class="font-semibold text-2xl sm:text-[32px] leading-8 sm:leading-10">
                             {{ number_format(get_statistik('jml_rumah'), 0, ',', '.') }}</p>
                         <div class="flex items-center gap-0.5">
-                            <img src="assets/images/icons/trend-up-dark-green-fill.svg"
+                            <img src="{{asset('assets/')}}/images/icons/trend-up-dark-green-fill.svg"
                                 class="flex size-4 sm:size-[18px] shrink-0" alt="icon">
                             <p class="font-medium text-xs sm:text-sm text-desa-secondary">
                                 <span class="text-desa-dark-green">+12%</span>
@@ -107,13 +107,13 @@
                 <div class="card flex flex-col w-full rounded-2xl p-4 sm:p-6 gap-3 bg-white">
                     <div class="flex items-center justify-between">
                         <p class="font-medium text-desa-secondary text-sm sm:text-base">Total Events</p>
-                        <img src="assets/images/icons/calendar-2-foreshadow-background.svg"
+                        <img src="{{asset('assets/')}}/images/icons/calendar-2-foreshadow-background.svg"
                             class="flex size-10 sm:size-12 shrink-0" alt="icon">
                     </div>
                     <div class="flex flex-col gap-1 sm:gap-[6px]">
                         <p class="font-semibold text-2xl sm:text-[32px] leading-8 sm:leading-10">12</p>
                         <div class="flex items-center gap-0.5">
-                            <img src="assets/images/icons/trend-up-dark-green-fill.svg"
+                            <img src="{{asset('assets/')}}/images/icons/trend-up-dark-green-fill.svg"
                                 class="flex size-4 sm:size-[18px] shrink-0" alt="icon">
                             <p class="font-medium text-xs sm:text-sm text-desa-secondary">
                                 <span class="text-desa-dark-green">+12%</span>
@@ -131,7 +131,7 @@
                 <button data-modal="Modal-Edit-Penduduk"
                     class="flex items-center rounded-2xl py-2 sm:py-3 px-3 sm:px-4 gap-2 sm:gap-[10px] bg-desa-yellow w-full sm:w-auto justify-center">
                     <p class="font-medium text-black text-sm sm:text-base">Ubah Penduduk</p>
-                    <img src="assets/images/icons/edit-black.svg" class="flex size-5 sm:size-6 shrink-0" alt="icon">
+                    <img src="{{asset('assets/')}}/images/icons/edit-black.svg" class="flex size-5 sm:size-6 shrink-0" alt="icon">
                 </button>
             </div>
         @endif
@@ -143,14 +143,14 @@
                 <div class="card flex flex-col rounded-2xl p-4 sm:p-6 gap-3 bg-white">
                     <div class="flex items-center justify-between">
                         <p class="font-medium text-desa-secondary text-sm sm:text-base">Jumlah Penduduk Pria</p>
-                        <img src="assets/images/icons/profil-2user-foreshadow-background.svg"
+                        <img src="{{asset('assets/')}}/images/icons/profil-2user-foreshadow-background.svg"
                             class="flex size-10 sm:size-12 shrink-0" alt="icon">
                     </div>
                     <div class="flex flex-col gap-1 sm:gap-[6px]">
                         <p class="font-semibold text-2xl sm:text-[32px] leading-8 sm:leading-10">
                             {{ number_format(get_statistik('jml_pria'), 0, ',', '.') }}</p>
                         <div class="flex items-center gap-0.5">
-                            <img src="assets/images/icons/trend-up-dark-green-fill.svg"
+                            <img src="{{asset('assets/')}}/images/icons/trend-up-dark-green-fill.svg"
                                 class="flex size-4 sm:size-[18px] shrink-0" alt="icon">
                             <p class="font-medium text-xs sm:text-sm text-desa-secondary">
                                 <span class="text-desa-dark-green">+12%</span> dari bulan sebelumnya
@@ -163,14 +163,14 @@
                 <div class="card flex flex-col rounded-2xl p-4 sm:p-6 gap-3 bg-white">
                     <div class="flex items-center justify-between">
                         <p class="font-medium text-desa-secondary text-sm sm:text-base">Jumlah Penduduk Perempuan</p>
-                        <img src="assets/images/icons/profil-2user-foreshadow-background.svg"
+                        <img src="{{asset('assets/')}}/images/icons/profil-2user-foreshadow-background.svg"
                             class="flex size-10 sm:size-12 shrink-0" alt="icon">
                     </div>
                     <div class="flex flex-col gap-1 sm:gap-[6px]">
                         <p class="font-semibold text-2xl sm:text-[32px] leading-8 sm:leading-10">
                             {{ number_format(get_statistik('jml_wanita'), 0, ',', '.') }}</p>
                         <div class="flex items-center gap-0.5">
-                            <img src="assets/images/icons/trend-up-dark-green-fill.svg"
+                            <img src="{{asset('assets/')}}/images/icons/trend-up-dark-green-fill.svg"
                                 class="flex size-4 sm:size-[18px] shrink-0" alt="icon">
                             <p class="font-medium text-xs sm:text-sm text-desa-secondary">
                                 <span class="text-desa-dark-green">+12%</span> dari bulan sebelumnya
@@ -183,14 +183,14 @@
                 <div class="card flex flex-col rounded-2xl p-4 sm:p-6 gap-3 bg-white">
                     <div class="flex items-center justify-between">
                         <p class="font-medium text-desa-secondary text-sm sm:text-base">Jumlah Kepala Keluarga</p>
-                        <img src="assets/images/icons/profil-2user-foreshadow-background.svg"
+                        <img src="{{asset('assets/')}}/images/icons/profil-2user-foreshadow-background.svg"
                             class="flex size-10 sm:size-12 shrink-0" alt="icon">
                     </div>
                     <div class="flex flex-col gap-1 sm:gap-[6px]">
                         <p class="font-semibold text-2xl sm:text-[32px] leading-8 sm:leading-10">
                             {{ number_format(get_statistik('jml_kepala_keluarga'), 0, ',', '.') }}</p>
                         <div class="flex items-center gap-0.5">
-                            <img src="assets/images/icons/trend-up-dark-green-fill.svg"
+                            <img src="{{asset('assets/')}}/images/icons/trend-up-dark-green-fill.svg"
                                 class="flex size-4 sm:size-[18px] shrink-0" alt="icon">
                             <p class="font-medium text-xs sm:text-sm text-desa-secondary">
                                 <span class="text-desa-dark-green">+12%</span> dari bulan sebelumnya
@@ -203,14 +203,14 @@
                 <div class="card flex flex-col rounded-2xl p-4 sm:p-6 gap-3 bg-white">
                     <div class="flex items-center justify-between">
                         <p class="font-medium text-desa-secondary text-sm sm:text-base">Jumlah KK P</p>
-                        <img src="assets/images/icons/profil-2user-foreshadow-background.svg"
+                        <img src="{{asset('assets/')}}/images/icons/profil-2user-foreshadow-background.svg"
                             class="flex size-10 sm:size-12 shrink-0" alt="icon">
                     </div>
                     <div class="flex flex-col gap-1 sm:gap-[6px]">
                         <p class="font-semibold text-2xl sm:text-[32px] leading-8 sm:leading-10">
                             {{ number_format(get_statistik('jml_kk'), 0, ',', '.') }}</p>
                         <div class="flex items-center gap-0.5">
-                            <img src="assets/images/icons/trend-up-dark-green-fill.svg"
+                            <img src="{{asset('assets/')}}/images/icons/trend-up-dark-green-fill.svg"
                                 class="flex size-4 sm:size-[18px] shrink-0" alt="icon">
                             <p class="font-medium text-xs sm:text-sm text-desa-secondary">
                                 <span class="text-desa-dark-green">+12%</span> dari bulan sebelumnya
@@ -235,14 +235,14 @@
                     <div class="card flex items-center w-full gap-3">
                         <div
                             class="flex size-16 sm:size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                            <img src="assets/images/icons/money-dark-green.svg" class="flex size-7 sm:size-9 shrink-0"
+                            <img src="{{asset('assets/')}}/images/icons/money-dark-green.svg" class="flex size-7 sm:size-9 shrink-0"
                                 alt="icon">
                         </div>
                         <div class="flex flex-col gap-1 sm:gap-[6px] w-full">
                             <p class="font-semibold text-lg sm:text-xl leading-6 sm:leading-[25px]">
                                 {{ number_format(get_dusun()->count(), 0, ',', '.') }}</p>
                             <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
-                                <img src="assets/images/icons/profile-secondary-green.svg"
+                                <img src="{{asset('assets/')}}/images/icons/profile-secondary-green.svg"
                                     class="flex size-4 sm:size-[18px] shrink-0" alt="icon">
                                 <span class="line-clamp-1 text-sm sm:text-base">Jumlah Dusun</span>
                             </div>
@@ -255,14 +255,14 @@
                     <div class="card flex items-center w-full gap-3">
                         <div
                             class="flex size-16 sm:size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                            <img src="assets/images/icons/money-dark-green.svg" class="flex size-7 sm:size-9 shrink-0"
+                            <img src="{{asset('assets/')}}/images/icons/money-dark-green.svg" class="flex size-7 sm:size-9 shrink-0"
                                 alt="icon">
                         </div>
                         <div class="flex flex-col gap-1 sm:gap-[6px] w-full">
                             <p class="font-semibold text-lg sm:text-xl leading-6 sm:leading-[25px]">
                                 {{ number_format(sum_rw(), 0, ',', '.') }}</p>
                             <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
-                                <img src="assets/images/icons/profile-secondary-green.svg"
+                                <img src="{{asset('assets/')}}/images/icons/profile-secondary-green.svg"
                                     class="flex size-4 sm:size-[18px] shrink-0" alt="icon">
                                 <span class="line-clamp-1 text-sm sm:text-base">Jumlah Rukun Warga</span>
                             </div>
@@ -275,14 +275,14 @@
                     <div class="card flex items-center w-full gap-3">
                         <div
                             class="flex size-16 sm:size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                            <img src="assets/images/icons/money-dark-green.svg" class="flex size-7 sm:size-9 shrink-0"
+                            <img src="{{asset('assets/')}}/images/icons/money-dark-green.svg" class="flex size-7 sm:size-9 shrink-0"
                                 alt="icon">
                         </div>
                         <div class="flex flex-col gap-1 sm:gap-[6px] w-full">
                             <p class="font-semibold text-lg sm:text-xl leading-6 sm:leading-[25px]">
                                 {{ number_format(sum_rt(), 0, ',', '.') }}</p>
                             <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
-                                <img src="assets/images/icons/profile-secondary-green.svg"
+                                <img src="{{asset('assets/')}}/images/icons/profile-secondary-green.svg"
                                     class="flex size-4 sm:size-[18px] shrink-0" alt="icon">
                                 <span class="line-clamp-1 text-sm sm:text-base">Jumlah Rukun Tetangga</span>
                             </div>
@@ -311,14 +311,14 @@
                             <div class="card flex items-center w-full gap-3">
                                 <div
                                     class="flex size-16 sm:size-[72px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                                    <img src="assets/images/icons/money-dark-green.svg"
+                                    <img src="{{asset('assets/')}}/images/icons/money-dark-green.svg"
                                         class="flex size-7 sm:size-9 shrink-0" alt="icon">
                                 </div>
                                 <div class="flex flex-col gap-1 sm:gap-[6px] w-full">
                                     <p class="font-semibold text-lg sm:text-xl leading-6 sm:leading-[25px]">
                                         {{ $d->dusun }}</p>
                                     <div class="flex items-center gap-0.5 font-medium text-desa-secondary">
-                                        <img src="assets/images/icons/profile-secondary-green.svg"
+                                        <img src="{{asset('assets/')}}/images/icons/profile-secondary-green.svg"
                                             class="flex size-4 sm:size-[18px] shrink-0" alt="icon">
                                         <span class="line-clamp-1 text-sm sm:text-base">{{ $d->nama_kepala_dusun }}</span>
                                     </div>
@@ -352,7 +352,7 @@
             <section id="statistik-Penduduk" class="flex flex-col gap-4 p-4 sm:p-6 rounded-2xl bg-white">
                 <div class="flex items-center justify-between">
                     <p class="font-medium text-desa-secondary text-sm sm:text-base">Statistics Desa</p>
-                    <img src="assets/images/icons/profile-2user-foreshadow-background.svg"
+                    <img src="{{asset('assets/')}}/images/icons/profile-2user-foreshadow-background.svg"
                         class="flex size-10 sm:size-12 shrink-0" alt="icon">
                 </div>
 
@@ -387,7 +387,7 @@
                         </div>
                         <p class="flex items-center font-medium leading-5 text-sm sm:text-base">
                             {{ number_format(get_statistik('jml_pria'), 0, ',', '.') }}
-                            <img src="assets/images/icons/user-square-dark-green.svg"
+                            <img src="{{asset('assets/')}}/images/icons/user-square-dark-green.svg"
                                 class="flex size-4 sm:size-[18px] shrink-0 ml-0.5" alt="icon">
                         </p>
                     </div>
@@ -404,7 +404,7 @@
                         </div>
                         <p class="flex items-center font-medium leading-5 text-sm sm:text-base">
                             {{ number_format(get_statistik('jml_wanita'), 0, ',', '.') }}
-                            <img src="assets/images/icons/user-square-dark-green.svg"
+                            <img src="{{asset('assets/')}}/images/icons/user-square-dark-green.svg"
                                 class="flex size-4 sm:size-[18px] shrink-0 ml-0.5" alt="icon">
                         </p>
                     </div>
@@ -421,7 +421,7 @@
                         </div>
                         <p class="flex items-center font-medium leading-5 text-sm sm:text-base">
                             {{ number_format(get_statistik('jml_kepala_keluarga'), 0, ',', '.') }}
-                            <img src="assets/images/icons/user-square-dark-green.svg"
+                            <img src="{{asset('assets/')}}/images/icons/user-square-dark-green.svg"
                                 class="flex size-4 sm:size-[18px] shrink-0 ml-0.5" alt="icon">
                         </p>
                     </div>
@@ -439,7 +439,7 @@
                         </div>
                         <p class="flex items-center font-medium leading-5 text-sm sm:text-base">
                             {{ number_format(get_statistik('jml_kk'), 0, ',', '.') }}
-                            <img src="assets/images/icons/user-square-dark-green.svg"
+                            <img src="{{asset('assets/')}}/images/icons/user-square-dark-green.svg"
                                 class="flex size-4 sm:size-[18px] shrink-0 ml-0.5" alt="icon">
                         </p>
                     </div>
@@ -455,7 +455,7 @@
             <div class="flex items-center justify-between p-4 bg-desa-black">
                 <p class="font-medium leading-5 text-white text-sm sm:text-base">Edit Statistik Dashboard</p>
                 <button class="btn-close-modal">
-                    <img src="assets/images/icons/close-circle-white.svg" class="flex size-5 sm:size-6 shrink-0"
+                    <img src="{{asset('assets/')}}/images/icons/close-circle-white.svg" class="flex size-5 sm:size-6 shrink-0"
                         alt="icon">
                 </button>
             </div>
@@ -476,9 +476,9 @@
                                         class="appearance-none outline-none w-full h-12 sm:h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-3 sm:py-4 px-10 sm:px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300 text-sm sm:text-base">
                                     <div
                                         class="absolute transform -translate-y-1/2 top-1/2 left-3 sm:left-4 flex size-5 sm:size-6 shrink-0">
-                                        <img src="assets/images/icons/edit-secondary-green.svg"
+                                        <img src="{{asset('assets/')}}/images/icons/edit-secondary-green.svg"
                                             class="size-full hidden group-has-[:placeholder-shown]:flex" alt="icon">
-                                        <img src="assets/images/icons/edit-black.svg"
+                                        <img src="{{asset('assets/')}}/images/icons/edit-black.svg"
                                             class="size-full flex group-has-[:placeholder-shown]:hidden" alt="icon">
                                     </div>
                                 </label>
@@ -497,9 +497,9 @@
                                         class="appearance-none outline-none w-full h-12 sm:h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-3 sm:py-4 px-10 sm:px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300 text-sm sm:text-base">
                                     <div
                                         class="absolute transform -translate-y-1/2 top-1/2 left-3 sm:left-4 flex size-5 sm:size-6 shrink-0">
-                                        <img src="assets/images/icons/edit-secondary-green.svg"
+                                        <img src="{{asset('assets/')}}/images/icons/edit-secondary-green.svg"
                                             class="size-full hidden group-has-[:placeholder-shown]:flex" alt="icon">
-                                        <img src="assets/images/icons/edit-black.svg"
+                                        <img src="{{asset('assets/')}}/images/icons/edit-black.svg"
                                             class="size-full flex group-has-[:placeholder-shown]:hidden" alt="icon">
                                     </div>
                                 </label>
@@ -518,9 +518,9 @@
                                         class="appearance-none outline-none w-full h-12 sm:h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-3 sm:py-4 px-10 sm:px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300 text-sm sm:text-base">
                                     <div
                                         class="absolute transform -translate-y-1/2 top-1/2 left-3 sm:left-4 flex size-5 sm:size-6 shrink-0">
-                                        <img src="assets/images/icons/edit-secondary-green.svg"
+                                        <img src="{{asset('assets/')}}/images/icons/edit-secondary-green.svg"
                                             class="size-full hidden group-has-[:placeholder-shown]:flex" alt="icon">
-                                        <img src="assets/images/icons/edit-black.svg"
+                                        <img src="{{asset('assets/')}}/images/icons/edit-black.svg"
                                             class="size-full flex group-has-[:placeholder-shown]:hidden" alt="icon">
                                     </div>
                                 </label>
@@ -537,7 +537,7 @@
                         <button
                             class="flex items-center justify-center h-12 sm:h-14 rounded-2xl py-3 px-6 sm:px-8 gap-2 bg-desa-yellow hover:bg-yellow-600 transition-all duration-300 flex-1 order-1 sm:order-2"
                             type="submit">
-                            <img src="assets/images/icons/edit-black.svg" class="flex size-5 sm:size-6 shrink-0"
+                            <img src="{{asset('assets/')}}/images/icons/edit-black.svg" class="flex size-5 sm:size-6 shrink-0"
                                 alt="">
                             <span class="font-semibold text-sm text-black">Iya Edit</span>
                         </button>
@@ -554,7 +554,7 @@
             <div class="flex items-center justify-between p-4 bg-desa-black">
                 <p class="font-medium leading-5 text-white text-sm sm:text-base">Edit Penduduk Dashboard</p>
                 <button class="btn-close-modal">
-                    <img src="assets/images/icons/close-circle-white.svg" class="flex size-5 sm:size-6 shrink-0"
+                    <img src="{{asset('assets/')}}/images/icons/close-circle-white.svg" class="flex size-5 sm:size-6 shrink-0"
                         alt="icon">
                 </button>
             </div>
@@ -576,9 +576,9 @@
                                         class="appearance-none outline-none w-full h-12 sm:h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-3 sm:py-4 px-10 sm:px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300 text-sm sm:text-base">
                                     <div
                                         class="absolute transform -translate-y-1/2 top-1/2 left-3 sm:left-4 flex size-5 sm:size-6 shrink-0">
-                                        <img src="assets/images/icons/edit-secondary-green.svg"
+                                        <img src="{{asset('assets/')}}/images/icons/edit-secondary-green.svg"
                                             class="size-full hidden group-has-[:placeholder-shown]:flex" alt="icon">
-                                        <img src="assets/images/icons/edit-black.svg"
+                                        <img src="{{asset('assets/')}}/images/icons/edit-black.svg"
                                             class="size-full flex group-has-[:placeholder-shown]:hidden" alt="icon">
                                     </div>
                                 </label>
@@ -598,9 +598,9 @@
                                         class="appearance-none outline-none w-full h-12 sm:h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-3 sm:py-4 px-10 sm:px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300 text-sm sm:text-base">
                                     <div
                                         class="absolute transform -translate-y-1/2 top-1/2 left-3 sm:left-4 flex size-5 sm:size-6 shrink-0">
-                                        <img src="assets/images/icons/edit-secondary-green.svg"
+                                        <img src="{{asset('assets/')}}/images/icons/edit-secondary-green.svg"
                                             class="size-full hidden group-has-[:placeholder-shown]:flex" alt="icon">
-                                        <img src="assets/images/icons/edit-black.svg"
+                                        <img src="{{asset('assets/')}}/images/icons/edit-black.svg"
                                             class="size-full flex group-has-[:placeholder-shown]:hidden" alt="icon">
                                     </div>
                                 </label>
@@ -620,9 +620,9 @@
                                         class="appearance-none outline-none w-full h-12 sm:h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-3 sm:py-4 px-10 sm:px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300 text-sm sm:text-base">
                                     <div
                                         class="absolute transform -translate-y-1/2 top-1/2 left-3 sm:left-4 flex size-5 sm:size-6 shrink-0">
-                                        <img src="assets/images/icons/edit-secondary-green.svg"
+                                        <img src="{{asset('assets/')}}/images/icons/edit-secondary-green.svg"
                                             class="size-full hidden group-has-[:placeholder-shown]:flex" alt="icon">
-                                        <img src="assets/images/icons/edit-black.svg"
+                                        <img src="{{asset('assets/')}}/images/icons/edit-black.svg"
                                             class="size-full flex group-has-[:placeholder-shown]:hidden" alt="icon">
                                     </div>
                                 </label>
@@ -641,9 +641,9 @@
                                         class="appearance-none outline-none w-full h-12 sm:h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-3 sm:py-4 px-10 sm:px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300 text-sm sm:text-base">
                                     <div
                                         class="absolute transform -translate-y-1/2 top-1/2 left-3 sm:left-4 flex size-5 sm:size-6 shrink-0">
-                                        <img src="assets/images/icons/edit-secondary-green.svg"
+                                        <img src="{{asset('assets/')}}/images/icons/edit-secondary-green.svg"
                                             class="size-full hidden group-has-[:placeholder-shown]:flex" alt="icon">
-                                        <img src="assets/images/icons/edit-black.svg"
+                                        <img src="{{asset('assets/')}}/images/icons/edit-black.svg"
                                             class="size-full flex group-has-[:placeholder-shown]:hidden" alt="icon">
                                     </div>
                                 </label>
@@ -660,7 +660,7 @@
                         <button
                             class="flex items-center justify-center h-12 sm:h-14 rounded-2xl py-3 px-6 sm:px-8 gap-2 bg-desa-yellow hover:bg-yellow-600 transition-all duration-300 flex-1 order-1 sm:order-2"
                             type="submit">
-                            <img src="assets/images/icons/edit-black.svg" class="flex size-5 sm:size-6 shrink-0"
+                            <img src="{{asset('assets/')}}/images/icons/edit-black.svg" class="flex size-5 sm:size-6 shrink-0"
                                 alt="">
                             <span class="font-semibold text-sm text-black">Iya Edit</span>
                         </button>

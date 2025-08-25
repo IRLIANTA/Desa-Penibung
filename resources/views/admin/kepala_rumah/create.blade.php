@@ -19,7 +19,7 @@
                     <div class="flex-1 flex items-center justify-between">
                         <div id="Photo-Preview"
                             class="flex itce justify-center size-[100px] rounded-full overflow-hidden bg-desa-foreshadow">
-                            <img id="Photo" src="assets/images/photos/kk-preview.png" alt="image"
+                            <img id="Photo" src="{{asset('assets/')}}/images/photos/kk-preview.png" alt="image"
                                 class="size-full object-cover" />
                         </div>
                         <div class="relative">
@@ -27,7 +27,7 @@
                                 class="absolute opacity-0 left-0 w-full top-0 h-full" />
                             <button id="Upload" type="button"
                                 class="relative flex items-center py-4 px-6 rounded-2xl bg-desa-black gap-[10px]">
-                                <img src="assets/images/icons/send-square-white.svg" alt="icon"
+                                <img src="{{asset('assets/')}}/images/icons/send-square-white.svg" alt="icon"
                                     class="size-6 shrink-0" />
                                 <p class="font-medium leading-5 text-white">Upload</p>
                             </button>
@@ -42,12 +42,12 @@
                             <input type="text" placeholder="Masukan nama lengkap"
                                 class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
                             <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
-                                <img src="assets/images/icons/user-secondary-green.svg"
+                                <img src="{{asset('assets/')}}/images/icons/user-secondary-green.svg"
                                     class="size-6 hidden group-has-[:placeholder-shown]:flex" alt="icon">
-                                <img src="assets/images/icons/user-black.svg"
+                                <img src="{{asset('assets/')}}/images/icons/user-black.svg"
                                     class="size-6 flex group-has-[:placeholder-shown]:hidden" alt="icon">
                             </div>
-                            <img src="assets/images/icons/Checklist-dark-green-fill.svg"
+                            <img src="{{asset('assets/')}}/images/icons/Checklist-dark-green-fill.svg"
                                 class="absolute transform -translate-y-1/2 top-1/2 right-4 size-6 shrink-0 hidden group-[.valid]:flex"
                                 alt="icon">
                         </label>
@@ -62,12 +62,12 @@
                             <input type="number" placeholder="Ketik NIK"
                                 class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
                             <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
-                                <img src="assets/images/icons/keyboard-secondary-green.svg"
+                                <img src="{{asset('assets/')}}/images/icons/keyboard-secondary-green.svg"
                                     class="size-6 hidden group-has-[:placeholder-shown]:flex" alt="icon">
-                                <img src="assets/images/icons/keyboard-black.svg"
+                                <img src="{{asset('assets/')}}/images/icons/keyboard-black.svg"
                                     class="size-6 flex group-has-[:placeholder-shown]:hidden" alt="icon">
                             </div>
-                            <img src="assets/images/icons/Checklist-dark-green-fill.svg"
+                            <img src="{{asset('assets/')}}/images/icons/Checklist-dark-green-fill.svg"
                                 class="absolute transform -translate-y-1/2 top-1/2 right-4 size-6 shrink-0 hidden group-[.valid]:flex"
                                 alt="icon">
                         </label>
@@ -81,12 +81,12 @@
                             <input type="text" placeholder="Masukan No. HP yang aktif"
                                 class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
                             <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
-                                <img src="assets/images/icons/call-secondary-green.svg"
+                                <img src="{{asset('assets/')}}/images/icons/call-secondary-green.svg"
                                     class="size-6 hidden group-has-[:placeholder-shown]:flex" alt="icon">
-                                <img src="assets/images/icons/call-black.svg"
+                                <img src="{{asset('assets/')}}/images/icons/call-black.svg"
                                     class="size-6 flex group-has-[:placeholder-shown]:hidden" alt="icon">
                             </div>
-                            <img src="assets/images/icons/Checklist-dark-green-fill.svg"
+                            <img src="{{asset('assets/')}}/images/icons/Checklist-dark-green-fill.svg"
                                 class="absolute transform -translate-y-1/2 top-1/2 right-4 size-6 shrink-0 hidden group-[.valid]:flex"
                                 alt="icon">
                         </label>
@@ -100,12 +100,12 @@
                             <input type="text" placeholder="Masukan nama pekerjaan"
                                 class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
                             <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
-                                <img src="assets/images/icons/briefcase-secondary-green.svg"
+                                <img src="{{asset('assets/')}}/images/icons/briefcase-secondary-green.svg"
                                     class="size-6 hidden group-has-[:placeholder-shown]:flex" alt="icon">
-                                <img src="assets/images/icons/briefcase-black.svg"
+                                <img src="{{asset('assets/')}}/images/icons/briefcase-black.svg"
                                     class="size-6 flex group-has-[:placeholder-shown]:hidden" alt="icon">
                             </div>
-                            <img src="assets/images/icons/Checklist-dark-green-fill.svg"
+                            <img src="{{asset('assets/')}}/images/icons/Checklist-dark-green-fill.svg"
                                 class="absolute transform -translate-y-1/2 top-1/2 right-4 size-6 shrink-0 hidden group-[.valid]:flex"
                                 alt="icon">
                         </label>
@@ -120,12 +120,12 @@
                                 class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black p-4 pl-12 gap-2 font-medium invalid:text-desa-secondary transition-all duration-300 [&::-webkit-calendar-picker-indicator]:hidden"
                                 onclick="this.showPicker();">
                             <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
-                                <img src="assets/images/icons/calendar-2-secondary-green.svg"
+                                <img src="{{asset('assets/')}}/images/icons/calendar-2-secondary-green.svg"
                                     class="size-6 hidden group-has-[:invalid]:flex" alt="icon">
-                                <img src="assets/images/icons/calendar-2-black.svg"
+                                <img src="{{asset('assets/')}}/images/icons/calendar-2-black.svg"
                                     class="size-6 flex group-has-[:invalid]:hidden" alt="icon">
                             </div>
-                            <img src="assets/images/icons/Checklist-dark-green-fill.svg"
+                            <img src="{{asset('assets/')}}/images/icons/Checklist-dark-green-fill.svg"
                                 class="absolute transform -translate-y-1/2 top-1/2 right-4 size-6 shrink-0 hidden group-[.valid]:flex"
                                 alt="icon">
                         </label>
@@ -148,9 +148,9 @@
                                 Pria
                             </span>
                             <div class="flex size-6 shrink-0">
-                                <img src="assets/images/icons/man-secondary-green.svg"
+                                <img src="{{asset('assets/')}}/images/icons/man-secondary-green.svg"
                                     class="size-6 flex group-has-[:checked]:hidden" alt="icon">
-                                <img src="assets/images/icons/man-dark-green.svg"
+                                <img src="{{asset('assets/')}}/images/icons/man-dark-green.svg"
                                     class="size-6 hidden group-has-[:checked]:flex" alt="icon">
                             </div>
                         </label>
@@ -163,9 +163,9 @@
                                 Wanita
                             </span>
                             <div class="flex size-6 shrink-0">
-                                <img src="assets/images/icons/woman-secondary-green.svg"
+                                <img src="{{asset('assets/')}}/images/icons/woman-secondary-green.svg"
                                     class="size-6 flex group-has-[:checked]:hidden" alt="icon">
-                                <img src="assets/images/icons/woman-dark-green.svg"
+                                <img src="{{asset('assets/')}}/images/icons/woman-dark-green.svg"
                                     class="size-6 hidden group-has-[:checked]:flex" alt="icon">
                             </div>
                         </label>
@@ -184,9 +184,9 @@
                                 Belum Menikah
                             </span>
                             <div class="flex size-6 shrink-0">
-                                <img src="assets/images/icons/profile-secondary-green.svg"
+                                <img src="{{asset('assets/')}}/images/icons/profile-secondary-green.svg"
                                     class="size-6 flex group-has-[:checked]:hidden" alt="icon">
-                                <img src="assets/images/icons/profile-dark-green.svg"
+                                <img src="{{asset('assets/')}}/images/icons/profile-dark-green.svg"
                                     class="size-6 hidden group-has-[:checked]:flex" alt="icon">
                             </div>
                         </label>
@@ -199,9 +199,9 @@
                                 Sudah Menikah
                             </span>
                             <div class="flex size-6 shrink-0">
-                                <img src="assets/images/icons/profile-2user-secondary-green.svg"
+                                <img src="{{asset('assets/')}}/images/icons/profile-2user-secondary-green.svg"
                                     class="size-6 flex group-has-[:checked]:hidden" alt="icon">
-                                <img src="assets/images/icons/profile-2user-dark-green.svg"
+                                <img src="{{asset('assets/')}}/images/icons/profile-2user-dark-green.svg"
                                     class="size-6 hidden group-has-[:checked]:flex" alt="icon">
                             </div>
                         </label>
@@ -217,19 +217,19 @@
                             <input type="email" placeholder="Masukan Email"
                                 class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300 group-[.invalid]:input-invalid-state">
                             <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
-                                <img src="assets/images/icons/sms-secondary-green.svg"
+                                <img src="{{asset('assets/')}}/images/icons/sms-secondary-green.svg"
                                     class="size-6 hidden group-has-[:placeholder-shown]:flex group-[.invalid]:!hidden"
                                     alt="icon">
-                                <img src="assets/images/icons/sms-black.svg"
+                                <img src="{{asset('assets/')}}/images/icons/sms-black.svg"
                                     class="size-6 flex group-has-[:placeholder-shown]:hidden group-[.invalid]:hidden"
                                     alt="icon">
-                                <img src="assets/images/icons/sms-red.svg" class="size-6 hidden group-[.invalid]:flex"
+                                <img src="{{asset('assets/')}}/images/icons/sms-red.svg" class="size-6 hidden group-[.invalid]:flex"
                                     alt="icon">
                             </div>
-                            <img src="assets/images/icons/Checklist-dark-green-fill.svg"
+                            <img src="{{asset('assets/')}}/images/icons/Checklist-dark-green-fill.svg"
                                 class="absolute transform -translate-y-1/2 top-1/2 right-4 size-6 shrink-0 hidden group-[.valid]:flex"
                                 alt="icon">
-                            <img src="assets/images/icons/close-circle-red-fill.svg"
+                            <img src="{{asset('assets/')}}/images/icons/close-circle-red-fill.svg"
                                 class="absolute transform -translate-y-1/2 top-1/2 right-4 size-6 shrink-0 hidden group-[.invalid]:flex"
                                 alt="icon">
                         </label>
@@ -245,9 +245,9 @@
                             <input type="password" placeholder="Masukan Password"
                                 class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300 tracking-[4px] placeholder:tracking-normal">
                             <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
-                                <img src="assets/images/icons/key-secondary-green.svg"
+                                <img src="{{asset('assets/')}}/images/icons/key-secondary-green.svg"
                                     class="size-6 hidden group-has-[:placeholder-shown]:flex" alt="icon">
-                                <img src="assets/images/icons/key-black.svg"
+                                <img src="{{asset('assets/')}}/images/icons/key-black.svg"
                                     class="size-6 flex group-has-[:placeholder-shown]:hidden" alt="icon">
                             </div>
                         </label>

@@ -286,7 +286,7 @@
             <!-- Close Button -->
             <button
                 class="btn-close-modal flex items-center rounded-full border border-white/10 py-2 sm:py-3 px-3 sm:px-4 mx-auto mt-4 sm:mt-[30px] gap-2">
-                <img src="assets/images/icons/close-circle-white.svg" class="flex size-5 sm:size-6 shrink-0"
+                <img src="{{asset('assets/')}}/images/icons/close-circle-white.svg" class="flex size-5 sm:size-6 shrink-0"
                     alt="icon">
                 <p class="font-medium leading-5 text-white text-sm sm:text-base">Tutup</p>
             </button>
@@ -305,7 +305,7 @@
                         class="group relative flex w-24 sm:w-[140px] h-20 sm:h-[120px] shrink-0 rounded-2xl sm:rounded-3xl bg-desa-background overflow-hidden active">
                         <img src="{{ asset('storage/' . $m->file_path) }}"
                             class="size-full object-cover group-[.active]:blur" alt="thumbnail">
-                        <img src="assets/images/icons/eye-white-fill.svg"
+                        <img src="{{asset('assets/')}}/images/icons/eye-white-fill.svg"
                             class="absolute hidden size-6 sm:size-9 shrink-0 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 group-[.active]:flex"
                             alt="icon">
                     </button>

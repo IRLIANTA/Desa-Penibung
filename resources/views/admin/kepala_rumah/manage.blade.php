@@ -12,7 +12,7 @@
                         </div>
                         <button data-modal="Modal-Delete" class="flex items-center rounded-2xl py-4 px-6 gap-[10px] bg-desa-red">
                             <p class="font-medium text-white">Hapus Data</p>
-                            <img src="assets/images/icons/trash-white.svg" class="flex size-6 shrink-0" alt="icon">
+                            <img src="{{asset('assets/')}}/images/icons/trash-white.svg" class="flex size-6 shrink-0" alt="icon">
                         </button>
                     </div>
                     <div class="flex gap-[14px]">
@@ -21,12 +21,12 @@
                                 <p class="font-medium leading-5 text-desa-secondary">Kepala Rumah</p>
                                 <div class="flex items-center gap-4">
                                     <div class="flex size-[76px] shrink-0 rounded-full overflow-hidden bg-desa-foreshadow">
-                                        <img src="assets/images/photos/photo-2.png" class="w-full h-full object-cover" alt="photo">
+                                        <img src="{{asset('assets/')}}/images/photos/photo-2.png" class="w-full h-full object-cover" alt="photo">
                                     </div>
                                     <div class="flex flex-col gap-[6px] w-full">
                                         <p class="font-semibold text-xl line-clamp-1">Feri Mahrudin Asep</p>
                                         <p class="flex items-center gap-1">
-                                            <img src="assets/images/icons/briefcase-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
+                                            <img src="{{asset('assets/')}}/images/icons/briefcase-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
                                             <span class="font-medium text-sm text-desa-secondary">Tukang Bangunan</span>
                                         </p>
                                     </div>
@@ -37,7 +37,7 @@
                                 <hr class="border-desa-foreshadow">
                                 <div class="flex items-center w-full gap-3">
                                     <div class="flex size-[52px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                                        <img src="assets/images/icons/keyboard-dark-green.svg" class="flex size-6 shrink-0" alt="icon">
+                                        <img src="{{asset('assets/')}}/images/icons/keyboard-dark-green.svg" class="flex size-6 shrink-0" alt="icon">
                                     </div>
                                     <div class="flex flex-col gap-1 w-full">
                                         <p class="font-semibold text-xl leading-[22.5px]">20051005922001005</p>
@@ -49,7 +49,7 @@
                                 <hr class="border-desa-foreshadow">
                                 <div class="flex items-center w-full gap-3">
                                     <div class="flex size-[52px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                                        <img src="assets/images/icons/user-square-dark-green.svg" class="flex size-6 shrink-0" alt="icon">
+                                        <img src="{{asset('assets/')}}/images/icons/user-square-dark-green.svg" class="flex size-6 shrink-0" alt="icon">
                                     </div>
                                     <div class="flex flex-col gap-1 w-full">
                                         <p class="font-semibold text-xl leading-[22.5px]">42 Tahun</p>
@@ -61,7 +61,7 @@
                                 <hr class="border-desa-foreshadow">
                                 <div class="flex items-center w-full gap-3">
                                     <div class="flex size-[52px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                                        <img src="assets/images/icons/man-dark-green.svg" class="flex size-6 shrink-0" alt="icon">
+                                        <img src="{{asset('assets/')}}/images/icons/man-dark-green.svg" class="flex size-6 shrink-0" alt="icon">
                                     </div>
                                     <div class="flex flex-col gap-1 w-full">
                                         <p class="font-semibold text-xl leading-[22.5px]">Pria</p>
@@ -73,7 +73,7 @@
                                 <hr class="border-desa-foreshadow">
                                 <div class="flex items-center w-full gap-3">
                                     <div class="flex size-[52px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                                        <img src="assets/images/icons/sms-dark-green.svg" class="flex size-6 shrink-0" alt="icon">
+                                        <img src="{{asset('assets/')}}/images/icons/sms-dark-green.svg" class="flex size-6 shrink-0" alt="icon">
                                     </div>
                                     <div class="flex flex-col gap-1 w-full">
                                         <p class="font-semibold text-xl leading-[22.5px]">fransutomo@desadigital.com</p>
@@ -85,7 +85,7 @@
                                 <hr class="border-desa-foreshadow">
                                 <div class="flex items-center w-full gap-3">
                                     <div class="flex size-[52px] shrink-0 rounded-2xl bg-desa-foreshadow items-center justify-center">
-                                        <img src="assets/images/icons/call-dark-green.svg" class="flex size-6 shrink-0" alt="icon">
+                                        <img src="{{asset('assets/')}}/images/icons/call-dark-green.svg" class="flex size-6 shrink-0" alt="icon">
                                     </div>
                                     <div class="flex flex-col gap-1 w-full">
                                         <p class="font-semibold text-xl leading-[22.5px]">083212349000</p>
@@ -101,7 +101,7 @@
                                         <p class="font-semibold text-[32px] leading-10">3</p>
                                         <p class="font-medium leading-5 text-desa-secondary">Anggota Keluarga</p>
                                     </div>
-                                    <img src="assets/images/icons/profile-2user-foreshadow-background.svg" class="flex size-12 shrink-0" alt="icon">
+                                    <img src="{{asset('assets/')}}/images/icons/profile-2user-foreshadow-background.svg" class="flex size-12 shrink-0" alt="icon">
                                 </div>
                                 <hr class="border-desa-foreshadow">
                                 <div id="Istri" class="flex flex-col gap-[14px]">
@@ -109,12 +109,12 @@
                                     <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-6">
                                         <div class="flex items-center gap-4">
                                             <div class="flex size-[64px] shrink-0 rounded-full overflow-hidden bg-desa-foreshadow">
-                                                <img src="assets/images/photos/kk-photo-2.png" class="w-full h-full object-cover" alt="photo">
+                                                <img src="{{asset('assets/')}}/images/photos/kk-photo-2.png" class="w-full h-full object-cover" alt="photo">
                                             </div>
                                             <div class="flex flex-col gap-[6px] w-full">
                                                 <p class="font-semibold text-xl line-clamp-1">Puji Siti Aminah</p>
                                                 <p class="flex items-center gap-1">
-                                                    <img src="assets/images/icons/briefcase-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
+                                                    <img src="{{asset('assets/')}}/images/icons/briefcase-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
                                                     <span class="font-medium text-sm text-desa-secondary">Ibu Rumah Tangga</span>
                                                 </p>
                                             </div>
@@ -123,7 +123,7 @@
                                         <hr class="border-desa-background">
                                         <div class="flex justify-between items-center">
                                             <p class="flex items-center gap-1">
-                                                <img src="assets/images/icons/keyboard-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
+                                                <img src="{{asset('assets/')}}/images/icons/keyboard-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
                                                 <span class="font-medium text-sm text-desa-secondary">Nomor Induk Kependudukan:</span>
                                             </p>
                                             <p class="font-medium leading-5">27192018210818291</p>
@@ -135,12 +135,12 @@
                                     <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-6">
                                         <div class="flex items-center gap-4">
                                             <div class="flex size-[64px] shrink-0 rounded-full overflow-hidden bg-desa-foreshadow">
-                                                <img src="assets/images/photos/kk-photo-3.png" class="w-full h-full object-cover" alt="photo">
+                                                <img src="{{asset('assets/')}}/images/photos/kk-photo-3.png" class="w-full h-full object-cover" alt="photo">
                                             </div>
                                             <div class="flex flex-col gap-[6px] w-full">
                                                 <p class="font-semibold text-xl line-clamp-1">Karin Icshan</p>
                                                 <p class="flex items-center gap-1">
-                                                    <img src="assets/images/icons/briefcase-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
+                                                    <img src="{{asset('assets/')}}/images/icons/briefcase-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
                                                     <span class="font-medium text-sm text-desa-secondary">Mahasiswi</span>
                                                 </p>
                                             </div>
@@ -149,7 +149,7 @@
                                         <hr class="border-desa-background">
                                         <div class="flex justify-between items-center">
                                             <p class="flex items-center gap-1">
-                                                <img src="assets/images/icons/keyboard-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
+                                                <img src="{{asset('assets/')}}/images/icons/keyboard-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
                                                 <span class="font-medium text-sm text-desa-secondary">Nomor Induk Kependudukan:</span>
                                             </p>
                                             <p class="font-medium leading-5">24910120192019281</p>
@@ -158,12 +158,12 @@
                                     <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-6">
                                         <div class="flex items-center gap-4">
                                             <div class="flex size-[64px] shrink-0 rounded-full overflow-hidden bg-desa-foreshadow">
-                                                <img src="assets/images/photos/photo-1.png" class="w-full h-full object-cover" alt="photo">
+                                                <img src="{{asset('assets/')}}/images/photos/photo-1.png" class="w-full h-full object-cover" alt="photo">
                                             </div>
                                             <div class="flex flex-col gap-[6px] w-full">
                                                 <p class="font-semibold text-xl line-clamp-1">Rizky Icshan</p>
                                                 <p class="flex items-center gap-1">
-                                                    <img src="assets/images/icons/briefcase-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
+                                                    <img src="{{asset('assets/')}}/images/icons/briefcase-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
                                                     <span class="font-medium text-sm text-desa-secondary">Mahasiswa</span>
                                                 </p>
                                             </div>
@@ -172,7 +172,7 @@
                                         <hr class="border-desa-background">
                                         <div class="flex justify-between items-center">
                                             <p class="flex items-center gap-1">
-                                                <img src="assets/images/icons/keyboard-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
+                                                <img src="{{asset('assets/')}}/images/icons/keyboard-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
                                                 <span class="font-medium text-sm text-desa-secondary">Nomor Induk Kependudukan:</span>
                                             </p>
                                             <p class="font-medium leading-5">28193018301839101</p>
@@ -212,13 +212,13 @@
                                         <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-4">
                                             <div class="flex items-center justify-between">
                                                 <p class="font-medium text-sm text-desa-secondary">Tue, 31 Dec 2024 </p>
-                                                <img src="assets/images/icons/calendar-2-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
+                                                <img src="{{asset('assets/')}}/images/icons/calendar-2-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
                                             </div>
                                             <hr class="border-desa-background">
                                             <p class="font-semibold text-lg">Bantuan Untuk Rakyat Kurang Mampu</p>
                                             <div class="flex items-center gap-3">
                                                 <div class="flex size-[52px] shrink-0 items-center justify-center rounded-2xl bg-desa-foreshadow">
-                                                    <img src="assets/images/icons/money-dark-green.svg" alt="icon">
+                                                    <img src="{{asset('assets/')}}/images/icons/money-dark-green.svg" alt="icon">
                                                 </div>
                                                 <div class="flex flex-col gap-[6px] w-full">
                                                     <p class="font-semibold text-lg leading-5">Rp120.000.000</p>
@@ -237,13 +237,13 @@
                                         <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-4">
                                             <div class="flex items-center justify-between">
                                                 <p class="font-medium text-sm text-desa-secondary">Tue, 25 Dec 2024 </p>
-                                                <img src="assets/images/icons/calendar-2-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
+                                                <img src="{{asset('assets/')}}/images/icons/calendar-2-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
                                             </div>
                                             <hr class="border-desa-background">
                                             <p class="font-semibold text-lg">Bantuan Pangan Sehari-hari</p>
                                             <div class="flex items-center gap-3">
                                                 <div class="flex size-[52px] shrink-0 items-center justify-center rounded-2xl bg-desa-foreshadow">
-                                                    <img src="assets/images/icons/bag-2-dark-green.svg" alt="icon">
+                                                    <img src="{{asset('assets/')}}/images/icons/bag-2-dark-green.svg" alt="icon">
                                                 </div>
                                                 <div class="flex flex-col gap-[6px] w-full">
                                                     <p class="font-semibold text-lg leading-5">Beras 200 Ton</p>
@@ -262,13 +262,13 @@
                                         <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-4">
                                             <div class="flex items-center justify-between">
                                                 <p class="font-medium text-sm text-desa-secondary">Tue, 12 Dec 2024 </p>
-                                                <img src="assets/images/icons/calendar-2-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
+                                                <img src="{{asset('assets/')}}/images/icons/calendar-2-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
                                             </div>
                                             <hr class="border-desa-background">
                                             <p class="font-semibold text-lg">Bantuan Untuk anak kurang gizi</p>
                                             <div class="flex items-center gap-3">
                                                 <div class="flex size-[52px] shrink-0 items-center justify-center rounded-2xl bg-desa-foreshadow">
-                                                    <img src="assets/images/icons/bag-2-dark-green.svg" alt="icon">
+                                                    <img src="{{asset('assets/')}}/images/icons/bag-2-dark-green.svg" alt="icon">
                                                 </div>
                                                 <div class="flex flex-col gap-[6px] w-full">
                                                     <p class="font-semibold text-lg leading-5">Susu 200 Liter</p>
@@ -289,17 +289,17 @@
                                         <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-4">
                                             <div class="flex items-center justify-between">
                                                 <p class="font-medium text-sm text-desa-secondary">Fri, 3 Jan 2025</p>
-                                                <img src="assets/images/icons/calendar-2-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
+                                                <img src="{{asset('assets/')}}/images/icons/calendar-2-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
                                             </div>
                                             <hr class="border-desa-background">
                                             <div class="flex items-center gap-3">
                                                 <div class="flex w-20 h-[60px] shrink-0 items-center justify-center rounded-2xl bg-desa-foreshadow overflow-hidden">
-                                                    <img src="assets/images/thumbnails/event-image-1.png" class="w-full h-full object-cover" alt="thumbnail">
+                                                    <img src="{{asset('assets/')}}/images/thumbnails/event-image-1.png" class="w-full h-full object-cover" alt="thumbnail">
                                                 </div>
                                                 <div class="flex flex-col gap-[6px] w-full">
                                                     <p class="font-semibold leading-5 line-clamp-1">Belajar HTML Dasar Bersama</p>
                                                     <div class="flex items-center gap-1">
-                                                        <img src="assets/images/icons/profile-2user-orange.svg" class="flex size-[18px] shrink-0" alt="icon">
+                                                        <img src="{{asset('assets/')}}/images/icons/profile-2user-orange.svg" class="flex size-[18px] shrink-0" alt="icon">
                                                         <p class="font-medium text-sm text-desa-orange">9210 total partisipasi</p>
                                                     </div>
                                                 </div>
@@ -313,17 +313,17 @@
                                         <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-4">
                                             <div class="flex items-center justify-between">
                                                 <p class="font-medium text-sm text-desa-secondary">Wed, 1 Jan 2025</p>
-                                                <img src="assets/images/icons/calendar-2-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
+                                                <img src="{{asset('assets/')}}/images/icons/calendar-2-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
                                             </div>
                                             <hr class="border-desa-background">
                                             <div class="flex items-center gap-3">
                                                 <div class="flex w-20 h-[60px] shrink-0 items-center justify-center rounded-2xl bg-desa-foreshadow overflow-hidden">
-                                                    <img src="assets/images/thumbnails/kk-dashboard-2.png" class="w-full h-full object-cover" alt="thumbnail">
+                                                    <img src="{{asset('assets/')}}/images/thumbnails/kk-dashboard-2.png" class="w-full h-full object-cover" alt="thumbnail">
                                                 </div>
                                                 <div class="flex flex-col gap-[6px] w-full">
                                                     <p class="font-semibold leading-5 line-clamp-1">Dari Desa ke dunia digital: workshop</p>
                                                     <div class="flex items-center gap-1">
-                                                        <img src="assets/images/icons/profile-2user-orange.svg" class="flex size-[18px] shrink-0" alt="icon">
+                                                        <img src="{{asset('assets/')}}/images/icons/profile-2user-orange.svg" class="flex size-[18px] shrink-0" alt="icon">
                                                         <p class="font-medium text-sm text-desa-orange">9210 total partisipasi</p>
                                                     </div>
                                                 </div>
@@ -337,17 +337,17 @@
                                         <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-4">
                                             <div class="flex items-center justify-between">
                                                 <p class="font-medium text-sm text-desa-secondary">Sun, 21 Dec 2024</p>
-                                                <img src="assets/images/icons/calendar-2-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
+                                                <img src="{{asset('assets/')}}/images/icons/calendar-2-secondary-green.svg" class="flex size-[18px] shrink-0" alt="icon">
                                             </div>
                                             <hr class="border-desa-background">
                                             <div class="flex items-center gap-3">
                                                 <div class="flex w-20 h-[60px] shrink-0 items-center justify-center rounded-2xl bg-desa-foreshadow overflow-hidden">
-                                                    <img src="assets/images/thumbnails/kk-event-desa-3.png" class="w-full h-full object-cover" alt="thumbnail">
+                                                    <img src="{{asset('assets/')}}/images/thumbnails/kk-event-desa-3.png" class="w-full h-full object-cover" alt="thumbnail">
                                                 </div>
                                                 <div class="flex flex-col gap-[6px] w-full">
                                                     <p class="font-semibold leading-5 line-clamp-1">Mengenal AI: Menjelajah dunia Kecerdasan</p>
                                                     <div class="flex items-center gap-1">
-                                                        <img src="assets/images/icons/profile-2user-orange.svg" class="flex size-[18px] shrink-0" alt="icon">
+                                                        <img src="{{asset('assets/')}}/images/icons/profile-2user-orange.svg" class="flex size-[18px] shrink-0" alt="icon">
                                                         <p class="font-medium text-sm text-desa-orange">9210 total partisipasi</p>
                                                     </div>
                                                 </div>
@@ -363,7 +363,7 @@
                                         <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-4">
                                             <div class="flex items-center justify-between gap-3">
                                                 <div class="flex w-20 h-[60px] shrink-0 items-center justify-center rounded-2xl bg-desa-foreshadow overflow-hidden">
-                                                    <img src="assets/images/thumbnails/event-image-1.png" class="w-full h-full object-cover" alt="thumbnail">
+                                                    <img src="{{asset('assets/')}}/images/thumbnails/event-image-1.png" class="w-full h-full object-cover" alt="thumbnail">
                                                 </div>
                                                 <div class="badge rounded-full p-3 gap-2 flex w-[100px] justify-center shrink-0 bg-desa-yellow">
                                                     <span class="font-semibold text-xs text-white uppercase">Menunggu</span>
@@ -381,7 +381,7 @@
                                             <hr class="border-desa-background">
                                             <div class="flex items-center gap-3">
                                                 <div class="flex size-12 shrink-0 rounded-full bg-desa-foreshadow overflow-hidden items-center justify-center">
-                                                    <img src="assets/images/icons/calendar-2-dark-green.svg" class="flex size-6" alt="icon">
+                                                    <img src="{{asset('assets/')}}/images/icons/calendar-2-dark-green.svg" class="flex size-6" alt="icon">
                                                 </div>
                                                 <div>
                                                     <p class="font-semibold leading-5 text-desa-dark-green">3 Jan 2025</p>
@@ -391,7 +391,7 @@
                                             <hr class="border-desa-background">
                                             <div class="flex items-center gap-3">
                                                 <div class="flex size-12 shrink-0 rounded-full bg-desa-foreshadow overflow-hidden items-center justify-center">
-                                                    <img src="assets/images/icons/timer-dark-green.svg" class="flex size-6" alt="icon">
+                                                    <img src="{{asset('assets/')}}/images/icons/timer-dark-green.svg" class="flex size-6" alt="icon">
                                                 </div>
                                                 <div>
                                                     <p class="font-semibold leading-5 text-desa-dark-green">24 Hari</p>
@@ -402,7 +402,7 @@
                                         <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-4">
                                             <div class="flex items-center justify-between gap-3">
                                                 <div class="flex w-20 h-[60px] shrink-0 items-center justify-center rounded-2xl bg-desa-foreshadow overflow-hidden">
-                                                    <img src="assets/images/thumbnails/event-image-1.png" class="w-full h-full object-cover" alt="thumbnail">
+                                                    <img src="{{asset('assets/')}}/images/thumbnails/event-image-1.png" class="w-full h-full object-cover" alt="thumbnail">
                                                 </div>
                                                 <div class="badge rounded-full p-3 gap-2 flex w-[100px] justify-center shrink-0 bg-desa-dark-green">
                                                     <span class="font-semibold text-xs text-white uppercase">Diterima</span>
@@ -420,7 +420,7 @@
                                             <hr class="border-desa-background">
                                             <div class="flex items-center gap-3">
                                                 <div class="flex size-12 shrink-0 rounded-full bg-desa-foreshadow overflow-hidden items-center justify-center">
-                                                    <img src="assets/images/icons/calendar-2-dark-green.svg" class="flex size-6" alt="icon">
+                                                    <img src="{{asset('assets/')}}/images/icons/calendar-2-dark-green.svg" class="flex size-6" alt="icon">
                                                 </div>
                                                 <div>
                                                     <p class="font-semibold leading-5 text-desa-dark-green">3 Jan 2025</p>
@@ -430,7 +430,7 @@
                                             <hr class="border-desa-background">
                                             <div class="flex items-center gap-3">
                                                 <div class="flex size-12 shrink-0 rounded-full bg-desa-foreshadow overflow-hidden items-center justify-center">
-                                                    <img src="assets/images/icons/timer-dark-green.svg" class="flex size-6" alt="icon">
+                                                    <img src="{{asset('assets/')}}/images/icons/timer-dark-green.svg" class="flex size-6" alt="icon">
                                                 </div>
                                                 <div>
                                                     <p class="font-semibold leading-5 text-desa-dark-green">24 Hari</p>
@@ -441,7 +441,7 @@
                                         <div class="card flex flex-col rounded-2xl border border-desa-background p-4 gap-4">
                                             <div class="flex items-center justify-between gap-3">
                                                 <div class="flex w-20 h-[60px] shrink-0 items-center justify-center rounded-2xl bg-desa-foreshadow overflow-hidden">
-                                                    <img src="assets/images/thumbnails/event-image-1.png" class="w-full h-full object-cover" alt="thumbnail">
+                                                    <img src="{{asset('assets/')}}/images/thumbnails/event-image-1.png" class="w-full h-full object-cover" alt="thumbnail">
                                                 </div>
                                                 <div class="badge rounded-full p-3 gap-2 flex w-[100px] justify-center shrink-0 bg-desa-red">
                                                     <span class="font-semibold text-xs text-white uppercase">Ditolak</span>
@@ -459,7 +459,7 @@
                                             <hr class="border-desa-background">
                                             <div class="flex items-center gap-3">
                                                 <div class="flex size-12 shrink-0 rounded-full bg-desa-foreshadow overflow-hidden items-center justify-center">
-                                                    <img src="assets/images/icons/calendar-2-dark-green.svg" class="flex size-6" alt="icon">
+                                                    <img src="{{asset('assets/')}}/images/icons/calendar-2-dark-green.svg" class="flex size-6" alt="icon">
                                                 </div>
                                                 <div>
                                                     <p class="font-semibold leading-5 text-desa-dark-green">3 Jan 2025</p>
@@ -469,7 +469,7 @@
                                             <hr class="border-desa-background">
                                             <div class="flex items-center gap-3">
                                                 <div class="flex size-12 shrink-0 rounded-full bg-desa-foreshadow overflow-hidden items-center justify-center">
-                                                    <img src="assets/images/icons/timer-dark-green.svg" class="flex size-6" alt="icon">
+                                                    <img src="{{asset('assets/')}}/images/icons/timer-dark-green.svg" class="flex size-6" alt="icon">
                                                 </div>
                                                 <div>
                                                     <p class="font-semibold leading-5 text-desa-dark-green">24 Hari</p>
