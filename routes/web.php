@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\DevelopmentController;
 use App\Http\Controllers\Admin\KepalaRumahController;
 use App\Http\Controllers\Admin\SocialAssistanceController;
 
-Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
+Route::get('/', [ProfileController::class, 'index']);
 Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     // middleware
@@ -53,7 +53,7 @@ Route::prefix('/kepala_rumah')->group(function () {
 });
 
 Route::prefix('/profile')->group(function () {
-    Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/', [ProfileController::class, 'index']);
     // middleware
     Route::middleware('auth')->group(function () {
         Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
