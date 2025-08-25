@@ -188,14 +188,8 @@
         <div class="top">
             <div class="flex justify-between items-center">
                 <div class="flex items-center gap-3">
-                    <img src="/icons/logo.svg" alt="" />
-                    <h1 class="text-2xl font-bold leading-normal text-black">
-                        DesaKita.
-                    </h1>
+                    <img src="{{ asset('assets/images/logos/logo-text.svg') }}" alt="Logo" />
                 </div>
-                <button id="toggle-sidebar" class="w-11 rounded-2xl border border-bg-color p-1.5">
-                    <img src="/icons/menu.svg" alt="" />
-                </button>
             </div>
         </div>
 

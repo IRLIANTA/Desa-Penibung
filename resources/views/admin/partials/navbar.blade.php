@@ -57,43 +57,43 @@
             </div>
             <input type="text"
                 class="pl-11 lg:pl-12 w-full text-black appearance-none font-medium focus:border-1.5 focus:border-dark-green outline-none transition-all rounded-2xl border border-bg-color p-3 lg:p-4 text-sm lg:text-base placeholder:text-secondary-text-color placeholder:font-medium placeholder:text-sm lg:placeholder:text-base placeholder:leading-normal rounded-full"
-                placeholder="Cari nama penduduk, pengajuan, events, dll" />
+                placeholder="Terlusuri ... " />
         </div>
     </div>
     @if (auth()->check())
+        <img src="{{ asset('assets/images/') }}/icons/notification.svg" alt=""
+            class="w-14 lg:w-15 rounded-2xl border border-bg-color p-1.5 lg:p-4 hidden lg:block" />
 
-    <img src="{{ asset('assets/images/') }}/icons/notification.svg" alt=""
-        class="w-14 lg:w-15 rounded-2xl border border-bg-color p-1.5 lg:p-4 hidden lg:block" />
+        <img src="{{ asset('assets/images/') }}/icons/setting-2.svg" alt=""
+            class="w-14 lg:w-15 rounded-2xl border border-bg-color p-1.5 lg:p-4 hidden lg:block" />
 
-    <img src="{{ asset('assets/images/') }}/icons/setting-2.svg" alt=""
-        class="w-14 lg:w-15 rounded-2xl border border-bg-color p-1.5 lg:p-4 hidden lg:block" />
-
-    <div class="hidden lg:flex gap-4 items-center">
-        <a href="/login" class="image bg-[#F1FAE6] rounded-full overflow-hidden w-[56px] h-[56px]">
-            <img src="{{ asset('assets/') }}/images/photos/kk-preview.png" alt="" class="w-full h-full" />
-        </a>
-        <div class="gap-[6px] flex flex-col w-[120px]">
-            <h5 class="w-full text-base text-black font-semibold leading-normal">
-                Admin
-            </h5>
-            <h6 class="w-full whitespace-nowrap text-sm font-medium leading-normal text-secondary-text-color">
-                Desa Penibung
-            </h6>
+        <div class="hidden lg:flex gap-4 items-center">
+            <a href="/login" class="image bg-[#F1FAE6] rounded-full overflow-hidden w-[56px] h-[56px]">
+                <img src="{{ asset('assets/') }}/images/photos/kk-preview.png" alt="" class="w-full h-full" />
+            </a>
+            <div class="gap-[6px] flex flex-col w-[120px]">
+                <h5 class="w-full text-base text-black font-semibold leading-normal">
+                    Admin
+                </h5>
+                <h6 class="w-full whitespace-nowrap text-sm font-medium leading-normal text-secondary-text-color">
+                    Desa Penibung
+                </h6>
+            </div>
+            <form method="POST" action="{{ route('logout') }}" class="inline">
+                @csrf
+                <button type="submit" class="flex size-6 shrink-0 p-0 border-0 bg-transparent">
+                    <img src="{{ asset('assets/images/icons/logout-red.svg') }}" class="size-6" alt="logout">
+                </button>
+            </form>
         </div>
-      <form method="POST" action="{{ route('logout') }}" class="inline">
-          @csrf
-          <button type="submit" class="flex size-6 shrink-0 p-0 border-0 bg-transparent">
-            <img src="{{ asset('assets/images/icons/logout-red.svg') }}" class="size-6" alt="logout">
-          </button>
-        </form>
-    </div>
-    <div>
-       
+        <div>
+
             <div class="image bg-[#F1FAE6] rounded-full overflow-hidden lg:hidden">
-                <img src="{{ asset('assets/') }}/images/photos/kk-preview.png" width="50" height="50" alt="" />
+                <img src="{{ asset('assets/') }}/images/photos/kk-preview.png" width="50" height="50"
+                    alt="" />
             </div>
 
-    </div>
+        </div>
     @endif
 
 

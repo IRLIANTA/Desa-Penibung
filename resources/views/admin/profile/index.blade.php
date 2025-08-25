@@ -18,20 +18,22 @@
 
         <!-- Main Content Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
-            
+
             <!-- Village Profile Section -->
-            <section id="Nama-Desa" class="flex flex-col rounded-2xl sm:rounded-3xl p-4 sm:p-6 gap-4 sm:gap-6 bg-white w-full">
-                
+            <section id="Nama-Desa"
+                class="flex flex-col rounded-2xl sm:rounded-3xl p-4 sm:p-6 gap-4 sm:gap-6 bg-white w-full">
+
                 <!-- Profile Header -->
                 <div class="flex items-center justify-between">
                     <p class="font-medium leading-5 text-desa-secondary text-sm sm:text-base">Profile Desa</p>
                     <img src="{{ asset('assets/') }}/images/icons/building-foreshadow-background.svg"
                         class="flex size-10 sm:size-12 shrink-0" alt="icon">
                 </div>
-                
+
                 <!-- Village Name and Location -->
                 <div id="Nama-Desa" class="flex flex-col gap-1 sm:gap-[6px]">
-                    <h1 class="font-bold text-2xl sm:text-[32px] leading-8 sm:leading-10">{{ get_profile('desa_name') }}</h1>
+                    <h1 class="font-bold text-2xl sm:text-[32px] leading-8 sm:leading-10">{{ get_profile('desa_name') }}
+                    </h1>
                     <div class="flex items-start sm:items-center gap-1 sm:gap-0.5">
                         <img src="{{ asset('assets/') }}/images/icons/location-secondary-green.svg"
                             class="flex size-5 sm:size-6 shrink-0 mt-0.5 sm:mt-0" alt="icon">
@@ -40,17 +42,17 @@
                         </span>
                     </div>
                 </div>
-                
+
                 <!-- Gallery Section -->
                 <div id="Gallery" class="flex flex-col gap-3 sm:gap-[14px]">
                     <!-- Main Thumbnail -->
                     <div data-modal="Modal-Gallery" data-gallery="{{ asset('assets/') }}/images/thumbnails/thumbnail.png"
                         id="Thumbnail-Desa"
                         class="flex w-full h-48 sm:h-64 lg:h-auto shrink-0 rounded-2xl sm:rounded-3xl bg-desa-background overflow-hidden cursor-pointer">
-                        <img src="{{ asset('assets/') }}/images/thumbnails/thumbnail.png" class="w-full h-full object-cover sm:object-contain"
-                            alt="thumbnail">
+                        <img src="{{ asset('assets/') }}/images/thumbnails/thumbnail.png"
+                            class="w-full h-full object-cover sm:object-contain" alt="thumbnail">
                     </div>
-                    
+
                     <!-- Gallery Thumbnails -->
                     <div class="grid grid-cols-3 gap-2 sm:gap-[14px] max-w-full">
                         @if ($media)
@@ -105,14 +107,16 @@
                             </iframe>
                         </div>
                     </div>
-                    <p class="font-medium text-xs sm:text-sm leading-6 sm:leading-[28px] text-desa-secondary">{{ get_profile('location') }}</p>
+                    <p class="font-medium text-xs sm:text-sm leading-6 sm:leading-[28px] text-desa-secondary">
+                        {{ get_profile('location') }}</p>
                 </div>
             </section>
-            
+
             <!-- Village Details Section -->
-            <section id="Detail-Desa" class="flex flex-col rounded-2xl sm:rounded-3xl p-4 sm:p-6 gap-4 sm:gap-6 bg-white w-full">
+            <section id="Detail-Desa"
+                class="flex flex-col rounded-2xl sm:rounded-3xl p-4 sm:p-6 gap-4 sm:gap-6 bg-white w-full">
                 <p class="font-medium leading-5 text-desa-secondary text-sm sm:text-base">Detail Desa</p>
-                
+
                 <div class="flex flex-col gap-3 sm:gap-[14px]">
                     <!-- Village Head -->
                     <div class="flex items-center gap-3 w-full">
@@ -131,12 +135,13 @@
                             </p>
                         </div>
                     </div>
-                    
+
                     <hr class="border-desa-background">
-                    
+
                     <!-- Population Count -->
                     <div class="flex items-center gap-3 w-full">
-                        <div class="flex size-12 sm:size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden shrink-0">
+                        <div
+                            class="flex size-12 sm:size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden shrink-0">
                             <img src="{{ asset('assets/') }}/images/icons/profile-2user-dark-green.svg"
                                 class="flex size-5 sm:size-6 shrink-0" alt="icon">
                         </div>
@@ -147,12 +152,13 @@
                             <p class="font-medium text-xs sm:text-sm text-desa-secondary">Jumlah Penduduk</p>
                         </div>
                     </div>
-                    
+
                     <hr class="border-desa-background">
-                    
+
                     <!-- Hamlet Count -->
                     <div class="flex items-center gap-3 w-full">
-                        <div class="flex size-12 sm:size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden shrink-0">
+                        <div
+                            class="flex size-12 sm:size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden shrink-0">
                             <img src="{{ asset('assets/') }}/images/icons/profile-2user-dark-green.svg"
                                 class="flex size-5 sm:size-6 shrink-0" alt="icon">
                         </div>
@@ -163,12 +169,13 @@
                             <p class="font-medium text-xs sm:text-sm text-desa-secondary">Jumlah Dusun</p>
                         </div>
                     </div>
-                    
+
                     <hr class="border-desa-background">
-                    
+
                     <!-- RW Count -->
                     <div class="flex items-center gap-3 w-full">
-                        <div class="flex size-12 sm:size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden shrink-0">
+                        <div
+                            class="flex size-12 sm:size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden shrink-0">
                             <img src="{{ asset('assets/') }}/images/icons/profile-2user-dark-green.svg"
                                 class="flex size-5 sm:size-6 shrink-0" alt="icon">
                         </div>
@@ -179,12 +186,13 @@
                             <p class="font-medium text-xs sm:text-sm text-desa-secondary">Jumlah RW</p>
                         </div>
                     </div>
-                    
+
                     <hr class="border-desa-background">
-                    
+
                     <!-- RT Count -->
                     <div class="flex items-center gap-3 w-full">
-                        <div class="flex size-12 sm:size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden shrink-0">
+                        <div
+                            class="flex size-12 sm:size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden shrink-0">
                             <img src="{{ asset('assets/') }}/images/icons/profile-2user-dark-green.svg"
                                 class="flex size-5 sm:size-6 shrink-0" alt="icon">
                         </div>
@@ -195,12 +203,13 @@
                             <p class="font-medium text-xs sm:text-sm text-desa-secondary">Jumlah RT</p>
                         </div>
                     </div>
-                    
+
                     <hr class="border-desa-background">
-                    
+
                     <!-- Agricultural Area -->
                     <div class="flex items-center gap-3 w-full">
-                        <div class="flex size-12 sm:size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden shrink-0">
+                        <div
+                            class="flex size-12 sm:size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden shrink-0">
                             <img src="{{ asset('assets/') }}/images/icons/tree-dark-green.svg"
                                 class="flex size-5 sm:size-6 shrink-0" alt="icon">
                         </div>
@@ -211,12 +220,13 @@
                             <p class="font-medium text-xs sm:text-sm text-desa-secondary">Luas Pertanian</p>
                         </div>
                     </div>
-                    
+
                     <hr class="border-desa-background">
-                    
+
                     <!-- Total Area -->
                     <div class="flex items-center gap-3 w-full">
-                        <div class="flex size-12 sm:size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden shrink-0">
+                        <div
+                            class="flex size-12 sm:size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden shrink-0">
                             <img src="{{ asset('assets/') }}/images/icons/grid-5-dark-green.svg"
                                 class="flex size-5 sm:size-6 shrink-0" alt="icon">
                         </div>
@@ -227,12 +237,13 @@
                             <p class="font-medium text-xs sm:text-sm text-desa-secondary">Luas Area</p>
                         </div>
                     </div>
-                    
+
                     <hr class="border-desa-background">
-                    
+
                     <!-- Village Establishment Date -->
                     <div class="flex items-center gap-3 w-full">
-                        <div class="flex size-12 sm:size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden shrink-0">
+                        <div
+                            class="flex size-12 sm:size-[52px] rounded-2xl items-center justify-center bg-desa-foreshadow overflow-hidden shrink-0">
                             <img src="{{ asset('assets/') }}/images/icons/calendar-2-dark-green.svg"
                                 class="flex size-5 sm:size-6 shrink-0" alt="icon">
                         </div>
@@ -243,6 +254,20 @@
                             <p class="font-medium text-xs sm:text-sm text-desa-secondary">Desa Dibangun</p>
                         </div>
                     </div>
+                    <!-- Struktur Organisasi -->
+                    <div class="flex flex-col items-center gap-3 mt-6">
+                        <h3 class="text-lg sm:text-xl font-semibold text-desa-black text-center">
+                            Struktur Organisasi Pemerintah Desa
+                        </h3>
+                        <img src="{{ asset('assets/images/thumbnails/StrukturDesaPenibung.png') }}"
+                            alt="Struktur Organisasi Pemerintah Desa"
+                            class="w-full max-w-4xl rounded-2xl border border-desa-background shadow-md object-contain">
+
+                        <p class="text-center text-sm sm:text-base text-desa-secondary mt-2">
+                            Desa Penibung, Kecamatan Mempawah Hilir, Kabupaten Mempawah <br>
+                            Kepmendagri Nomor 84 tahun 2015
+                        </p>
+                    </div>
                 </div>
             </section>
         </div>
@@ -252,22 +277,25 @@
     <div id="Modal-Gallery" class="modal fixed inset-0 flex flex-col h-screen z-40 hidden bg-[#080C1ACC] p-4">
         <div class="flex flex-col items-center justify-center m-auto max-w-full">
             <!-- Main Image Container -->
-            <div id="Main-Image-Container" class="flex aspect-[4/3] sm:aspect-[805/492] w-full max-w-[805px] overflow-hidden mx-auto">
+            <div id="Main-Image-Container"
+                class="flex aspect-[4/3] sm:aspect-[805/492] w-full max-w-[805px] overflow-hidden mx-auto">
                 <img id="Selected-Image" src="{{ asset('assets/') }}/images/thumbnails/thumbnail.png"
                     class="size-full object-contain object-center" alt="thumbnail">
             </div>
-            
+
             <!-- Close Button -->
             <button
                 class="btn-close-modal flex items-center rounded-full border border-white/10 py-2 sm:py-3 px-3 sm:px-4 mx-auto mt-4 sm:mt-[30px] gap-2">
-                <img src="assets/images/icons/close-circle-white.svg" class="flex size-5 sm:size-6 shrink-0" alt="icon">
+                <img src="assets/images/icons/close-circle-white.svg" class="flex size-5 sm:size-6 shrink-0"
+                    alt="icon">
                 <p class="font-medium leading-5 text-white text-sm sm:text-base">Tutup</p>
             </button>
-            
+
             <!-- Description -->
-            <p id="description" class="font-semibold text-base sm:text-lg mt-3 sm:mt-4 leading-5 text-white text-center px-4">Deskripsi</p>
+            <p id="description"
+                class="font-semibold text-base sm:text-lg mt-3 sm:mt-4 leading-5 text-white text-center px-4">Deskripsi</p>
         </div>
-        
+
         <!-- Thumbnail Gallery -->
         <div class="flex flex-wrap items-center w-full border border-white/10 gap-2 sm:gap-4 p-2 sm:p-4 overflow-x-auto">
             @if ($media)
