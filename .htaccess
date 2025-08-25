@@ -1,7 +1,12 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    # Blokir akses langsung ke /public
-    RewriteRule ^public/?$ - [R=404,L]
+    
+    # Blokir semua akses langsung ke /public/*
+    RewriteRule ^public(/.*)?$ - [R=404,L]
+
+    # Redirect /storage ke storage/app/public
+    RewriteCond %{REQUEST_URI} ^/storage/
+    RewriteRule ^storage/(.*)$ public/storage/$1 [L]
 
     # Arahkan semua request ke folder public
     RewriteRule ^(.*)$ public/$1 [L]
