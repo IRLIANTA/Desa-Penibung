@@ -1,4 +1,8 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    # Blokir akses langsung ke /public
+    RewriteRule ^public/?$ - [R=404,L]
+
+    # Arahkan semua request ke folder public
     RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
