@@ -53,7 +53,7 @@
     <div class="flex-grow">
         <div class="relative w-full">
             <div class="absolute left-4 top-1/2 -translate-y-1/2 w-5 lg:w-6">
-                <img src="{{ asset('assets/images/') }}/icons/search-normal.svg" alt="icons" />
+                <img src="{{ asset('assets/') }}/images/icons/search-normal.svg" alt="icons" />
             </div>
             <input type="text"
                 class="pl-11 lg:pl-12 w-full text-black appearance-none font-medium focus:border-1.5 focus:border-dark-green outline-none transition-all rounded-2xl border border-bg-color p-3 lg:p-4 text-sm lg:text-base placeholder:text-secondary-text-color placeholder:font-medium placeholder:text-sm lg:placeholder:text-base placeholder:leading-normal rounded-full"
@@ -61,10 +61,10 @@
         </div>
     </div>
     @if (auth()->check())
-        <img src="{{ asset('assets/images/') }}/icons/notification.svg" alt=""
+        <img src="{{ asset('assets/') }}/images/icons/notification.svg" alt=""
             class="w-14 lg:w-15 rounded-2xl border border-bg-color p-1.5 lg:p-4 hidden lg:block" />
 
-        <img src="{{ asset('assets/images/') }}/icons/setting-2.svg" alt=""
+        <img src="{{ asset('assets/') }}/images/icons/setting-2.svg" alt=""
             class="w-14 lg:w-15 rounded-2xl border border-bg-color p-1.5 lg:p-4 hidden lg:block" />
 
         <div class="hidden lg:flex gap-4 items-center">
@@ -97,7 +97,7 @@
     @endif
 
 
-    <img id="sidebar-toggle" src="{{ asset('assets/images/') }}/icons/menu.svg" alt=""
+    <img id="sidebar-toggle" src="{{ asset('assets/') }}/images/icons/menu.svg" alt=""
         class="w-14 lg:w-16 rounded-2xl border border-bg-color p-1.5 lg:p-2.5 lg:hidden cursor-pointer" />
 </div>
 

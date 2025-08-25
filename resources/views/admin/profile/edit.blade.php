@@ -13,7 +13,7 @@
             <a href="{{ route('profile.media.index') }}"
                 class="flex items-center rounded-2xl py-3 px-4 gap-[10px] bg-desa-green w-full sm:w-auto justify-center">
                 <p class="font-medium text-white">Lihat Media</p>
-                <img src="{{ asset('/assets/images/icons/eye-white-fill.svg') }}" class="flex size-6 shrink-0"
+                <img src="/{{asset('assets/')}}/images/icons/eye-white-fill.svg" class="flex size-6 shrink-0"
                     alt="icon">
             </a>
         </div>
@@ -40,9 +40,9 @@
                                 value="{{ get_profile('desa_name') }}"
                                 class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
                             <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
-                                <img src="{{ asset('assets/images/icons/building-4-secondary-green.svg') }}"
+                                <img src="{{asset('assets/')}}/images/icons/building-4-secondary-green.svg"
                                     class="size-6 hidden group-has-[:placeholder-shown]:flex" alt="icon">
-                                <img src="{{ asset('assets/images/icons/building-4-black.svg') }}"
+                                <img src="{{asset('assets/')}}/images/icons/building-4-black.svg"
                                     class="size-6 flex group-has-[:placeholder-shown]:hidden" alt="icon">
                             </div>
                         </label>
@@ -67,9 +67,9 @@
                                 value="{{ get_profile('kepala_desa_name') }}"
                                 class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
                             <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
-                                <img src="{{ asset('assets/images/icons/user-square-secondary-green.svg') }}"
+                                <img src="{{asset('assets/')}}/images/icons/user-square-secondary-green.svg"
                                     class="size-6 hidden group-has-[:placeholder-shown]:flex" alt="icon">
-                                <img src="{{ asset('assets/images/icons/user-square-black.svg') }}"
+                                <img src="{{asset('assets/')}}/images/icons/user-square-black.svg"
                                     class="size-6 flex group-has-[:placeholder-shown]:hidden" alt="icon">
                             </div>
                         </label>
@@ -81,8 +81,9 @@
                     <h2 class="font-medium leading-5 text-desa-secondary w-full md:w-1/3">Foto Kepala Desa</h2>
                     <div class="flex-1 flex flex-col sm:flex-row items-center justify-between gap-4 w-full">
                         <div id="Photo-Preview"
+                        
                             class="flex justify-center w-[120px] h-[100px] rounded-2xl overflow-hidden bg-desa-foreshadow shrink-0">
-                            <img id="Photo" src="{{ asset('/assets/images/thumbnails/thumbnail-bansos-preview.svg') }}"
+                            <img id="Photo" src="{{asset('assets/')}}/images/thumbnails/thumbnail-bansos-preview.svg"
                                 alt="image" class="size-full object-cover" />
                         </div>
                         <div class="relative w-full sm:w-auto">
@@ -90,7 +91,7 @@
                                 class="absolute opacity-0 left-0 w-full top-0 h-full cursor-pointer" />
                             <button id="Upload" type="button"
                                 class="relative flex items-center justify-center w-full sm:w-auto py-4 px-6 rounded-2xl bg-desa-black gap-[10px]">
-                                <img src="{{ asset('/assets/images/icons/send-square-white.svg') }}" alt="icon"
+                                <img src="{{asset('assets/')}}/images/icons/send-square-white.svg" alt="icon"
                                     class="size-6 shrink-0" />
                                 <p class="font-medium leading-5 text-white">Upload</p>
                             </button>
@@ -172,7 +173,7 @@
                         <div
                             class="Photo-Preview flex justify-center w-[120px] h-[100px] rounded-2xl overflow-hidden bg-desa-foreshadow shrink-0">
                             <img class="Photo size-full object-cover"
-                                src="{{ asset('assets/images/thumbnails/thumbnail-bansos-preview.svg') }}"
+                                src="{{asset('assets/')}}/images/thumbnails/thumbnail-bansos-preview.svg"
                                 alt="image" />
                         </div>
                         <div class="flex flex-col gap-4 flex-1 w-full">
@@ -182,9 +183,9 @@
                                     class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 font-medium placeholder:text-desa-secondary">
                                 <div
                                     class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0 mt-3.5">
-                                    <img src="{{ asset('assets/images/icons/building-4-secondary-green.svg') }}"
+                                    <img src="{{asset('assets/')}}/images/icons/building-4-secondary-green.svg"
                                         class="size-6 hidden group-has-[:placeholder-shown]:flex" alt="icon">
-                                    <img src="{{ asset('assets/images/icons/building-4-black.svg') }}"
+                                    <img src="{{asset('assets/')}}/images/icons/building-4-black.svg"
                                         class="size-6 flex group-has-[:placeholder-shown]:hidden" alt="icon">
                                 </div>
                             </label>
@@ -192,14 +193,14 @@
                                 <input type="file" name="file_path[]" required class="photo-input hidden" />
                                 <button type="button"
                                     class="Upload-btn relative flex items-center py-3 px-4 rounded-2xl bg-desa-black gap-[10px]">
-                                    <img src="{{ asset('assets/images/icons/send-square-white.svg') }}" alt="icon"
+                                    <img src="{{asset('assets/')}}/images/icons/send-square-white.svg" alt="icon"
                                         class="size-5 shrink-0" />
                                     <p class="font-medium text-sm leading-5 text-white">Upload</p>
                                 </button>
                                 <button type="button"
                                     class="delete size-12 rounded-2xl p-3 bg-desa-red items-center justify-center group-[&.new]/parent:flex"
                                     onclick="deleteDesaForm(this)">
-                                    <img src="{{ asset('assets/images/icons/trash-white.svg') }}"
+                                    <img src="{{asset('assets/')}}/images/icons/trash-white.svg"
                                         class="flex size-5 shrink-0" alt="icon">
                                 </button>
                             </div>
@@ -211,7 +212,7 @@
                     <button type="button"
                         class="add-more-btn flex items-center rounded-2xl py-3 px-5 gap-2 bg-desa-foreshadow">
                         <p class="font-medium leading-5 text-desa-dark-green">Tambah Foto</p>
-                        <img src="{{ asset('assets/images/icons/add-square-dark-green.svg') }}"
+                        <img src="{{asset('assets/')}}/images/icons/add-square-dark-green.svg"
                             class="flex size-5 shrink-0" alt="icon">
                     </button>
                 </div>
