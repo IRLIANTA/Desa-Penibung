@@ -53,7 +53,7 @@ Route::prefix('/kepala_rumah')->group(function () {
 });
 
 Route::prefix('/profile')->group(function () {
-    Route::get('/', [ProfileController::class, 'index']);
+    Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
     // middleware
     Route::middleware('auth')->group(function () {
         Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
