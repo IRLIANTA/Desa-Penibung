@@ -320,20 +320,24 @@
             @if (auth()->check())
                 <ul>
                     <li class="group ">
-                        <a href="{{ route('event.index') }}" class="flex items-center h-14 gap-2 rounded-2xl p-4">
-                            <div class="relative flex size-6 shrink-0">
-                                <img src="{{ asset('assets/') }}/images/icons/logout-red.svg"
-                                    class="flex size-6 shrink-0" alt="icon">
-                            </div>
-                            <span
-                                class="text-left leading-5 text-desa-red flex flex-1 hover:text-desa-dark-red transition-setup">
-                                Logout
-                            </span>
-                        </a>
+                        <form method="POST" action="{{ route('logout') }}" class="inline">
+                            @csrf
+                            <button type="submit" class="flex items-center h-14 gap-2 rounded-2xl p-4">
+                                <div class="relative flex size-6 shrink-0">
+                                    <img src="{{ asset('assets/') }}/images/icons/logout-red.svg"
+                                        class="flex size-6 shrink-0" alt="icon">
+                                </div>
+                                <span
+                                    class="text-left leading-5 text-desa-red flex flex-1 hover:text-desa-dark-red transition-setup">
+                                    Logout
+                                </span>
+                            </button>
+                        </form>
+
                     </li>
                 </ul>
             @endif
         </div>
     </div>
-    
+
 </div>
