@@ -319,12 +319,13 @@
 
             @if (auth()->check())
                 <ul>
-                    <li class="group ">
-                        <form method="POST" action="{{ route('logout') }}" class="inline">
+                    <li class="group">
+                        <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <button type="submit" class="flex items-center h-14 gap-2 rounded-2xl p-4">
+                            <button type="submit"
+                                class="flex items-center h-14 gap-2 rounded-2xl p-4 w-full text-left">
                                 <div class="relative flex size-6 shrink-0">
-                                    <img src="{{ asset('assets/') }}/images/icons/logout-red.svg"
+                                    <img src="{{ asset('assets/images/icons/logout-red.svg') }}"
                                         class="flex size-6 shrink-0" alt="icon">
                                 </div>
                                 <span
@@ -333,7 +334,6 @@
                                 </span>
                             </button>
                         </form>
-
                     </li>
                 </ul>
             @endif

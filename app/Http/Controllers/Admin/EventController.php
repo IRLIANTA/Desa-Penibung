@@ -76,7 +76,7 @@ class EventController extends Controller
         $request->validate([
             'thumbnail'   => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'name'        => 'required|string|max:255',
-            'status'      => 'required|in:Open,Closed',
+            'status'      => 'required|in:open,closed',
             'date'        => 'required|date',
             'start_time'  => 'required|date_format:H:i',
             'partisipasi' => 'required|integer|min:0',
